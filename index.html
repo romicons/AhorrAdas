@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner.">
-    <meta name="keywords" content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization">
-    <link href="src/output.css" type="text/css" rel="stylesheet">
-    <title>AhorrAdas</title>
-</head>
-<body>
-    <nav>
-            <div>
-                <h1>
-                    AhorrAdas
-                </h1>
-            </div>
-            <div>
-                <div>
-                    Balance
-                </div>
-                <div>
-                    Categorías
-                </div>
-                <div>
-                    Reporte
-                </div>
-                <div>
-                    Modo Nocturo
-                </div>
-            </div>
-    </nav>
-
-    <main>
-        <section id="operations">
-            <h2>Operaciones</h2>
-            <p>Prueba de git</p>
-        </section>
-    </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner."
+		/>
+		<meta
+			name="keywords"
+			content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link href="src/output.css" type="text/css" rel="stylesheet" />
+		<title>AhorrAdas</title>
+	</head>
+	<body>
+		<nav>
+			<div>
+				<h1>AhorrAdas</h1>
+			</div>
+			<div>
+				<div>Balance</div>
+				<div>Categorías</div>
+				<div>Reporte</div>
+				<div>Modo Nocturo</div>
+			</div>
+		</nav>
+		<main class="flex justify-center">
+			<section id="operations" class="shadow w-1/2 h-96 rounded-lg p-5">
+				<section class="flex justify-between">
+					<h2>Operaciones</h2>
+					<button
+						id="button-operations"
+						class="flex items-center bg-slate-400 rounded p-3 h-8">
+						+ Nueva operación
+					</button>
+				</section>
+			</section>
+		</main>
+	</body>
 </html>

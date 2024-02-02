@@ -5,13 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner.">
     <meta name="keywords" content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization">
-    <link href="src/output.css" type="text/css" rel="stylesheet">
     <title>AhorrAdas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600&family=Dosis:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+            fontFamily: {
+            'sans': ['"Comfortaa"'],
+          },
+          },
+        },
+      }
+
+    </script>
+
 </head>
+
+
 <body>
-    <nav>
+    <nav class="columns-5">
             <div>
-                <h1>
+                <h1 class="text-xl font-sans sans">
                     AhorrAdas
                 </h1>
             </div>
@@ -26,9 +48,13 @@
                     Reporte
                 </div>
                 <div>
-                    Modo Nocturo
+                    Modo Nocturno
                 </div>
             </div>
     </nav>
+    <main >
+
+    </main>
 </body>
+
 </html>

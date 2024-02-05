@@ -28,15 +28,17 @@
             'sans': ['"Comfortaa"'],
             'serif': ['"Dosis"'],
             },
-          },
+            backgroundImage: {
+            'main-background': "url('img/bg-main.jpg')",
+            }
         },
       }
-
+    }
     </script>
 
 </head>
 
-<body>
+<body class="bg-main-background bg-cover bg-center h-screen">
 
     <!--        NAVBAR      -->
 
@@ -78,8 +80,8 @@
                 </div>
             </div>
     </nav>
-    <main class="flex justify-center">
-        <section id="operations" class="shadow-lg w-1/2 h-96 rounded-lg p-5">
+    <main class="flex justify-center h-4/5">
+        <section id="operations" class="shadow-lg w-1/2 h-96 rounded-lg p-5 backdrop-opacity-5 backdrop-blur-lg">
           <section class="flex justify-between">
             <h2>Operaciones</h2>
             <button
@@ -93,6 +95,32 @@
         <section class="h-96 w-1/2 shadow-lg "></section>
         <section class="h-96 w-1/2 shadow-lg "></section>
       </main>
+
+      <!--      FOOTER      -->
+
+      <footer class="p-2.5 flex justify-end items-center content-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2">
+            <div class="flex justify-center">
+                <div class="text-xl gap-2">
+                    <ul class="gap-3 flex columns-4">
+                        <li class="px-6">
+                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center hover:text-secondary cursor-pointer" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center hover:text-secondary cursor-pointer"><i class="fab fa-github-alt"></i> romicons </a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center hover:text-secondary cursor-pointer" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center hover:text-secondary cursor-pointer"><i class="fab fa-github-alt"></i> kndezapata</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <p class="text-center">© 2024 Romina Constantinoff & Candela Zapata. Todos los derechos reservados.</p>
+            </div>
+      </footer>
 </body>
 
 </html>

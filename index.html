@@ -25,7 +25,7 @@
 		></script>
 		<script src="https://cdn.tailwindcss.com"></script>
 
-		<script>
+    <script>
 			tailwind.config = {
 				theme: {
 					extend: {
@@ -47,82 +47,92 @@
 				},
 			};
 		</script>
-	</head>
 
-	<body class="font-serif h-screen bg-main-background bg-cover bg-center">
-		<!--        NAVBAR      -->
+</head>
 
-		<nav
-			class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg"
-		>
-			<div class="pl-2">
-				<h1 class="text-4xl flex gap-2">
-					<img src="img/brand-icon.ico" class="w-10" />
-					AhorrAdas
-				</h1>
-			</div>
-			<div
-				class="columns-4 flex justify-end content-center gap-8 pr-2 relative items-center relative"
-			>
-				<div
-					class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-				>
-					<i class="fa-solid fa-scale-balanced"></i>
-					<span class="relative z-10"> Balance </span>
-					<span
-						class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-					></span>
-				</div>
-				<div
-					class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-				>
-					<i class="fa-solid fa-tags"></i>
-					<span class="relative z-10"> Categorías </span>
-					<span
-						class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-					></span>
-				</div>
-				<div
-					class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-				>
-					<i class="fa-solid fa-chart-pie"></i>
-					<span class="relative z-10"> Reporte </span>
-					<span
-						class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-					></span>
-				</div>
-				<div
-					class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-				>
-					<i class="fa-solid fa-moon"></i>
-					<span class="relative z-10"> Modo Nocturno </span>
-					<span
-						class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-					></span>
-				</div>
-			</div>
-		</nav>
-		<main class="flex justify-center">
-			<section
-				id="operations"
-				class="shadow-lg w-1/2 h-96 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg"
-			>
-				<div class="flex justify-between">
-					<h2 class="font-sans text-lg">Operaciones</h2>
-					<button
-						id="button-operations"
-						class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-3 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold"
-					>
-						<i class="fa-light fa-plus"></i> Nueva operación
-					</button>
-				</div>
-			</section>
-			<div
-				class="h-96 w-1/2 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg"
-			></div>
-			<div
-				class="h-96 w-1/2 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg"
-			></div>
-		</main>
-	</body>
+<body class="bg-main-background bg-cover bg-center h-screen">
+
+    <!--        NAVBAR      -->
+
+    <nav class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg">
+            <div class="pl-2">
+                <h1 class="text-4xl flex gap-2">
+                <img src="img/brand-icon.ico" class="w-10">
+                    AhorrAdas
+                </h1>
+            </div>
+            <div class="columns-4 flex justify-end content-center gap-8 pr-2 relative items-center relative">
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span class="relative z-10">
+                        Balance
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                </div>
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-tags"></i>
+                    <span class="relative z-10">
+                        Categorías
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                </div>
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span class="relative z-10">
+                        Reporte
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                </div>
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="relative z-10">
+                        Modo Nocturno
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                </div>
+            </div>
+    </nav>
+    <main class="flex justify-center h-4/5">
+        <section id="operations" class="shadow-lg w-1/2 h-96 rounded-lg p-5 backdrop-opacity-5 backdrop-blur-lg">
+          <section class="flex justify-between">
+            <h2>Operaciones</h2>
+            <button
+              id="button-operations"
+              class="flex items-center bg-slate-400 rounded p-3 h-8"
+            >
+              + Nueva operación
+            </button>
+          </section>
+        </section>
+        <section class="h-96 w-1/2 shadow-lg "></section>
+        <section class="h-96 w-1/2 shadow-lg "></section>
+      </main>
+
+      <!--      FOOTER      -->
+
+      <footer class="p-2.5 flex justify-end items-center content-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2">
+            <div class="flex justify-center">
+                <div class="text-xl gap-2">
+                    <ul class="gap-3 flex columns-4">
+                        <li class="px-6">
+                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center hover:text-secondary cursor-pointer" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center hover:text-secondary cursor-pointer"><i class="fab fa-github-alt"></i> romicons </a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center hover:text-secondary cursor-pointer" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center hover:text-secondary cursor-pointer"><i class="fab fa-github-alt"></i> kndezapata</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <p class="text-center">© 2024 Romina Constantinoff & Candela Zapata. Todos los derechos reservados.</p>
+            </div>
+      </footer>
+</body>
+
 </html>

@@ -55,7 +55,7 @@
 
     <!--        NAVBAR      -->
 
-    <nav class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:text-dark dark:from-[#1a1f1e] dark:to-[#6cbdb5]">
+    <nav class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:text-dark dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf]">
             <div class="pl-2">
                 <h1 class="text-4xl flex gap-2">
                     <svg fill="none" height="40" viewBox="0 0 16 16" width="40" xmlns="http://www.w3.org/2000/svg" class="text-light dark:text-dark">
@@ -69,47 +69,43 @@
                 </h1>
             </div>
             <div class="columns-4 flex justify-end content-center gap-8 pr-2 items-center relative">
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
+                <a href="" class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
                     <i class="fa-solid fa-scale-balanced"></i>
                     <span class="relative z-10">
                         Balance
                     </span>
                     <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
-                </div>
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
+                </a>
+                <a href="" class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
                     <i class="fa-solid fa-tags"></i>
                     <span class="relative z-10">
                         Categorías
                     </span>
                     <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
-                </div>
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
+                </a>
+                <a href="" class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
                     <i class="fa-solid fa-chart-pie"></i>
                     <span class="relative z-10">
                         Reporte
                     </span>
                     <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
-                </div>
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 w-44 dark:hover:text-light text-center" id="btn-darkmode">
+                </a>
+                <button class="p-2 text-2xl hover:text-secondary border-current border-solid rounded-full dark:hover:text-light text-center" id="btn-darkmode">
                     <i class="fa-solid fa-moon"></i>
-                    <span class="relative z-10">
-                        Modo Oscuro
-                    </span>
-                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
-                </div>
+                </button>
             </div>
     </nav>
 
     <main class="flex justify-center gap-2 h-4/5 py-6 flex-wrap">
         <section
             id="operations"
-            class="shadow-lg w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2"
+            class="shadow-md w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]"
             >
             <div class="flex justify-between">
                 <h2 class="font-sans text-xl ">Operaciones</h2>
                 <button
                 id="button-operations"
-                class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-3 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold"
+                class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-4 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold dark:bg-secondary dark:hover:bg-primary dark:hover:text-secondary"
                 >
                 <i class="fa-light fa-plus text-xl"></i> Nueva operación
                 </button>
@@ -120,9 +116,9 @@
             
         <div class="flex flex-col w-1/5 mx-2">
             <section
-                class="p-4 h-2/5 shadow-lg bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2"
+                class="p-4 h-2/5 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
             >
-                <h2 class="font-sans text-lg text-center">Balance</h2>
+                <h2 class="font-sans text-xl text-center">Balance</h2>
                 <div class="text-lg flex flex-col gap-2">
                     <div class="flex columns-2 justify-between">
                         <div>
@@ -160,13 +156,13 @@
                 </div>
             </section>
             
-            <!-- Filtros -->
+            <!-- FILTROS -->
             
             <div
-                class="h-4/5 p-4 shadow-lg bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col"
+                class="h-4/5 p-4 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col dark:shadow-[#c8d6bf]"
             >
                 <div class="flex justify-between">
-                    <h2 class="font-sans text-lg">Filtros</h2>
+                    <h2 class="font-sans text-xl">Filtros</h2>
                     <a href="#">Ocultar filtros</a>
                 </div>
                     <div>
@@ -215,16 +211,16 @@
                 <div class="text-xl gap-2">
                     <ul class="gap-3 flex columns-4">
                         <li class="px-6">
-                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
+                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
                         </li>
                         <li class="px-6">
-                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> romicons </a>
+                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> romicons </a>
                         </li>
                         <li class="px-6">
-                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
+                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
                         </li>
                         <li class="px-6">
-                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> kndezapata</a>
+                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> kndezapata</a>
                         </li>
                     </ul>
                 </div>

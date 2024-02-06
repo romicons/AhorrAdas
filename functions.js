@@ -1,13 +1,7 @@
 /*    DARK/LIGHT MODE   */
 
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.documentElement.classList.add('dark')
-} else {
-  document.documentElement.classList.remove('dark')
-}
+const darkModeToggle = document.querySelector('#btn-darkmode');
 
-localStorage.theme = 'light';
-
-localStorage.theme = 'dark';
-
-localStorage.removeItem('theme');
+darkModeToggle.addEventListener('click', () => {
+document.documentElement.classList.toggle('dark');
+});

@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta
-			name="description"
-			content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner."
-		/>
-		<meta
-			name="keywords"
-			content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization"
-		/>
-		<title>AhorrAdas</title>
-		<link rel="icon" type="image/png" href="img/favicon.png"/>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600&family=Dosis:wght@200;300;400;500;600&display=swap"
-			rel="stylesheet"
-		/>
-		<script
-			src="https://kit.fontawesome.com/9096056511.js"
-			crossorigin="anonymous"
-		></script>
-		<script src="https://cdn.tailwindcss.com"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner."
+    />
+    <meta
+      name="keywords"
+      content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization"
+    />
+    <title>AhorrAdas</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600&family=Dosis:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/9096056511.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
+      
 			tailwind.config = {
 				theme: {
 					extend: {
@@ -52,7 +52,7 @@
 </head>
 
 <body class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light dark:text-dark font-serif">
-
+  
     <!--        NAVBAR      -->
 
     <nav class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:text-dark dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf]">
@@ -96,7 +96,11 @@
             </div>
     </nav>
 
-    <main class="flex justify-center gap-2 h-4/5 py-6 flex-wrap">
+   <main class="flex justify-center gap-2 py-6 flex-wrap">
+      <!-- h-4/5 -->
+     
+      <!--    SECCIÓN DE OPERACIONES    -->
+     
         <section
             id="operations"
             class="shadow-md w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]"
@@ -155,53 +159,111 @@
                 </div>
                 </div>
             </section>
-            
-            <!-- FILTROS -->
-            
-            <div
-                class="h-4/5 p-4 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col dark:shadow-[#c8d6bf]"
-            >
-                <div class="flex justify-between">
-                    <h2 class="font-sans text-xl">Filtros</h2>
-                    <a href="#">Ocultar filtros</a>
-                </div>
-                    <div>
-                    <label for="type-filters">Tipo</label>
-                    <select name="tipos-filtros" id="type-filters">
-                        <option value="TODOS">Todos</option>
-                        <option value="GASTOS">Gastos</option>
-                        <option value="GANANCIA">Ganancia</option>
-                    </select>
-                    </div>
-                <div>
-                    <label for="type-category">Categoría</label>
-                    <select name="categorias" id="type-category">
-                        <option value="Todas">Todas</option>
-                        <option value="Comida">Comida</option>
-                        <option value="Servicio">Servicio</option>
-                        <option value="Salidas">Salidas</option>
-                        <option value="Educación">Educación</option>
-                        <option value="Transporte">Transporte</option>
-                        <option value="Trabajo">Trabajo</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="expense-date">Desde</label>
-                    <input id="expense-date" type="date" name="date" />
-                </div>
-                <div>
-                    <label for="order-expense">Ordenar por</label>
-                    <select name="Ordenar" id="order-expense">
-                        <option value="Más reciente">Más reciente</option>
-                        <option value="Menos reciente">Menos reciente</option>
-                        <option value="Mayor gasto">Mayor gasto</option>
-                        <option value="Menor gasto">Menor gasto</option>
-                        <option value="A/Z">A/Z</option>
-                        <option value="Z/A">Z/A</option>
-                    </select>
-                </div>
-            </div>
+          
+        <!--    FILTROS     -->
+
+        <div
+          class="h-4/5 p-4 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col"
+        >
+          <div class="flex columns-2 justify-between">
+            <div><h2 class="font-sans text-lg">Filtros</h2></div>
+            <div><a href="#">Ocultar filtros</a></div>
+          </div>
+
+          <!-- INPUT FILTRO TIPO -->
+
+          <label for="type-filters">Tipo</label>
+          <select name="tipos-filtros" id="type-filters">
+            <option value="TODOS">Todos</option>
+            <option value="GASTOS">Gastos</option>
+            <option value="GANANCIA">Ganancia</option>
+          </select>
+
+          <!-- INPUT FILTRO CATEGORIA -->
+
+          <label for="type-category">Categoría</label>
+          <select name="categorias" id="type-category">
+            <option value="Todas">Todas</option>
+            <option value="Comida">Comida</option>
+            <option value="Servicio">Servicio</option>
+            <option value="Salidas">Salidas</option>
+            <option value="Educación">Educación</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Trabajo">Trabajo</option>
+          </select>
+
+          <!-- INPUT FILTRO FECHA-->
+
+          <label for="expense-date">Desde</label>
+          <input id="expense-date" type="date" name="date" />
+
+          <!-- INPUT FILTRO ORDENAR POR-->
+
+          <label for="order-expense">Ordenar por</label>
+          <select name="Ordenar" id="order-expense">
+            <option value="Más reciente">Más reciente</option>
+            <option value="Menos reciente">Menos reciente</option>
+            <option value="Mayor gasto">Mayor gasto</option>
+            <option value="Menor gasto">Menor gasto</option>
+            <option value="A/Z">A/Z</option>
+            <option value="Z/A">Z/A</option>
+          </select>
         </div>
+      </div>
+
+      <!-- FORMULARIO DE OPERACiONES -->
+     
+      <section
+        class="flex flex-col shadow-lg w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3"
+      >
+        <!-- DESCRIPCION DE OPERACIONES -->
+        <label for="description-operation">Descripción</label>
+        <input id="description-operation" type="text" />
+
+        <!-- MONTO DE OPERACIONES -->
+        
+        <label for="operation-amounth">Monto</label>
+        <input id="operation-amounth" type="number" value="0" />
+
+        <!-- TIPO DE OPERACIONES -->
+        
+        <label for="type-operation">Tipo</label>
+        <select name="tipo-operacion" id="type-operation">
+          <option value="Gasto">Gasto</option>
+          <option value="Ganancia">Ganancia</option>
+        </select>
+
+        <!-- CATEGORIA DE OPERACIONES -->
+        
+        <label for="category-operation">Categoría</label>
+        <select name="categoria-operacion" id="category-operation">
+          <option value="Comida">Comida</option>
+          <option value="Servicios">Servicios</option>
+          <option value="Salidas">Salidas</option>
+          <option value="Educación">Educación</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Trabajo">Trabajo</option>
+        </select>
+
+        <!-- FECHA DE OPERACIONES -->
+        
+        <label for="date-operation">Fecha</label>
+        <input id="date-operation" type="date" name="date" />
+
+        <div class="flex columns-2 justify-end gap-5">
+          <button
+            class="flex items-center rounded p-4 h-8 justify-center  bg-primary hover:bg-dark shadow-inner hover:font-bold"
+          >
+            Cancelar
+          </button>
+          <button
+            class="flex items-center rounded p-4 h-8 justify-center  hover:bg-dark bg-secondary shadow-inner hover:font-bold"
+          >
+            Agregar
+          </button>
+        </div>
+      </section>
+
     </main>
 
       <!--      FOOTER      -->
@@ -229,9 +291,9 @@
                 <p class="text-center">© 2024 Romina Constantinoff & Candela Zapata. Todos los derechos reservados.</p>
             </div>
       </footer>
+
 </body>
 
-<script src="functions.js"></script>
-<script src="main.js"></script>
-
+  <script src="functions.js"></script>
+  <script src="main.js"></script>
 </html>

@@ -1,206 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner."
-    />
-    <meta
-      name="keywords"
-      content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization"
-    />
-    <title>AhorrAdas</title>
-    <link rel="icon" type="image/ico" href="img/brand-icon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600&family=Dosis:wght@200;300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/9096056511.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="AhorrAdas, Your Personal Financial Ally! With an intuitive interface, our web application redefines income and expense management, turning it into a simple and enjoyable experience. Record every change in your cash flow with just a few clicks, customize your categories, and marvel at visual reports that provide a clear overview of your financial situation. AhorrAdas is designed to simplify your financial life, offering powerful tools in an elegant and accessible manner."
+		/>
+		<meta
+			name="keywords"
+			content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization"
+		/>
+		<title>AhorrAdas</title>
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600&family=Dosis:wght@200;300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/9096056511.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              light: "#1a1f1e",
-              dark: "#e3dfba",
-              primary: "#c8d6bf",
-              secondary: "#6cbdb5",
-              accent: "#93ccc6",
-              red: `#ff0000`,
-              green: `#008000`,
-            },
-            fontFamily: {
-              sans: ['"Comfortaa"'],
-              serif: ['"Dosis"'],
-            },
-            backgroundImage: {
-              "main-background": "url('img/bg-main.jpg')",
-            },
-          },
-          screen: {
-            sm: "600px",
-            md: "875px",
-            lg: "1024px",
-          },
-        },
-      };
-    </script>
-  </head>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							light: "#1a1f1e",
+							dark: "#e3dfba",
+							primary: "#c8d6bf",
+							secondary: "#6cbdb5",
+							accent: "#93ccc6",
+						},
+						fontFamily: {
+							sans: ['"Comfortaa"'],
+							serif: ['"Dosis"'],
+						},
+						backgroundImage: {
+							"main-background": "url('img/bg-main.jpg')",
+						},
+					},
+				},
+			};
+		</script>
 
-  <body
-    class="font-serif h-screen bg-main-background bg-cover bg-center bg-no-repeat"
-  >
+</head>
+
+<body class="bg-main-background bg-cover bg-center h-screen dark:bg-main-background bg-no-repeat">
+
     <!--        NAVBAR      -->
-    <nav
-      class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg"
-    >
-      <div class="pl-2">
-        <h1 class="text-4xl flex gap-2">
-          <img src="img/brand-icon.ico" class="w-10" />
-          AhorrAdas
-        </h1>
-      </div>
-      <div
-        class="columns-4 flex justify-end content-center gap-8 pr-2 relative items-center relative"
-      >
-        <div
-          class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-        >
-          <i class="fa-solid fa-scale-balanced"></i>
-          <span class="relative z-10"> Balance </span>
-          <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-          ></span>
-        </div>
-        <div
-          class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-        >
-          <i class="fa-solid fa-tags"></i>
-          <span class="relative z-10"> Categorías </span>
-          <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-          ></span>
-        </div>
-        <div
-          class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-        >
-          <i class="fa-solid fa-chart-pie"></i>
-          <span class="relative z-10"> Reporte </span>
-          <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-          ></span>
-        </div>
-        <div
-          class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300"
-        >
-          <i class="fa-solid fa-moon"></i>
-          <span class="relative z-10"> Modo Nocturno </span>
-          <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
-          ></span>
-        </div>
-      </div>
+
+    <nav class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:text-dark dark:from-[#1a1f1e] dark:to-[#6cbdb5]">
+            <div class="pl-2">
+                <h1 class="text-4xl flex gap-2">
+                    <svg fill="none" height="40" viewBox="0 0 16 16" width="40" xmlns="http://www.w3.org/2000/svg" class="text-light dark:text-dark">
+                        <g fill="#212121" class="dark:fill-current">
+                            <path d="m13.5006 8.16181c.5542-.43767.9737-1.00895 1.2302-1.64626.1767.51956.2692 1.10188.2692 1.75206 0 1.55225-.548 2.63969-1.11 3.34019-.2789.3477-.5588.5974-.772.762-.042.0324-.0815.0615-.118.0876v1.0431c0 .8284-.6716 1.5-1.5 1.5h-.5c-.5523 0-1-.4478-1-1h-2c0 .5522-.44769 1-1 1h-.5c-.82842 0-1.5-.6716-1.5-1.5v-.2133c-.08634-.0275-.18303-.0615-.28738-.1037-.39994-.1614-.92106-.4445-1.4019-.9319-.5921-.6002-.92378-1.3513-1.09-1.8226-.05441-.1543-.16342-.2514-.2695-.2814-.56271-.15903-.95122-.67259-.95122-1.25734v-.79396c0-.57589.38171-1.08203.93541-1.24034.10336-.02955.21549-.13055.27067-.29737.13467-.4072.3944-1.00891.8704-1.49143.38939-.39472.80964-.68646 1.12865-.87856.09667-.05822.18499-.10785.26154-.14892v-1.87757c0-.35349.23175-.603.4808-.70408.24699-.10023.57814-.08347.82581.15052.25276.23879.58506.52442.94047.75703.36446.23854.70642.39.98533.41828l.00533.00054c-.52804.7838-.77121 1.74351-.65812 2.7046.12098 1.02821.91674 1.64653 1.58478 1.92318l2.38903.98933c.6681.27665 1.668.40195 2.4805-.2397zm-8.7506-.66181c.41421 0 .75-.33579.75-.75s-.33579-.75-.75-.75-.75.33579-.75.75.33579.75.75.75z"/>
+                            <path d="m8.23028 3.91919c.28839-.72861.86015-1.3441 1.64126-1.66773 1.53066-.63418 3.28566.09258 3.91986 1.62326.5256 1.26861.1164 2.69129-.9106 3.50229-.4163.32874-.988.30352-1.4781.10057l-2.38902-.98933c-.49007-.20295-.91226-.58933-.97424-1.11613-.03028-.25731-.02647-.51446.00895-.76551z"/>
+                            <path d="m8.23028 3.91919-.13604.43873c.02108-.09237.0465-.18361.07611-.27339.01838-.0557.03836-.11084.05993-.16534z"/>
+                        </g>
+                    </svg>
+                    AhorrAdas
+                </h1>
+            </div>
+            <div class="columns-4 flex justify-end content-center gap-8 pr-2 items-center relative">
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span class="relative z-10">
+                        Balance
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
+                </div>
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
+                    <i class="fa-solid fa-tags"></i>
+                    <span class="relative z-10">
+                        Categorías
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
+                </div>
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span class="relative z-10">
+                        Reporte
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
+                </div>
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 w-44 dark:hover:text-light text-center" id="btn-darkmode">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="relative z-10">
+                        Modo Oscuro
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
+                </div>
+            </div>
     </nav>
-    <main class="flex justify-center gap-2 h-4/5 py-6 flex-wrap">
-      <section
-        id="operations"
-        class="shadow-lg w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2"
-      >
-        <div class="flex justify-between">
-          <h2 class="font-sans text-lg">Operaciones</h2>
-          <button
-            id="button-operations"
-            class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-3 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold"
-          >
-            <i class="fa-light fa-plus"></i> Nueva operación
-          </button>
-        </div>
-      </section>
-      <!-- Balance -->
-      <div class="flex flex-col w-1/5 mx-2">
-        <div
-          class="p-4 h-4/5 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2"
-        >
-          <h2 class="font-sans text-lg">Balance</h2>
-          <div class="text-lg flex flex-col justify-around">
-            <div>
-              Ganancias
-              <div class="text-green">
-                <span>+$</span>
-                <span>0</span>
-              </div>
-            </div>
-            <div>
-              Gastos
-              <div class="text-red">
-                <span>-$</span>
-                <span>0</span>
-              </div>
-            </div>
-            <div class="text-2xl">
-              Total
-              <div>
-                <span>$</span>
-                <span>0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Filtros -->
-        <div
-          class="h-4/5 p-4 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col"
+
+      <main class="flex justify-center gap-2 h-4/5 py-6 flex-wrap">
+        <section
+          id="operations"
+          class="shadow-lg w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2"
         >
           <div class="flex justify-between">
-            <h2 class="font-sans text-lg">Filtros</h2>
-            <a href="#">Ocultar filtros</a>
+            <h2 class="font-sans text-lg">Operaciones</h2>
+            <button
+              id="button-operations"
+              class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-3 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold"
+            >
+              <i class="fa-light fa-plus"></i> Nueva operación
+            </button>
           </div>
-          <div>
-            <label for="type-filters">Tipo</label>
-            <select name="tipos-filtros" id="type-filters">
-              <option value="TODOS">Todos</option>
-              <option value="GASTOS">Gastos</option>
-              <option value="GANANCIA">Ganancia</option>
-            </select>
+        </section>
+        
+        <!-- Balance -->
+        
+        <div class="flex flex-col w-1/5 mx-2">
+          <div
+            class="p-4 h-4/5 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2"
+          >
+            <h2 class="font-sans text-lg">Balance</h2>
+            <div class="text-lg flex flex-col justify-around">
+              <div>
+                Ganancias
+                <div class="text-green">
+                  <span>+$</span>
+                  <span>0</span>
+                </div>
+              </div>
+              <div>
+                Gastos
+                <div class="text-red">
+                  <span>-$</span>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="text-2xl">
+                Total
+                <div>
+                  <span>$</span>
+                  <span>0</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <label for="type-category">Categoría</label>
-            <select name="categorias" id="type-category">
-              <option value="Todas">Todas</option>
-              <option value="Comida">Comida</option>
-              <option value="Servicio">Servicio</option>
-              <option value="Salidas">Salidas</option>
-              <option value="Educación">Educación</option>
-              <option value="Transporte">Transporte</option>
-              <option value="Trabajo">Trabajo</option>
-            </select>
-          </div>
-          <div>
-            <label for="expense-date">Desde</label>
-            <input id="expense-date" type="date" name="date" />
-          </div>
-          <div>
-            <label for="order-expense">Ordenar por</label>
-            <select name="Ordenar" id="order-expense">
-              <option value="Más reciente">Más reciente</option>
-              <option value="Menos reciente">Menos reciente</option>
-              <option value="Mayor gasto">Mayor gasto</option>
-              <option value="Menor gasto">Menor gasto</option>
-              <option value="A/Z">A/Z</option>
-              <option value="Z/A">Z/A</option>
-            </select>
+          
+          <!-- Filtros -->
+          
+          <div
+            class="h-4/5 p-4 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col"
+          >
+            <div class="flex justify-between">
+              <h2 class="font-sans text-lg">Filtros</h2>
+              <a href="#">Ocultar filtros</a>
+            </div>
+            <div>
+              <label for="type-filters">Tipo</label>
+              <select name="tipos-filtros" id="type-filters">
+                <option value="TODOS">Todos</option>
+                <option value="GASTOS">Gastos</option>
+                <option value="GANANCIA">Ganancia</option>
+              </select>
+            </div>
+            <div>
+              <label for="type-category">Categoría</label>
+              <select name="categorias" id="type-category">
+                <option value="Todas">Todas</option>
+                <option value="Comida">Comida</option>
+                <option value="Servicio">Servicio</option>
+                <option value="Salidas">Salidas</option>
+                <option value="Educación">Educación</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Trabajo">Trabajo</option>
+              </select>
+            </div>
+            <div>
+              <label for="expense-date">Desde</label>
+              <input id="expense-date" type="date" name="date" />
+            </div>
+            <div>
+              <label for="order-expense">Ordenar por</label>
+              <select name="Ordenar" id="order-expense">
+                <option value="Más reciente">Más reciente</option>
+                <option value="Menos reciente">Menos reciente</option>
+                <option value="Mayor gasto">Mayor gasto</option>
+                <option value="Menor gasto">Menor gasto</option>
+                <option value="A/Z">A/Z</option>
+                <option value="Z/A">Z/A</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-    <script src="main.js"></script>
-  </body>
+      </main>
+
+      <!--      FOOTER      -->
+
+      <footer class="p-2.5 flex justify-end items-center content-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2 dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:text-dark">
+            <div class="flex justify-center">
+                <div class="text-xl gap-2">
+                    <ul class="gap-3 flex columns-4">
+                        <li class="px-6">
+                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> romicons </a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
+                        </li>
+                        <li class="px-6">
+                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> kndezapata</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <p class="text-center">© 2024 Romina Constantinoff & Candela Zapata. Todos los derechos reservados.</p>
+            </div>
+      </footer>
+</body>
+
+<script src="functions.js"></script>
+<script src="main.js"></script>
+
 </html>

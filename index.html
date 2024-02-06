@@ -12,7 +12,7 @@
 			content="Financial management, Budget tracking, Expense control, Income tracking, Personal finance, Money management, Financial planning, Budgeting tool, Expense tracker, Income monitor, Financial analytics, Budget planner, Wealth management, Financial empowerment, Expense management app, Personal budgeting, Savings tracker, Financial insights, Money tracking, Expense categorization"
 		/>
 		<title>AhorrAdas</title>
-		<link rel="icon" type="image/ico" href="img/brand-icon.ico" />
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -50,48 +50,57 @@
 
 </head>
 
-<body class="bg-main-background bg-cover bg-center h-screen">
+<body class="bg-main-background bg-cover bg-center h-screen dark:bg-main-background- backdrop-invert">
 
     <!--        NAVBAR      -->
 
-    <nav class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg">
+    <nav class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:text-dark dark:from-[#1a1f1e] dark:to-[#6cbdb5]">
             <div class="pl-2">
                 <h1 class="text-4xl flex gap-2">
-                <img src="img/brand-icon.ico" class="w-10">
+                    <svg fill="none" height="40" viewBox="0 0 16 16" width="40" xmlns="http://www.w3.org/2000/svg" class="text-light dark:text-dark">
+                        <g fill="#212121" class="dark:fill-current">
+                            <path d="m13.5006 8.16181c.5542-.43767.9737-1.00895 1.2302-1.64626.1767.51956.2692 1.10188.2692 1.75206 0 1.55225-.548 2.63969-1.11 3.34019-.2789.3477-.5588.5974-.772.762-.042.0324-.0815.0615-.118.0876v1.0431c0 .8284-.6716 1.5-1.5 1.5h-.5c-.5523 0-1-.4478-1-1h-2c0 .5522-.44769 1-1 1h-.5c-.82842 0-1.5-.6716-1.5-1.5v-.2133c-.08634-.0275-.18303-.0615-.28738-.1037-.39994-.1614-.92106-.4445-1.4019-.9319-.5921-.6002-.92378-1.3513-1.09-1.8226-.05441-.1543-.16342-.2514-.2695-.2814-.56271-.15903-.95122-.67259-.95122-1.25734v-.79396c0-.57589.38171-1.08203.93541-1.24034.10336-.02955.21549-.13055.27067-.29737.13467-.4072.3944-1.00891.8704-1.49143.38939-.39472.80964-.68646 1.12865-.87856.09667-.05822.18499-.10785.26154-.14892v-1.87757c0-.35349.23175-.603.4808-.70408.24699-.10023.57814-.08347.82581.15052.25276.23879.58506.52442.94047.75703.36446.23854.70642.39.98533.41828l.00533.00054c-.52804.7838-.77121 1.74351-.65812 2.7046.12098 1.02821.91674 1.64653 1.58478 1.92318l2.38903.98933c.6681.27665 1.668.40195 2.4805-.2397zm-8.7506-.66181c.41421 0 .75-.33579.75-.75s-.33579-.75-.75-.75-.75.33579-.75.75.33579.75.75.75z"/>
+                            <path d="m8.23028 3.91919c.28839-.72861.86015-1.3441 1.64126-1.66773 1.53066-.63418 3.28566.09258 3.91986 1.62326.5256 1.26861.1164 2.69129-.9106 3.50229-.4163.32874-.988.30352-1.4781.10057l-2.38902-.98933c-.49007-.20295-.91226-.58933-.97424-1.11613-.03028-.25731-.02647-.51446.00895-.76551z"/>
+                            <path d="m8.23028 3.91919-.13604.43873c.02108-.09237.0465-.18361.07611-.27339.01838-.0557.03836-.11084.05993-.16534z"/>
+                        </g>
+                    </svg>
                     AhorrAdas
                 </h1>
             </div>
-            <div class="columns-4 flex justify-end content-center gap-8 pr-2 relative items-center relative">
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+            <div class="columns-4 flex justify-end content-center gap-8 pr-2 items-center relative">
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
                     <i class="fa-solid fa-scale-balanced"></i>
                     <span class="relative z-10">
                         Balance
                     </span>
-                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
                 </div>
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
                     <i class="fa-solid fa-tags"></i>
                     <span class="relative z-10">
                         Categorías
                     </span>
-                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
                 </div>
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light">
                     <i class="fa-solid fa-chart-pie"></i>
                     <span class="relative z-10">
                         Reporte
                     </span>
-                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
                 </div>
-                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300">
+                <div class="nav-item group relative inline-block py-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 w-44 dark:hover:text-light text-center" id="btn-darkmode">
                     <i class="fa-solid fa-moon"></i>
                     <span class="relative z-10">
-                        Modo Nocturno
+                        Modo Oscuro
                     </span>
-                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"></span>
+                    <span class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"></span>
                 </div>
             </div>
     </nav>
+
+    <!--        MAIN        -->
+
     <main class="flex justify-center h-4/5">
         <section id="operations" class="shadow-lg w-1/2 h-96 rounded-lg p-5 backdrop-opacity-5 backdrop-blur-lg">
           <section class="flex justify-between">
@@ -106,25 +115,25 @@
         </section>
         <section class="h-96 w-1/2 shadow-lg "></section>
         <section class="h-96 w-1/2 shadow-lg "></section>
-      </main>
+    </main>
 
       <!--      FOOTER      -->
 
-      <footer class="p-2.5 flex justify-end items-center content-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2">
+      <footer class="p-2.5 flex justify-end items-center content-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2 dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:text-dark">
             <div class="flex justify-center">
                 <div class="text-xl gap-2">
                     <ul class="gap-3 flex columns-4">
                         <li class="px-6">
-                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center hover:text-secondary cursor-pointer" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
+                            <a href="https://www.linkedin.com/in/romina-evelin-constantinoff/" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Romina Constantinoff"><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a>
                         </li>
                         <li class="px-6">
-                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center hover:text-secondary cursor-pointer"><i class="fab fa-github-alt"></i> romicons </a>
+                            <a href="https://github.com/romicons" target="_blank" aria-label="Link a Github de Romina Constantinoff" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> romicons </a>
                         </li>
                         <li class="px-6">
-                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center hover:text-secondary cursor-pointer" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
+                            <a href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light" target="_blank" aria-label="Link a LinkedIn de Candela Zapata"><i class="fab fa-linkedin-in"></i> Candela Zapata</a>
                         </li>
                         <li class="px-6">
-                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center hover:text-secondary cursor-pointer"><i class="fab fa-github-alt"></i> kndezapata</a>
+                            <a href="https://github.com/kndezapata" target="_blank" aria-label="Link a Github de Candela Zapata" class="flex gap-2 items-center hover:text-secondary cursor-pointer dark:hover:text-light"><i class="fab fa-github-alt"></i> kndezapata</a>
                         </li>
                     </ul>
                 </div>
@@ -134,5 +143,8 @@
             </div>
       </footer>
 </body>
+
+<script src="functions.js"></script>
+<script src="main.js"></script>
 
 </html>

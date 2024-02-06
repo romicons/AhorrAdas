@@ -56,7 +56,9 @@
     </script>
   </head>
 
-  <body class="font-serif h-screen bg-main-background bg-cover bg-center">
+  <body
+    class="font-serif h-screen bg-main-background bg-cover bg-center bg-no-repeat"
+  >
     <!--        NAVBAR      -->
     <nav
       class="columns-2 text-xl p-2.5 flex justify-between sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg"
@@ -108,10 +110,10 @@
         </div>
       </div>
     </nav>
-    <main class="flex justify-center my-2.5">
+    <main class="flex justify-center gap-2 h-4/5 py-6 flex-wrap">
       <section
         id="operations"
-        class="shadow-lg w-1/2 h-96 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2"
+        class="shadow-lg w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2"
       >
         <div class="flex justify-between">
           <h2 class="font-sans text-lg">Operaciones</h2>
@@ -124,35 +126,38 @@
         </div>
       </section>
       <!-- Balance -->
-      <div class="flex flex-col w-1/4 mx-2">
+      <div class="flex flex-col w-1/5 mx-2">
         <div
-          class="p-4 h-96 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2"
+          class="p-4 h-4/5 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2"
         >
           <h2 class="font-sans text-lg">Balance</h2>
-          <div class="text-lg">
+          <div class="text-lg flex flex-col justify-around">
             <div>
               Ganancias
               <div class="text-green">
-                +<i class="fa-light fa-dollar-sign"></i> 0
+                <span>+$</span>
+                <span>0</span>
               </div>
             </div>
             <div>
               Gastos
               <div class="text-red">
-                -<i class="fa-light fa-dollar-sign"></i> 0
+                <span>-$</span>
+                <span>0</span>
               </div>
             </div>
             <div class="text-2xl">
               Total
               <div>
-                <div><i class="fa-light fa-dollar-sign"></i> 0</div>
+                <span>$</span>
+                <span>0</span>
               </div>
             </div>
           </div>
         </div>
         <!-- Filtros -->
         <div
-          class="h-96 p-4 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg"
+          class="h-4/5 p-4 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col"
         >
           <div class="flex justify-between">
             <h2 class="font-sans text-lg">Filtros</h2>

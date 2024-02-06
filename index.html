@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,7 +51,7 @@
 
 </head>
 
-<body class="bg-main-background bg-cover bg-center h-screen dark:bg-main-background- backdrop-invert">
+<body class="bg-main-background bg-cover bg-center h-screen dark:bg-main-background bg-no-repeat">
 
     <!--        NAVBAR      -->
 
@@ -99,23 +100,101 @@
             </div>
     </nav>
 
-    <!--        MAIN        -->
-
-    <main class="flex justify-center h-4/5">
-        <section id="operations" class="shadow-lg w-1/2 h-96 rounded-lg p-5 backdrop-opacity-5 backdrop-blur-lg">
-          <section class="flex justify-between">
-            <h2>Operaciones</h2>
+      <main class="flex justify-center gap-2 h-4/5 py-6 flex-wrap">
+        <section
+          id="operations"
+          class="shadow-lg w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2"
+        >
+          <div class="flex justify-between">
+            <h2 class="font-sans text-lg">Operaciones</h2>
             <button
               id="button-operations"
-              class="flex items-center bg-slate-400 rounded p-3 h-8"
+              class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-3 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold"
             >
-              + Nueva operación
+              <i class="fa-light fa-plus"></i> Nueva operación
             </button>
-          </section>
+          </div>
         </section>
-        <section class="h-96 w-1/2 shadow-lg "></section>
-        <section class="h-96 w-1/2 shadow-lg "></section>
-    </main>
+        
+        <!-- Balance -->
+        
+        <div class="flex flex-col w-1/5 mx-2">
+          <div
+            class="p-4 h-4/5 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2"
+          >
+            <h2 class="font-sans text-lg">Balance</h2>
+            <div class="text-lg flex flex-col justify-around">
+              <div>
+                Ganancias
+                <div class="text-green">
+                  <span>+$</span>
+                  <span>0</span>
+                </div>
+              </div>
+              <div>
+                Gastos
+                <div class="text-red">
+                  <span>-$</span>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="text-2xl">
+                Total
+                <div>
+                  <span>$</span>
+                  <span>0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Filtros -->
+          
+          <div
+            class="h-4/5 p-4 shadow-lg glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col"
+          >
+            <div class="flex justify-between">
+              <h2 class="font-sans text-lg">Filtros</h2>
+              <a href="#">Ocultar filtros</a>
+            </div>
+            <div>
+              <label for="type-filters">Tipo</label>
+              <select name="tipos-filtros" id="type-filters">
+                <option value="TODOS">Todos</option>
+                <option value="GASTOS">Gastos</option>
+                <option value="GANANCIA">Ganancia</option>
+              </select>
+            </div>
+            <div>
+              <label for="type-category">Categoría</label>
+              <select name="categorias" id="type-category">
+                <option value="Todas">Todas</option>
+                <option value="Comida">Comida</option>
+                <option value="Servicio">Servicio</option>
+                <option value="Salidas">Salidas</option>
+                <option value="Educación">Educación</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Trabajo">Trabajo</option>
+              </select>
+            </div>
+            <div>
+              <label for="expense-date">Desde</label>
+              <input id="expense-date" type="date" name="date" />
+            </div>
+            <div>
+              <label for="order-expense">Ordenar por</label>
+              <select name="Ordenar" id="order-expense">
+                <option value="Más reciente">Más reciente</option>
+                <option value="Menos reciente">Menos reciente</option>
+                <option value="Mayor gasto">Mayor gasto</option>
+                <option value="Menor gasto">Menor gasto</option>
+                <option value="A/Z">A/Z</option>
+                <option value="Z/A">Z/A</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </main>
 
       <!--      FOOTER      -->
 

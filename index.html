@@ -52,11 +52,11 @@
 
 </head>
 
-<body class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light dark:text-dark font-serif">
+<body class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light font-serif">
   
     <!--        NAVBAR      -->
 
-    <nav class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:text-dark dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf]">
+    <nav class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark">
             <div class="pl-2">
                 <h1 class="text-4xl flex gap-2">
                     <svg fill="none" height="40" viewBox="0 0 16 16" width="40" xmlns="http://www.w3.org/2000/svg" class="text-light dark:text-dark">
@@ -97,7 +97,7 @@
             </div>
     </nav>
 
-   <main class="flex justify-center gap-2 py-6 flex-wrap">
+   <main class="flex justify-center gap-2 py-6 flex-wrap dark:text-dark">
       <!-- h-4/5 -->
      
       <!--    SECCIÓN DE OPERACIONES    -->
@@ -107,12 +107,13 @@
             class="shadow-md w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]"
             >
             <div class="flex justify-between">
-                <h2 class="font-sans text-xl ">Operaciones</h2>
+                <h2 class="font-sans text-xl">Operaciones</h2>
                 <button
                 id="button-operations"
-                class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-4 group hover:text-primary bg-primary hover:bg-secondary shadow-inner hover:font-bold dark:bg-secondary dark:hover:bg-primary dark:hover:text-secondary"
+                class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-4 group hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
                 >
-                <i class="fa-light fa-plus text-xl"></i> Nueva operación
+                <i class="fa-solid fa-plus"></i>
+                    Nueva operación
                 </button>
             </div>
         </section>
@@ -120,6 +121,7 @@
             <!--        BALANCE      -->
             
         <div class="flex flex-col w-1/5 mx-2">
+
             <section
                 class="p-4 h-2/5 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
             >
@@ -163,107 +165,125 @@
           
         <!--    FILTROS     -->
 
-        <div
-          class="h-4/5 p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-evenly flex-col dark:shadow-[#c8d6bf]"
-        >
-          <div class="flex columns-2 justify-between">
-            <div><h2 class="font-sans text-lg">Filtros</h2></div>
-            <div><a href="#">Ocultar filtros</a></div>
-          </div>
+            <section
+            class="h-4/5 p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf]"
+            >
+                <div class="flex columns-2 justify-between gap-2 items-center">
+                    <div>
+                        <h2 class="font-sans text-lg">
+                            Filtros
+                        </h2>
+                    </div>
+                    <div>
+                        <button class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary">
+                            Ocultar filtros
+                        </button>
+                    </div>
+                </div>
 
-          <!-- INPUT FILTRO TIPO -->
+                <div class="flex flex-col gap-2">
 
-          <label for="type-filters">Tipo</label>
-          <select name="tipos-filtros" id="type-filters">
-            <option value="TODOS">Todos</option>
-            <option value="GASTOS">Gastos</option>
-            <option value="GANANCIA">Ganancia</option>
-          </select>
+                    <!-- INPUT FILTRO TIPO -->
 
-          <!-- INPUT FILTRO CATEGORIA -->
+                    <label for="type-filters">Tipo</label>
+                    <select name="tipos-filtros" id="type-filters" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                        <option value="TODOS">Todos</option>
+                        <option value="GASTOS">Gastos</option>
+                        <option value="GANANCIA">Ganancia</option>
+                    </select>
 
-          <label for="type-category">Categoría</label>
-          <select name="categorias" id="type-category">
-            <option value="Todas">Todas</option>
-            <option value="Comida">Comida</option>
-            <option value="Servicio">Servicio</option>
-            <option value="Salidas">Salidas</option>
-            <option value="Educación">Educación</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Trabajo">Trabajo</option>
-          </select>
+                    <!-- INPUT FILTRO CATEGORIA -->
 
-          <!-- INPUT FILTRO FECHA-->
+                    <label for="type-category">Categoría</label>
+                    <select name="categorias" id="type-category" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                        <option value="Todas">Todas</option>
+                        <option value="Comida">Comida</option>
+                        <option value="Servicio">Servicio</option>
+                        <option value="Salidas">Salidas</option>
+                        <option value="Educación">Educación</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Trabajo">Trabajo</option>
+                    </select>
 
-          <label for="expense-date">Desde</label>
-          <input id="expense-date" type="date" name="date" />
+                    <!-- INPUT FILTRO FECHA-->
 
-          <!-- INPUT FILTRO ORDENAR POR-->
+                    <label for="expense-date">Desde</label>
+                    <input id="expense-date" type="date" name="date" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
 
-          <label for="order-expense">Ordenar por</label>
-          <select name="Ordenar" id="order-expense">
-            <option value="Más reciente">Más reciente</option>
-            <option value="Menos reciente">Menos reciente</option>
-            <option value="Mayor gasto">Mayor gasto</option>
-            <option value="Menor gasto">Menor gasto</option>
-            <option value="A/Z">A/Z</option>
-            <option value="Z/A">Z/A</option>
-          </select>
+                    <!-- INPUT FILTRO ORDENAR POR-->
+
+                    <label for="order-expense">Ordenar por</label>
+                    <select name="Ordenar" id="order-expense" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                        <option value="Más reciente">Más reciente</option>
+                        <option value="Menos reciente">Menos reciente</option>
+                        <option value="Mayor gasto">Mayor gasto</option>
+                        <option value="Menor gasto">Menor gasto</option>
+                        <option value="A/Z">A/Z</option>
+                        <option value="Z/A">Z/A</option>
+                    </select>
+                </div>
+            </section>
         </div>
-      </div>
 
-      <!-- FORMULARIO DE OPERACiONES -->
-     
-      <section
-        class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
-      >
-        <!-- DESCRIPCION DE OPERACIONES -->
-        <label for="description-operation">Descripción</label>
-        <input id="description-operation" type="text" />
+            <!-- FORMULARIO DE OPERACiONES -->
+            
+            <section
+                class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
+            >
+                    <h2 class="font-sans text-xl">
+                        Nueva operación
+                    </h2>
 
-        <!-- MONTO DE OPERACIONES -->
-        
-        <label for="operation-amounth">Monto</label>
-        <input id="operation-amounth" type="number" value="0" />
+                    <!-- DESCRIPCION DE OPERACIONES -->
 
-        <!-- TIPO DE OPERACIONES -->
-        
-        <label for="type-operation">Tipo</label>
-        <select name="tipo-operacion" id="type-operation">
-          <option value="Gasto">Gasto</option>
-          <option value="Ganancia">Ganancia</option>
-        </select>
+                    <label for="description-operation">Descripción</label>
+                    <input id="description-operation" type="text" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
 
-        <!-- CATEGORIA DE OPERACIONES -->
-        
-        <label for="category-operation">Categoría</label>
-        <select name="categoria-operacion" id="category-operation">
-          <option value="Comida">Comida</option>
-          <option value="Servicios">Servicios</option>
-          <option value="Salidas">Salidas</option>
-          <option value="Educación">Educación</option>
-          <option value="Transporte">Transporte</option>
-          <option value="Trabajo">Trabajo</option>
-        </select>
+                    <!-- MONTO DE OPERACIONES -->
+                    
+                    <label for="operation-amounth">Monto</label>
+                    <input id="operation-amounth" type="number" value="0" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
 
-        <!-- FECHA DE OPERACIONES -->
-        
-        <label for="date-operation">Fecha</label>
-        <input id="date-operation" type="date" name="date" />
+                    <!-- TIPO DE OPERACIONES -->
+                    
+                    <label for="type-operation">Tipo</label>
+                    <select name="tipo-operacion" id="type-operation" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                    <option value="Gasto">Gasto</option>
+                    <option value="Ganancia">Ganancia</option>
+                    </select>
 
-        <div class="flex columns-2 justify-end gap-5">
-          <button
-            class="flex items-center rounded p-4 h-8 justify-center  bg-primary hover:bg-dark shadow-inner hover:font-bold"
-          >
-            Cancelar
-          </button>
-          <button
-            class="flex items-center rounded p-4 h-8 justify-center  hover:bg-dark bg-secondary shadow-inner hover:font-bold"
-          >
-            Agregar
-          </button>
-        </div>
-      </section>
+                    <!-- CATEGORIA DE OPERACIONES -->
+                    
+                    <label for="category-operation">Categoría</label>
+                    <select name="categoria-operacion" id="category-operation" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                    <option value="Comida">Comida</option>
+                    <option value="Servicios">Servicios</option>
+                    <option value="Salidas">Salidas</option>
+                    <option value="Educación">Educación</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Trabajo">Trabajo</option>
+                    </select>
+
+                    <!-- FECHA DE OPERACIONES -->
+                    
+                    <label for="date-operation">Fecha</label>
+                    <input id="date-operation" type="date" name="date" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+
+                <div class="flex columns-2 justify-end gap-5">
+                    <button
+                        class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                            Cancelar
+                    </button>
+                    <button
+                        class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                            Agregar
+                    </button>
+                </div>
+            </section>
 
     </main>
 

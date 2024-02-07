@@ -122,7 +122,7 @@
 
             <!--        BALANCE         -->
 
-            <section
+            <section id="balance"
                 class="p-4 h-2/5 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
             >
                 <h2 class="font-sans text-xl text-center">Balance</h2>
@@ -165,7 +165,7 @@
           
             <!--        FILTROS         -->
 
-            <section
+            <section id="filters"
             class="h-4/5 p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf]"
             >
                 <div class="flex columns-2 justify-between gap-2 items-center">
@@ -227,7 +227,7 @@
 
             <!--        FORMULARIO DE OPERACIONES       -->
             
-            <section
+            <section id="new-operation"
                 class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
             >
                     <h2 class="font-sans text-xl">
@@ -287,7 +287,7 @@
 
             <!--        FORMULARIO DE EDITAR OPERACIONES       -->
 
-            <section
+            <section id="edit-operation"
                 class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
             >
                     <h2 class="font-sans text-xl">
@@ -345,6 +345,123 @@
                 </div>
             </section>
 
+            <!--        FORMULARIO DE CATEGORÍAS       -->
+
+            <section id="categories"
+            class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
+        >
+                <h2 class="font-sans text-xl">
+                    Categorías
+                </h2>
+
+                <!-- EDITAR DESCRIPCION DE OPERACIONES -->
+
+                <div class="flex columns-2 justify-between items-end">
+                    <div class="flex flex-col w-3/5 gap-2">
+                        <label for="add-category">Nueva categoría</label>
+                        <input id="add-category" type="text" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                    </div>
+                    <div class=" flex gap-5 w-2/5 justify-end">
+                        <button
+                        class="flex items-center rounded px-20 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                            Añadir
+                    </button>
+                    </div>
+                </div>
+
+                <!-- EDITAR CATEGORÍAS EXISTENTES -->
+                <div>
+                    <div class="current-operations flex flex-col">
+                        <div name="food" class="flex flex-columns-2 justify-between gap-2 items-center">
+                            <div class="py-2">
+                                <h3 class="bg-primary dark:bg-secondary px-3 py-1 rounded dark:" >
+                                    Comida
+                                </h3>
+                            </div>
+                            <div class="flex gap-5 w-2/5 justify-end">
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                        Eliminar
+                                </button>
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                </button>
+                            </div>
+                        </div>
+                        <div name="services" class="flex flex-columns-2 justify-between gap-2 items-center">
+                            <div class="py-2">
+                                <h3 class="bg-primary dark:bg-secondary px-3 py-1 rounded dark:" >
+                                    Servicios
+                                </h3>
+                            </div>
+                            <div class="flex gap-5 w-2/5 justify-end">
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                        Eliminar
+                                </button>
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                </button>
+                            </div>
+                        </div>
+                        <div name="recreational-outings" class="flex flex-columns-2 justify-between gap-2 items-center">
+                            <div class="py-2">
+                                <h3 class="bg-primary dark:bg-secondary px-3 py-1 rounded dark:" >
+                                    Salidas
+                                </h3>
+                            </div>
+                            <div class="flex gap-5 w-2/5 justify-end">
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                        Eliminar
+                                </button>
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                </button>
+                            </div>
+                        </div>
+                        <div name="education" class="flex flex-columns-2 justify-between gap-2 items-center">
+                            <div class="py-2">
+                                <h3 class="bg-primary dark:bg-secondary px-3 py-1 rounded dark:" >
+                                    Educación
+                                </h3>
+                            </div>
+                            <div class="flex gap-5 w-2/5 justify-end">
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                        Eliminar
+                                </button>
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                </button>
+                            </div>
+                        </div>
+                        <div name="transport" class="flex flex-columns-2 justify-between gap-2 items-center">
+                            <div class="py-2">
+                                <h3 class="bg-primary dark:bg-secondary py-1 px-3 rounded dark:" >
+                                    Transporte
+                                </h3>
+                            </div>
+                            <div class="flex gap-5 w-2/5 justify-end">
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                        Eliminar
+                                </button>
+                                <button class="flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
     </main>
 
       <!--      FOOTER      -->

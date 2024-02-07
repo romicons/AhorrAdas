@@ -54,7 +54,7 @@
 
 <body class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light font-serif">
   
-    <!--        NAVBAR      -->
+    <!--        NAVBAR          -->
 
     <nav class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark">
             <div class="pl-2">
@@ -118,9 +118,9 @@
             </div>
         </section>
             
-            <!--        BALANCE      -->
-            
         <div class="flex flex-col w-1/5 mx-2">
+
+            <!--        BALANCE         -->
 
             <section
                 class="p-4 h-2/5 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
@@ -163,7 +163,7 @@
                 </div>
             </section>
           
-        <!--    FILTROS     -->
+            <!--        FILTROS         -->
 
             <section
             class="h-4/5 p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf]"
@@ -225,7 +225,7 @@
             </section>
         </div>
 
-            <!-- FORMULARIO DE OPERACiONES -->
+            <!--        FORMULARIO DE OPERACIONES       -->
             
             <section
                 class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
@@ -281,6 +281,66 @@
                     >
                         <i class="fa-solid fa-plus"></i>
                             Agregar
+                    </button>
+                </div>
+            </section>
+
+            <!--        FORMULARIO DE EDITAR OPERACIONES       -->
+
+            <section
+                class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
+            >
+                    <h2 class="font-sans text-xl">
+                        Editar operación
+                    </h2>
+
+                    <!-- EDITAR DESCRIPCION DE OPERACIONES -->
+
+                    <label for="edit-description-operation">Descripción</label>
+                    <input id="edit-description-operation" type="text" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+
+                    <!-- EDITAR MONTO DE OPERACIONES -->
+                    
+                    <label for="edit-operation-amounth">Monto</label>
+                    <input id="edit- operation-amounth" type="number" value="0" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+
+                    <!-- EDITAR TIPO DE OPERACIONES -->
+                    
+                    <label for="edit-type-operation">Tipo</label>
+                    <select name="tipo-operacion" id="edit-type-operation" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                    <option value="Gasto">Gasto</option>
+                    <option value="Ganancia">Ganancia</option>
+                    </select>
+
+                    <!-- EDITAR CATEGORIA DE OPERACIONES -->
+                    
+                    <label for="edit-category-operation">Categoría</label>
+                    <select name="categoria-operacion" id="edit-category-operation" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+                    <option value="Comida">Comida</option>
+                    <option value="Servicios">Servicios</option>
+                    <option value="Salidas">Salidas</option>
+                    <option value="Educación">Educación</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Trabajo">Trabajo</option>
+                    </select>
+
+                    <!-- EDITAR FECHA DE OPERACIONES -->
+                    
+                    <label for="edit-date-operation">Fecha</label>
+                    <input id="edit-date-operation" type="date" name="date" class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark">
+
+                <div class="flex columns-2 justify-end gap-5">
+                    <button
+                        class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                            Cancelar
+                    </button>
+                    <button
+                        class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                            Guardar cambios
                     </button>
                 </div>
             </section>

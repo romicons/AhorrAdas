@@ -647,8 +647,18 @@
         id="categories"
         class="flex flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
       >
-        <h2 class="font-sans text-xl">Categorías</h2>
-
+      <div class="flex columns-2 justify-between gap-2 items-center">
+        <div>
+          <h2 class="font-sans text-xl">Categorías</h2>
+        </div>
+        <div>
+          <button
+            class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
         <!--        AÑADIR NUEVAS CATEGORÍAS       -->
 
         <div class="flex columns-2 justify-between items-end">

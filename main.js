@@ -40,6 +40,17 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('new-operation');
 });
 
+//      HIDE FILTERS
+
+document.getElementById('hide-filters-btn').addEventListener('click', () => {
+    document.getElementById('filters-col').classList.toggle('hidden');
+    if (document.getElementById('filters-col').classList.contains('hidden')) {
+        document.getElementById('hide-filters-btn').innerHTML = 'Mostrar filtros';
+    } else {
+        document.getElementById('hide-filters-btn').innerHTML = 'Ocultar filtros';
+    }
+})
+
 //      OPEN NEW OPERATION WINDOW
 
 document.getElementById('add-operation-btn').addEventListener('click', () => {

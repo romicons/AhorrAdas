@@ -126,7 +126,7 @@
 
       <!--        VENTANA INICIAL SECCIÓN DE BALANCE      -->
 
-      <section id="balance-section" class="flex justify-center flex-wrap w-full gap-4">
+      <section id="balance-section" class="flex justify-center flex-wrap w-full h-full gap-4">
 
         <div class="flex flex-col w-1/5">
           
@@ -134,7 +134,7 @@
 
           <section
             id="balance"
-            class="p-4 h-2/5 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
+            class="p-4 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
           >
             <h2 class="font-sans text-xl text-center">Balance</h2>
             <div class="text-lg flex flex-col gap-2">
@@ -174,14 +174,14 @@
 
           <section
             id="filters"
-            class="h-4/5 p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf]"
+            class="p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf]"
           >
             <div class="flex columns-2 justify-between gap-2 items-center">
               <div>
                 <h2 class="font-sans text-lg">Filtros</h2>
               </div>
               <div>
-                <button
+                <button id="hide-filters-btn"
                   class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
                 >
                   Ocultar filtros
@@ -189,7 +189,7 @@
               </div>
             </div>
 
-            <div class="flex flex-col gap-2">
+            <div id="filters-col" class="flex flex-col gap-2">
               <!-- INPUT FILTRO TIPO -->
 
               <label for="type-filters">Tipo</label>

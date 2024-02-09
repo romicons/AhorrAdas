@@ -51,7 +51,7 @@
   </head>
 
   <body
-    class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light font-serif"
+    class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light font-serif flex justify-between flex-col"
   >
     <!--        NAVBAR          -->
 
@@ -122,13 +122,13 @@
       </div>
     </nav>
 
-    <main class="flex justify-center gap-2 py-6 flex-wrap dark:text-dark h-4/5">
+    <main class="flex justify-center items-center gap-2 py-4 flex-wrap dark:text-dark h-4/5">
 
       <!--        VENTANA INICIAL SECCIÓN DE BALANCE      -->
 
-      <section id="balance-section" class="flex justify-center flex-wrap w-full">
+      <section id="balance-section" class="flex justify-center flex-wrap w-full gap-4">
 
-        <div class="flex flex-col w-1/5 mx-2">
+        <div class="flex flex-col w-1/5">
           
           <!--        BALANCE         -->
 
@@ -254,7 +254,7 @@
 
         <section
           id="operations"
-          class="shadow-md w-2/3 h-full rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]"
+          class="shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]"
         >
           <div class="flex columns-2 justify-between gap-2">
             <div>
@@ -790,7 +790,7 @@
         
       <!--       REPORTES     -->
         
-        <section id="reports" class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]">
+        <section id="reports" class="hidden flex-col shadow-md w-2/3 h-full rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]">
             <div class="flex columns-2 justify-between gap-2 items-center">
                 <div>
                     <h2 class="font-sans text-xl">Reportes</h2>
@@ -1026,7 +1026,7 @@
     <!--      FOOTER      -->
 
     <footer
-      class="p-2.5 flex justify-end items-center content-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2 dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:text-dark"
+      class="flex py-2 justify-center items-center font-serif light bg-gradient-to-tl from-[#c8d6bf] to-[#e3dfba] shadow-lg flex-col gap-2 dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:text-dark"
     >
       <div class="flex justify-center">
         <div class="text-xl gap-2">

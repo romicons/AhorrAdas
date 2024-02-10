@@ -56,7 +56,7 @@
     <!--        NAVBAR          -->
 
     <nav
-      class="columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark"
+      class="fixed top-0 left-0 right-0 columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark"
     >
       <div class="pl-2">
         <h1 class="text-3xl flex gap-2 items-center justify-center">
@@ -83,11 +83,10 @@
           FinAlly
         </h1>
       </div>
-      <div
-        class="columns-4 flex justify-end content-center gap-8 pr-2 items-center relative"
+      <div id="nav-items" class="columns-4 flex justify-end content-center gap-8 items-center relative pr-2"
       >
         <button id="balance-window-btn"
-          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light"
+          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary transition-all duration-300 dark:hover:text-light"
         >
           <i class="fa-solid fa-scale-balanced"></i>
           <span class="relative z-10"> Balance </span>
@@ -96,7 +95,7 @@
           ></span>
         </button>
         <button id="categories-window-btn"
-          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light"
+          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary transition-all duration-300 dark:hover:text-light"
         >
           <i class="fa-solid fa-tags"></i>
           <span class="relative z-10"> Categorías </span>
@@ -105,7 +104,7 @@
           ></span>
         </button>
         <button id="reports-window-btn"
-          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary cursor-pointer transition-all duration-300 dark:hover:text-light"
+          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary transition-all duration-300 dark:hover:text-light"
         >
           <i class="fa-solid fa-chart-pie"></i>
           <span class="relative z-10"> Reporte </span>
@@ -120,9 +119,14 @@
           <i class="fa-solid fa-moon"></i>
         </button>
       </div>
+      <div class="flex gap-2 justify-end items-center hidden">
+        <button id="nav-btn" class="text-2xl size-10 hover:text-secondary dark:hover:text-light ">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </nav>
 
-    <main class="flex justify-center items-center gap-2 py-4 flex-wrap dark:text-dark h-4/5">
+    <main class="flex justify-center items-center gap-2 pt-20 pb-4 flex-wrap dark:text-dark h-5/6">
 
       <!--        VENTANA INICIAL SECCIÓN DE BALANCE      -->
 
@@ -174,9 +178,9 @@
 
           <section
             id="filters"
-            class="p-4 shadow-md glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf]"
+            class="p-4 shadow-md rounded bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg flex justify-between flex-col dark:shadow-[#c8d6bf] gap-2"
           >
-            <div class="flex columns-2 justify-between gap-2 items-center">
+            <div class="flex columns-2 justify-between gap-4 items-center">
               <div>
                 <h2 class="font-sans text-lg">Filtros</h2>
               </div>
@@ -261,9 +265,9 @@
               <h2 class="font-sans text-xl">Operaciones</h2>
             </div>
             <div
-              class="flex items-center rounded p-4 h-8 w-2/5 justify-center gap-4 group hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
+              class="flex items-center rounded p-4 h-8 w-2/5 justify-center group hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
             >
-              <button id="add-operation-btn">
+              <button id="add-operation-btn" class="gap-4 items-center flex w-full justify-center">
                 <i class="fa-solid fa-plus"></i>
                 Nueva operación
               </button>
@@ -490,7 +494,7 @@
 
         <section
             id="new-operation"
-            class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-full gap-3 dark:shadow-[#c8d6bf]"
+            class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
         >
             <h2 class="font-sans text-xl">Nueva operación</h2>
 
@@ -570,7 +574,7 @@
 
         <section
             id="edit-operation"
-            class="hidden flex-col shadow-md w-1/2 rounded-lg p-5 glassmorphism-container bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 h-4/5 gap-3 dark:shadow-[#c8d6bf]"
+            class="hidden flex-col shadow-md w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
         >
             <h2 class="font-sans text-xl">Editar operación</h2>
 
@@ -790,7 +794,7 @@
         
       <!--       REPORTES     -->
         
-        <section id="reports" class="hidden flex-col shadow-md w-2/3 h-full rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]">
+        <section id="reports" class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]">
             <div class="flex columns-2 justify-between gap-2 items-center">
                 <div>
                     <h2 class="font-sans text-xl">Reportes</h2>

@@ -1066,72 +1066,90 @@
                 más operaciones
               </button>
             </div>
-            <div class="bg-red-950 text-white">
+
+            <!--    TABLA   -->
+            <div
+              class="flex p-5 shadow-md bg-primary h-full bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf] rounded-lg"
+            >
+              <!--    ESTILAR    -->
+
               <table>
-                  <tr>
-                    <th>Resumen</th>
-                  </tr>
-                  <tr>
-                    <td>Categoría con mayor ganancia</td>
-                    <td>Comida</td>
-                    <td>+$343,434</td>
-                  </tr>
-                  <tr>
-                    <td>Categoría con mayor gasto</td>
-                    <td>Comida</td>
-                    <td>-$3,116,061</td>
-                  </tr>
-                  <tr>
-                    <td>Categoría con mayor balance</td>
-                    <td>Servicios</td>
-                    <td>$3,000</td>
-                  </tr>
-                  <tr>
-                    <td>Mes con mayor ganancia</td>
-                    <td>2024/02/09</td>
-                    <td>+$343,434</td>
-                  </tr>
-                  <tr>
-                    <td>Mes con mayor gasto</td>
-                    <td>2024/02/09</td>
-                    <td>-$3,116,061</td>
-                  </tr>
-                  <tr>
-                    <th>Totales por categorías</th>
-                  </tr>
-                  <tr>
-                    <th>Categoría</th>
-                    <th>Ganancias</th>
-                    <th>Gastos</th>
-                    <th>Balance</th>
-                  </tr>
-                  <tr>
-                    <td>Servicios</td>
-                    <td>+$3,000</td>
-                    <td>-$0</td>
-                    <td>+$3,000</td>
-                  </tr>
-                  <tr>
-                    <td>Comida</td>
-                    <td>+$343,434</td>
-                    <td>-$3,116,061</td>
-                    <td>-$2,769,627</td>
-                  </tr>
-                  <tr>
-                    <th colspan="3">Totales por mes</th>
-                  </tr>
-                  <tr>
-                    <th>Mes</th>
-                    <th>Ganancias</th>
-                    <th>Gastos</th>
-                    <th>Balance</th>
-                  </tr>
-                  <tr>
-                    <td>2/2024</td>
-                    <td>+$346,434</td>
-                    <td>-$3,116,061</td>
-                    <td>-$2769627</td>
-                  </tr>
+                <tr>
+                  <th class="p-2 flex">Resumen</th>
+                </tr>
+                <tr>
+                  <td class="p-2">Categoría con mayor ganancia</td>
+                  <td
+                    class="bg-primary dark:bg-secondary px-3 py-1 rounded flex gap-5"
+                  >
+                    Comida
+                  </td>
+                  <td class="text-green-600 p-2">+$343,434</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Categoría con mayor gasto</td>
+                  <td
+                    class="bg-primary dark:bg-secondary px-3 py-1 rounded flex gap-5"  
+                  > <!-- no me esta tomando los cambios del padding right -->
+                    Comida
+                  </td>
+                  <td class="text-red-600 p-2">-$3,116,061</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Categoría con mayor balance</td>
+                  <td
+                    class="bg-primary dark:bg-secondary px-3 py-1 rounded flex gap-5"
+                  >
+                    Servicios
+                  </td>
+                  <td class="p-2">$3,000</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Mes con mayor ganancia</td>
+                  <td>2024/02/09</td>
+                  <td class="text-red-600 p-2">+$343,434</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Mes con mayor gasto</td>
+                  <td>2024/02/09</td>
+                  <td class="text-green-600 p-2">-$3,116,061</td>
+                </tr>
+                <tr>
+                  <th class="p-2 flex">Totales por categorías</th>
+                </tr>
+                <tr>
+                  <th class="p-2">Categoría</th>
+                  <th class="p-2">Ganancias</th>
+                  <th class="p-2">Gastos</th>
+                  <th class="p-2">Balance</th>
+                </tr>
+                <tr>
+                  <td>Servicios</td>
+                  <td class="text-green-600 p-2">+$3,000</td>
+                  <td class="text-red-600 p-2">-$0</td>
+                  <td class="text-green-600 p-2">+$3,000</td>
+                </tr>
+                <tr>
+                  <td>Comida</td>
+                  <td class="text-green-600 p-2">+$343,434</td>
+                  <td class="text-red-600 p-2">-$3,116,061</td>
+                  <td class="text-red-600 p-2">-$2,769,627</td>
+                </tr>
+                <tr>
+                  <th colspan="3" class="p-2 flex">Totales por mes</th>
+                </tr>
+                <tr>
+                  <th class="p-2">Mes</th>
+                  <th class="p-2">Ganancias</th>
+                  <th class="p-2">Gastos</th>
+                  <th class="p-2">Balance</th>
+                </tr>
+                <tr>
+                  <td>2/2024</td>
+                  <td class="text-green-600 p-2">+$346,434</td>
+                  <td class="text-red-600 p-2">-$3,116,061</td>
+                  <td class="text-red-600 p-2">-$2769627</td>
+                </tr>
               </table>
             </div>
           </div>

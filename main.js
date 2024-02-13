@@ -142,10 +142,10 @@ document.getElementById('to-new-operation-btn').addEventListener('click', () => 
 //      OPEN NAV MENU IN MOBILE
 
 document.getElementById('nav-btn').addEventListener('click', () => {
-    document.getElementById('nav-items').classList.toggle('flex');
-    if (document.getElementById('filters-col').classList.contains('flex')) {
-        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    } else {
+    document.getElementById('nav-items').classList.toggle('hidden');
+    if (document.getElementById('nav-items').classList.contains('hidden')) {
         document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-bars"></i>';
+    } else {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
     }
 })

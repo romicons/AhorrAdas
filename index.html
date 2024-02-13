@@ -44,22 +44,26 @@
             backgroundImage: {
               "main-background": "url('img/bg-main.jpg')",
             },
+            screens: {
+              'tablet': '870px',
+            },
           },
-        },
-      };
+        }
+    };
     </script>
   </head>
 
   <body
-    class="bg-main-background bg-cover bg-center h-screen dark:backdrop-invert-[.90] text-light font-serif flex justify-between flex-col"
+    class="bg-main-background bg-cover bg-no-repeat bg-fixed bg-center h-auto tablet:h-screen dark:backdrop-invert-[.90] text-light font-serif flex justify-between flex-col"
   >
     <!--        NAVBAR          -->
 
     <nav
-      class="fixed top-0 left-0 right-0 columns-2 text-xl p-2.5 flex justify-between font-sans items-center light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark"
+      class="fixed z-10 top-0 left-0 right-0 flex-col text-xl pt-2 flex justify-between items-center font-sans light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark tablet:columns-2 tablet:flex-row tablet:pb-2"
     >
+    <div class="flex columns-2 justify-between pb-2 w-full pr-2 tablet:w-1/2 tablet:pb-0">
       <div class="pl-2">
-        <h1 class="text-3xl flex gap-2 items-center justify-center">
+        <h1 class="text-3xl flex gap-2 items-center">
           <svg
             fill="none"
             height="40"
@@ -83,62 +87,64 @@
           FinAlly
         </h1>
       </div>
-      <div id="nav-items" class="columns-4 flex justify-end content-center gap-8 items-center relative pr-2"
+      <div class="columns-2 tablet:columns-4 flex justify-end items-center gap-2 tablet:gap-8 relative pr-2"
       >
+        <div class="flex gap-4 justify-center items-center">
+          <button id="btn-darkmode"
+          class="text-2xl size-8 hover:text-secondary dark:hover:text-light"
+          >
+          <i class="fa-solid fa-moon"></i>
+          </button>
+          <button id="nav-btn" class="text-2xl size-8 hover:text-secondary dark:hover:text-light tablet:hidden">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="nav-items" class="hidden flex-col justify-center items-center bg-primary dark:bg-light w-full tablet:flex tablet:w-auto tablet:columns-3 tablet:bg-inherit tablet:flex-row tablet:pr-2 tablet:gap-4 tablet:dark:bg-inherit">
         <button id="balance-window-btn"
-          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary transition-all duration-300 dark:hover:text-light"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary transition-all duration-300"
         >
           <i class="fa-solid fa-scale-balanced"></i>
           <span class="relative z-10"> Balance </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
           ></span>
         </button>
         <button id="categories-window-btn"
-          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary transition-all duration-300 dark:hover:text-light"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary transition-all duration-300"
         >
           <i class="fa-solid fa-tags"></i>
           <span class="relative z-10"> Categorías </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
           ></span>
         </button>
         <button id="reports-window-btn"
-          class="group relative inline-block p-2 hover:opacity-100 hover:text-secondary transition-all duration-300 dark:hover:text-light"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary transition-all duration-300"
         >
           <i class="fa-solid fa-chart-pie"></i>
           <span class="relative z-10"> Reporte </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300 dark:bg-light"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
           ></span>
         </button>
-        <button
-          class="text-2xl size-10 hover:text-secondary border-current border-solid border-2 rounded-full dark:hover:text-light shadow-inner"
-          id="btn-darkmode"
-        >
-          <i class="fa-solid fa-moon"></i>
-        </button>
-      </div>
-      <div class="flex gap-2 justify-end items-center hidden">
-        <button id="nav-btn" class="text-2xl size-10 hover:text-secondary dark:hover:text-light ">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
+    </div>
     </nav>
 
-    <main class="flex justify-center items-center gap-2 pt-20 pb-4 flex-wrap dark:text-dark h-5/6">
+    <main class="flex justify-center items-center gap-2 pt-20 pb-4 flex-wrap dark:text-dark tablet:h-5/6">
 
       <!--        VENTANA INICIAL SECCIÓN DE BALANCE      -->
 
       <section id="balance-section" class="flex justify-center flex-wrap w-full h-full gap-4">
 
-        <div class="flex flex-col w-1/5">
+        <div class="flex flex-col w-4/5 tablet:w-1/5 gap-4 tablet:h-full">
           
           <!--        BALANCE         -->
 
           <section
             id="balance"
-            class="p-4 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg mb-2 dark:shadow-[#c8d6bf]"
+            class="p-4 shadow-md bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]"
           >
             <h2 class="font-sans text-xl text-center">Balance</h2>
             <div class="text-lg flex flex-col gap-2">
@@ -258,16 +264,16 @@
 
         <section
           id="operations"
-          class="shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 dark:shadow-[#c8d6bf]"
+          class="shadow-md w-4/5 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]"
         >
-          <div class="flex columns-2 justify-between gap-2">
+          <div class="flex columns-2 justify-between gap-2 items-center">
             <div>
               <h2 class="font-sans text-xl">Operaciones</h2>
             </div>
             <div
-              class="flex items-center rounded p-4 h-8 w-2/5 justify-center group hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
+              class="flex items-center rounded p-2 tablet:p-4 tablet:h-8 w-2/5 justify-center group hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
             >
-              <button id="add-operation-btn" class="gap-4 items-center flex w-full justify-center">
+              <button id="add-operation-btn" class="gap-2 tablet:gap-4 items-center flex w-full justify-center">
                 <i class="fa-solid fa-plus"></i>
                 Nueva operación
               </button>
@@ -494,7 +500,7 @@
 
         <section
             id="new-operation"
-            class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
+            class="hidden flex-col shadow-md w-4/5 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
         >
             <h2 class="font-sans text-xl">Nueva operación</h2>
 
@@ -554,7 +560,7 @@
             class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
             />
 
-            <div class="flex columns-2 justify-end gap-5">
+            <div class="flex columns-2 justify-end gap-5 p-1">
             <button id="close-new-operation"
                 class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
             >
@@ -574,7 +580,7 @@
 
         <section
             id="edit-operation"
-            class="hidden flex-col shadow-md w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
+            class="hidden flex-col shadow-md w-4/5 tablet:w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
         >
             <h2 class="font-sans text-xl">Editar operación</h2>
 
@@ -654,7 +660,7 @@
 
         <section
             id="categories"
-            class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg h-full gap-3 dark:shadow-[#c8d6bf]"
+            class="hidden flex-col shadow-md w-4/5 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg h-full gap-3 dark:shadow-[#c8d6bf]"
         >
             <div class="flex columns-2 justify-between gap-2 items-center">
                 <div>
@@ -670,8 +676,8 @@
             </div>
             <!--        AÑADIR NUEVAS CATEGORÍAS       -->
 
-            <div class="flex columns-2 justify-between items-end">
-                <div class="flex flex-col w-3/5 gap-2">
+            <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2">
+                <div class="flex flex-col tablet:w-3/5 gap-2">
                     <label for="add-category">Nueva categoría</label>
                         <input
                         id="add-category"
@@ -679,9 +685,9 @@
                         class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
                         />
                 </div>
-                <div class="flex gap-5 w-2/5 justify-end">
+                <div class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end">
                     <button id="add-category-btn"
-                    class="flex items-center rounded px-20 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                    class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
                     >
                         <i class="fa-solid fa-plus"></i>
                             Añadir
@@ -794,7 +800,7 @@
         
       <!--       REPORTES     -->
         
-        <section id="reports" class="hidden flex-col shadow-md w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]">
+        <section id="reports" class="hidden flex-col h-full shadow-md w-4/5 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]">
             <div class="flex columns-2 justify-between gap-2 items-center">
                 <div>
                     <h2 class="font-sans text-xl">Reportes</h2>
@@ -1034,11 +1040,11 @@
     >
       <div class="flex justify-center">
         <div class="text-xl gap-2">
-          <ul class="gap-3 flex columns-4">
+          <ul class="gap-3 flex flex-col tablet:columns-4 tablet:flex-row">
             <li class="px-6">
               <a
                 href="https://www.linkedin.com/in/romina-evelin-constantinoff/"
-                class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
+                class="flex gap-2 items-center justify-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
                 target="_blank"
                 aria-label="Link a LinkedIn de Romina Constantinoff"
                 ><i class="fab fa-linkedin-in"></i> Romina Constantinoff</a
@@ -1049,14 +1055,14 @@
                 href="https://github.com/romicons"
                 target="_blank"
                 aria-label="Link a Github de Romina Constantinoff"
-                class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
+                class="flex justify-center gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
                 ><i class="fab fa-github-alt"></i> romicons
               </a>
             </li>
             <li class="px-6">
               <a
                 href="https://www.linkedin.com/in/candela-evangelina-zapata-079ba9241/"
-                class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
+                class="flex justify-center gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
                 target="_blank"
                 aria-label="Link a LinkedIn de Candela Zapata"
                 ><i class="fab fa-linkedin-in"></i> Candela Zapata</a
@@ -1067,7 +1073,7 @@
                 href="https://github.com/kndezapata"
                 target="_blank"
                 aria-label="Link a Github de Candela Zapata"
-                class="flex gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
+                class="flex justify-center gap-2 items-center px-2 hover:text-secondary cursor-pointer dark:hover:text-light"
                 ><i class="fab fa-github-alt"></i> kndezapata</a
               >
             </li>
@@ -1075,7 +1081,7 @@
         </div>
       </div>
       <div>
-        <p class="text-center">
+        <p class="text-center px-2">
           © 2024 Romina Constantinoff & Candela Zapata. Todos los derechos
           reservados.
         </p>

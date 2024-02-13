@@ -138,3 +138,14 @@ document.getElementById('to-new-operation-btn').addEventListener('click', () => 
     setStyleNone('reports');
     setStyleFlex('new-operation');
 });
+
+//      OPEN NAV MENU IN MOBILE
+
+document.getElementById('nav-btn').addEventListener('click', () => {
+    document.getElementById('nav-items').classList.toggle('hidden');
+    if (document.getElementById('nav-items').classList.contains('hidden')) {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-bars"></i>';
+    } else {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    }
+})

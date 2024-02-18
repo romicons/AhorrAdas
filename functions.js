@@ -10,3 +10,4 @@ const setStyleFlex = (element) => {
 }
 
 //      CREATE DEFAULT CATEGORIES 
+

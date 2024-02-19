@@ -28,14 +28,11 @@ let savedCategories;
 const validateLocalStorage = () => {
     if (localStorage.getItem("categories") !== null) {
       savedCategories = JSON.parse(localStorage.getItem("categories"));
-      console.log("categorias traidas del local storage:", savedCategories);
       return savedCategories;
     } else {
       localStorage.setItem("categories", JSON.stringify(categories));
     }
-  
     createCategoriesTable();
-    console.log("evaluar localStorage");
 };
 
 const createCategoriesTable = () => {
@@ -45,7 +42,7 @@ const createCategoriesTable = () => {
       for (let category of validateLocalStorage()) {
         tableOfCategories.innerHTML += `
             <tr class="flex columns-2 justify-between items-center py-1">
-                <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded">${category.name}</td>
+                <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${category.name}</td>
                 <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
                         <button
                         class="delete-category-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
@@ -54,7 +51,7 @@ const createCategoriesTable = () => {
                                 Eliminar
                         </button>
                         <button
-                        class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                        class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2" 
                         >
                             <i class="fa-solid fa-pen"></i>
                                 Editar
@@ -67,3 +64,36 @@ const createCategoriesTable = () => {
   };
   
  createCategoriesTable();
+
+ //     EDIT CATEGORIES
+
+const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
+
+ const editCategory = (categoryId, newName) => {
+    let findCategory = categories.findIndex(category => category.id === categoryId)
+    if (findCategory !== -1) {
+        let newName = getElementById('edit-category-name').value;
+        categories[findCategory].name = newName;
+        localStorage.setItem("categories", JSON.stringify(categories));
+        createCategoriesTable();
+        console.log(`Nombre de la categoría con ID ${categoryId} actualizado a ${newName}.`);
+    }
+    else {
+        console.log("No fue posible renombrar la categoria")
+    }
+};
+
+//      DELETE CATEGORY
+
+const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
+
+const deleteCategory = (categoryId) => {
+    let findCategory = categories.findIndex(category => category.id === categoryId);
+    if (findCategory !== -1) {
+        categories.splice(findCategory, 1);
+        localStorage.setItem("categories", JSON.stringify(categories));
+        createCategoriesTable();
+    } else {
+        console.log("No se encontró ningún elemento con el ID especificado.");
+    }
+};

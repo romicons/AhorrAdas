@@ -112,18 +112,38 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
 
 })
 
-//      DELET CATEGORY
+*/
 
-document.getElementById('delete-operation-btn').addEventListener('click', () => {
-    
-})
+//      DELETE CATEGORY
+
+for (let btn of deleteCategoryBtns) {
+    btn.addEventListener('click', (event) => {
+        let categoryId = event.target.dataset.categoryId;
+        deleteCategory(categoryId);
+    });
+};
 
 //      EDIT CATEGORY
 
-document.getElementById('edit-operation-btn').addEventListener('click', () => {
-    
-})
-*/
+for (let btn of editCategoryBtns) {
+    btn.addEventListener('click', () => {
+    setStyleFlex('rename-category');
+    setStyleNone('categories')  
+    }
+)};
+
+//      CANCEL EDIT CATEGORY
+
+document.getElementById('cancel-edit-category').addEventListener('click', () => {
+    setStyleNone('rename-category');
+    setStyleFlex('categories');
+});
+
+//      RENAME CATEGORY 
+
+document.getElementById('save-edit-category').addEventListener('click', editCategory);
+
+
 
 //      CLOSE REPORTS WINDOW
 

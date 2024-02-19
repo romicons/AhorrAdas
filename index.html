@@ -661,7 +661,7 @@
             Guardar cambios
           </button>
         </div>
-      </section>
+        </section>
 
       <!--        FORMULARIO DE CATEGORÍAS       -->
 
@@ -703,18 +703,47 @@
                 </div>
             </div>
 
-        <!--        EDITAR CATEGORÍAS EXISTENTES         -->
+            <!--        CATEGORÍAS EXISTENTES         -->
 
-        <div>
-          <div class="current-operations flex flex-col">
-            <table id="categories-table" class="table table-fixed w-full p-2">
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-        </div>
+            <div>
+              <div class="current-operations flex flex-col">
+                <table id="categories-table" class="table table-fixed w-full p-2">
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
       </section>
 
+            <!--        EDITAR CATEGORÍAS EXISTENTES         -->
+
+      <section id="rename-category" class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between">
+         <h2 class="font-sans text-xl">
+             Editar Categoría
+         </h2>
+           <div class="flex flex-col gap-2">
+               <label for="description-operation">Nombre</label>
+               <input
+               id="edit-category-name"
+               type="text"
+               class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+               placeholder="Renombra tu categoría.">
+           </div>
+           <div class="flex columns-2 justify-end gap-5 p-1">
+             <button id="cancel-edit-category"
+                 class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+             >
+                 <i class="fa-solid fa-xmark"></i>
+                   Cancelar
+             </button>
+             <button id="save-edit-category"
+                 class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+             >
+                 <i class="fa-solid fa-check"></i>
+                   Guardar cambios
+             </button>
+             </div>
+      </section>
       <!--       REPORTES     -->
 
       <section

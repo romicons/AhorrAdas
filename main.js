@@ -1,4 +1,8 @@
-//      ACTIVATE DARK/LIGHT MODE
+//                      INITIALIZE APLICATION
+
+
+
+//                      ACTIVATE DARK/LIGHT MODE
 
 const darkModeToggle = document.querySelector('#btn-darkmode');
 
@@ -107,19 +111,60 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 //      ADD NEW CATEGORY
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
-    const newCategory = document.getElementById('add-category').value;
-    createCategory(newCategory);
-})
+    const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value;
+    if (newCategory === "") {
+        newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+    } else {
+        newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+        createCategory(newCategory);
+        console.log('funciono');
+    }
+});
+
+document.getElementById('add-category').addEventListener('input', () => {
+    const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value;
+    if (newCategory !== "") {
+        newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+    }
+});
+
+//      EDIT CATEGORY
+/*
+for (let btn of editCategoryBtns) {
+    btn.addEventListener('click', () => {
+    setStyleFlex('rename-category');
+    setStyleNone('categories')  
+    }
+)};
+
+//      RENAME CATEGORY 
+/*
+document.getElementById('save-edit-category').addEventListener('click', () => {
+    let categoryId = seekId(id, categories);
+    let newCategoryName = document.getElementById('edit-category-name').value;
+    // Llamar a la función editCategory con el ID de la categoría y el nuevo nombre
+    editCategory(categoryId, { name: newCategoryName });
+    )};
+
+*/
+//      CANCEL EDIT CATEGORY
+/*
+document.getElementById('cancel-edit-category').addEventListener('click', () => {
+    setStyleNone('rename-category');
+    setStyleFlex('categories');
+});
 
 
 //      DELETE CATEGORY
-
+/*
 for (let btn of deleteCategoryBtns) {
     btn.addEventListener('click', () => {
         setStyleFlex('delete-category');
         setStyleNone('categories')
     });
-};
+};*/
 
 //      CANCEL DELETE CATEGORY
 
@@ -135,29 +180,6 @@ document.getElementById('confirm-delete-category').addEventListener('click', () 
     setStyleFlex('categories');
     //AÑADIR LA FUNCION DE GUARDAR LOS CAMBIOS
 });
-
-
-//      EDIT CATEGORY
-/*
-for (let btn of editCategoryBtns) {
-    btn.addEventListener('click', () => {
-    setStyleFlex('rename-category');
-    setStyleNone('categories')  
-    }
-)};
-
-//      CANCEL EDIT CATEGORY
-
-document.getElementById('cancel-edit-category').addEventListener('click', () => {
-    setStyleNone('rename-category');
-    setStyleFlex('categories');
-});
-
-//      RENAME CATEGORY 
-/*
-document.getElementById('save-edit-category').addEventListener('click', editCategory);
-
-*/
 
 //      CLOSE REPORTS WINDOW
 

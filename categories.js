@@ -61,58 +61,59 @@ const createCategoriesTable = () => {
           `;
       }
     }
-  };
-  
- createCategoriesTable();
-
- //     EDIT CATEGORIES
-/*
-const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
-
- const editCategory = (categoryId, newName) => {
-    let findCategory = categories.findIndex(category => category.id === categoryId)
-    if (findCategory !== -1) {
-        let newName = getElementById('edit-category-name').value;
-        categories[findCategory].name = newName;
-        localStorage.setItem("categories", JSON.stringify(categories));
-        createCategoriesTable();
-        console.log(`Nombre de la categoría con ID ${categoryId} actualizado a ${newName}.`);
-    }
-    else {
-        console.log("No fue posible renombrar la categoria")
-    }
 };
-*/
+
+const getCategories = () => {
+    return JSON.parse(localStorage.getItem('categories'))
+}
+
+const updateCategories = () => {
+    localStorage.setItem('categories', JSON.stringify({...getCategories(), ...categories})
+)};
 
 //      CREATE CATEGORY
 
 const createCategory = (name) => {
-    console.log(categories)
     let newCategory = {id:uuidv4(), name: name};
     categories.push(newCategory);
-    console.log('Estoy añadiendo algo al array')
-    return categories;
-}
-console.log(categories);
-
-//      DELETE CATEGORY
-
-const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
-
-const deleteCategory = (categoryId, categories) => {
-    return categories.filter((category) => category.id !== categoryId);
+    updateCategories();
 };
 
-//      GET CATEGORY
+ //     EDIT CATEGORIES
 /*
-const getCategory = seekId(categoryId, categories);
-
-
+const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
 /*
-const eliminarCategoria = (idCategoria, categorias) => {
-    return categorias.filter((categoria) => categoria.id !== idCategoria)
-  }
+const editCategory = (id, name) => {
+    let findCategory = seekId(id, categories);
+    if (findCategory !== undefined) {
+        console.log('Entré en el if');
+        // Aquí asignamos el nombre a la categoría encontrada
+        findCategory.name = name;
+        // Aquí actualizamos el valor del campo de entrada 'edit-category-name'
+        document.getElementById('edit-category-name').value = name;
+        console.log('Nombre de la categoría con ID ${id} actualizado a ${name}.');
+    } else {
+        console.log("No fue posible renombrar la categoría");
+    }
+};
+*//*
+const editCategory = (categoryId, newCategory) => {
+    return categories.map((category) => {
+      if (category.id === categoryId) {
+        return { ...category, ...newCategory};
+      } else {
+        return category;
+      }
+    });
+  };
+  */
 
-  const obtenerCategoria = (idCategoria, categorias) => {
-    return categorias.find((categoria) => categoria.id === idCategoria)
-  }*/
+//      DELETE CATEGORY
+/*
+const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
+/*
+const deleteCategory = (categoryId, categories) => {
+    return deleteId(categories, categoryId);
+};*/
+
+createCategoriesTable();

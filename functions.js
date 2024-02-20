@@ -17,3 +17,7 @@ const setStyleFlex = (element) => {
 const seekId = (id, elements) => {
     return elements.find(element => element.id === id);
 };
+
+const deleteId = (id, elements) => {
+    return elements.filter((element) => element.id !== id)
+}

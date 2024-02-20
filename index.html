@@ -682,6 +682,7 @@
                     </button>
                 </div>
             </div>
+
             <!--        AÑADIR NUEVAS CATEGORÍAS       -->
 
             <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2">
@@ -742,8 +743,39 @@
                  <i class="fa-solid fa-check"></i>
                    Guardar cambios
              </button>
-             </div>
+            </div>
       </section>
+
+      <!--       ELIMINAR CATEGORÍA    -->
+
+      <section id="delete-category" class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between">
+            <div>
+              <h2 class="font-sans text-3xl text-red-600">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                  Advertencia
+              </h2>
+            </div>
+             <div class="flex flex-col gap-2">
+               <p>
+                 ¿Está seguro de que desea eliminar la categoría <span id="category-name" class="font-bold">COMIDA PLACEHOLDER</span>? Al hacerlo, todas las operaciones relacionadas a ella se eliminarán también.
+               </p>
+             </div>
+             <div class="flex columns-2 justify-end gap-5 p-1">
+               <button id="cancel-delete-category"
+                   class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+               >
+                   <i class="fa-solid fa-xmark"></i>
+                     Cancelar
+               </button>
+               <button id="confirm-delete-category"
+                   class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+               >
+                   <i class="fa-solid fa-check"></i>
+                     Confirmar
+               </button>
+               </div>
+      </section>
+
       <!--       REPORTES     -->
 
       <section

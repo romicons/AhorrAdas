@@ -11,3 +11,9 @@ const setStyleFlex = (element) => {
 
 //      CREATE DEFAULT CATEGORIES 
 
+
+//      FIND AN ELEMENT FOR ITS ID
+
+const seekId = (id, elements) => {
+    return elements.find(element => element.id === id);
+};

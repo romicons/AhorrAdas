@@ -104,27 +104,41 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
     setStyleFlex('balance-section');
 });
 
-/*  VAN A FUNCIONAR CUANDO ESTE HECHA LA TABLA
-
 //      ADD NEW CATEGORY
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
-
+    const newCategory = document.getElementById('add-category').value;
+    createCategory(newCategory);
 })
 
-*/
 
 //      DELETE CATEGORY
 
 for (let btn of deleteCategoryBtns) {
-    btn.addEventListener('click', (event) => {
-        let categoryId = event.target.dataset.categoryId;
-        deleteCategory(categoryId);
+    btn.addEventListener('click', () => {
+        setStyleFlex('delete-category');
+        setStyleNone('categories')
     });
 };
 
-//      EDIT CATEGORY
+//      CANCEL DELETE CATEGORY
 
+document.getElementById('cancel-delete-category').addEventListener('click', () => {
+    setStyleNone('delete-category');
+    setStyleFlex('categories');
+});
+
+//      CONFIRM DELETE CATEGORY
+
+document.getElementById('confirm-delete-category').addEventListener('click', () => {
+    setStyleNone('delete-category');
+    setStyleFlex('categories');
+    //AÑADIR LA FUNCION DE GUARDAR LOS CAMBIOS
+});
+
+
+//      EDIT CATEGORY
+/*
 for (let btn of editCategoryBtns) {
     btn.addEventListener('click', () => {
     setStyleFlex('rename-category');
@@ -140,10 +154,10 @@ document.getElementById('cancel-edit-category').addEventListener('click', () => 
 });
 
 //      RENAME CATEGORY 
-
+/*
 document.getElementById('save-edit-category').addEventListener('click', editCategory);
 
-
+*/
 
 //      CLOSE REPORTS WINDOW
 

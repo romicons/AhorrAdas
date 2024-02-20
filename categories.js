@@ -66,7 +66,7 @@ const createCategoriesTable = () => {
  createCategoriesTable();
 
  //     EDIT CATEGORIES
-
+/*
 const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
 
  const editCategory = (categoryId, newName) => {
@@ -82,18 +82,37 @@ const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
         console.log("No fue posible renombrar la categoria")
     }
 };
+*/
+
+//      CREATE CATEGORY
+
+const createCategory = (name) => {
+    console.log(categories)
+    let newCategory = {id:uuidv4(), name: name};
+    categories.push(newCategory);
+    console.log('Estoy añadiendo algo al array')
+    return categories;
+}
+console.log(categories);
 
 //      DELETE CATEGORY
 
 const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
 
-const deleteCategory = (categoryId) => {
-    let findCategory = categories.findIndex(category => category.id === categoryId);
-    if (findCategory !== -1) {
-        categories.splice(findCategory, 1);
-        localStorage.setItem("categories", JSON.stringify(categories));
-        createCategoriesTable();
-    } else {
-        console.log("No se encontró ningún elemento con el ID especificado.");
-    }
+const deleteCategory = (categoryId, categories) => {
+    return categories.filter((category) => category.id !== categoryId);
 };
+
+//      GET CATEGORY
+/*
+const getCategory = seekId(categoryId, categories);
+
+
+/*
+const eliminarCategoria = (idCategoria, categorias) => {
+    return categorias.filter((categoria) => categoria.id !== idCategoria)
+  }
+
+  const obtenerCategoria = (idCategoria, categorias) => {
+    return categorias.find((categoria) => categoria.id === idCategoria)
+  }*/

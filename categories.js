@@ -28,6 +28,7 @@ let savedCategories;
 const validateLocalStorage = () => {
     if (localStorage.getItem("categories") !== null) {
       savedCategories = JSON.parse(localStorage.getItem("categories"));
+      console.log(savedCategories)
       return savedCategories;
     } else {
       localStorage.setItem("categories", JSON.stringify(categories));
@@ -68,7 +69,7 @@ const getCategories = () => {
 }
 
 const updateCategories = () => {
-    localStorage.setItem('categories', JSON.stringify({...getCategories(), ...categories})
+    localStorage.setItem('categories', JSON.stringify([...getCategories(), ...categories])
 )};
 
 //      CREATE CATEGORY
@@ -100,7 +101,7 @@ const editCategory = (id, name) => {
 const editCategory = (categoryId, newCategory) => {
     return categories.map((category) => {
       if (category.id === categoryId) {
-        return { ...category, ...newCategory};
+        return [...category, ...newCategory];
       } else {
         return category;
       }

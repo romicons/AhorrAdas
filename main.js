@@ -115,10 +115,10 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
     const newCategory = newCategoryInput.value;
     if (newCategory === "") {
         newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+        error(newCategoryInput, 'Por favor, proporciona un nombre para tu nueva categoría.');
     } else {
         newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
         createCategory(newCategory);
-        console.log('funciono');
     }
 });
 
@@ -127,6 +127,7 @@ document.getElementById('add-category').addEventListener('input', () => {
     const newCategory = newCategoryInput.value;
     if (newCategory !== "") {
         newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+        hideError(newCategoryInput);
     }
 });
 

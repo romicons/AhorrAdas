@@ -1,4 +1,8 @@
-//      ACTIVATE DARK/LIGHT MODE
+//                      INITIALIZE APLICATION
+
+initializeApp();
+
+//                      ACTIVATE DARK/LIGHT MODE
 
 const darkModeToggle = document.querySelector('#btn-darkmode');
 
@@ -104,26 +108,85 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
     setStyleFlex('balance-section');
 });
 
-/*  VAN A FUNCIONAR CUANDO ESTE HECHA LA TABLA
-
 //      ADD NEW CATEGORY
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
+    const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value.trim();
+    if (newCategory === "") {
+        newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+        error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
+    } else {
+        const categoryExists = categories.some(category => category.name === newCategory);
+        if (categoryExists) {
+            newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+            error(newCategoryInput, 'Esta categoría ya existe.');
+        } else {
+            createCategory(newCategory);
+            newCategoryInput.value = "";
+        }
+    }
+});
 
-})
-
-//      DELET CATEGORY
-
-document.getElementById('delete-operation-btn').addEventListener('click', () => {
-    
-})
+document.getElementById('add-category').addEventListener('input', () => {
+    const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value;
+    if (newCategory !== "") {
+        newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+        hideError(newCategoryInput);
+    }
+});
 
 //      EDIT CATEGORY
+/*
+for (let btn of editCategoryBtns) {
+    btn.addEventListener('click', () => {
+    setStyleFlex('rename-category');
+    setStyleNone('categories')  
+    }
+)};
 
-document.getElementById('edit-operation-btn').addEventListener('click', () => {
-    
-})
+//      RENAME CATEGORY 
+/*
+document.getElementById('save-edit-category').addEventListener('click', () => {
+    let categoryId = seekId(id, categories);
+    let newCategoryName = document.getElementById('edit-category-name').value;
+    // Llamar a la función editCategory con el ID de la categoría y el nuevo nombre
+    editCategory(categoryId, { name: newCategoryName });
+    )};
+
 */
+//      CANCEL EDIT CATEGORY
+/*
+document.getElementById('cancel-edit-category').addEventListener('click', () => {
+    setStyleNone('rename-category');
+    setStyleFlex('categories');
+});
+
+
+//      DELETE CATEGORY
+/*
+for (let btn of deleteCategoryBtns) {
+    btn.addEventListener('click', () => {
+        setStyleFlex('delete-category');
+        setStyleNone('categories')
+    });
+};*/
+
+//      CANCEL DELETE CATEGORY
+
+document.getElementById('cancel-delete-category').addEventListener('click', () => {
+    setStyleNone('delete-category');
+    setStyleFlex('categories');
+});
+
+//      CONFIRM DELETE CATEGORY
+
+document.getElementById('confirm-delete-category').addEventListener('click', () => {
+    setStyleNone('delete-category');
+    setStyleFlex('categories');
+    //AÑADIR LA FUNCION DE GUARDAR LOS CAMBIOS
+});
 
 //      CLOSE REPORTS WINDOW
 

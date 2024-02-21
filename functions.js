@@ -1,3 +1,9 @@
+//      INITIALIZE APP
+
+const initializeApp = () => {
+    createCategoriesTable();
+}
+
 //      RESPONSIVE DESIGN
 
 const setStyleNone = (element) => {
@@ -11,3 +17,32 @@ const setStyleFlex = (element) => {
 
 //      CREATE DEFAULT CATEGORIES 
 
+
+//      FIND AN ELEMENT FOR ITS ID
+
+const seekId = (id, elements) => {
+    return elements.find(element => element.id === id);
+};
+
+const deleteId = (id, elements) => {
+    return elements.filter((element) => element.id !== id)
+}
+
+//      ERROR
+
+const error = (field, message) => {
+    let errorText = document.createElement('p');
+    errorText.classList.add('text-red-600');
+    errorText.textContent = message;
+    let inputElement = document.getElementById(`${field.id}`);
+    inputElement.parentNode.insertBefore(errorText, inputElement.nextSibling);
+};
+
+//      HIDE ERROR
+
+const hideError = (field) => {
+    let errorText = document.getElementById(`${field.id}`).nextSibling;
+    if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
+        errorText.remove();
+    }
+};

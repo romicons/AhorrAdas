@@ -112,14 +112,19 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
     const newCategoryInput = document.getElementById('add-category');
-    const newCategory = newCategoryInput.value;
+    const newCategory = newCategoryInput.value.trim();
     if (newCategory === "") {
         newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
         error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
     } else {
-        newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
-        createCategory(newCategory);
-        newCategoryInput.value = "";
+        const categoryExists = categories.some(category => category.name === newCategory);
+        if (categoryExists) {
+            newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+            error(newCategoryInput, 'Esta categoría ya existe.');
+        } else {
+            createCategory(newCategory);
+            newCategoryInput.value = "";
+        }
     }
 });
 

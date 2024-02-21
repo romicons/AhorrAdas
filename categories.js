@@ -28,7 +28,6 @@ let savedCategories;
 const validateLocalStorage = () => {
     if (localStorage.getItem("categories") !== null) {
       savedCategories = JSON.parse(localStorage.getItem("categories"));
-      console.log(savedCategories)
       return savedCategories;
     } else {
       localStorage.setItem("categories", JSON.stringify(categories));
@@ -69,8 +68,9 @@ const getCategories = () => {
 }
 
 const updateCategories = () => {
-    localStorage.setItem('categories', JSON.stringify([...getCategories(), ...categories])
-)};
+    localStorage.setItem('categories', JSON.stringify(categories));
+};
+
 
 //      CREATE CATEGORY
 
@@ -78,6 +78,7 @@ const createCategory = (name) => {
     let newCategory = {id:uuidv4(), name: name};
     categories.push(newCategory);
     updateCategories();
+    createCategoriesTable();
 };
 
  //     EDIT CATEGORIES
@@ -116,5 +117,3 @@ const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn'
 const deleteCategory = (categoryId, categories) => {
     return deleteId(categories, categoryId);
 };*/
-
-createCategoriesTable();

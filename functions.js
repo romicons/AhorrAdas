@@ -1,3 +1,9 @@
+//      INITIALIZE APP
+
+const initializeApp = () => {
+    createCategoriesTable();
+}
+
 //      RESPONSIVE DESIGN
 
 const setStyleNone = (element) => {

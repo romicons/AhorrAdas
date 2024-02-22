@@ -15,7 +15,17 @@ const setStyleFlex = (element) => {
     document.getElementById(element).classList.add('flex');
 }
 
-//      CREATE DEFAULT CATEGORIES 
+//      VALIDATE LOCAL STORAGE
+
+const validateLocalStorage = (key, defaultValue) => {
+    const storedData = localStorage.getItem(key);
+    if (storedData !== null) {
+        return JSON.parse(storedData);
+    } else {
+        localStorage.setItem(key, JSON.stringify(defaultValue));
+        return defaultValue;
+    }
+};
 
 
 //      FIND AN ELEMENT FOR ITS ID

@@ -23,59 +23,51 @@ const categories = [
     },
 ];
 
-let savedCategories;
-
-const validateLocalStorage = () => {
-    if (localStorage.getItem("categories") !== null) {
-      savedCategories = JSON.parse(localStorage.getItem("categories"));
-      return savedCategories;
-    } else {
-      localStorage.setItem("categories", JSON.stringify(categories));
-    }
-    createCategoriesTable();
-};
+//      GENERATE TABLE OF CATEGORIES
 
 const createCategoriesTable = () => {
     const tableOfCategories = document.getElementById("categories-table");
     tableOfCategories.innerHTML = "";
-    if (validateLocalStorage()) {
-      for (let category of validateLocalStorage()) {
+    let savedCategories = validateLocalStorage('categories', categories);
+    for (let category of savedCategories) {
         tableOfCategories.innerHTML += `
             <tr class="flex columns-2 justify-between items-center py-1">
                 <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${category.name}</td>
                 <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
-                        <button
+                    <button
                         class="delete-category-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                        >
-                            <i class="fa-solid fa-trash"></i>
-                                Eliminar
-                        </button>
-                        <button
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                        Eliminar
+                    </button>
+                    <button
                         class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2" 
-                        >
-                            <i class="fa-solid fa-pen"></i>
-                                Editar
-                        </button>
+                    >
+                        <i class="fa-solid fa-pen"></i>
+                        Editar
+                    </button>
                 </td>
             </tr>
-          `;
-      }
+        `;
     }
 };
+
+//      RETURN CATEGORIES FROM LOCAL STORAGE
 
 const getCategories = () => {
     return JSON.parse(localStorage.getItem('categories'))
 }
 
+//      UPDATE CATEGORIES
+
 const updateCategories = () => {
     localStorage.setItem('categories', JSON.stringify(categories));
 };
 
-
 //      CREATE CATEGORY
 
 const createCategory = (name) => {
-    let newCategory = {id:uuidv4(), name: name};
+    let newCategory = {id: uuidv4(), name: name};
     categories.push(newCategory);
     updateCategories();
     createCategoriesTable();

@@ -116,11 +116,14 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
     if (newCategory === "") {
         newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
         error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
+        document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+        document.getElementById('add-category-btn-col').classList.add('items-center')
     } else {
         const categoryExists = categories.some(category => category.name === newCategory);
         if (categoryExists) {
-            newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
             error(newCategoryInput, 'Esta categoría ya existe.');
+            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+            document.getElementById('add-category-btn-col').classList.add('items-center')
         } else {
             createCategory(newCategory);
             newCategoryInput.value = "";
@@ -132,8 +135,9 @@ document.getElementById('add-category').addEventListener('input', () => {
     const newCategoryInput = document.getElementById('add-category');
     const newCategory = newCategoryInput.value;
     if (newCategory !== "") {
-        newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
         hideError(newCategoryInput);
+        document.getElementById('add-category-btn-col').classList.remove('items-center')
+        document.getElementById('add-category-btn-col').classList.add('tablet:items-end')
     }
 });
 

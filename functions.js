@@ -35,6 +35,7 @@ const error = (field, message) => {
     errorText.classList.add('text-red-600');
     errorText.textContent = message;
     let inputElement = document.getElementById(`${field.id}`);
+    inputElement.classList.add('outline', 'outline-red-600', 'outline-2')
     inputElement.parentNode.insertBefore(errorText, inputElement.nextSibling);
 };
 
@@ -42,7 +43,10 @@ const error = (field, message) => {
 
 const hideError = (field) => {
     let errorText = document.getElementById(`${field.id}`).nextSibling;
+    let inputElement = document.getElementById(`${field.id}`);
+    inputElement.classList.remove('outline', 'outline-red-600', 'outline-2')
     if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
+
         errorText.remove();
     }
 };

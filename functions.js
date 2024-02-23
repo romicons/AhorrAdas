@@ -31,8 +31,11 @@ const validateLocalStorage = (key, defaultValue) => {
 //      FIND AN ELEMENT FOR ITS ID
 
 const seekId = (id, elements) => {
-    return elements.find(element => element.id === id);
-};
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i].id === id) {
+        return id
+    };
+}};  
 
 const deleteId = (id, elements) => {
     return elements.filter((element) => element.id !== id)

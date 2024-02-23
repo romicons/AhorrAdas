@@ -36,12 +36,14 @@ const createCategoriesTable = () => {
                 <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
                     <button
                         class="delete-category-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                        id="${category.id}"
                     >
                         <i class="fa-solid fa-trash"></i>
                         Eliminar
                     </button>
                     <button
-                        class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2" 
+                        class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                        id="${category.id}" 
                     >
                         <i class="fa-solid fa-pen"></i>
                         Editar
@@ -71,41 +73,42 @@ const createCategory = (name) => {
     categories.push(newCategory);
     updateCategories();
     createCategoriesTable();
+
+for (let btn of editCategoryBtns) {
+    btn.addEventListener('click', (e) => {
+        console.log(e.target.id)
+        updateCategories();
+        const seekId = categories.find(element => element.id === e.target.id);
+        console.log(seekId);
+        setStyleFlex('rename-category');
+        setStyleNone('categories');
+        document.getElementById('edit-category-name').value = seekId.name;
+    }
+)};
+
+for (let btn of deleteCategoryBtns) {
+    btn.addEventListener('click', (e) => {
+        setStyleFlex('delete-category');
+        setStyleNone('categories');
+        console.log(e.target.id)
+        const seekId = categories.find(element => element.id === e.target.id);
+        console.log(seekId);
+        document.getElementById('category-name').innerHTML = seekId.name;
+    });
+};
 };
 
- //     EDIT CATEGORIES
-/*
+//     EDIT CATEGORIES
+
 const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
-/*
-const editCategory = (id, name) => {
-    let findCategory = seekId(id, categories);
-    if (findCategory !== undefined) {
-        console.log('Entré en el if');
-        // Aquí asignamos el nombre a la categoría encontrada
-        findCategory.name = name;
-        // Aquí actualizamos el valor del campo de entrada 'edit-category-name'
-        document.getElementById('edit-category-name').value = name;
-        console.log('Nombre de la categoría con ID ${id} actualizado a ${name}.');
-    } else {
-        console.log("No fue posible renombrar la categoría");
-    }
-};
-*//*
-const editCategory = (categoryId, newCategory) => {
-    return categories.map((category) => {
-      if (category.id === categoryId) {
-        return [...category, ...newCategory];
-      } else {
-        return category;
-      }
-    });
-  };
-  */
 
 //      DELETE CATEGORY
-/*
+
 const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
-/*
-const deleteCategory = (categoryId, categories) => {
-    return deleteId(categories, categoryId);
-};*/
+
+const deleteCategory = (id) => {
+    let category = id;
+    categories.splice(category);
+    updateCategories();
+    createCategoriesTable();
+};

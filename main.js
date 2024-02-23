@@ -24,6 +24,8 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('categories');
     setStyleNone('reports');
     setStyleNone('new-operation');
+    setStyleNone('rename-category');
+    setStyleNone('delete-category');
 });
 
 //      OPEN CATEGORIES WINDOW
@@ -33,6 +35,8 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('balance-section');
     setStyleNone('reports');
     setStyleNone('new-operation');
+    setStyleNone('rename-category');
+    setStyleNone('delete-category');
 });
 
 //      OPEN REPORTS WINDOW
@@ -42,6 +46,8 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('balance-section');
     setStyleNone('categories');
     setStyleNone('new-operation');
+    setStyleNone('rename-category');
+    setStyleNone('delete-category');
 });
 
 //      HIDE FILTERS
@@ -142,26 +148,30 @@ document.getElementById('add-category').addEventListener('input', () => {
 });
 
 //      EDIT CATEGORY
-/*
+
 for (let btn of editCategoryBtns) {
-    btn.addEventListener('click', () => {
-    setStyleFlex('rename-category');
-    setStyleNone('categories')  
+    btn.addEventListener('click', (e) => {
+        console.log(e.target.id)
+        const seekId = categories.find(element => element.id === e.target.id);
+        console.log(seekId);
+        setStyleFlex('rename-category');
+        setStyleNone('categories');
+        document.getElementById('edit-category-name').value = seekId.name;
     }
 )};
 
 //      RENAME CATEGORY 
-/*
-document.getElementById('save-edit-category').addEventListener('click', () => {
-    let categoryId = seekId(id, categories);
-    let newCategoryName = document.getElementById('edit-category-name').value;
-    // Llamar a la función editCategory con el ID de la categoría y el nuevo nombre
-    editCategory(categoryId, { name: newCategoryName });
-    )};
 
-*/
+document.getElementById('save-edit-category').addEventListener('click', () => {
+    let newCategoryName = document.getElementById('edit-category-name').value;
+    editCategory({newCategoryName});
+    setStyleFlex('categories');
+    setStyleNone('rename-category');
+});
+
+
 //      CANCEL EDIT CATEGORY
-/*
+
 document.getElementById('cancel-edit-category').addEventListener('click', () => {
     setStyleNone('rename-category');
     setStyleFlex('categories');
@@ -169,13 +179,17 @@ document.getElementById('cancel-edit-category').addEventListener('click', () => 
 
 
 //      DELETE CATEGORY
-/*
+
 for (let btn of deleteCategoryBtns) {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+        console.log(e.target.id)
+        const seekId = categories.find(element => element.id === e.target.id);
+        console.log(seekId);
         setStyleFlex('delete-category');
-        setStyleNone('categories')
+        setStyleNone('categories');
+        document.getElementById('category-name').innerHTML = seekId.name;
     });
-};*/
+};
 
 //      CANCEL DELETE CATEGORY
 

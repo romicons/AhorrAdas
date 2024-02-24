@@ -28,7 +28,9 @@ const categories = [
 const createCategoriesTable = () => {
     const tableOfCategories = document.getElementById("categories-table");
     tableOfCategories.innerHTML = "";
-    let savedCategories = validateLocalStorage('categories', categories);
+    console.log(categories)
+    let savedCategories = getCategories();
+    console.log(savedCategories)
     for (let category of savedCategories) {
         tableOfCategories.innerHTML += `
             <tr class="flex columns-2 justify-between items-center py-1">
@@ -62,17 +64,19 @@ const getCategories = () => {
 
 //      UPDATE CATEGORIES
 
-const updateCategories = () => {
+const updateCategories = (categories) => {
     localStorage.setItem('categories', JSON.stringify(categories));
+    console.log('estoy updateando tus categorias', categories)
 };
 
 //      CREATE CATEGORY
 
 const createCategory = (name) => {
-    let newCategory = {id: uuidv4(), name: name};
-    categories.push(newCategory);
-    updateCategories();
-    createCategoriesTable();
+        let savedCategories = getCategories(); 
+        let newCategory = { id: uuidv4(), name: name };
+        savedCategories.push(newCategory);
+        updateCategories(savedCategories); 
+        createCategoriesTable(); 
 
 for (let btn of editCategoryBtns) {
     btn.addEventListener('click', (e) => {
@@ -105,10 +109,11 @@ const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
 //      DELETE CATEGORY
 
 const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
-
+/*
 const deleteCategory = (id) => {
-    let category = id;
-    categories.splice(category);
-    updateCategories();
+    let savedCategories = getCategories(); 
+    let updatedCategories = savedCategories.filter(category => category.id !== id);
+    updateCategories(updatedCategories); 
     createCategoriesTable();
 };
+*/

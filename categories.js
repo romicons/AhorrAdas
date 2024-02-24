@@ -23,38 +23,42 @@ const categories = [
     },
 ];
 
-//      GENERATE TABLE OF CATEGORIES
-
+// GENERATE TABLE OF CATEGORIES
 const createCategoriesTable = () => {
     const tableOfCategories = document.getElementById("categories-table");
     tableOfCategories.innerHTML = "";
-    console.log(categories)
-    let savedCategories = getCategories();
-    console.log(savedCategories)
-    for (let category of savedCategories) {
-        tableOfCategories.innerHTML += `
-            <tr class="flex columns-2 justify-between items-center py-1">
-                <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${category.name}</td>
-                <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
-                    <button
-                        class="delete-category-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                        id="${category.id}"
-                    >
-                        <i class="fa-solid fa-trash"></i>
-                        Eliminar
-                    </button>
-                    <button
-                        class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                        id="${category.id}" 
-                    >
-                        <i class="fa-solid fa-pen"></i>
-                        Editar
-                    </button>
-                </td>
-            </tr>
-        `;
+    const savedCategories = validateLocalStorage('categories', categories);
+    if (savedCategories && savedCategories.length > 0) {
+        for (let category of savedCategories) {
+            tableOfCategories.innerHTML += `
+                <tr class="flex columns-2 justify-between items-center py-1">
+                    <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${category.name}</td>
+                    <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
+                        <button
+                            class="delete-category-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                            id="${category.id}"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                            Eliminar
+                        </button>
+                        <button
+                            class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                            id="${category.id}" 
+                        >
+                            <i class="fa-solid fa-pen"></i>
+                            Editar
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }
+    } else {
+        // Si no hay categorías guardadas, mostrar un mensaje o realizar alguna acción
+        //DESPUES LO ESTILIZAMOS BIEN
+        tableOfCategories.innerHTML = "<p>No hay categorías disponibles.</p>";
     }
 };
+
 
 //      RETURN CATEGORIES FROM LOCAL STORAGE
 

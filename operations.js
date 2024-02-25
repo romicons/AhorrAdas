@@ -30,6 +30,7 @@ const updateOperations = () => {
 };
 
 //  GENERATE TABLE OF OPERATIONS
+
 const createOperationsTable = () => {
     const tableOfOperations = document.getElementById("operations-table");
     tableOfOperations.innerHTML = "";
@@ -37,42 +38,38 @@ const createOperationsTable = () => {
     if (savedOperations && savedOperations.length > 0) {
             tableOfOperations.innerHTML += `
          <thead>
-           <tr>
-             <th>Descripción</th>
-             <th>Monto</th>
-             <th>Tipo</th>
-             <th>Categoría</th>
-             <th>Fecha</th>
-             <th>Acciones</th>
+           <tr class="border-b-2 border-light dark:border-dark">
+             <th class="py-1">Descripción</th>
+             <th class="py-1">Monto</th>
+             <th class="py-1">Tipo</th>
+             <th class="py-1">Categoría</th>
+             <th class="py-1">Fecha</th>
+             <th class="py-1">Acciones</th>
            </tr>
-         </thead>;`;
+         </thead>`;
         for (let operation of savedOperations) {
             tableOfOperations.innerHTML += `
-            <tbody>
-                <tr class="flex columns-2 justify-between items-center py-1">
-                    <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.description}</td>
-                    <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.amount}</td>
-                    <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.category}</td>
-                    <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.date}</td>
-                    <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
+                <tr class="flex justify-between items-center py-1">
+                    <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.description}</td>
+                    <td class="text-center px-2 py-1 rounded text-light font-bold">${operation.amount}</td>
+                    <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.category}</td>
+                    <td class="text-center px-2 py-1 rounded text-light font-bold">${operation.date}</td>
+                    <td class="flex gap-2 tablet:gap-5 justify-end">
                         <button
                             class="delete-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
                             id="${operation.id}"
                         >
                             <i class="fa-solid fa-trash"></i>
-                            Eliminar
                         </button>
                         <button
                             class="edit-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
                             id="${operation.id}" 
                         >
                             <i class="fa-solid fa-pen"></i>
-                            Editar
                         </button>
                     </td>
                 </tr>
-            </tbody>
-            `;
+            `
         }
     } else {
         document.getElementById(`no-operations`).innerHTML= `<div class="flex py-4">

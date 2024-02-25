@@ -75,11 +75,60 @@ document.getElementById('close-new-operation').addEventListener('click', () => {
     setStyleFlex('balance-section');
 });
 
+
+
 //      SAVE NEW OPERATION
 
-document.getElementById('add-new-operation').addEventListener('click', () => {
-    setStyleNone('new-operation');
-    setStyleFlex('balance-section');
+document.getElementById("add-new-operation").addEventListener("click", () => {
+  let operationDescription = document.getElementById(
+    `description-operation`
+  ).value;
+  let operationAmount = document.getElementById("operation-amount").value;
+  let operationCategory = document.getElementById(`category-operation`).value;
+  let typeOperation = document.getElementById(`type-operation`).value;
+  let operationDate = document.getElementById(`date-operation`).value;
+
+  if (operationDescription === "") {
+    error(
+      operationDescription,
+      "Proporciona una descripción para tu nueva operación por favor."
+    );
+  } else {
+   
+    const newOperationDescription = operationDescription.trim();
+
+    const operationExists = operations.some(
+      (operation) => operation.description === newOperationDescription
+    );
+
+    if (operationExists) {
+      error("nameOperationDescription", "Esta operación ya existe.");
+    } else {
+      
+      createOperation(
+        newOperationDescription,
+        operationAmount,
+        operationCategory,
+        typeOperation,
+        operationDate
+      );
+    
+    }
+  }
+
+  setStyleNone("new-operation");
+  setStyleFlex("balance-section");
+});
+
+
+
+
+document.getElementById(`description-operation`).addEventListener("input", () => {
+  const newOperationInput = document.getElementById("description-operation");
+  const newOperation= newOperationInput.value;
+  if (newOperation !== "") {
+    hideError(newOperationInput);
+  }
 });
 
 /*      ESTOS BOTONES TODAVIA NO EXISTEN
@@ -230,3 +279,6 @@ document.getElementById('nav-btn').addEventListener('click', () => {
         document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
     }
 })
+
+
+

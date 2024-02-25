@@ -2,6 +2,7 @@
 
 const initializeApp = () => {
     createCategoriesTable();
+    createOperationsTable();
 }
 
 //      RESPONSIVE DESIGN

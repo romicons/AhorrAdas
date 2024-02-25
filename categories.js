@@ -25,7 +25,7 @@ const categories = [
 
 // GENERATE TABLE OF CATEGORIES
 const createCategoriesTable = () => {
-    const tableOfCategories = document.getElementById("categories-table");
+    const tableOfCategories = document.getElementById("categories-table-body");
     tableOfCategories.innerHTML = "";
     const savedCategories = validateLocalStorage('categories', categories);
     if (savedCategories && savedCategories.length > 0) {

@@ -80,56 +80,81 @@ document.getElementById('close-new-operation').addEventListener('click', () => {
 //      SAVE NEW OPERATION
 
 document.getElementById("add-new-operation").addEventListener("click", () => {
-  let operationDescription = document.getElementById(
-    `description-operation`
-  ).value;
-  let operationAmount = document.getElementById("operation-amount").value;
-  let operationCategory = document.getElementById(`category-operation`).value;
-  let typeOperation = document.getElementById(`type-operation`).value;
-  let operationDate = document.getElementById(`date-operation`).value;
-
-  if (operationDescription === "") {
-    error(
-      operationDescription,
-      "Proporciona una descripción para tu nueva operación por favor."
-    );
-  } else {
-   
-    const newOperationDescription = operationDescription.trim();
-
-    const operationExists = operations.some(
-      (operation) => operation.description === newOperationDescription
-    );
-
-    if (operationExists) {
-      error("nameOperationDescription", "Esta operación ya existe.");
-    } else {
-      
-      createOperation(
-        newOperationDescription,
-        operationAmount,
-        operationCategory,
-        typeOperation,
-        operationDate
+    let operationDescription = document.getElementById(`description-operation`);
+    let operationAmountInput = document.getElementById("operation-amount");
+    let operationCategory = document.getElementById(`category-operation`);
+    let typeOperation = document.getElementById(`type-operation`);
+    let operationDate = document.getElementById(`date-operation`);
+  
+    let operationDescriptionValue = operationDescription.value.trim();
+    let operationAmount = operationAmountInput.value.trim();
+    let operationCategoryValue = operationCategory.value;
+    let typeOperationValue = typeOperation.value;
+    let operationDateValue = operationDate.value;
+  
+    if (operationDescriptionValue === "") {
+      error(
+        operationDescription,
+        "Proporciona una descripción para tu nueva operación por favor."
       );
-    
+    } else if (isNaN(operationAmount) || operationAmount === "") {
+      error(
+        operationAmountInput,
+        "Proporciona un valor numérico para la cantidad de la operación."
+      );
+    } else if (operationDateValue === 'mm/dd/yyyy' || operationDateValue === '') {
+      error(
+        operationDate,
+        'Proporciona la fecha en que realizaste esta operación por favor.'
+      );
+    } else {
+      const operationExists = operations.some(
+        (operation) => operation.description === operationDescriptionValue
+      );
+      if (operationExists) {
+        error(
+          operationDescription,
+          "Esta operación ya existe."
+        );
+      } else {
+        createOperation(
+          operationDescriptionValue,
+          operationAmount,
+          operationCategoryValue,
+          typeOperationValue,
+          operationDateValue
+        );
+        operationDescription.value = '';
+        operationAmountInput.value = '';
+        operationDate.value = '';
+        // Ocultar los mensajes de error si hubiera alguno visible
+        hideError(operationDescription);
+        hideError(operationAmountInput);
+        hideError(operationDate);
+        setStyleNone('new-operation');
+        setStyleFlex('balance-section')
+      }
     }
-  }
-
-  setStyleNone("new-operation");
-  setStyleFlex("balance-section");
 });
-
-
 
 
 document.getElementById(`description-operation`).addEventListener("input", () => {
   const newOperationInput = document.getElementById("description-operation");
-  const newOperation= newOperationInput.value;
+  const newOperation = newOperationInput.value;
   if (newOperation !== "") {
     hideError(newOperationInput);
   }
 });
+
+document.getElementById(`operation-amount`).addEventListener("input", () => {
+    const valueNewOperationInput = document.getElementById('operation-amount');
+    const newOperation =  valueNewOperationInput.value;
+    if (!isNaN(newOperation) && newOperation !== "") {
+      hideError(valueNewOperationInput);
+    }
+});
+
+
 
 /*      ESTOS BOTONES TODAVIA NO EXISTEN
 

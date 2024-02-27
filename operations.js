@@ -36,7 +36,6 @@ const createOperationsTable = () => {
     const tableOfOperations = document.getElementById("operations-table");
     const savedOperations = validateLocalStorage("operations", operations);
     tableOfOperations.innerHTML = "";
-  
     if (savedOperations && savedOperations.length > 0) {
       tableOfOperations.innerHTML += `
            <thead>

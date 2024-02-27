@@ -20,8 +20,8 @@ const createOperation = (description, amount, type, category, date) => {
 //      RETURN OPERATIONS FROM LOCAL STORAGE
 
 const getOperations = () => {
-    return JSON.parse(localStorage.getItem('operations'))
-}
+  return JSON.parse(localStorage.getItem("operations"));
+};
 
 //    UPDATE OPERATIONS
 
@@ -33,13 +33,13 @@ const updateOperations = () => {
 //  GENERATE TABLE OF OPERATIONS
 
 const createOperationsTable = () => {
-    const tableOfOperations = document.getElementById("operations-table");
-    tableOfOperations.innerHTML = "";
-    const savedOperations = validateLocalStorage('operations', operations);
-    if (savedOperations && savedOperations.length > 0) {
-            tableOfOperations.innerHTML += `
+  const tableOfOperations = document.getElementById("operations-table");
+  tableOfOperations.innerHTML = "";
+  const savedOperations = validateLocalStorage("operations", operations);
+  if (savedOperations && savedOperations.length > 0) {
+    tableOfOperations.innerHTML += `
          <thead>
-           <tr class="border-b-2 border-light dark:border-dark">
+           <tr class="border-b-2 border-light dark:border-dark flex justify-between	">
              <th class="py-1">Descripción</th>
              <th class="py-1">Monto</th>
              <th class="py-1">Tipo</th>
@@ -48,33 +48,41 @@ const createOperationsTable = () => {
              <th class="py-1">Acciones</th>
            </tr>
          </thead>`;
-        for (let operation of savedOperations) {
-            tableOfOperations.innerHTML += `
+    for (let operation of savedOperations) {
+      //     CREATE DATE FOR OPERATION
+      const dateInput = document.getElementById("date-operation");
+      const operationDate = dateInput.value;
+      const formattedDate = new Date(operationDate);
+      const formattedDateStr = `${formattedDate.getFullYear()}-${
+        formattedDate.getMonth() + 1
+      }-${formattedDate.getDate()}`;
+      tableOfOperations.innerHTML += `
                 <tr class="flex justify-between items-center py-1">
                     <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.description}</td>
                     <td class="text-center px-2 py-1 rounded text-light font-bold">${operation.amount}</td>
                     <td class="text-center px-2 py-1 rounded text-light dark:text-dark font-bold">${operation.type}</td>
                     <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.category}</td>
-                    <td class="text-center px-2 py-1 rounded text-light dark:text-light font-bold">${operation.date}</td>
+                    <td class="text-red-600">${operation.type}</td>
+                    <td class="text-center px-2 py-1 rounded text-light dark:text-light font-bold">${formattedDateStr}</td> <!-- Mostrando la fecha formateada -->
                     <td class="flex gap-2 tablet:gap-5 justify-end">
                         <button
                             class="delete-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                            id="${operation.id}"
-                        >
+                            id="${operation.id}">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                         <button
                             class="edit-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                            id="${operation.id}" 
-                        >
+                            id="${operation.id}" >
                             <i class="fa-solid fa-pen"></i>
                         </button>
                     </td>
                 </tr>
-            `
-        }
-    } else {
-        document.getElementById(`no-operations`).innerHTML= `<div class="flex py-4">
+            `;
+    }
+  } else {
+    document.getElementById(
+      `no-operations`
+    ).innerHTML = `<div class="flex py-4">
               <svg
                 viewBox="0 0 400 300"
                 xmlns="http://www.w3.org/2000/svg"
@@ -286,7 +294,8 @@ const createOperationsTable = () => {
               <div class="text-lg">
                 <p>Revisa tus filtros o añade nuevas operaciones</p>
               </div>
-            </div>`
-    }
+            </div>`;
+  }
 };
 
+//    FUNCTION OF DATE

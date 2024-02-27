@@ -29,7 +29,6 @@ const createCategoriesTable = () => {
   const tableOfCategories = document.getElementById("categories-table-body");
   tableOfCategories.innerHTML = "";
   const savedCategories = validateLocalStorage("categories", categories);
-  console.log(savedCategories)
   if (savedCategories && savedCategories.length > 0) {
     for (let category of savedCategories) {
       tableOfCategories.innerHTML += `
@@ -55,7 +54,6 @@ const createCategoriesTable = () => {
             `;
     }
     linkCategoriesWithSelect();
-     console.log(savedCategories);
     editCategoryEvent();
     deleteCategoryEvent();
   } else {
@@ -96,9 +94,7 @@ const linkCategoriesWithSelect = () => {
   for (let category of savedCategories) {
     categorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
   }
-  console.log(`Estoy conectando tus categorias`);
 };
-
 
 //      EDIT CATEGORY
 

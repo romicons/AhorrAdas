@@ -33,11 +33,11 @@ const updateOperations = () => {
 //  GENERATE TABLE OF OPERATIONS
 
 const createOperationsTable = () => {
-    const tableOfOperations = document.getElementById("operations-table");
-    const savedOperations = validateLocalStorage("operations", operations);
-    tableOfOperations.innerHTML = "";
-    if (savedOperations && savedOperations.length > 0) {
-      tableOfOperations.innerHTML += `
+  const tableOfOperations = document.getElementById("operations-table");
+  const savedOperations = validateLocalStorage("operations", operations);
+  tableOfOperations.innerHTML = "";
+  if (savedOperations && savedOperations.length > 0) {
+    tableOfOperations.innerHTML += `
            <thead>
              <tr class="border-b-2 border-light dark:border-dark flex justify-around">
                <th class="w-1/5 py-1">Descripción</th>
@@ -50,19 +50,20 @@ const createOperationsTable = () => {
            <tbody id="operations-table-body">
            </tbody>
            `;
-  
-      for (let operation of savedOperations) {
-        const dateInput = document.getElementById("date-operation");
-        const operationDate = dateInput.value;
-        const formattedDate = new Date(operationDate);
-        const formattedDateStr = `${formattedDate.getFullYear()}-${
-          formattedDate.getMonth() + 1
-        }-${formattedDate.getDate()}`;
 
-        const amountType = operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
-        const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
-        const operationBody = document.getElementById("operations-table-body");
-        operationBody.innerHTML += `
+    for (let operation of savedOperations) {
+      const dateInput = document.getElementById("date-operation");
+      const operationDate = dateInput.value;
+      const formattedDate = new Date(operationDate);
+      const formattedDateStr = `${formattedDate.getFullYear()}-${
+        formattedDate.getMonth() + 1
+      }-${formattedDate.getDate()}`;
+
+      const amountType =
+        operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
+      const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
+      const operationBody = document.getElementById("operations-table-body");
+      operationBody.innerHTML += `
           <tr class="flex justify-between items-center py-1">
             <td class="w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.description}</td>
             <td class="w-1/5 text-center px-2 py-1 rounded font-bold ${amountType}">${amountSign}${operation.amount}</td>
@@ -76,10 +77,9 @@ const createOperationsTable = () => {
                 <i class="fa-solid fa-pen"></i>
               </button>
             </td>
-          </tr>`
-          ;
-      }
-    } else {
+          </tr>`;
+    }
+  } else {
     document.getElementById(
       `no-operations`
     ).innerHTML = `<div class="flex py-4">
@@ -297,5 +297,3 @@ const createOperationsTable = () => {
             </div>`;
   }
 };
-
-//    FUNCTION OF DATE

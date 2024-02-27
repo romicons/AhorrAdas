@@ -29,6 +29,7 @@ const createCategoriesTable = () => {
   const tableOfCategories = document.getElementById("categories-table-body");
   tableOfCategories.innerHTML = "";
   const savedCategories = validateLocalStorage("categories", categories);
+  console.log(savedCategories)
   if (savedCategories && savedCategories.length > 0) {
     for (let category of savedCategories) {
       tableOfCategories.innerHTML += `
@@ -53,7 +54,8 @@ const createCategoriesTable = () => {
                 </tr>
             `;
     }
-    linkCategoriesWithSelect(savedCategories);
+    linkCategoriesWithSelect();
+     console.log(savedCategories);
     editCategoryEvent();
     deleteCategoryEvent();
   } else {
@@ -87,14 +89,15 @@ const createCategory = (name) => {
 
 //     CONECT CATEGORIES WITH THE SELECT OF CATEGORY OPERATIONS
 
-const linkCategoriesWithSelect = (categories) => {
+const linkCategoriesWithSelect = () => {
   const categorySelect = document.getElementById(`category-operation`);
-  for (let category of categories) {
-    categorySelect.innerHTML += `<option value="${category.id}">${category.name}</option>`;
+  const savedCategories = validateLocalStorage("categories", categories);
+  categorySelect.innerHTML= ``;
+  for (let category of savedCategories) {
+    categorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
   }
   console.log(`Estoy conectando tus categorias`);
 };
-
 
 
 //      EDIT CATEGORY

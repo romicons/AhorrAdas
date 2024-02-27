@@ -1,4 +1,4 @@
-//      CREATE DEFAULT CATEGORIES 
+//      DEFAULT CATEGORIES 
 
 const categories = [
     {
@@ -24,6 +24,7 @@ const categories = [
 ];
 
 // GENERATE TABLE OF CATEGORIES
+
 const createCategoriesTable = () => {
     const tableOfCategories = document.getElementById("categories-table-body");
     tableOfCategories.innerHTML = "";
@@ -52,6 +53,10 @@ const createCategoriesTable = () => {
                 </tr>
             `;
         }
+
+        editCategoryEvent();
+        deleteCategoryEvent();
+
     } else {
         // Si no hay categorías guardadas, mostrar un mensaje o realizar alguna acción
         //DESPUES LO ESTILIZAMOS BIEN
@@ -59,65 +64,57 @@ const createCategoriesTable = () => {
     }
 };
 
-
 //      RETURN CATEGORIES FROM LOCAL STORAGE
 
 const getCategories = () => {
     return JSON.parse(localStorage.getItem('categories'))
-}
+};
 
 //      UPDATE CATEGORIES
 
 const updateCategories = (categories) => {
     localStorage.setItem('categories', JSON.stringify(categories));
-    console.log('estoy updateando tus categorias', categories)
 };
 
 //      CREATE CATEGORY
 
 const createCategory = (name) => {
-        let savedCategories = getCategories(); 
-        let newCategory = { id: uuidv4(), name: name };
-        savedCategories.push(newCategory);
-        updateCategories(savedCategories); 
-        createCategoriesTable(); 
-
-for (let btn of editCategoryBtns) {
-    btn.addEventListener('click', (e) => {
-        console.log(e.target.id)
-        updateCategories();
-        const seekId = categories.find(element => element.id === e.target.id);
-        console.log(seekId);
-        setStyleFlex('rename-category');
-        setStyleNone('categories');
-        document.getElementById('edit-category-name').value = seekId.name;
-    }
-)};
-
-for (let btn of deleteCategoryBtns) {
-    btn.addEventListener('click', (e) => {
-        setStyleFlex('delete-category');
-        setStyleNone('categories');
-        console.log(e.target.id)
-        const seekId = categories.find(element => element.id === e.target.id);
-        console.log(seekId);
-        document.getElementById('category-name').innerHTML = seekId.name;
-    });
-};
+    let savedCategories = getCategories(); 
+    let newCategory = { id: uuidv4(), name: name };
+    savedCategories.push(newCategory);
+    updateCategories(savedCategories); 
+    createCategoriesTable(); 
 };
 
-//     EDIT CATEGORIES
+//      EDIT CATEGORY
 
-const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
+const editCategoryEvent = () => {
+    const editCategoryBtns = document.getElementsByClassName('edit-category-btn');
+    const savedCategories = validateLocalStorage('categories', categories);
+    for (let btn of editCategoryBtns) {
+        btn.addEventListener('click', (e) => {
+            const category = seekId(savedCategories, e.target.id);
+                if (category) {
+                    document.getElementById('edit-category-name').value = category.name;
+                    setStyleFlex('rename-category');
+                    setStyleNone('categories');
+                };
+        })};
+};
 
 //      DELETE CATEGORY
 
-const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
-/*
-const deleteCategory = (id) => {
-    let savedCategories = getCategories(); 
-    let updatedCategories = savedCategories.filter(category => category.id !== id);
-    updateCategories(updatedCategories); 
-    createCategoriesTable();
+const deleteCategoryEvent = () => {
+    const deleteCategoryBtns = document.getElementsByClassName('delete-category-btn');
+    const savedCategories = validateLocalStorage('categories', categories);
+    for (let btn of deleteCategoryBtns) {
+        btn.addEventListener('click', (e) => {
+            const category = seekId(savedCategories, e.target.id);
+            if (category) {
+                document.getElementById('category-name').innerHTML = category.name;
+                setStyleFlex('delete-category');
+                setStyleNone('categories');
+            }
+        });
+    };
 };
-*/

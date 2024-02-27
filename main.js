@@ -90,7 +90,7 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
     let operationAmount = operationAmountInput.value.trim();
     let operationCategoryValue = operationCategory.value;
     let typeOperationValue = typeOperation.value;
-    let operationDateValue = newDate;
+    let operationDateValue = operationDate.value;
   
     if (operationDescriptionValue === "") {
       error(
@@ -127,10 +127,6 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
         operationDescription.value = '';
         operationAmountInput.value = '';
         operationDate.value = '';
-        // Ocultar los mensajes de error si hubiera alguno visible
-        hideError(operationDescription);
-        hideError(operationAmountInput);
-        hideError(operationDate);
         setStyleNone('new-operation');
         setStyleFlex('balance-section')
       }

@@ -33,53 +33,54 @@ const updateOperations = () => {
 //  GENERATE TABLE OF OPERATIONS
 
 const createOperationsTable = () => {
-  const tableOfOperations = document.getElementById("operations-table");
-  tableOfOperations.innerHTML = "";
-  const savedOperations = validateLocalStorage("operations", operations);
-  if (savedOperations && savedOperations.length > 0) {
-    tableOfOperations.innerHTML += `
-         <thead>
-           <tr class="border-b-2 border-light dark:border-dark flex justify-between	">
-             <th class="py-1">Descripción</th>
-             <th class="py-1">Monto</th>
-             <th class="py-1">Tipo</th>
-             <th class="py-1">Categoría</th>
-             <th class="py-1">Fecha</th>
-             <th class="py-1">Acciones</th>
-           </tr>
-         </thead>`;
-    for (let operation of savedOperations) {
-      //     CREATE DATE FOR OPERATION
-      const dateInput = document.getElementById("date-operation");
-      const operationDate = dateInput.value;
-      const formattedDate = new Date(operationDate);
-      const formattedDateStr = `${formattedDate.getFullYear()}-${
-        formattedDate.getMonth() + 1
-      }-${formattedDate.getDate()}`;
+    const tableOfOperations = document.getElementById("operations-table");
+    const savedOperations = validateLocalStorage("operations", operations);
+    tableOfOperations.innerHTML = "";
+  
+    if (savedOperations && savedOperations.length > 0) {
       tableOfOperations.innerHTML += `
-                <tr class="flex justify-between items-center py-1">
-                    <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.description}</td>
-                    <td class="text-center px-2 py-1 rounded text-light font-bold">${operation.amount}</td>
-                    <td class="text-center px-2 py-1 rounded text-light dark:text-dark font-bold">${operation.type}</td>
-                    <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.category}</td>
-                    <td class="text-red-600">${operation.type}</td>
-                    <td class="text-center px-2 py-1 rounded text-light dark:text-light font-bold">${formattedDateStr}</td> <!-- Mostrando la fecha formateada -->
-                    <td class="flex gap-2 tablet:gap-5 justify-end">
-                        <button
-                            class="delete-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                            id="${operation.id}">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                        <button
-                            class="edit-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                            id="${operation.id}" >
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
-    }
-  } else {
+           <thead>
+             <tr class="border-b-2 border-light dark:border-dark flex justify-around">
+               <th class="w-1/5 py-1">Descripción</th>
+               <th class="w-1/5 py-1">Monto</th>
+               <th class="w-1/5 py-1">Categoría</th>
+               <th class="w-1/5 py-1">Fecha</th>
+               <th class="w-1/5 py-1 flex justify-center">Acciones</th>
+             </tr>
+           </thead>
+           <tbody id="operations-table-body">
+           </tbody>
+           `;
+  
+      for (let operation of savedOperations) {
+        const dateInput = document.getElementById("date-operation");
+        const operationDate = dateInput.value;
+        const formattedDate = new Date(operationDate);
+        const formattedDateStr = `${formattedDate.getFullYear()}-${
+          formattedDate.getMonth() + 1
+        }-${formattedDate.getDate()}`;
+
+        const amountType = operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
+        const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
+        const operationBody = document.getElementById("operations-table-body");
+        operationBody.innerHTML += `
+          <tr class="flex justify-between items-center py-1">
+            <td class="w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.description}</td>
+            <td class="w-1/5 text-center px-2 py-1 rounded font-bold ${amountType}">${amountSign}${operation.amount}</td>
+            <td class="w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.category}</td>
+            <td class="w-1/5 text-center px-2 py-1 rounded text-light dark:text-light font-bold">${formattedDateStr}</td>
+            <td class="w-1/5 flex gap-2 justify-center">
+              <button class="delete-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              <button class="edit-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+            </td>
+          </tr>`
+          ;
+      }
+    } else {
     document.getElementById(
       `no-operations`
     ).innerHTML = `<div class="flex py-4">

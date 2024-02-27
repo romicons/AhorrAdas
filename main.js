@@ -75,8 +75,6 @@ document.getElementById('close-new-operation').addEventListener('click', () => {
     setStyleFlex('balance-section');
 });
 
-
-
 //      SAVE NEW OPERATION
 
 document.getElementById("add-new-operation").addEventListener("click", () => {
@@ -133,7 +131,6 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
     }
 });
 
-
 document.getElementById(`description-operation`).addEventListener("input", () => {
   const newOperationInput = document.getElementById("description-operation");
   const newOperation = newOperationInput.value;
@@ -149,8 +146,6 @@ document.getElementById(`operation-amount`).addEventListener("input", () => {
       hideError(valueNewOperationInput);
     }
 });
-
-
 
 /*      ESTOS BOTONES TODAVIA NO EXISTEN
 
@@ -220,8 +215,7 @@ document.getElementById('add-category').addEventListener('input', () => {
 //      RENAME CATEGORY 
 
 document.getElementById('save-edit-category').addEventListener('click', () => {
-    let newCategoryName = document.getElementById('edit-category-name').value;
-    editCategory({newCategoryName});
+    
     setStyleFlex('categories');
     setStyleNone('rename-category');
 });

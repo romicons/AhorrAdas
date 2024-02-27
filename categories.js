@@ -102,6 +102,32 @@ const editCategoryEvent = () => {
         })};
 };
 
+//      RENAME CATEGORY
+/*
+const renameCategory = () => {
+    const categoryNameInput = document.getElementById('edit-category-name');
+    const category = seekId(savedCategories, target.id);
+    const newCategoryName = categoryNameInput.value.trim();
+    if (newCategoryName === '') {
+        categoryNameInput.classList.add('outline', 'outline-red-600', 'outline-2');
+        error(categoryNameInput, 'Proporciona un nuevo nombre para tu categoría por favor.');
+    } else {
+        const categoryExists = categories.some(category => category.name === newCategoryName);
+        if (categoryExists) {
+            error(categoryNameInput, 'Esta categoría ya existe.');
+        } else {   
+            category.name = newCategoryName;
+        }
+    }
+};*/
+
+const renameCategory = () => {
+    const categoryNameInput = document.getElementById('edit-category-name');
+    const newCategoryName = categoryNameInput.value.trim();
+    const category = seekId(savedCategories, target.id);
+    category.name = newCategoryName;
+}
+
 //      DELETE CATEGORY
 
 const deleteCategoryEvent = () => {

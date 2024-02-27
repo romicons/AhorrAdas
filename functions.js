@@ -14,7 +14,16 @@ const setStyleNone = (element) => {
 const setStyleFlex = (element) => {
     document.getElementById(element).classList.remove('hidden');
     document.getElementById(element).classList.add('flex');
-}
+};
+
+const toggleMobileNav = () => {
+    document.getElementById('nav-items').classList.toggle('hidden');
+    if (document.getElementById('nav-items').classList.contains('hidden')) {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-bars"></i>';
+    } else {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    };
+};
 
 //      VALIDATE LOCAL STORAGE
 

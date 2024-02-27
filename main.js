@@ -26,6 +26,7 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleNone('rename-category');
     setStyleNone('delete-category');
+    toggleMobileNav();
 });
 
 //      OPEN CATEGORIES WINDOW
@@ -37,6 +38,7 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('new-operation');
     setStyleNone('rename-category');
     setStyleNone('delete-category');
+    toggleMobileNav();
 });
 
 //      OPEN REPORTS WINDOW
@@ -48,6 +50,7 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleNone('rename-category');
     setStyleNone('delete-category');
+    toggleMobileNav();
 });
 
 //      HIDE FILTERS
@@ -74,8 +77,6 @@ document.getElementById('close-new-operation').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleFlex('balance-section');
 });
-
-
 
 //      SAVE NEW OPERATION
 
@@ -132,7 +133,6 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
       }
     }
 });
-
 
 document.getElementById(`description-operation`).addEventListener("input", () => {
   const newOperationInput = document.getElementById("description-operation");
@@ -264,14 +264,4 @@ document.getElementById('to-new-operation-btn').addEventListener('click', () => 
 
 //      OPEN NAV MENU IN MOBILE
 
-document.getElementById('nav-btn').addEventListener('click', () => {
-    document.getElementById('nav-items').classList.toggle('hidden');
-    if (document.getElementById('nav-items').classList.contains('hidden')) {
-        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-bars"></i>';
-    } else {
-        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    }
-})
-
-
-
+document.getElementById('nav-btn').addEventListener('click', (toggleMobileNav));

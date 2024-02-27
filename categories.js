@@ -36,14 +36,14 @@ const createCategoriesTable = () => {
                     <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${category.name}</td>
                     <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
                         <button
-                            class="delete-category-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                            class="delete-category-btn flex items-center rounded py-1 px-2 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
                             id="${category.id}"
                         >
                             <i class="fa-solid fa-trash"></i>
                             Eliminar
                         </button>
                         <button
-                            class="edit-category-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                            class="edit-category-btn flex items-center rounded py-1 px-3 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
                             id="${category.id}" 
                         >
                             <i class="fa-solid fa-pen"></i>

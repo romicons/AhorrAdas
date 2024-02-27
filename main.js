@@ -90,7 +90,7 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
     let operationAmount = operationAmountInput.value.trim();
     let operationCategoryValue = operationCategory.value;
     let typeOperationValue = typeOperation.value;
-    let operationDateValue = operationDate.value;
+    let operationDateValue = newDate;
   
     if (operationDescriptionValue === "") {
       error(
@@ -100,7 +100,7 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
     } else if (isNaN(operationAmount) || operationAmount === "") {
       error(
         operationAmountInput,
-        "Proporciona un valor numérico para la cantidad de la operación."
+        "Proporciona un valor numérico por favor."
       );
     } else if (operationDateValue === 'mm/dd/yyyy' || operationDateValue === '') {
       error(
@@ -120,9 +120,9 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
         createOperation(
           operationDescriptionValue,
           operationAmount,
-          operationCategoryValue,
           typeOperationValue,
-          operationDateValue
+          operationCategoryValue,
+          operationDateValue,
         );
         operationDescription.value = '';
         operationAmountInput.value = '';
@@ -221,19 +221,6 @@ document.getElementById('add-category').addEventListener('input', () => {
     }
 });
 
-//      EDIT CATEGORY
-
-for (let btn of editCategoryBtns) {
-    btn.addEventListener('click', (e) => {
-        console.log(e.target.id)
-        const seekId = categories.find(element => element.id === e.target.id);
-        console.log(seekId);
-        setStyleFlex('rename-category');
-        setStyleNone('categories');
-        document.getElementById('edit-category-name').value = seekId.name;
-    }
-)};
-
 //      RENAME CATEGORY 
 
 document.getElementById('save-edit-category').addEventListener('click', () => {
@@ -243,27 +230,12 @@ document.getElementById('save-edit-category').addEventListener('click', () => {
     setStyleNone('rename-category');
 });
 
-
 //      CANCEL EDIT CATEGORY
 
 document.getElementById('cancel-edit-category').addEventListener('click', () => {
     setStyleNone('rename-category');
     setStyleFlex('categories');
 });
-
-
-//      DELETE CATEGORY
-
-for (let btn of deleteCategoryBtns) {
-    btn.addEventListener('click', (e) => {
-        console.log(e.target.id)
-        const seekId = categories.find(element => element.id === e.target.id);
-        console.log(seekId);
-        setStyleFlex('delete-category');
-        setStyleNone('categories');
-        document.getElementById('category-name').innerHTML = seekId.name;
-    });
-};
 
 //      CANCEL DELETE CATEGORY
 

@@ -2,12 +2,13 @@ const operations = [];
 
 //    CREATE NEW OPERATION
 
-const createOperation = (description, amount, category, date) => {
+const createOperation = (description, amount, type, category, date) => {
   let savedOperations = getOperations();
   let newOperation = {
     id: uuidv4(),
     description: description,
     amount: amount,
+    type: type,
     category: category,
     date: date,
   };
@@ -52,8 +53,9 @@ const createOperationsTable = () => {
                 <tr class="flex justify-between items-center py-1">
                     <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.description}</td>
                     <td class="text-center px-2 py-1 rounded text-light font-bold">${operation.amount}</td>
+                    <td class="text-center px-2 py-1 rounded text-light dark:text-dark font-bold">${operation.type}</td>
                     <td class="text-center bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${operation.category}</td>
-                    <td class="text-center px-2 py-1 rounded text-light font-bold">${operation.date}</td>
+                    <td class="text-center px-2 py-1 rounded text-light dark:text-light font-bold">${operation.date}</td>
                     <td class="flex gap-2 tablet:gap-5 justify-end">
                         <button
                             class="delete-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"

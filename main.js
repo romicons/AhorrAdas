@@ -1,4 +1,8 @@
-//      ACTIVATE DARK/LIGHT MODE
+//                      INITIALIZE APLICATION
+
+initializeApp();
+
+//                      ACTIVATE DARK/LIGHT MODE
 
 const darkModeToggle = document.querySelector('#btn-darkmode');
 
@@ -20,6 +24,8 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('categories');
     setStyleNone('reports');
     setStyleNone('new-operation');
+    setStyleNone('rename-category');
+    setStyleNone('delete-category');
 });
 
 //      OPEN CATEGORIES WINDOW
@@ -29,6 +35,8 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('balance-section');
     setStyleNone('reports');
     setStyleNone('new-operation');
+    setStyleNone('rename-category');
+    setStyleNone('delete-category');
 });
 
 //      OPEN REPORTS WINDOW
@@ -38,6 +46,8 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('balance-section');
     setStyleNone('categories');
     setStyleNone('new-operation');
+    setStyleNone('rename-category');
+    setStyleNone('delete-category');
 });
 
 //      HIDE FILTERS
@@ -65,12 +75,82 @@ document.getElementById('close-new-operation').addEventListener('click', () => {
     setStyleFlex('balance-section');
 });
 
+
+
 //      SAVE NEW OPERATION
 
-document.getElementById('add-new-operation').addEventListener('click', () => {
-    setStyleNone('new-operation');
-    setStyleFlex('balance-section');
+document.getElementById("add-new-operation").addEventListener("click", () => {
+    let operationDescription = document.getElementById(`description-operation`);
+    let operationAmountInput = document.getElementById("operation-amount");
+    let operationCategory = document.getElementById(`category-operation`);
+    let typeOperation = document.getElementById(`type-operation`);
+    let operationDate = document.getElementById(`date-operation`);
+  
+    let operationDescriptionValue = operationDescription.value.trim();
+    let operationAmount = operationAmountInput.value.trim();
+    let operationCategoryValue = operationCategory.value;
+    let typeOperationValue = typeOperation.value;
+    let operationDateValue = operationDate.value;
+  
+    if (operationDescriptionValue === "") {
+      error(
+        operationDescription,
+        "Proporciona una descripción para tu nueva operación por favor."
+      );
+    } else if (isNaN(operationAmount) || operationAmount === "") {
+      error(
+        operationAmountInput,
+        "Proporciona un valor numérico por favor."
+      );
+    } else if (operationDateValue === 'mm/dd/yyyy' || operationDateValue === '') {
+      error(
+        operationDate,
+        'Proporciona la fecha en que realizaste esta operación por favor.'
+      );
+    } else {
+      const operationExists = operations.some(
+        (operation) => operation.description === operationDescriptionValue
+      );
+      if (operationExists) {
+        error(
+          operationDescription,
+          "Esta operación ya existe."
+        );
+      } else {
+        createOperation(
+          operationDescriptionValue,
+          operationAmount,
+          typeOperationValue,
+          operationCategoryValue,
+          operationDateValue,
+        );
+        operationDescription.value = '';
+        operationAmountInput.value = '';
+        operationDate.value = '';
+        setStyleNone('new-operation');
+        setStyleFlex('balance-section')
+      }
+    }
 });
+
+
+document.getElementById(`description-operation`).addEventListener("input", () => {
+  const newOperationInput = document.getElementById("description-operation");
+  const newOperation = newOperationInput.value;
+  if (newOperation !== "") {
+    hideError(newOperationInput);
+  }
+});
+
+document.getElementById(`operation-amount`).addEventListener("input", () => {
+    const valueNewOperationInput = document.getElementById('operation-amount');
+    const newOperation =  valueNewOperationInput.value;
+    if (!isNaN(newOperation) && newOperation !== "") {
+      hideError(valueNewOperationInput);
+    }
+});
+
+
 
 /*      ESTOS BOTONES TODAVIA NO EXISTEN
 
@@ -104,26 +184,69 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
     setStyleFlex('balance-section');
 });
 
-/*  VAN A FUNCIONAR CUANDO ESTE HECHA LA TABLA
-
 //      ADD NEW CATEGORY
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
+    const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value.trim();
+    if (newCategory === "") {
+        newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+        error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
+        document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+        document.getElementById('add-category-btn-col').classList.add('items-center')
+    } else {
+        const categoryExists = categories.some(category => category.name === newCategory);
+        if (categoryExists) {
+            error(newCategoryInput, 'Esta categoría ya existe.');
+            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+            document.getElementById('add-category-btn-col').classList.add('items-center')
+        } else {
+            createCategory(newCategory);
+            newCategoryInput.value = "";
+        }
+    }
+});
 
-})
+document.getElementById('add-category').addEventListener('input', () => {
+    const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value;
+    if (newCategory !== "") {
+        hideError(newCategoryInput);
+        document.getElementById('add-category-btn-col').classList.remove('items-center')
+        document.getElementById('add-category-btn-col').classList.add('tablet:items-end')
+    }
+});
 
-//      DELET CATEGORY
+//      RENAME CATEGORY 
 
-document.getElementById('delete-operation-btn').addEventListener('click', () => {
-    
-})
+document.getElementById('save-edit-category').addEventListener('click', () => {
+    let newCategoryName = document.getElementById('edit-category-name').value;
+    editCategory({newCategoryName});
+    setStyleFlex('categories');
+    setStyleNone('rename-category');
+});
 
-//      EDIT CATEGORY
+//      CANCEL EDIT CATEGORY
 
-document.getElementById('edit-operation-btn').addEventListener('click', () => {
-    
-})
-*/
+document.getElementById('cancel-edit-category').addEventListener('click', () => {
+    setStyleNone('rename-category');
+    setStyleFlex('categories');
+});
+
+//      CANCEL DELETE CATEGORY
+
+document.getElementById('cancel-delete-category').addEventListener('click', () => {
+    setStyleNone('delete-category');
+    setStyleFlex('categories');
+});
+
+//      CONFIRM DELETE CATEGORY
+
+document.getElementById('confirm-delete-category').addEventListener('click', () => {
+    setStyleNone('delete-category');
+    setStyleFlex('categories');
+    //AÑADIR LA FUNCION DE GUARDAR LOS CAMBIOS
+});
 
 //      CLOSE REPORTS WINDOW
 
@@ -149,3 +272,6 @@ document.getElementById('nav-btn').addEventListener('click', () => {
         document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
     }
 })
+
+
+

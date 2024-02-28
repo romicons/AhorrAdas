@@ -61,7 +61,6 @@ const hideError = (field) => {
     let inputElement = document.getElementById(`${field.id}`);
     inputElement.classList.remove('outline', 'outline-red-600', 'outline-2')
     if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
-
         errorText.remove();
     }
 };

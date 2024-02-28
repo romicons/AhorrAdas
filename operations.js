@@ -65,15 +65,15 @@ const createOperationsTable = () => {
       const operationBody = document.getElementById("operations-table-body");
       operationBody.innerHTML += `
           <tr class="flex justify-between items-center py-1">
-            <td class="w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.description}</td>
-            <td class="w-1/5 text-center px-2 py-1 rounded font-bold text-xl tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
-            <td class="w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.category}</td>
-            <td class="w-1/5 text-center px-2 py-1 rounded text-light dark:text-dark font-bold hidden tablet:flex justify-center">${formattedDateStr}</td>
-            <td class="w-1/5 flex gap-2 justify-center">
-              <button class="delete-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
+            <td class="w-1/4 tablet:w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.description}</td>
+            <td class="w-1/4 tablet:w-1/5 text-center px-1 py-1 rounded font-bold text-xl tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
+            <td class="w-1/4 tablet:w-1/5 text-center bg-primary dark:bg-secondary px-1 py-1 rounded text-light font-bold">${operation.category}</td>
+            <td class="tablet:w-1/5 text-center px-2 py-1 rounded text-light dark:text-dark font-bold hidden tablet:flex justify-center">${formattedDateStr}</td>
+            <td class="w-1/4 tablet:w-1/5 flex gap-2 justify-center">
+              <button class="delete-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
                 <i class="fa-solid fa-trash"></i>
               </button>
-              <button class="edit-operation-btn flex items-center rounded py-1 px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
+              <button class="edit-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
                 <i class="fa-solid fa-pen"></i>
               </button>
             </td>

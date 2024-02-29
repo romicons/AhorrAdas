@@ -38,8 +38,8 @@ const createOperationsTable = () => {
   if (savedOperations && savedOperations.length > 0) {
     setStyleNone('no-operations');
     tableOfOperations.innerHTML += `
-           <thead>
-             <tr class="border-b-2 border-light dark:border-dark justify-around hidden tablet:flex">
+           <thead class="sticky top-0 bg-primary dark:bg-secondary text-light z-50">
+             <tr class="justify-around hidden tablet:flex">
                <th class="w-1/5 py-1">Descripción</th>
                <th class="w-1/5 py-1">Monto</th>
                <th class="w-1/5 py-1">Categoría</th>
@@ -47,7 +47,7 @@ const createOperationsTable = () => {
                <th class="w-1/5 py-1 flex justify-center">Acciones</th>
              </tr>
            </thead>
-           <tbody id="operations-table-body">
+           <tbody id="operations-table-body" class="flex flex-col tablet:pt-7">
            </tbody>
            `;
 
@@ -64,12 +64,12 @@ const createOperationsTable = () => {
       const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
       const operationBody = document.getElementById("operations-table-body");
       operationBody.innerHTML += `
-          <tr class="flex justify-between items-center gap-1">
+          <tr class="flex justify-between items-center gap-1 pt-3">
             <td class="w-1/4 tablet:w-1/5 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${operation.description}</td>
             <td class="w-1/4 tablet:w-1/5 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
             <td class="w-1/4 tablet:w-1/5 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${operation.category}</td>
             <td class="tablet:w-1/5 text-center px-2 py-1 rounded text-light dark:text-dark font-bold hidden tablet:flex justify-center">${formattedDateStr}</td>
-            <td class="w-1/4 tablet:w-1/5 flex gap-1 justify-center">
+            <td class="w-1/4 tablet:w-1/5 flex gap-1 justify-end tablet:justify-center">
               <button class="delete-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
                 <i class="fa-solid fa-trash"></i>
               </button>

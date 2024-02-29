@@ -267,9 +267,9 @@
 
         <section
           id="operations"
-          class="shadow-md w-11/12 tablet:w-2/3 rounded-lg py-5 px-4 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]"
+          class="shadow-md w-11/12 tablet:w-2/3 max-h-full rounded-lg py-5 px-4 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]"
         >
-          <div class="flex columns-2 justify-between gap-2 items-center">
+          <div class="flex columns-2 justify-between gap-2 items-center pb-5">
             <div>
               <h2 class="font-sans text-xl">Operaciones</h2>
             </div>
@@ -282,10 +282,8 @@
               </button>
             </div>
           </div>
-          <div class="flex flex-col justify-center items-center py-3">
+          <div class="flex flex-col justify-center items-center overflow-y-auto tablet:max-h-[26rem]">
             <table id="operations-table" class="table table-fixed w-full py-2 px-1 max-h-full">
-                  <tbody id="operations-table-body">
-                  </tbody>
             </table>
             <div class="hidden flex-col justify-center items-center" id="no-operations">
               <div class="flex py-4">

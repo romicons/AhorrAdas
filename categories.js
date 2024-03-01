@@ -85,14 +85,21 @@ const createCategory = (name) => {
   createCategoriesTable();
 };
 
-//     CONECT CATEGORIES WITH THE SELECT OF CATEGORY OPERATIONS
+//     CONECT CATEGORIES WITH THE SELECTS OF CATEGORIES
 
 const linkCategoriesWithSelect = () => {
-  const categorySelect = document.getElementById(`category-operation`);
+  const categoriesSelect = document.getElementsByClassName('category-select');
   const savedCategories = validateLocalStorage("categories", categories);
-  categorySelect.innerHTML= ``;
-  for (let category of savedCategories) {
-    categorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
+  for (let select of categoriesSelect) {
+    if (select.classList.contains('filter')) {
+      select.innerHTML = '';
+      select.innerHTML += `<option value="Todas">Todas</option>`;
+    } else {
+      select.innerHTML = '';
+    }
+    for (let category of savedCategories) {
+      select.innerHTML += `<option value="${category.name}">${category.name}</option>`;
+    }
   }
 };
 

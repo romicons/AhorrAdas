@@ -78,8 +78,42 @@ const createOperationsTable = () => {
               </button>
             </td>
           </tr>`;
-    }
+    };
+    editOperationEvent();
   } else {
     setStyleFlex('no-operations');
   };
+};
+
+//      EDIT OPERATION
+
+const editOperationEvent = () => {
+  const editOperationBtns = document.getElementsByClassName("edit-operation-btn");
+  const savedOperations = validateLocalStorage("operations", operations);
+  for (let btn of editOperationBtns) {
+    btn.addEventListener("click", (e) => {
+      const operation = seekId(savedOperations, e.target.id);
+      if (operation) {
+        document.getElementById("edit-description-operation").value = operation.description;
+        document.getElementById("edit-operation-amount").value = operation.amount;
+        document.getElementById("edit-type-operation").value = operation.type;
+        document.getElementById("edit-category-operation").value = operation.category;
+        document.getElementById("edit-date-operation").value = operation.date;
+        setStyleFlex("edit-operation");
+        setStyleNone("balance-section");
+      }
+    });
+  }
+};
+
+const newCategoryInput = document.getElementById('add-category');
+    const newCategory = newCategoryInput.value.trim();
+        const categoryExists = categories.some(category => category.name === newCategory);
+        if (categoryExists) {
+            error(newCategoryInput, 'Esta categoría ya existe.');
+            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+            document.getElementById('add-category-btn-col').classList.add('items-center')
+        } else {
+            createCategory(newCategory);
+            newCategoryInput.value = "";
 }

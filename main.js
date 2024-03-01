@@ -26,6 +26,7 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleNone('rename-category');
     setStyleNone('delete-category');
+    setStyleNone('edit-operation');
     toggleMobileNav();
 });
 
@@ -38,6 +39,8 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('new-operation');
     setStyleNone('rename-category');
     setStyleNone('delete-category');
+    setStyleNone('delete-category');
+    setStyleNone('edit-operation');
     toggleMobileNav();
 });
 
@@ -50,6 +53,8 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleNone('rename-category');
     setStyleNone('delete-category');
+    setStyleNone('delete-category');
+    setStyleNone('edit-operation');
     toggleMobileNav();
 });
 
@@ -150,17 +155,6 @@ document.getElementById(`operation-amount`).addEventListener("input", () => {
     }
 });
 
-
-
-/*      ESTOS BOTONES TODAVIA NO EXISTEN
-
-//      EDIT OPERATION
-
-document.getElementById('edit-operation-btn').addEventListener('click', () => {
-    setStyleFlex('edit-operation');
-    setStyleNone('balance-section');
-})
-
 //      CANCEL EDIT OPERATION
 
 document.getElementById('close-edit-operation').addEventListener('click', () => {
@@ -169,12 +163,11 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 
 //      SAVE EDIT OPERATION
-
+/*
 document.getElementById('close-edit-operation').addEventListener('click', () => {
     setStyleNone('edit-operation');
     setStyleFlex('balance-section');
 });
-
 */
 
 //      CLOSE CATEGORIES WINDOW
@@ -189,12 +182,6 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 document.getElementById('add-category-btn').addEventListener('click', () => {
     const newCategoryInput = document.getElementById('add-category');
     const newCategory = newCategoryInput.value.trim();
-    if (newCategory === "") {
-        newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
-        error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
-        document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-        document.getElementById('add-category-btn-col').classList.add('items-center')
-    } else {
         const categoryExists = categories.some(category => category.name === newCategory);
         if (categoryExists) {
             error(newCategoryInput, 'Esta categoría ya existe.');
@@ -205,7 +192,7 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
             newCategoryInput.value = "";
         }
     }
-});
+);
 
 document.getElementById('add-category').addEventListener('input', () => {
     const newCategoryInput = document.getElementById('add-category');

@@ -205,6 +205,7 @@
             </div>
 
             <div id="filters-col" class="flex flex-col gap-2">
+
               <!-- INPUT FILTRO TIPO -->
 
               <label for="type-filters">Tipo</label>
@@ -224,14 +225,8 @@
               <select
                 name="categorias"
                 id="type-category"
-                class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+                class="category-select filter bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >
-                <option value="Todas">Todas</option>
-                <option value="Comida">Comida</option>
-                <option value="Servicio">Servicio</option>
-                <option value="Salidas">Salidas</option>
-                <option value="Educación">Educación</option>
-                <option value="Transporte">Transporte</option>
               </select>
 
               <!-- INPUT FILTRO FECHA-->
@@ -267,9 +262,9 @@
 
         <section
           id="operations"
-          class="shadow-md w-11/12 tablet:w-2/3 rounded-lg py-5 px-4 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]"
+          class="shadow-md w-11/12 tablet:w-2/3 max-h-full rounded-lg py-5 px-4 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf]"
         >
-          <div class="flex columns-2 justify-between gap-2 items-center">
+          <div class="flex columns-2 justify-between gap-2 items-center pb-5">
             <div>
               <h2 class="font-sans text-xl">Operaciones</h2>
             </div>
@@ -282,10 +277,8 @@
               </button>
             </div>
           </div>
-          <div class="flex flex-col justify-center items-center py-3">
+          <div class="flex flex-col justify-center items-center overflow-y-auto tablet:max-h-[26rem]">
             <table id="operations-table" class="table table-fixed w-full py-2 px-1 max-h-full">
-                  <tbody id="operations-table-body">
-                  </tbody>
             </table>
             <div class="hidden flex-col justify-center items-center" id="no-operations">
               <div class="flex py-4">
@@ -551,7 +544,7 @@
         <select
           name="categoria-operacion"
           id="category-operation"
-          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required
+          class="category-select bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required
         >
         </select>
 
@@ -584,7 +577,7 @@
 
         <section
             id="edit-operation"
-            class="hidden flex-col shadow-md w-11/12 tablet:w-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
+            class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
         >
             <h2 class="font-sans text-xl">Editar operación</h2>
 
@@ -599,10 +592,12 @@
 
         <!-- EDITAR MONTO DE OPERACIONES -->
 
-            <label for="edit-operation-amounth">Monto</label>
+            <label for="edit-operation-amount">Monto</label>
             <input
-            id="edit-operation-amounth"
-            type="number"
+            id="edit-operation-amount"
+            type="text"
+            minlength="1"
+            maxlength="9"
             value=""
             class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
             >
@@ -611,7 +606,6 @@
 
         <label for="edit-type-operation">Tipo</label>
         <select
-          name="tipo-operacion"
           id="edit-type-operation"
           class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
         >
@@ -623,15 +617,9 @@
 
         <label for="edit-category-operation">Categoría</label>
         <select
-          name="categoria-operacion"
           id="edit-category-operation"
-          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+          class="category-select bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
         >
-          <option value="Comida">Comida</option>
-          <option value="Servicios">Servicios</option>
-          <option value="Salidas">Salidas</option>
-          <option value="Educación">Educación</option>
-          <option value="Transporte">Transporte</option>
         </select>
 
         <!-- EDITAR FECHA DE OPERACIONES -->

@@ -47,7 +47,7 @@ const createOperationsTable = () => {
                <th class="w-1/5 py-1 flex justify-center">Acciones</th>
              </tr>
            </thead>
-           <tbody id="operations-table-body" class="flex flex-col tablet:pt-7">
+           <tbody id="operations-table-body" class="flex flex-col">
            </tbody>
            `;
 
@@ -80,6 +80,7 @@ const createOperationsTable = () => {
           </tr>`;
     };
     editOperationEvent();
+    deleteOperationEvent();
   } else {
     setStyleFlex('no-operations');
   };
@@ -92,8 +93,10 @@ const editOperationEvent = () => {
   const savedOperations = validateLocalStorage("operations", operations);
   for (let btn of editOperationBtns) {
     btn.addEventListener("click", (e) => {
+      console.log('soy el evento ejecutandose')
       const operation = seekId(savedOperations, e.target.id);
       if (operation) {
+        console.log('entre en el if porque encontre el id de tu operacion')
         document.getElementById("edit-description-operation").value = operation.description;
         document.getElementById("edit-operation-amount").value = operation.amount;
         document.getElementById("edit-type-operation").value = operation.type;
@@ -106,14 +109,21 @@ const editOperationEvent = () => {
   }
 };
 
-const newCategoryInput = document.getElementById('add-category');
-    const newCategory = newCategoryInput.value.trim();
-        const categoryExists = categories.some(category => category.name === newCategory);
-        if (categoryExists) {
-            error(newCategoryInput, 'Esta categoría ya existe.');
-            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-            document.getElementById('add-category-btn-col').classList.add('items-center')
-        } else {
-            createCategory(newCategory);
-            newCategoryInput.value = "";
-}
+//      DELETE OPERATION
+
+const deleteOperationEvent = () => {
+  const deleteOperationBtns = document.getElementsByClassName(
+    "delete-operation-btn"
+  );
+  const savedOperations = validateLocalStorage("operations", operations);
+  for (let btn of deleteOperationBtns) {
+    btn.addEventListener("click", (e) => {
+      const operation = seekId(savedOperations, e.target.id);
+      if (operation) {
+        document.getElementById("operation-name").innerHTML = operation.description;
+        setStyleFlex("delete-operation");
+        setStyleNone("balance-section");
+      }
+    });
+  }
+};

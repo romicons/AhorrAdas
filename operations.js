@@ -77,7 +77,7 @@ const createOperationsTable = () => {
                 <i class="fa-solid fa-pen"></i>
               </button>
             </td>
-          </tr>`;
+          </tr>`
     };
     editOperationEvent();
     deleteOperationEvent();

@@ -40,6 +40,7 @@ const validateLocalStorage = (key, defaultValue) => {
 //      FIND AN OBJECT FOR ITS ID
 
 const seekId = (array, id) => {
+    console.log('estoy buscando tu id')
     return array.find(element => element.id === id);
 }
 

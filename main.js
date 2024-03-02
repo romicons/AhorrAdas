@@ -27,6 +27,7 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('rename-category');
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
+    setStyleNone('delete-operation');
     toggleMobileNav();
 });
 
@@ -41,6 +42,7 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('delete-category');
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
+    setStyleNone('delete-operation');
     toggleMobileNav();
 });
 
@@ -55,6 +57,7 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('delete-category');
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
+    setStyleNone('delete-operation');
     toggleMobileNav();
 });
 
@@ -170,6 +173,13 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 */
 
+//    CANCEL DELETE OPERATION
+
+document.getElementById('cancel-delete-operation').addEventListener('click', () => {
+  setStyleNone('delete-operation');
+  setStyleFlex('balance-section');
+});
+
 //      CLOSE CATEGORIES WINDOW
 
 document.getElementById('close-categories-btn').addEventListener('click', () => {
@@ -180,28 +190,36 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 //      ADD NEW CATEGORY
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
-    const newCategoryInput = document.getElementById('add-category');
-    const newCategory = newCategoryInput.value.trim();
-        const categoryExists = categories.some(category => category.name === newCategory);
-        if (categoryExists) {
-            error(newCategoryInput, 'Esta categoría ya existe.');
-            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-            document.getElementById('add-category-btn-col').classList.add('items-center')
-        } else {
-            createCategory(newCategory);
-            newCategoryInput.value = "";
-        }
+  const newCategoryInput = document.getElementById('add-category');
+  const newCategory = newCategoryInput.value;
+  if (newCategory === "") {
+      newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+      error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
+      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+      document.getElementById('add-category-btn-col').classList.add('items-center')
+  } else {
+      const categoryExists = categories.some(category => category.name === newCategory);
+      if (categoryExists) {
+          newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
+          error(newCategoryInput, 'Esta categoría ya existe.');
+          document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+          document.getElementById('add-category-btn-col').classList.add('items-center')
+      } else {
+          createCategory(newCategory);
+          newCategoryInput.value = "";
+      }
     }
-);
+});
 
 document.getElementById('add-category').addEventListener('input', () => {
-    const newCategoryInput = document.getElementById('add-category');
-    const newCategory = newCategoryInput.value;
-    if (newCategory !== "") {
-        hideError(newCategoryInput);
-        document.getElementById('add-category-btn-col').classList.remove('items-center')
-        document.getElementById('add-category-btn-col').classList.add('tablet:items-end')
-    }
+  const newCategoryInput = document.getElementById('add-category');
+  const newCategory = newCategoryInput.value;
+  if (newCategory !== "") {
+      newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+      hideError(newCategoryInput);
+      document.getElementById('add-category-btn-col').classList.remove('items-center')
+      document.getElementById('add-category-btn-col').classList.add('tablet:items-end')
+  }
 });
 
 //      RENAME CATEGORY 

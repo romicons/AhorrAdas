@@ -37,6 +37,15 @@ const validateLocalStorage = (key, defaultValue) => {
     }
 };
 
+//      FORMAT DATE
+
+const formatDate = (dateString) => {
+    const formattedDate = new Date(dateString);
+    return `${formattedDate.getDate()}/${
+      formattedDate.getMonth() + 1
+    }/${formattedDate.getFullYear()}`;
+}
+
 //      FIND AN OBJECT FOR ITS ID
 
 const seekId = (array, id) => {

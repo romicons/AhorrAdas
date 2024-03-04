@@ -52,12 +52,7 @@ const createOperationsTable = () => {
            `;
 
     for (let operation of savedOperations) {
-      const dateInput = document.getElementById("date-operation");
-      const operationDate = dateInput.value;
-      const formattedDate = new Date(operationDate);
-      const formattedDateStr = `${formattedDate.getFullYear()}-${
-        formattedDate.getMonth() + 1
-      }-${formattedDate.getDate()}`;
+      const formattedDateStr = formatDate(operation.date);
 
       const amountType =
         operation.type === "Ganancia" ? "text-green-600" : "text-red-600";

@@ -4,53 +4,59 @@ const filterByType = () => {
     const typeOperation = document.getElementById('type-filter').value;
     const savedOperations = validateLocalStorage("operations", operations);
         if (typeOperation === 'Expense') {
-            return console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
+            console.log(savedOperations.filter((operation) => operation.type === "Gasto"));
+            return savedOperations.filter((operation) => operation.type === 'Gasto');
         }
         else if (typeOperation === 'Income') {
-            return console.log(savedOperations.filter((operation) => operation.type === 'Ganancia'));
+            console.log( savedOperations.filter((operation) => operation.type === "Ganancia"));
+            return savedOperations.filter((operation) => operation.type === 'Ganancia');
         }
        else {
            console.log(savedOperations);
+           return savedOperations
         }
 };
 
 
 const filterByCategory = () => {
-    console.log('soy tu filtro de categorias ejecutandose')
     const typeOperation = document.getElementById('category-type').value;
     const savedOperations = validateLocalStorage("operations", operations);
     for (let operation of savedOperations) {
         if (typeOperation === operation.category) {
-            console.log(`devuelvo operaciones con categoria ${operation.category}`);
-            return console.log(savedOperations.filter((operation) => operation.category === typeOperation));
+            console.log(savedOperations.filter((operation) => operation.category === typeOperation));
+            return savedOperations.filter((operation) => operation.category === typeOperation);
         }
     }
 };
 
-/*
-const filterByDate = () => {
-    const typeOperation = document.getElementById('type-category').value;
-    const savedOperations = validateLocalStorage("operations", operations);
-        if (typeOperation === 'Expense') {
-            console.log('devuelvo operaciones con tipo gasto');
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
-        }
-        else if (typeOperation === 'Income') {
-            console.log('devuelvo operaciones con tipo ganancia');
-            console.log(savedOperations.filter((operation) => operation.type === 'Ganancia'));
-        }
-       else {
-           console.log(savedOperations);
-        }
-};*/
 
+const filterOperationsFromDate = () => {
+  const fromDate = document.getElementById("operation-date-from").value;
+  const savedOperations = validateLocalStorage("operations", operations);
+  const filteredOperations = savedOperations.filter(
+    (operation) => operation.date >= fromDate
+  );
+  console.log(filteredOperations);
+  return filteredOperations;
+};
+
+
+const filterOperationsUntilDate = () => {
+  const untilDate = document.getElementById("operation-date-until").value;
+  const savedOperations = validateLocalStorage("operations", operations);
+  const filteredOperations = savedOperations.filter(
+    (operation) => operation.date <= untilDate
+  );
+  console.log(filteredOperations);
+  return filteredOperations;
+};
+
+ 
 const filterByOrder = () => {
-    console.log('soy tu funcion de filtro por orden ejecutandose')
     const typeOperation = document.getElementById('order-operation').value;
     const savedOperations = validateLocalStorage("operations", operations);
     const orderByAmount = (a, b) => {return a.amount - b.amount}
     const orderAlphabetycally = (a, b) => {
-        // Ordenar de la A a la Z
         if (a.description < b.description) {
             return -1;
         }
@@ -59,34 +65,40 @@ const filterByOrder = () => {
         }
         return 0;
     };
+    const orderByDate = (a,b) =>{
+        const dateA  = new Date(a.date)
+        const dateB = new Date(b.date)
+        return dateA.getTime() - dateB.getTime()
+    }
     
-
-        if (typeOperation === 'Newest') {
-            console.log('devuelvo la ultima operación');
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
-        }/*
-        else if (typeOperation === 'Oldest') {
-            console.log('devuelvo la operación más antigua');
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
-        }*/
-        else if (typeOperation === 'Lowest Amount') {
-            console.log('devuelvo la operación con el monto más bajo');
-            savedOperations.sort(orderByAmount)
-            return console.log(savedOperations)
-        }
-        else if (typeOperation === 'Highest Amount') {
-            console.log('devuelvo la operación con el monto más alto');
-            savedOperations.sort((a, b) => orderByAmount(b, a));
-            return console.log(savedOperations);
-        }
-        else if (typeOperation === 'A/Z') {
-            console.log('devuelvo operaciones ordenadas de la A a la Z');
-            savedOperations.sort(orderAlphabetycally);
-            return console.log(savedOperations);
-        }
-        else if (typeOperation === 'Z/A') {
-            console.log('devuelvo operaciones ordenadas de la Z a la A');
-            savedOperations.sort((a, b) => orderAlphabetycally(b, a));
-            return console.log(savedOperations);
-        }
+    if (typeOperation === 'Newest') {
+        savedOperations.sort((a, b) => orderByDate(b, a));
+        console.log(savedOperations)
+        return savedOperations;
+    }
+    else if (typeOperation === 'Oldest') {
+        savedOperations.sort(orderByDate);
+        console.log(savedOperations)
+        return savedOperations;
+    }
+    else if (typeOperation === 'Lowest Amount') {
+        savedOperations.sort(orderByAmount)
+        console.log(savedOperations);
+        return savedOperations;
+    }
+    else if (typeOperation === 'Highest Amount') {
+        savedOperations.sort((a, b) => orderByAmount(b, a));
+        console.log(savedOperations);
+        return savedOperations;
+    }
+    else if (typeOperation === 'A/Z') {
+        savedOperations.sort(orderAlphabetycally);
+        console.log(savedOperations);
+        return savedOperations;
+    }
+    else if (typeOperation === 'Z/A') {
+        savedOperations.sort((a, b) => orderAlphabetycally(b, a));
+        console.log(savedOperations);
+        return savedOperations;
+    }
 };

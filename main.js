@@ -79,6 +79,13 @@ document.getElementById('type-filter').addEventListener('change', filterByType);
 //    FILTER BY CATEGORY
 
 document.getElementById('category-type').addEventListener('change', filterByCategory);
+//    FILTER BY DATE FROM
+
+document.getElementById(`operation-date-from`).addEventListener(`change`, filterOperationsFromDate);
+
+//    FILTER BY DATE UNTIL
+document.getElementById(`operation-date-until`).addEventListener(`change`, filterOperationsUntilDate);
+
 
 //    FILTER BY ORDER
 
@@ -284,3 +291,5 @@ document.getElementById('to-new-operation-btn').addEventListener('click', () => 
 //      OPEN NAV MENU IN MOBILE
 
 document.getElementById('nav-btn').addEventListener('click', (toggleMobileNav));
+
+

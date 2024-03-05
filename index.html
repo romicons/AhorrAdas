@@ -210,8 +210,7 @@
 
               <label for="type-filters">Tipo</label>
               <select
-                name="tipos-filtros"
-                id="type-filters"
+                id="type-filter"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >
                 <option value="All">Todos</option>
@@ -221,10 +220,9 @@
 
               <!-- INPUT FILTRO CATEGORIA -->
 
-              <label for="type-category">Categoría</label>
+              <label for="category-type">Categoría</label>
               <select
-                name="categorias"
-                id="type-category"
+                id="category-type"
                 class="category-select filter bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >
               </select>
@@ -235,15 +233,14 @@
               <input
                 id="expense-date"
                 type="date"
-                name="date"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+                placeholder="dd/mm/yyyy"
               />
 
               <!-- INPUT FILTRO ORDENAR POR-->
 
               <label for="order-expense">Ordenar por</label>
               <select
-                name="Ordenar"
                 id="order-expense"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >

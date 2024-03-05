@@ -1,37 +1,32 @@
 //                      FILTERS
 
 const filterByType = () => {
-    const typeOperation = document.getElementById('type-filters').value;
+    const typeOperation = document.getElementById('type-filter').value;
     const savedOperations = validateLocalStorage("operations", operations);
         if (typeOperation === 'Expense') {
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
+            return console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
         }
         else if (typeOperation === 'Income') {
-
-            console.log(savedOperations.filter((operation) => operation.type === 'Ganancia'));
+            return console.log(savedOperations.filter((operation) => operation.type === 'Ganancia'));
         }
        else {
            console.log(savedOperations);
         }
 };
 
-/*
+
 const filterByCategory = () => {
-    const typeOperation = document.getElementById('type-category').value;
+    console.log('soy tu filtro de categorias ejecutandose')
+    const typeOperation = document.getElementById('category-type').value;
     const savedOperations = validateLocalStorage("operations", operations);
-        if (typeOperation === 'Expense') {
-            console.log('devuelvo operaciones con tipo gasto');
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
+    for (let operation of savedOperations) {
+        if (typeOperation === operation.category) {
+            console.log(`devuelvo operaciones con categoria ${operation.category}`);
+            return console.log(savedOperations.filter((operation) => operation.category === typeOperation));
         }
-        else if (typeOperation === 'Income') {
-            console.log('devuelvo operaciones con tipo ganancia');
-            console.log(savedOperations.filter((operation) => operation.type === 'Ganancia'));
-        }
-       else {
-           console.log(savedOperations);
-        }
+    }
 };
-*/
+
 /*
 const filterByDate = () => {
     const typeOperation = document.getElementById('type-category').value;

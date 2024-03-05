@@ -74,7 +74,11 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
 
 //    FILTER BY TYPE
 
-document.getElementById('type-filters').addEventListener('change', filterByType);
+document.getElementById('type-filter').addEventListener('change', filterByType);
+
+//    FILTER BY CATEGORY
+
+document.getElementById('category-type').addEventListener('change', filterByCategory);
 
 //      OPEN NEW OPERATION WINDOW
 

@@ -90,7 +90,6 @@ const editOperationEvent = () => {
     btn.addEventListener("click", (e) => {
       const operation = seekId(savedOperations, e.target.id, 9);
       if (operation) {
-        console.log('entre en el if porque encontre el id de tu operacion')
         document.getElementById("edit-description-operation").value = operation.description;
         document.getElementById("edit-operation-amount").value = operation.amount;
         document.getElementById("edit-type-operation").value = operation.type;

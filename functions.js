@@ -37,6 +37,12 @@ const validateLocalStorage = (key, defaultValue) => {
     }
 };
 
+//      PUT UPPERCASE ON THE FIRST LETTER OF A STRING
+
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 //      FORMAT DATE
 
 const formatDate = (dateString) => {

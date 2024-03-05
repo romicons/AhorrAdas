@@ -41,16 +41,15 @@ const validateLocalStorage = (key, defaultValue) => {
 
 const formatDate = (dateString) => {
     const formattedDate = new Date(dateString);
-    return `${formattedDate.getDate()}/${
+    return `${formattedDate.getDate() + 1}/${
       formattedDate.getMonth() + 1
     }/${formattedDate.getFullYear()}`;
 }
 
 //      FIND AN OBJECT FOR ITS ID
 
-const seekId = (array, id) => {
-    console.log('estoy buscando tu id')
-    return array.find(element => element.id === id);
+const seekId = (array, id, cut) => {
+    return array.find(element => element.id === id.slice(cut));
 }
 
 //      ERROR

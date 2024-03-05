@@ -80,6 +80,10 @@ document.getElementById('type-filter').addEventListener('change', filterByType);
 
 document.getElementById('category-type').addEventListener('change', filterByCategory);
 
+//    FILTER BY ORDER
+
+document.getElementById('order-operation').addEventListener('change', filterByOrder);
+
 //      OPEN NEW OPERATION WINDOW
 
 document.getElementById('add-operation-btn').addEventListener('click', () => {

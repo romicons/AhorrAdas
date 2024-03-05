@@ -41,7 +41,7 @@ const validateLocalStorage = (key, defaultValue) => {
 
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
+};
 
 //      FORMAT DATE
 

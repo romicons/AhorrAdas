@@ -239,9 +239,9 @@
 
               <!-- INPUT FILTRO ORDENAR POR-->
 
-              <label for="order-expense">Ordenar por</label>
+              <label for="order-operation">Ordenar por</label>
               <select
-                id="order-expense"
+                id="order-operation"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >
                 <option value="Newest">Más reciente</option>
@@ -552,7 +552,9 @@
           id="date-operation"
           type="date"
           name="date"
-          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required>
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required
+          placeholder="dd/mm/yyyy"
+          >
 
             <div class="flex columns-2 justify-end gap-5 p-1">
             <button id="close-new-operation"

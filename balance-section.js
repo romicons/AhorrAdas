@@ -43,10 +43,12 @@ const filterByDate = () => {
            console.log(savedOperations);
         }
 };*/
-/*
+
 const filterByOrder = () => {
-    const typeOperation = document.getElementById('type-category').value;
+    console.log('soy tu funcion de filtro por orden ejecutandose')
+    const typeOperation = document.getElementById('order-operation').value;
     const savedOperations = validateLocalStorage("operations", operations);
+    const orderByAmount = (a, b) => {return a.amount - b.amount}
         if (typeOperation === 'Newest') {
             console.log('devuelvo la ultima operación');
             console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
@@ -55,24 +57,22 @@ const filterByOrder = () => {
             console.log('devuelvo la operación más antigua');
             console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
         }
-        else if (typeOperation === 'Highest Amount') {
-            console.log('devuelvo la operación con el monto más alto');
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
-        }
         else if (typeOperation === 'Lowest Amount') {
             console.log('devuelvo la operación con el monto más bajo');
-            console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
+            savedOperations.sort(orderByAmount)
+            return console.log(savedOperations)
         }
-        else if (typeOperation === 'Z/A') {
+        else if (typeOperation === 'Highest Amount') {
+            console.log('devuelvo la operación con el monto más alto');
+            savedOperations.sort((a, b) => orderByAmount(b, a));
+            return console.log(savedOperations);
+        }
+       /* else if (typeOperation === 'Z/A') {
             console.log('devuelvo operaciones ordenadas de la Z a la A');
             console.log(savedOperations.filter((operation) => operation.type === 'Gasto'));
         }
         else if (typeOperation === 'A/Z') {
             console.log('devuelvo operaciones ordenadas de la A a la Z');
             console.log(savedOperations.filter((operation) => operation.type === 'Ganancia'));
-        }
-       else {
-           console.log(savedOperations);
-        }
+        }*/
 };
-*/

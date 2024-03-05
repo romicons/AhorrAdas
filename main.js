@@ -130,8 +130,9 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
           "Esta operación ya existe."
         );
       } else {
+        const operationDescriptionCapitalized = capitalizeFirstLetter(operationDescriptionValue);
         createOperation(
-          operationDescriptionValue,
+          operationDescriptionCapitalized,
           operationAmount,
           typeOperationValue,
           operationCategoryValue,
@@ -209,7 +210,8 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
           document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
           document.getElementById('add-category-btn-col').classList.add('items-center')
       } else {
-          createCategory(newCategory);
+        const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
+          createCategory(newCategoryCapitalized);
           newCategoryInput.value = "";
       }
     }

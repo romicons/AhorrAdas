@@ -47,7 +47,7 @@ const capitalizeFirstLetter = (string) => {
 
 const formatDate = (dateString) => {
   const formattedDate = new Date(dateString);
-  formattedDate.setDate(formattedDate.getDate() + 1); // Añadir 1 día a la fecha
+  formattedDate.setDate(formattedDate.getDate()); // Añadir 1 día a la fecha
   return `${formattedDate.getDate()}/${
     formattedDate.getMonth() + 1
   }/${formattedDate.getFullYear()}`;
@@ -80,3 +80,6 @@ const hideError = (field) => {
         errorText.remove();
     }
 };
+
+
+

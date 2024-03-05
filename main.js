@@ -72,24 +72,27 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
     }
 })
 
-//    FILTER BY TYPE
+//    FILTERS
 
-document.getElementById('type-filter').addEventListener('change', filterByType);
-
-//    FILTER BY CATEGORY
-
-document.getElementById('category-type').addEventListener('change', filterByCategory);
-//    FILTER BY DATE FROM
-
-document.getElementById(`operation-date-from`).addEventListener(`change`, filterOperationsFromDate);
-
-//    FILTER BY DATE UNTIL
-document.getElementById(`operation-date-until`).addEventListener(`change`, filterOperationsUntilDate);
-
-
-//    FILTER BY ORDER
-
-document.getElementById('order-operation').addEventListener('change', filterByOrder);
+const filterOperations = () => {
+    let operations = getOperations();
+    const type = document.getElementById('type-filter').value;
+    const category = document.getElementById('category-type').value;
+    const dateFrom = document.getElementById("operation-date-from").value;
+    const dateUntil = document.getElementById("operation-date-until").value;
+    const order = document.getElementById('order-operation').value;
+    
+    if (type !== 'Todas') {
+      operations = filterByType(type, operations);
+    }
+  
+    if (category !== 'Todas') {
+      operations = filterByCategory(category, operations)
+    }
+    operations = filterOperationsFromDate(dateFrom, operations);
+    operations = filterOperationsUntilDate(dateUntil, operations);
+    operations = filterByOrder(order, operations);
+}
 
 //      OPEN NEW OPERATION WINDOW
 
@@ -118,7 +121,7 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
     let operationAmount = operationAmountInput.value.trim();
     let operationCategoryValue = operationCategory.value;
     let typeOperationValue = typeOperation.value;
-    let operationDateValue = operationDate.value;
+    let operationDateValue = operationDate.value.replace(/-/g, '/');
   
     if (operationDescriptionValue === "") {
       error(

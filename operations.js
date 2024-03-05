@@ -53,7 +53,6 @@ const createOperationsTable = () => {
 
     for (let operation of savedOperations) {
       const formattedDateStr = formatDate(operation.date);
-
       const amountType =
         operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
       const amountSign = operation.type === "Ganancia" ? "+$" : "-$";

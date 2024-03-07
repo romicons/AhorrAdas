@@ -46,11 +46,11 @@
               "main-background": "url('img/bg-main.jpg')",
             },
             screens: {
-              'tablet': '870px',
+              tablet: "870px",
             },
           },
-        }
-    };
+        },
+      };
     </script>
   </head>
 
@@ -60,90 +60,106 @@
     <!--        NAVBAR          -->
 
     <nav
-      class="fixed z-10 top-0 left-0 right-0 flex-col text-xl pt-2 flex justify-between items-center font-sans light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] dark:text-dark tablet:columns-2 tablet:flex-row tablet:pb-2"
+      class="fixed z-10 top-0 left-0 right-0 flex-col text-xl pt-2 flex justify-between items-center font-sans light bg-gradient-to-br from-[#e3dfba] to-[#c8d6bf] shadow-lg dark:from-[#1a1f1e] dark:to-[#6cbdb5] dark:shadow-[#c8d6bf] text-light dark:text-dark tablet:columns-2 tablet:flex-row tablet:pb-2"
     >
-    <div class="flex columns-2 justify-between pb-2 w-full pr-2 tablet:pb-0">
-      <div class="pl-2">
-        <h1 class="text-3xl flex gap-2 items-center">
-          <svg
-            fill="none"
-            height="40"
-            viewBox="0 0 16 16"
-            width="40"
-            xmlns="http://www.w3.org/2000/svg"
-            class="text-light dark:text-dark"
-            aria-label="Brand-icon"
-          >
-            <g fill="#212121" class="dark:fill-current">
-              <path
-                d="m13.5006 8.16181c.5542-.43767.9737-1.00895 1.2302-1.64626.1767.51956.2692 1.10188.2692 1.75206 0 1.55225-.548 2.63969-1.11 3.34019-.2789.3477-.5588.5974-.772.762-.042.0324-.0815.0615-.118.0876v1.0431c0 .8284-.6716 1.5-1.5 1.5h-.5c-.5523 0-1-.4478-1-1h-2c0 .5522-.44769 1-1 1h-.5c-.82842 0-1.5-.6716-1.5-1.5v-.2133c-.08634-.0275-.18303-.0615-.28738-.1037-.39994-.1614-.92106-.4445-1.4019-.9319-.5921-.6002-.92378-1.3513-1.09-1.8226-.05441-.1543-.16342-.2514-.2695-.2814-.56271-.15903-.95122-.67259-.95122-1.25734v-.79396c0-.57589.38171-1.08203.93541-1.24034.10336-.02955.21549-.13055.27067-.29737.13467-.4072.3944-1.00891.8704-1.49143.38939-.39472.80964-.68646 1.12865-.87856.09667-.05822.18499-.10785.26154-.14892v-1.87757c0-.35349.23175-.603.4808-.70408.24699-.10023.57814-.08347.82581.15052.25276.23879.58506.52442.94047.75703.36446.23854.70642.39.98533.41828l.00533.00054c-.52804.7838-.77121 1.74351-.65812 2.7046.12098 1.02821.91674 1.64653 1.58478 1.92318l2.38903.98933c.6681.27665 1.668.40195 2.4805-.2397zm-8.7506-.66181c.41421 0 .75-.33579.75-.75s-.33579-.75-.75-.75-.75.33579-.75.75.33579.75.75.75z"
-              />
-              <path
-                d="m8.23028 3.91919c.28839-.72861.86015-1.3441 1.64126-1.66773 1.53066-.63418 3.28566.09258 3.91986 1.62326.5256 1.26861.1164 2.69129-.9106 3.50229-.4163.32874-.988.30352-1.4781.10057l-2.38902-.98933c-.49007-.20295-.91226-.58933-.97424-1.11613-.03028-.25731-.02647-.51446.00895-.76551z"
-              />
-              <path
-                d="m8.23028 3.91919-.13604.43873c.02108-.09237.0465-.18361.07611-.27339.01838-.0557.03836-.11084.05993-.16534z"
-              />
-            </g>
-          </svg>
-          FinAlly
-        </h1>
-      </div>
-      <div class="columns-2 tablet:columns-4 flex justify-end items-center gap-2 tablet:gap-8 relative pr-2"
-      >
-        <div class="flex gap-4 justify-center items-center">
-          <button id="btn-darkmode"
-          class="text-2xl size-8 hover:text-secondary dark:hover:text-light"
-          aria-label="Nocturne/Light mode button."
-          >
-          <i class="fa-solid fa-moon"></i>
-          </button>
-          <button id="nav-btn" class="text-2xl size-8 hover:text-secondary dark:hover:text-light tablet:hidden">
-            <i class="fa-solid fa-bars"></i>
-          </button>
+      <div class="flex columns-2 justify-between pb-2 w-full pr-2 tablet:pb-0">
+        <div class="pl-2 hover:text-secondary dark:hover:text-light duration-300 cursor-pointer" id="home-section">
+          <h1 class="text-3xl flex gap-2 items-center z-10 group relative hover:opacity-100">
+              <svg
+                fill="none"
+                height="40"
+                viewBox="0 0 16 16"
+                width="40"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Brand-icon"
+              >
+                <g class="fill-current dark:fill-current">
+                  <path
+                    d="m13.5006 8.16181c.5542-.43767.9737-1.00895 1.2302-1.64626.1767.51956.2692 1.10188.2692 1.75206 0 1.55225-.548 2.63969-1.11 3.34019-.2789.3477-.5588.5974-.772.762-.042.0324-.0815.0615-.118.0876v1.0431c0 .8284-.6716 1.5-1.5 1.5h-.5c-.5523 0-1-.4478-1-1h-2c0 .5522-.44769 1-1 1h-.5c-.82842 0-1.5-.6716-1.5-1.5v-.2133c-.08634-.0275-.18303-.0615-.28738-.1037-.39994-.1614-.92106-.4445-1.4019-.9319-.5921-.6002-.92378-1.3513-1.09-1.8226-.05441-.1543-.16342-.2514-.2695-.2814-.56271-.15903-.95122-.67259-.95122-1.25734v-.79396c0-.57589.38171-1.08203.93541-1.24034.10336-.02955.21549-.13055.27067-.29737.13467-.4072.3944-1.00891.8704-1.49143.38939-.39472.80964-.68646 1.12865-.87856.09667-.05822.18499-.10785.26154-.14892v-1.87757c0-.35349.23175-.603.4808-.70408.24699-.10023.57814-.08347.82581.15052.25276.23879.58506.52442.94047.75703.36446.23854.70642.39.98533.41828l.00533.00054c-.52804.7838-.77121 1.74351-.65812 2.7046.12098 1.02821.91674 1.64653 1.58478 1.92318l2.38903.98933c.6681.27665 1.668.40195 2.4805-.2397zm-8.7506-.66181c.41421 0 .75-.33579.75-.75s-.33579-.75-.75-.75-.75.33579-.75.75.33579.75.75.75z"
+                  />
+                  <path
+                    d="m8.23028 3.91919c.28839-.72861.86015-1.3441 1.64126-1.66773 1.53066-.63418 3.28566.09258 3.91986 1.62326.5256 1.26861.1164 2.69129-.9106 3.50229-.4163.32874-.988.30352-1.4781.10057l-2.38902-.98933c-.49007-.20295-.91226-.58933-.97424-1.11613-.03028-.25731-.02647-.51446.00895-.76551z"
+                  />
+                  <path
+                    d="m8.23028 3.91919-.13604.43873c.02108-.09237.0465-.18361.07611-.27339.01838-.0557.03836-.11084.05993-.16534z"
+                  />
+                </g>
+              </svg>
+              <span>
+                FinAlly
+              </span>
+              <span
+                class="absolute -bottom-0.5 left-10 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-3/4 transition-width duration-300">
+              </span>
+          </h1>
+        </div>
+        <div
+          class="columns-2 tablet:columns-4 flex justify-end items-center gap-2 tablet:gap-8 relative pr-2"
+        >
+          <div class="flex gap-4 justify-center items-center">
+            <button
+              id="btn-darkmode"
+              class="text-2xl size-8 hover:text-secondary dark:hover:text-light"
+              aria-label="Nocturne/Light mode button."
+            >
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button
+              id="nav-btn"
+              class="text-2xl size-8 hover:text-secondary dark:hover:text-light tablet:hidden"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="nav-items" class="hidden flex-col justify-center items-center bg-primary dark:bg-light w-full tablet:flex tablet:w-auto tablet:columns-3 tablet:bg-inherit tablet:flex-row tablet:pr-2 tablet:gap-4 tablet:dark:bg-inherit">
+      <div
+        id="nav-items"
+        class="hidden flex-col justify-center items-center bg-primary dark:bg-light w-full tablet:flex tablet:w-auto tablet:columns-3 tablet:bg-inherit tablet:flex-row tablet:pr-2 tablet:gap-4 tablet:dark:bg-inherit"
+      >
         <button
           id="balance-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-light transition-all duration-300"
         >
           <i class="fa-solid fa-scale-balanced"></i>
           <span class="relative z-10"> Balance </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-full transition-width duration-300"
           ></span>
         </button>
-        <button id="categories-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary transition-all duration-300"
+        <button
+          id="categories-window-btn"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-light transition-all duration-300"
         >
           <i class="fa-solid fa-tags"></i>
           <span class="relative z-10"> Categorías </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-full transition-width duration-300"
           ></span>
         </button>
-        <button id="reports-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary transition-all duration-300"
+        <button
+          id="reports-window-btn"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-light transition-all duration-300"
         >
           <i class="fa-solid fa-chart-pie"></i>
           <span class="relative z-10"> Reporte </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-full transition-width duration-300"
           ></span>
         </button>
-    </div>
+      </div>
     </nav>
 
-    <main class="flex justify-center items-center gap-2 pt-20 pb-4 flex-wrap dark:text-dark flex-1">
-
+    <main
+      class="flex justify-center items-center gap-2 pt-20 pb-4 flex-wrap dark:text-dark flex-1"
+    >
       <!--        VENTANA INICIAL SECCIÓN DE BALANCE      -->
 
-      <section id="balance-section" class="flex justify-center flex-wrap w-full min-h-full gap-4">
-
+      <section
+        id="balance-section"
+        class="flex justify-center flex-wrap w-full min-h-full gap-4"
+      >
         <div class="flex flex-col w-11/12 tablet:w-1/5 gap-4 tablet:h-full">
-          
           <!--        BALANCE         -->
 
           <section
@@ -208,43 +224,49 @@
 
               <!-- INPUT FILTRO TIPO -->
 
-              <label for="type-filters">Tipo</label>
+              <label for="operation-type-filter">Tipo</label>
               <select
-                name="tipos-filtros"
-                id="type-filters"
+                id="operation-type-filter"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >
-                <option value="TODOS">Todos</option>
-                <option value="GASTOS">Gasto</option>
-                <option value="GANANCIA">Ganancia</option>
+                <option value="Todas">Todas</option>
+                <option value="Gasto">Gasto</option>
+                <option value="Ganancia">Ganancia</option>
               </select>
 
               <!-- INPUT FILTRO CATEGORIA -->
 
-              <label for="type-category">Categoría</label>
+              <label for="operation-category-filter">Categoría</label>
               <select
-                name="categorias"
-                id="type-category"
+                id="operation-category-filter"
                 class="category-select filter bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
-              >
-              </select>
+              ></select>
 
-              <!-- INPUT FILTRO FECHA-->
+              <!-- INPUT FILTRO FECHA DESDE-->
 
-              <label for="expense-date">Desde</label>
+              <label for="operation-date-from">Desde</label>
               <input
-                id="expense-date"
+                id="operation-date-from"
                 type="date"
-                name="date"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
-              />
+                placeholder="dd/mm/yyyy"
+              >
+
+              <!--   INPUT FILTRO FECHA  HASTA -->
+
+              <label for="operation-date-until">Hasta</label>
+              <input
+                id="operation-date-until"
+                type="date"
+                class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+                placeholder="dd/mm/yyyy"
+              >
 
               <!-- INPUT FILTRO ORDENAR POR-->
 
-              <label for="order-expense">Ordenar por</label>
+              <label for="operation-order">Ordenar por</label>
               <select
-                name="Ordenar"
-                id="order-expense"
+                id="operation-order"
                 class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
               >
                 <option value="Más reciente">Más reciente</option>
@@ -271,16 +293,27 @@
             <div
               class="flex items-center rounded p-2 tablet:p-4 tablet:h-8 w-2/5 justify-center group hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
             >
-              <button id="add-operation-btn" class="gap-2 tablet:gap-4 items-center flex w-full justify-center" aria-label="Add a new operation.">
+              <button
+                id="add-operation-btn"
+                class="gap-2 tablet:gap-4 items-center flex w-full justify-center"
+                aria-label="Add a new operation."
+              >
                 <i class="fa-solid fa-plus"></i>
-                Nueva operación
+                  Nueva operación
               </button>
             </div>
           </div>
-          <div class="flex flex-col justify-center items-center overflow-y-auto tablet:max-h-[26rem]">
-            <table id="operations-table" class="table table-fixed w-full py-2 px-1 max-h-full">
-            </table>
-            <div class="hidden flex-col justify-center items-center" id="no-operations">
+          <div
+            class="flex flex-col justify-center items-center overflow-y-auto"
+          >
+            <table
+              id="operations-table"
+              class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6"
+            ></table>
+            <div
+              class="hidden flex-col justify-center items-center"
+              id="no-operations"
+            >
               <div class="flex py-4">
                 <svg
                   viewBox="0 0 400 300"
@@ -493,39 +526,43 @@
                 <div class="text-lg">
                   <p>Revisa tus filtros o añade nuevas operaciones</p>
                 </div>
-              </div>;
+              </div>
             </div>
           </div>
         </section>
       </section>
       <!--        FORMULARIO DE OPERACIONES       -->
 
-        <section
-            id="new-operation"
-            class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
-        >
-            <h2 class="font-sans text-xl">Nueva operación</h2>
+      <section
+        id="new-operation"
+        class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
+      >
+        <h2 class="font-sans text-xl">Nueva operación</h2>
 
         <!-- DESCRIPCION DE OPERACIONES -->
 
-            <label for="description-operation">Descripción</label>
-            <input
-            id="description-operation"
-            type="text"
-            class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
-            placeholder="Describe tu operación." required>
+        <label for="description-operation">Descripción</label>
+        <input
+          id="description-operation"
+          type="text"
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+          placeholder="Describe tu operación."
+          required
+        />
 
         <!-- MONTO DE OPERACIONES -->
 
-            <label for="operation-amount">Monto</label>
-            <input
-            id="operation-amount"
-            type="text"
-            minlength="1"
-            maxlength="9"
-            value=""
-            class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
-            placeholder="0" required>
+        <label for="operation-amount">Monto</label>
+        <input
+          id="operation-amount"
+          type="text"
+          minlength="1"
+          maxlength="9"
+          value=""
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+          placeholder="0"
+          required
+        />
 
         <!-- TIPO DE OPERACIONES -->
 
@@ -533,7 +570,9 @@
         <select
           name="tipo-operacion"
           id="type-operation"
-          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required>
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+          required
+        >
           <option value="Gasto">Gasto</option>
           <option value="Ganancia">Ganancia</option>
         </select>
@@ -544,9 +583,9 @@
         <select
           name="categoria-operacion"
           id="category-operation"
-          class="category-select bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required
-        >
-        </select>
+          class="category-select bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+          required
+        ></select>
 
         <!-- FECHA DE OPERACIONES -->
 
@@ -555,52 +594,57 @@
           id="date-operation"
           type="date"
           name="date"
-          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark" required>
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+          required
+          placeholder="dd/mm/yyyy"
+        >
 
-            <div class="flex columns-2 justify-end gap-5 p-1">
-            <button id="close-new-operation"
-                class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-            >
-                <i class="fa-solid fa-xmark"></i>
-                Cancelar
-            </button>
-            <button id="add-new-operation"
-                class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-            >
-                <i class="fa-solid fa-plus"></i>
-                Agregar
-            </button>
-            </div>
-        </section>
+        <div class="flex columns-2 justify-end gap-5 p-1">
+          <button
+            id="close-new-operation"
+            class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-xmark"></i>
+            Cancelar
+          </button>
+          <button
+            id="add-new-operation"
+            class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Agregar
+          </button>
+        </div>
+      </section>
 
       <!--        FORMULARIO DE EDITAR OPERACIONES       -->
 
-        <section
-            id="edit-operation"
-            class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
-        >
-            <h2 class="font-sans text-xl">Editar operación</h2>
+      <section
+        id="edit-operation"
+        class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf]"
+      >
+        <h2 class="font-sans text-xl">Editar operación</h2>
 
         <!-- EDITAR DESCRIPCION DE OPERACIONES -->
 
-            <label for="edit-description-operation">Descripción</label>
-            <input
-            id="edit-description-operation"
-            type="text"
-            class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
-            >
+        <label for="edit-description-operation">Descripción</label>
+        <input
+          id="edit-description-operation"
+          type="text"
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+        >
 
         <!-- EDITAR MONTO DE OPERACIONES -->
 
-            <label for="edit-operation-amount">Monto</label>
-            <input
-            id="edit-operation-amount"
-            type="text"
-            minlength="1"
-            maxlength="9"
-            value=""
-            class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
-            >
+        <label for="edit-operation-amount">Monto</label>
+        <input
+          id="edit-operation-amount"
+          type="text"
+          minlength="1"
+          maxlength="9"
+          value=""
+          class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
+        >
 
         <!-- EDITAR TIPO DE OPERACIONES -->
 
@@ -619,8 +663,7 @@
         <select
           id="edit-category-operation"
           class="category-select bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
-        >
-        </select>
+        ></select>
 
         <!-- EDITAR FECHA DE OPERACIONES -->
 
@@ -630,7 +673,7 @@
           type="date"
           name="date"
           class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark"
-        />
+        >
 
         <div class="flex columns-2 justify-end gap-5">
           <button
@@ -648,150 +691,188 @@
             Guardar cambios
           </button>
         </div>
-        </section>
+      </section>
 
-        <section id="delete-operation" class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between">
-          <div>
-            <h2 class="font-sans text-3xl text-red-600">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-                Advertencia
-            </h2>
-          </div>
-           <div class="flex flex-col gap-2">
-             <p>
-               ¿Está seguro de que desea eliminar la operación <span id="operation-name" class="font-bold border-current border-b text-lg"></span>? Al hacerlo, todos los datos guardados en ella no se podrán recuperar.
-             </p>
-           </div>
-           <div class="flex columns-2 justify-end gap-5 p-1">
-             <button id="cancel-delete-operation"
-                 class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-             >
-                 <i class="fa-solid fa-xmark"></i>
-                   Cancelar
-             </button>
-             <button id="confirm-delete-operation"
-                 class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-             >
-                 <i class="fa-solid fa-check"></i>
-                   Confirmar
-             </button>
-             </div>
-        </section>
+      <section
+        id="delete-operation"
+        class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between"
+      >
+        <div>
+          <h2 class="font-sans text-3xl text-red-600">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Advertencia
+          </h2>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p>
+            ¿Está seguro de que desea eliminar la operación
+            <span
+              id="operation-name"
+              class="font-bold border-current border-b text-lg"
+            ></span
+            >? Al hacerlo, todos los datos guardados en ella no se podrán
+            recuperar.
+          </p>
+        </div>
+        <div class="flex columns-2 justify-end gap-5 p-1">
+          <button
+            id="cancel-delete-operation"
+            class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-xmark"></i>
+            Cancelar
+          </button>
+          <button
+            id="confirm-delete-operation"
+            class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-check"></i>
+            Confirmar
+          </button>
+        </div>
+      </section>
 
       <!--        FORMULARIO DE CATEGORÍAS       -->
 
-        <section
-            id="categories"
-            class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg h-full gap-3 dark:shadow-[#c8d6bf]"
-        >
-            <div class="flex columns-2 justify-between gap-2 items-center">
-                <div>
-                    <h2 class="font-sans text-xl">Categorías</h2>
-                </div>
-                <div>
-                    <button id="close-categories-btn"
-                        class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
-                        aria-label="Close window button."
-                    >
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
+      <section
+        id="categories"
+        class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg h-full gap-3 dark:shadow-[#c8d6bf]"
+      >
+        <div class="flex columns-2 justify-between gap-2 items-center">
+          <div>
+            <h2 class="font-sans text-xl">Categorías</h2>
+          </div>
+          <div>
+            <button
+              id="close-categories-btn"
+              class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
+              aria-label="Close window button."
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
 
-            <!--        AÑADIR NUEVAS CATEGORÍAS       -->
+        <!--        AÑADIR NUEVAS CATEGORÍAS       -->
 
-            <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2">
-                <div class="flex flex-col tablet:w-3/5 gap-2">
-                    <label for="add-category">Nueva categoría</label>
-                        <input
-                        id="add-category"
-                        type="text"
-                        class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
-                        placeholder="Introduce el nombre de tu nueva categoría aquí.">
-                </div>
-                <div class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end" id="add-category-btn-col">
-                    <button id="add-category-btn"
-                    class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2 w-3/4"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                            Añadir
-                    </button>
-                </div>
-            </div>
+        <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2">
+          <div class="flex flex-col tablet:w-3/5 gap-2">
+            <label for="add-category">Nueva categoría</label>
+            <input
+              id="add-category"
+              type="text"
+              class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+              placeholder="Introduce el nombre de tu nueva categoría aquí."
+            >
+          </div>
+          <div
+            class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end"
+            id="add-category-btn-col"
+          >
+            <button
+              id="add-category-btn"
+              class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2 w-3/4"
+            >
+              <i class="fa-solid fa-plus"></i>
+              Añadir
+            </button>
+          </div>
+        </div>
 
-            <!--        CATEGORÍAS EXISTENTES         -->
+        <!--        CATEGORÍAS EXISTENTES         -->
 
-            <div>
-              <div class="flex flex-col overflow-y-auto max-h-96">
-                <table id="categories-table" class="table table-fixed w-full p-2 max-h-full">
-                  <tbody id="categories-table-body">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-        </section>
+        <div>
+          <div class="flex flex-col overflow-y-auto max-h-96">
+            <table
+              id="categories-table"
+              class="table table-fixed w-full p-2 max-h-full"
+            >
+              <tbody id="categories-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       <!--        EDITAR CATEGORÍAS EXISTENTES         -->
 
-      <section id="rename-category" class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between">
-            <div>
-              <h2 class="font-sans text-2xl">
-                <i class="fa-solid fa-pen"></i>
-                  Editar Categoría
-              </h2>
-            </div>
-           <div class="flex flex-col gap-2">
-               <label for="description-operation">Proporciona un nuevo nombre para tu categoría por favor:</label>
-               <input
-               id="edit-category-name"
-               type="text"
-               class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
-               placeholder="Renombra tu categoría.">
-           </div>
-           <div class="flex columns-2 justify-end gap-5 p-1">
-             <button id="cancel-edit-category"
-                 class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-             >
-                 <i class="fa-solid fa-xmark"></i>
-                   Cancelar
-             </button>
-             <button id="save-edit-category"
-                 class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-             >
-                 <i class="fa-solid fa-check"></i>
-                   Guardar cambios
-             </button>
-            </div>
+      <section
+        id="rename-category"
+        class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between"
+      >
+        <div>
+          <h2 class="font-sans text-2xl">
+            <i class="fa-solid fa-pen"></i>
+            Editar Categoría
+          </h2>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="description-operation"
+            >Proporciona un nuevo nombre para tu categoría por favor:</label
+          >
+          <input
+            id="edit-category-name"
+            type="text"
+            class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+            placeholder="Renombra tu categoría."
+          >
+        </div>
+        <div class="flex columns-2 justify-end gap-5 p-1">
+          <button
+            id="cancel-edit-category"
+            class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-xmark"></i>
+            Cancelar
+          </button>
+          <button
+            id="save-edit-category"
+            class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-check"></i>
+            Guardar cambios
+          </button>
+        </div>
       </section>
 
       <!--       ELIMINAR CATEGORÍA    -->
 
-      <section id="delete-category" class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between">
-            <div>
-              <h2 class="font-sans text-3xl text-red-600">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                  Advertencia
-              </h2>
-            </div>
-             <div class="flex flex-col gap-2">
-               <p>
-                 ¿Está seguro de que desea eliminar la categoría <span id="category-name" class="font-bold border-current border-b text-lg"></span>? Al hacerlo, todas las operaciones relacionadas a ella se eliminarán también.
-               </p>
-             </div>
-             <div class="flex columns-2 justify-end gap-5 p-1">
-               <button id="cancel-delete-category"
-                   class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-               >
-                   <i class="fa-solid fa-xmark"></i>
-                     Cancelar
-               </button>
-               <button id="confirm-delete-category"
-                   class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-               >
-                   <i class="fa-solid fa-check"></i>
-                     Confirmar
-               </button>
-               </div>
+      <section
+        id="delete-category"
+        class="hidden flex-col shadow-md w-11/12 tablet:w-2/3 h-1/2 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg order-2 gap-3 dark:shadow-[#c8d6bf] justify-between"
+      >
+        <div>
+          <h2 class="font-sans text-3xl text-red-600">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Advertencia
+          </h2>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p>
+            ¿Está seguro de que desea eliminar la categoría
+            <span
+              id="category-name"
+              class="font-bold border-current border-b text-lg"
+            ></span
+            >? Al hacerlo, todas las operaciones relacionadas a ella se
+            eliminarán también.
+          </p>
+        </div>
+        <div class="flex columns-2 justify-end gap-5 p-1">
+          <button
+            id="cancel-delete-category"
+            class="flex items-center rounded p-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-xmark"></i>
+            Cancelar
+          </button>
+          <button
+            id="confirm-delete-category"
+            class="flex items-center rounded p-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+          >
+            <i class="fa-solid fa-check"></i>
+            Confirmar
+          </button>
+        </div>
       </section>
 
       <!--       REPORTES     -->
@@ -808,7 +889,7 @@
             <button
               id="close-reports-btn"
               class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
-                    aria-label="Close window button."
+              aria-label="Close window button."
             >
               <i class="fa-solid fa-xmark"></i>
             </button>
@@ -820,7 +901,7 @@
               viewBox="0 0 400 300"
               xmlns="http://www.w3.org/2000/svg"
               class="w-96"
-                        aria-label="A piggy bank."
+              aria-label="A piggy bank."
             >
               <rect
                 fill="#ffbc0e"
@@ -1035,78 +1116,99 @@
                 más operaciones
               </button>
             </div>
-
           </div>
-            <!--    TABLA DE REPORTE   -->
-            
+          <!--    TABLA DE REPORTE   -->
+
           <div class="flex justify-center">
-                <table class="table table-fixed w-full p-2">
-                  <th class="flex font-sans text-xl">Resumen</th>
-                  <tbody>
-                      <tr class="flex justify-between items-center py-1">
-                          <td class="p-1 text-left w-1/3">Categoría con mayor ganancia</td>
-                          <td class="bg-primary dark:bg-secondary p-1 rounded w-1/3 text-center">Comida</td>
-                          <td class="text-green-600 p-1 w-1/3 text-right">+$343,434</td>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                          <td class="p-1 text-left w-1/3">Categoría con mayor gasto</td>
-                          <td class="bg-primary dark:bg-secondary p-1 rounded w-1/3 text-center">Comida</td>
-                          <td class="text-red-600 p-1 w-1/3 text-right">-$3,116,061</td>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                          <td class="p-1 text-left w-1/3">Categoría con mayor balance</td>
-                          <td class="bg-primary dark:bg-secondary p-1 rounded w-1/3 text-center">Servicios</td>
-                          <td class="p-1 w-1/3 text-right">$3,000</td>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                          <td class="p-1 text-left w-1/3">Mes con mayor ganancia</td>
-                          <td class="text-center w-1/3">2024/02/09</td>
-                          <td class="text-red-600 p-1 w-1/3 text-right">+$343,434</td>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                          <td class="p-1 text-left w-1/3">Mes con mayor gasto</td>
-                          <td class="text-center w-1/3">2024/02/09</td>
-                          <td class="text-green-600 p-1 w-1/3 text-right">-$3,116,061</td>
-                      </tr>
-                      <th class="py-2 flex font-sans">
-                        Totales por categorías
-                      </th>
-                      <tr class="flex justify-between items-center py-1">
-                        <th class="p-1 w-1/4 text-left">Categoría</th>
-                        <th class="p-1 w-1/4 text-center">Ganancias</th>
-                        <th class="p-1 w-1/4 text-center">Gastos</th>
-                        <th class="p-1 w-1/4 text-right">Balance</th>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                        <td class="p-1 text-left w-1/4">Servicios</td>
-                        <td class="text-green-600 p-1 w-1/4 text-center">+$3,000</td>
-                        <td class="text-red-600 p-1 w-1/4 text-center">-$0</td>
-                        <td class="text-green-600 p-1 w-1/4 text-right">+$3,000</td>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                        <td class="p-1 text-left w-1/4">Comida</td>
-                        <td class="text-green-600 p-1 w-1/4 text-center">+$343,434</td>
-                        <td class="text-red-600 p-1 w-1/4 text-center">-$3,116,061</td>
-                        <td class="text-red-600 p-1 w-1/4 text-right">-$2,769,627</td>
-                      </tr>
-                      <th class="py-2 flex font-sans">
-                        Totales por mes
-                      </th>
-                      <tr class="flex justify-between items-center py-1">
-                        <th class="p-1 w-1/4 text-left">Mes</th>
-                        <th class="p-1 w-1/4 text-center">Ganancias</th>
-                        <th class="p-1 w-1/4 text-center">Gastos</th>
-                        <th class="p-1 w-1/4 text-right">Balance</th>
-                      </tr>
-                      <tr class="flex justify-between items-center py-1">
-                        <td class="p-1 w-1/4 text-left">2/2024</td>
-                        <td class="text-green-600 p-1 w-1/4 text-center">+$346,434</td>
-                        <td class="text-red-600 p-1 w-1/4 text-center">-$3,116,061</td>
-                        <td class="text-red-600 p-1 w-1/4 text-right">-$2769627</td>
-                      </tr>
-                  </tbody>
-              </table>
-            </div>
+            <table class="table table-fixed w-full p-2">
+              <th class="flex font-sans text-xl">Resumen</th>
+              <tbody>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/3">
+                    Categoría con mayor ganancia
+                  </td>
+                  <td
+                    class="bg-primary dark:bg-secondary p-1 rounded w-1/3 text-center"
+                  >
+                    Comida
+                  </td>
+                  <td class="text-green-600 p-1 w-1/3 text-right">+$343,434</td>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/3">Categoría con mayor gasto</td>
+                  <td
+                    class="bg-primary dark:bg-secondary p-1 rounded w-1/3 text-center"
+                  >
+                    Comida
+                  </td>
+                  <td class="text-red-600 p-1 w-1/3 text-right">-$3,116,061</td>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/3">
+                    Categoría con mayor balance
+                  </td>
+                  <td
+                    class="bg-primary dark:bg-secondary p-1 rounded w-1/3 text-center"
+                  >
+                    Servicios
+                  </td>
+                  <td class="p-1 w-1/3 text-right">$3,000</td>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/3">Mes con mayor ganancia</td>
+                  <td class="text-center w-1/3">2024/02/09</td>
+                  <td class="text-red-600 p-1 w-1/3 text-right">+$343,434</td>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/3">Mes con mayor gasto</td>
+                  <td class="text-center w-1/3">2024/02/09</td>
+                  <td class="text-green-600 p-1 w-1/3 text-right">
+                    -$3,116,061
+                  </td>
+                </tr>
+                <th class="py-2 flex font-sans">Totales por categorías</th>
+                <tr class="flex justify-between items-center py-1">
+                  <th class="p-1 w-1/4 text-left">Categoría</th>
+                  <th class="p-1 w-1/4 text-center">Ganancias</th>
+                  <th class="p-1 w-1/4 text-center">Gastos</th>
+                  <th class="p-1 w-1/4 text-right">Balance</th>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/4">Servicios</td>
+                  <td class="text-green-600 p-1 w-1/4 text-center">+$3,000</td>
+                  <td class="text-red-600 p-1 w-1/4 text-center">-$0</td>
+                  <td class="text-green-600 p-1 w-1/4 text-right">+$3,000</td>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 text-left w-1/4">Comida</td>
+                  <td class="text-green-600 p-1 w-1/4 text-center">
+                    +$343,434
+                  </td>
+                  <td class="text-red-600 p-1 w-1/4 text-center">
+                    -$3,116,061
+                  </td>
+                  <td class="text-red-600 p-1 w-1/4 text-right">-$2,769,627</td>
+                </tr>
+                <th class="py-2 flex font-sans">Totales por mes</th>
+                <tr class="flex justify-between items-center py-1">
+                  <th class="p-1 w-1/4 text-left">Mes</th>
+                  <th class="p-1 w-1/4 text-center">Ganancias</th>
+                  <th class="p-1 w-1/4 text-center">Gastos</th>
+                  <th class="p-1 w-1/4 text-right">Balance</th>
+                </tr>
+                <tr class="flex justify-between items-center py-1">
+                  <td class="p-1 w-1/4 text-left">2/2024</td>
+                  <td class="text-green-600 p-1 w-1/4 text-center">
+                    +$346,434
+                  </td>
+                  <td class="text-red-600 p-1 w-1/4 text-center">
+                    -$3,116,061
+                  </td>
+                  <td class="text-red-600 p-1 w-1/4 text-right">-$2769627</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </main>
@@ -1168,6 +1270,7 @@
   </body>
 
   <script src="functions.js"></script>
+  <script src="balance-section.js"></script>
   <script src="categories.js"></script>
   <script src="operations.js"></script>
   <script src="main.js"></script>

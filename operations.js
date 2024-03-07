@@ -47,13 +47,12 @@ const createOperationsTable = () => {
                <th class="w-1/5 py-1 flex justify-center">Acciones</th>
              </tr>
            </thead>
-           <tbody id="operations-table-body" class="flex flex-col">
+           <tbody id="operations-table-body" class="flex flex-col tablet:h-[29rem]">
            </tbody>
            `;
 
     for (let operation of savedOperations) {
       const formattedDateStr = formatDate(operation.date);
-
       const amountType =
         operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
       const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
@@ -65,14 +64,14 @@ const createOperationsTable = () => {
             <td class="w-1/4 tablet:w-1/5 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${operation.category}</td>
             <td class="tablet:w-1/5 text-center px-2 py-1 rounded text-light dark:text-dark font-bold hidden tablet:flex justify-center">${formattedDateStr}</td>
             <td class="w-1/4 tablet:w-1/5 flex gap-1 justify-end tablet:justify-center">
-              <button class="delete-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
-                <i class="fa-solid fa-trash"></i>
+              <button class="delete-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="btn-delete-${operation.id}">
+                <i class="fa-solid fa-trash pointer-events-none"></i>
               </button>
-              <button class="edit-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light" id="${operation.id}">
-                <i class="fa-solid fa-pen"></i>
+              <button class="edit-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light" id="btn-edit-${operation.id}">
+                  <i class="fa-solid fa-pen pointer-events-none"></i>
               </button>
             </td>
-          </tr>`;
+          </tr>`
     };
     editOperationEvent();
     deleteOperationEvent();
@@ -80,7 +79,7 @@ const createOperationsTable = () => {
     setStyleFlex('no-operations');
   };
 };
-
+  
 //      EDIT OPERATION
 
 const editOperationEvent = () => {
@@ -88,10 +87,8 @@ const editOperationEvent = () => {
   const savedOperations = validateLocalStorage("operations", operations);
   for (let btn of editOperationBtns) {
     btn.addEventListener("click", (e) => {
-      console.log('soy el evento ejecutandose')
-      const operation = seekId(savedOperations, e.target.id);
+      const operation = seekId(savedOperations, e.target.id, 9);
       if (operation) {
-        console.log('entre en el if porque encontre el id de tu operacion')
         document.getElementById("edit-description-operation").value = operation.description;
         document.getElementById("edit-operation-amount").value = operation.amount;
         document.getElementById("edit-type-operation").value = operation.type;
@@ -113,7 +110,7 @@ const deleteOperationEvent = () => {
   const savedOperations = validateLocalStorage("operations", operations);
   for (let btn of deleteOperationBtns) {
     btn.addEventListener("click", (e) => {
-      const operation = seekId(savedOperations, e.target.id);
+      const operation = seekId(savedOperations, e.target.id, 11);
       if (operation) {
         document.getElementById("operation-name").innerHTML = operation.description;
         setStyleFlex("delete-operation");

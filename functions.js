@@ -37,20 +37,26 @@ const validateLocalStorage = (key, defaultValue) => {
     }
 };
 
+//      PUT UPPERCASE ON THE FIRST LETTER OF A STRING
+
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+};
+
 //      FORMAT DATE
 
 const formatDate = (dateString) => {
-    const formattedDate = new Date(dateString);
-    return `${formattedDate.getDate()}/${
-      formattedDate.getMonth() + 1
-    }/${formattedDate.getFullYear()}`;
-}
+  const formattedDate = new Date(dateString);
+  formattedDate.setDate(formattedDate.getDate()); // Añadir 1 día a la fecha
+  return `${formattedDate.getDate()}/${
+    formattedDate.getMonth() + 1
+  }/${formattedDate.getFullYear()}`;
+};
 
 //      FIND AN OBJECT FOR ITS ID
 
-const seekId = (array, id) => {
-    console.log('estoy buscando tu id')
-    return array.find(element => element.id === id);
+const seekId = (array, id, cut) => {
+    return array.find(element => element.id === id.slice(cut));
 }
 
 //      ERROR
@@ -74,3 +80,6 @@ const hideError = (field) => {
         errorText.remove();
     }
 };
+
+
+

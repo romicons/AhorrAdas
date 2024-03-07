@@ -37,16 +37,16 @@ const createCategoriesTable = () => {
                     <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
                         <button
                             class="delete-category-btn flex items-center rounded py-1 px-2 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                            id="${category.id}"
+                            id="btn-delete-${category.id}"
                         >
-                            <i class="fa-solid fa-trash"></i>
+                            <i class="fa-solid fa-trash pointer-events-none"></i>
                             Eliminar
                         </button>
                         <button
                             class="edit-category-btn flex items-center rounded py-1 px-3 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                            id="${category.id}" 
+                            id="btn-edit-${category.id}" 
                         >
-                            <i class="fa-solid fa-pen"></i>
+                            <i class="fa-solid fa-pen pointer-events-none"></i>
                             Editar
                         </button>
                     </td>
@@ -110,7 +110,7 @@ const editCategoryEvent = () => {
   const savedCategories = validateLocalStorage("categories", categories);
   for (let btn of editCategoryBtns) {
     btn.addEventListener("click", (e) => {
-      const category = seekId(savedCategories, e.target.id);
+      const category = seekId(savedCategories, e.target.id, 9);
       if (category) {
         document.getElementById("edit-category-name").value = category.name;
         setStyleFlex("rename-category");
@@ -129,7 +129,7 @@ const deleteCategoryEvent = () => {
   const savedCategories = validateLocalStorage("categories", categories);
   for (let btn of deleteCategoryBtns) {
     btn.addEventListener("click", (e) => {
-      const category = seekId(savedCategories, e.target.id);
+      const category = seekId(savedCategories, e.target.id, 11);
       if (category) {
         document.getElementById("category-name").innerHTML = category.name;
         setStyleFlex("delete-category");

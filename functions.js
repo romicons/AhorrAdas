@@ -14,7 +14,16 @@ const setStyleNone = (element) => {
 const setStyleFlex = (element) => {
     document.getElementById(element).classList.remove('hidden');
     document.getElementById(element).classList.add('flex');
-}
+};
+
+const toggleMobileNav = () => {
+    document.getElementById('nav-items').classList.toggle('hidden');
+    if (document.getElementById('nav-items').classList.contains('hidden')) {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-bars"></i>';
+    } else {
+        document.getElementById('nav-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    };
+};
 
 //      VALIDATE LOCAL STORAGE
 
@@ -28,10 +37,25 @@ const validateLocalStorage = (key, defaultValue) => {
     }
 };
 
+//      PUT UPPERCASE ON THE FIRST LETTER OF A STRING
+
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+//      FORMAT DATE
+
+const formatDate = (dateString) => {
+    const formattedDate = new Date(dateString);
+    return `${formattedDate.getDate() + 1}/${
+      formattedDate.getMonth() + 1
+    }/${formattedDate.getFullYear()}`;
+}
+
 //      FIND AN OBJECT FOR ITS ID
 
-const seekId = (array, id) => {
-    return array.find(element => element.id === id);
+const seekId = (array, id, cut) => {
+    return array.find(element => element.id === id.slice(cut));
 }
 
 //      ERROR
@@ -52,7 +76,6 @@ const hideError = (field) => {
     let inputElement = document.getElementById(`${field.id}`);
     inputElement.classList.remove('outline', 'outline-red-600', 'outline-2')
     if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
-
         errorText.remove();
     }
 };

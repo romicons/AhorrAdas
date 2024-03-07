@@ -41,16 +41,17 @@ const validateLocalStorage = (key, defaultValue) => {
 
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
+};
 
 //      FORMAT DATE
 
 const formatDate = (dateString) => {
-    const formattedDate = new Date(dateString);
-    return `${formattedDate.getDate() + 1}/${
-      formattedDate.getMonth() + 1
-    }/${formattedDate.getFullYear()}`;
-}
+  const formattedDate = new Date(dateString);
+  formattedDate.setDate(formattedDate.getDate()); // Añadir 1 día a la fecha
+  return `${formattedDate.getDate()}/${
+    formattedDate.getMonth() + 1
+  }/${formattedDate.getFullYear()}`;
+};
 
 //      FIND AN OBJECT FOR ITS ID
 
@@ -79,3 +80,6 @@ const hideError = (field) => {
         errorText.remove();
     }
 };
+
+
+

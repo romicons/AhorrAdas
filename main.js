@@ -17,6 +17,20 @@ darkModeToggle.addEventListener('click', () => {
 
 //                      RESPONSIVE DESIGN EVENT LISTENERS
 
+//      GO TO HOME/BALANCE WINDOW
+
+document.getElementById('home-section').addEventListener('click', () => {
+  setStyleFlex('balance-section');
+  setStyleNone('categories');
+  setStyleNone('reports');
+  setStyleNone('new-operation');
+  setStyleNone('rename-category');
+  setStyleNone('delete-category');
+  setStyleNone('edit-operation');
+  setStyleNone('delete-operation');
+  toggleMobileNav();
+})
+
 //      OPEN BALANCE WINDOW
 
 document.getElementById('balance-window-btn').addEventListener('click', () => {
@@ -72,6 +86,26 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
     }
 })
 
+//      FILTER OPERATIONS BY TYPE
+
+document.getElementById('operation-type-filter').addEventListener('change', filterOperations);
+
+//      FILTER OPERATIONS BY CATEGORY
+
+document.getElementById('operation-category-filter').addEventListener('change', filterOperations);
+
+//      FILTER OPERATIONS FROM X DATE
+
+document.getElementById("operation-date-from").addEventListener('change', filterOperations);
+
+//      FILTER OPERATIONS UNTIL X DATE
+
+document.getElementById("operation-date-until").addEventListener('change', filterOperations);
+
+//      FILTER THE ORDER OF THE OPERATIONS
+
+document.getElementById('operation-order').addEventListener('change', filterOperations);
+
 //      OPEN NEW OPERATION WINDOW
 
 document.getElementById('add-operation-btn').addEventListener('click', () => {
@@ -99,7 +133,7 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
     let operationAmount = operationAmountInput.value.trim();
     let operationCategoryValue = operationCategory.value;
     let typeOperationValue = typeOperation.value;
-    let operationDateValue = operationDate.value;
+    let operationDateValue = operationDate.value.replace(/-/g, '/');
   
     if (operationDescriptionValue === "") {
       error(
@@ -271,3 +305,5 @@ document.getElementById('to-new-operation-btn').addEventListener('click', () => 
 //      OPEN NAV MENU IN MOBILE
 
 document.getElementById('nav-btn').addEventListener('click', (toggleMobileNav));
+
+

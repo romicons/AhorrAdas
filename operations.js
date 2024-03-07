@@ -47,13 +47,12 @@ const createOperationsTable = () => {
                <th class="w-1/5 py-1 flex justify-center">Acciones</th>
              </tr>
            </thead>
-           <tbody id="operations-table-body" class="flex flex-col">
+           <tbody id="operations-table-body" class="flex flex-col tablet:h-[29rem]">
            </tbody>
            `;
 
     for (let operation of savedOperations) {
       const formattedDateStr = formatDate(operation.date);
-
       const amountType =
         operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
       const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
@@ -72,7 +71,7 @@ const createOperationsTable = () => {
                   <i class="fa-solid fa-pen pointer-events-none"></i>
               </button>
             </td>
-          </tr>`;
+          </tr>`
     };
     editOperationEvent();
     deleteOperationEvent();

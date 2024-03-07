@@ -72,27 +72,25 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
     }
 })
 
-//    FILTERS
+//      FILTER OPERATIONS BY TYPE
 
-const filterOperations = () => {
-    let operations = getOperations();
-    const type = document.getElementById('type-filter').value;
-    const category = document.getElementById('category-type').value;
-    const dateFrom = document.getElementById("operation-date-from").value;
-    const dateUntil = document.getElementById("operation-date-until").value;
-    const order = document.getElementById('order-operation').value;
-    
-    if (type !== 'Todas') {
-      operations = filterByType(type, operations);
-    }
-  
-    if (category !== 'Todas') {
-      operations = filterByCategory(category, operations)
-    }
-    operations = filterOperationsFromDate(dateFrom, operations);
-    operations = filterOperationsUntilDate(dateUntil, operations);
-    operations = filterByOrder(order, operations);
-}
+document.getElementById('operation-type-filter').addEventListener('change', filterOperations);
+
+//      FILTER OPERATIONS BY CATEGORY
+
+document.getElementById('operation-category-filter').addEventListener('change', filterOperations);
+
+//      FILTER OPERATIONS FROM X DATE
+
+document.getElementById("operation-date-from").addEventListener('change', filterOperations);
+
+//      FILTER OPERATIONS UNTIL X DATE
+
+document.getElementById("operation-date-until").addEventListener('change', filterOperations);
+
+//      FILTER THE ORDER OF THE OPERATIONS
+
+document.getElementById('operation-order').addEventListener('change', filterOperations);
 
 //      OPEN NEW OPERATION WINDOW
 

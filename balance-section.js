@@ -51,3 +51,23 @@ const filterByOrder = (operations, order) => {
     }
 };
 
+const filterOperations = () => {
+    let operations = getOperations();
+    const type = document.getElementById('operation-type-filter').value;
+    const category = document.getElementById('operation-category-filter').value;
+    const dateFrom = document.getElementById("operation-date-from").value;
+    const dateUntil = document.getElementById("operation-date-until").value;
+    const order = document.getElementById('operation-order').value;
+    
+    if (type !== 'Todas') {
+      operations = filterByType(type, operations);
+    }
+  
+    if (category !== 'Todas') {
+      operations = filterByCategory(category, operations)
+    }
+    operations = filterOperationsFromDate(dateFrom, operations);
+    operations = filterOperationsUntilDate(dateUntil, operations);
+    operations = filterByOrder(order, operations);
+}
+

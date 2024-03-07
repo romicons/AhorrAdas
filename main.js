@@ -159,18 +159,6 @@ document.getElementById(`operation-amount`).addEventListener("input", () => {
     }
 });
 
-<<<<<<< HEAD
-/*      ESTOS BOTONES TODAVIA NO EXISTEN
-
-//      EDIT OPERATION
-
-document.getElementById('edit-operation-btn').addEventListener('click', () => {
-    setStyleFlex('edit-operation');
-    setStyleNone('balance-section');
-})
-
-=======
->>>>>>> main
 //      CANCEL EDIT OPERATION
 
 document.getElementById('close-edit-operation').addEventListener('click', () => {

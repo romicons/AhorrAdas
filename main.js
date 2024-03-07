@@ -17,6 +17,20 @@ darkModeToggle.addEventListener('click', () => {
 
 //                      RESPONSIVE DESIGN EVENT LISTENERS
 
+//      GO TO HOME/BALANCE WINDOW
+
+document.getElementById('home-section').addEventListener('click', () => {
+  setStyleFlex('balance-section');
+  setStyleNone('categories');
+  setStyleNone('reports');
+  setStyleNone('new-operation');
+  setStyleNone('rename-category');
+  setStyleNone('delete-category');
+  setStyleNone('edit-operation');
+  setStyleNone('delete-operation');
+  toggleMobileNav();
+})
+
 //      OPEN BALANCE WINDOW
 
 document.getElementById('balance-window-btn').addEventListener('click', () => {

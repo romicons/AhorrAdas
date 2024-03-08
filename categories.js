@@ -133,8 +133,7 @@ const renameCategory = (array, categoryId, newName) => {
     if (object.id === categoryId) {
       return {
         ...object,
-        name: newName,
-        cambiado: true,
+        name: newName
       };
     } else {
       return object; 

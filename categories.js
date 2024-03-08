@@ -21,16 +21,20 @@ const categories = [
     id: uuidv4(),
     name: "Transporte",
   },
+  {
+    id: uuidv4(),
+    name: "Trabajo",
+  }
 ];
 
 // GENERATE TABLE OF CATEGORIES
 
-const createCategoriesTable = () => {
+const createCategoriesTable = (data) => {
   const tableOfCategories = document.getElementById("categories-table-body");
   tableOfCategories.innerHTML = "";
-  const savedCategories = validateLocalStorage("categories", categories);
-  if (savedCategories && savedCategories.length > 0) {
-    for (let category of savedCategories) {
+  validateLocalStorage("categories", data);
+  if (data && data.length > 0) {
+    for (let category of data) {
       tableOfCategories.innerHTML += `
                 <tr class="flex columns-2 justify-between items-center py-1">
                     <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${category.name}</td>
@@ -54,7 +58,7 @@ const createCategoriesTable = () => {
             `;
     }
     linkCategoriesWithSelect();
-    editCategoryEvent();
+    editCategoryEvent(document.getElementsByClassName("edit-category-btn"));
     deleteCategoryEvent();
   } else {
     // Si no hay categorías guardadas, mostrar un mensaje o realizar alguna acción
@@ -77,12 +81,12 @@ const updateCategories = (categories) => {
 
 //      CREATE CATEGORY
 
-const createCategory = (name) => {
-  let savedCategories = getCategories();
-  let newCategory = { id: uuidv4(), name: name };
-  savedCategories.push(newCategory);
-  updateCategories(savedCategories);
-  createCategoriesTable();
+const createCategory = (newCategoryName) => {
+  let savedCategories = getCategories(); // Obtener las categorías actuales del almacenamiento local
+  let newCategory = { id: uuidv4(), name: newCategoryName };
+  savedCategories.push(newCategory); // Agregar la nueva categoría a la lista de categorías
+  updateCategories(savedCategories); // Actualizar el almacenamiento local con la lista actualizada de categorías
+  createCategoriesTable(savedCategories); // Crear la tabla de categorías con las categorías actualizadas
 };
 
 //     CONECT CATEGORIES WITH THE SELECTS OF CATEGORIES
@@ -105,14 +109,14 @@ const linkCategoriesWithSelect = () => {
 
 //      EDIT CATEGORY
 
-const editCategoryEvent = () => {
-  const editCategoryBtns = document.getElementsByClassName("edit-category-btn");
-  const savedCategories = validateLocalStorage("categories", categories);
-  for (let btn of editCategoryBtns) {
+const editCategoryEvent = (editCategoryButtons) => {
+  const savedCategories = getCategories(); // Obtener las categorías actuales del almacenamiento local
+  for (let btn of editCategoryButtons) {
     btn.addEventListener("click", (e) => {
       const category = seekId(savedCategories, e.target.id, 9);
       if (category) {
         document.getElementById("edit-category-name").value = category.name;
+        document.querySelector('.save-edit-category').setAttribute("id", `confirm-${btn.id.slice(9)}`);
         setStyleFlex("rename-category");
         setStyleNone("categories");
       }
@@ -120,31 +124,25 @@ const editCategoryEvent = () => {
   }
 };
 
-//      RENAME CATEGORY
-/*
-const renameCategory = () => {
-    const categoryNameInput = document.getElementById('edit-category-name');
-    const category = seekId(savedCategories, target.id);
-    const newCategoryName = categoryNameInput.value.trim();
-    if (newCategoryName === '') {
-        categoryNameInput.classList.add('outline', 'outline-red-600', 'outline-2');
-        error(categoryNameInput, 'Proporciona un nuevo nombre para tu categoría por favor.');
-    } else {
-        const categoryExists = categories.some(category => category.name === newCategoryName);
-        if (categoryExists) {
-            error(categoryNameInput, 'Esta categoría ya existe.');
-        } else {   
-            category.name = newCategoryName;
-        }
-    }
-};*/
 
-const renameCategory = () => {
-    const categoryNameInput = document.getElementById('edit-category-name');
-    const newCategoryName = categoryNameInput.value.trim();
-    const category = seekId(savedCategories, target.id);
-    category.name = newCategoryName;
-}
+//      RENAME CATEGORY
+
+const renameCategory = (array, categoryId, newName) => {
+  const savedCategories = getCategories();
+  const editedCategories = savedCategories.map((object) => {
+    if (object.id === categoryId) {
+      return {
+        ...object,
+        name: newName,
+        cambiado: true,
+      };
+    } else {
+      return object; 
+    }
+  });
+  updateCategories(editedCategories);
+  createCategoriesTable(editedCategories);
+};
 
 //      DELETE CATEGORY
 

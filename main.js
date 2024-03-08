@@ -28,7 +28,6 @@ document.getElementById('home-section').addEventListener('click', () => {
   setStyleNone('delete-category');
   setStyleNone('edit-operation');
   setStyleNone('delete-operation');
-  toggleMobileNav();
 })
 
 //      OPEN BALANCE WINDOW
@@ -171,6 +170,9 @@ document.getElementById("add-new-operation").addEventListener("click", () => {
         operationDescription.value = '';
         operationAmountInput.value = '';
         operationDate.value = '';
+        hideError(operationDescription);
+        hideError(operationDate);
+        hideError(operationAmountInput)
         setStyleNone('new-operation');
         setStyleFlex('balance-section')
       }
@@ -260,10 +262,25 @@ document.getElementById('add-category').addEventListener('input', () => {
 
 //      RENAME CATEGORY 
 
-document.getElementById('save-edit-category').addEventListener('click', () => {
-    
+document.querySelector('.save-edit-category').addEventListener('click', () => {
+  let editCategoryId = document.querySelector('.save-edit-category');
+  const newCategoryName = document.getElementById("edit-category-name").value.trim();
+  if (newCategoryName === '') {
+    console.log('el nombre de tu categoria esta vacio')
+      document.getElementById("edit-category-name").classList.add('outline', 'outline-red-600', 'outline-2');
+      error(document.getElementById("edit-category-name"), 'Proporciona un nuevo nombre para tu categoría por favor.');
+      return; 
+  }
+  const categoryExists = categories.some(object => object.name === newCategoryName);
+  if (categoryExists) {
+    console.log('tu categoria ya existe')
+      error(document.getElementById("edit-category-name"), 'Esta categoría ya existe.');
+      return;
+  } else {
+    renameCategory(categories, editCategoryId.id.slice(8), newCategoryName);
     setStyleFlex('categories');
     setStyleNone('rename-category');
+  }
 });
 
 //      CANCEL EDIT CATEGORY

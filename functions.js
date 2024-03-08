@@ -1,9 +1,15 @@
 //      INITIALIZE APP
 
 const initializeApp = () => {
-    createCategoriesTable();
+    const savedCategories = getCategories(); 
+    if (savedCategories && savedCategories.length > 0) {
+        createCategoriesTable(savedCategories);
+    } else {
+        createCategoriesTable(categories);
+    }
     createOperationsTable();
-}
+};
+
 
 //      RESPONSIVE DESIGN
 

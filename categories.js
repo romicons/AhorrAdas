@@ -59,12 +59,10 @@ const createCategoriesTable = (data) => {
     }
     linkCategoriesWithSelect();
     editCategoryEvent(document.getElementsByClassName("edit-category-btn"));
-    deleteCategoryEvent();
+    deleteCategoryEvent(document.getElementsByClassName("delete-category-btn"));
   } else {
-    // Si no hay categorías guardadas, mostrar un mensaje o realizar alguna acción
-    //DESPUES LO ESTILIZAMOS BIEN
-    tableOfCategories.innerHTML = "<p>No hay categorías disponibles.</p>";
-  }
+    tableOfCategories.innerHTML = `<p class="text-xl font-bold">No hay categorías disponibles.</p>`;
+  };
 };
 
 //      RETURN CATEGORIES FROM LOCAL STORAGE
@@ -82,11 +80,11 @@ const updateCategories = (categories) => {
 //      CREATE CATEGORY
 
 const createCategory = (newCategoryName) => {
-  let savedCategories = getCategories(); // Obtener las categorías actuales del almacenamiento local
+  let savedCategories = getCategories(); 
   let newCategory = { id: uuidv4(), name: newCategoryName };
-  savedCategories.push(newCategory); // Agregar la nueva categoría a la lista de categorías
-  updateCategories(savedCategories); // Actualizar el almacenamiento local con la lista actualizada de categorías
-  createCategoriesTable(savedCategories); // Crear la tabla de categorías con las categorías actualizadas
+  savedCategories.push(newCategory); 
+  updateCategories(savedCategories); 
+  createCategoriesTable(savedCategories); 
 };
 
 //     CONECT CATEGORIES WITH THE SELECTS OF CATEGORIES
@@ -107,10 +105,10 @@ const linkCategoriesWithSelect = () => {
   }
 };
 
-//      EDIT CATEGORY
+//              EDIT CATEGORY
 
 const editCategoryEvent = (editCategoryButtons) => {
-  const savedCategories = getCategories(); // Obtener las categorías actuales del almacenamiento local
+  const savedCategories = getCategories();
   for (let btn of editCategoryButtons) {
     btn.addEventListener("click", (e) => {
       const category = seekId(savedCategories, e.target.id, 9);
@@ -123,9 +121,6 @@ const editCategoryEvent = (editCategoryButtons) => {
     });
   }
 };
-
-
-//      RENAME CATEGORY
 
 const renameCategory = (array, categoryId, newName) => {
   const savedCategories = getCategories();
@@ -143,21 +138,26 @@ const renameCategory = (array, categoryId, newName) => {
   createCategoriesTable(editedCategories);
 };
 
-//      DELETE CATEGORY
+//              DELETE CATEGORY
 
-const deleteCategoryEvent = () => {
-  const deleteCategoryBtns = document.getElementsByClassName(
-    "delete-category-btn"
-  );
-  const savedCategories = validateLocalStorage("categories", categories);
-  for (let btn of deleteCategoryBtns) {
+const deleteCategoryEvent = (deleteCategoryButtons) => {
+  const savedCategories = getCategories();
+  for (let btn of deleteCategoryButtons) {
     btn.addEventListener("click", (e) => {
       const category = seekId(savedCategories, e.target.id, 11);
       if (category) {
         document.getElementById("category-name").innerHTML = category.name;
+        document.querySelector('.confirm-delete-category').setAttribute("id", `confirm-${btn.id.slice(11)}`);
+        console.log(document.querySelector('.confirm-delete-category').id)
         setStyleFlex("delete-category");
         setStyleNone("categories");
       }
     });
   }
 };
+
+const confirmDeleteCategory = (array, categoryId) => {
+  const filteredCategories = array.filter(object => object.id !== categoryId);
+  updateCategories(filteredCategories);
+  createCategoriesTable(filteredCategories);
+}

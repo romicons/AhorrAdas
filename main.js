@@ -299,10 +299,11 @@ document.getElementById('cancel-delete-category').addEventListener('click', () =
 
 //      CONFIRM DELETE CATEGORY
 
-document.getElementById('confirm-delete-category').addEventListener('click', () => {
+document.querySelector('.confirm-delete-category').addEventListener('click', () => {
+  let categoryId = document.querySelector('.confirm-delete-category');
+  confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
     setStyleNone('delete-category');
     setStyleFlex('categories');
-    //AÑADIR LA FUNCION DE GUARDAR LOS CAMBIOS
 });
 
 //      CLOSE REPORTS WINDOW

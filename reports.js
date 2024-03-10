@@ -69,6 +69,8 @@ const filterOperations = () => {
     operations = filterOperationsFromDate(dateFrom, operations);
     operations = filterOperationsUntilDate(dateUntil, operations);
     operations = filterByOrder(order, operations);
+
+    createOperationsTable(operations);
 };
 
 //  GENERATE TABLE OF REPORTS

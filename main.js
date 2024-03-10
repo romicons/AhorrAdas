@@ -203,6 +203,7 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 
 //      SAVE EDIT OPERATION
+
 document.querySelector('.save-edit-operation').addEventListener('click', () => {
   let editOperationId = document.querySelector('.save-edit-operation');
   let newOperationDescriptionInput = document.getElementById("edit-description-operation");
@@ -210,7 +211,7 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
   let newOperationAmount = document.getElementById("edit-operation-amount").value.trim();
   let newOperationType = document.getElementById("edit-type-operation").value;
   let newOperationCategory = document.getElementById("edit-category-operation").value;
-  let newOperationDate = document.getElementById("edit-date-operation").value.trim();
+  let newOperationDate = document.getElementById("edit-date-operation").value;
   
   if (newOperationDescription === '') {
     newOperationDescriptionInput.classList.add('outline', 'outline-red-600', 'outline-2');
@@ -219,16 +220,13 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
   } else if (isNaN(newOperationAmount) || newOperationAmount === '') {
     error(document.getElementById("edit-operation-amount"), 'Proporciona un valor numérico por favor.');
     return;
-  } else {
-    const operationExists = operations.some((operation) => operation.description === newOperationDescription);
-    if (operationExists) {
-      error(newOperationDescriptionInput, "Esta operación ya existe.");
-      return;
+  } else if (newOperationDate.value === 'mm/dd/yyyy' || newOperationDate.value === '') {
+      error(
+        newOperationDate,
+        'Proporciona la fecha en que realizaste esta operación por favor.'
+      );
     } else {
     const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription);
-    newOperationDescription.value = '';
-    newOperationAmount.value = '';
-    newOperationDate.value = '';
     hideError(newOperationDescription);
     hideError(newOperationDate);
     hideError(newOperationAmount);
@@ -238,7 +236,7 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
     confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount, newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
   }
   }
-});
+);
 
 //      CONFIRM DELETE OPERATION
 

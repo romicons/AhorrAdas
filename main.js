@@ -208,16 +208,16 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
   let editOperationId = document.querySelector('.save-edit-operation');
   let newOperationDescriptionInput = document.getElementById("edit-description-operation");
   let newOperationDescription = newOperationDescriptionInput.value.trim();
-  let newOperationAmount = document.getElementById("edit-operation-amount").value.trim();
+  let newOperationAmount = document.getElementById("edit-operation-amount");
   let newOperationType = document.getElementById("edit-type-operation").value;
   let newOperationCategory = document.getElementById("edit-category-operation").value;
-  let newOperationDate = document.getElementById("edit-date-operation").value;
+  let newOperationDate = document.getElementById("edit-date-operation");
   
   if (newOperationDescription === '') {
     newOperationDescriptionInput.classList.add('outline', 'outline-red-600', 'outline-2');
     error(newOperationDescriptionInput, 'Proporciona un nuevo nombre para tu operación por favor.');
     return; 
-  } else if (isNaN(newOperationAmount) || newOperationAmount === '') {
+  } else if (isNaN(newOperationAmount.value.trim()) || newOperationAmount.value.trim() === '') {
     error(document.getElementById("edit-operation-amount"), 'Proporciona un valor numérico por favor.');
     return;
   } else if (newOperationDate.value === 'mm/dd/yyyy' || newOperationDate.value === '') {
@@ -227,13 +227,13 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
       );
     } else {
     const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription);
-    hideError(newOperationDescription);
+    hideError(newOperationDescriptionInput);
     hideError(newOperationDate);
     hideError(newOperationAmount);
     setStyleNone('new-operation');
     setStyleFlex('balance-section');
     setStyleNone('edit-operation');  
-    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount, newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
   }
   }
 );
@@ -265,22 +265,23 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
   const newCategoryInput = document.getElementById('add-category');
-  const newCategory = newCategoryInput.value;
+  const newCategory = capitalizeFirstLetter(newCategoryInput.value)
   if (newCategory === "") {
       newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
       error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
       document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
       document.getElementById('add-category-btn-col').classList.add('items-center')
   } else {
-      const categoryExists = categories.some(category => category.name === newCategory);
+      let existentCategories = getCategories()
+      const categoryExists = existentCategories.some(category => category.name === newCategory);
       if (categoryExists) {
           newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
           error(newCategoryInput, 'Esta categoría ya existe.');
           document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
           document.getElementById('add-category-btn-col').classList.add('items-center')
       } else {
-        const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
-          createCategory(newCategoryCapitalized);
+        //const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
+          createCategory(newCategory);
           newCategoryInput.value = "";
       }
     }
@@ -328,6 +329,13 @@ document.getElementById('cancel-edit-category').addEventListener('click', () => 
 //      CANCEL DELETE CATEGORY
 
 document.getElementById('cancel-delete-category').addEventListener('click', () => {
+  let warningText = document.getElementById(`warning-message`);
+  if (warningText) {
+      let errorText = warningText.nextSibling;
+      if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
+          errorText.remove();
+      }
+    }
     setStyleNone('delete-category');
     setStyleFlex('categories');
 });
@@ -335,11 +343,21 @@ document.getElementById('cancel-delete-category').addEventListener('click', () =
 //      CONFIRM DELETE CATEGORY
 
 document.querySelector('.confirm-delete-category').addEventListener('click', () => {
+  let categoryName = document.querySelector('.confirm-delete-category').name;
   let categoryId = document.querySelector('.confirm-delete-category');
+  const savedOperations = getOperations();
+  const hasRelatedOperations = savedOperations.some(operation => operation.category === categoryName);
+  if (hasRelatedOperations) {
+    let errorText = document.createElement('p');
+    errorText.classList.add('text-red-600');
+    errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Debes eliminar primero las operaciones relacionadas.`;
+    document.getElementById('warning-message').parentNode.insertBefore(errorText, document.getElementById('warning-message').nextSibling);
+  }
+  else { 
   confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
     setStyleNone('delete-category');
     setStyleFlex('categories');
-});
+}});
 
 //      CLOSE REPORTS WINDOW
 

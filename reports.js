@@ -81,8 +81,8 @@ const createReportsTable = () => {
       setStyleNone('no-reports');
       tableOfReports.innerHTML += `
              <thead class="sticky top-0 bg-primary dark:bg-secondary text-light z-50">
-               <tr class="justify-around hidden tablet:flex">
-                 <th class="text-center py-1">Resumen</th>
+               <tr class="justify-center">
+                 <th class="text-center py-1 font-bold">Resumen</th>
                </tr>
              </thead>
              <tbody id="reports-table-body" class="flex flex-col tablet:h-[29rem]">
@@ -98,41 +98,60 @@ const createReportsTable = () => {
         operationBody.innerHTML += `
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor ganancia</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${operation.category}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeCategory}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${amountCategory}</td>
             </tr>
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor gasto</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${operation.category}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseCategory}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${amountCategory}</td>
             </tr>
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor balance</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${operation.category}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestBalanceCategory}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${amountCategory}</td>
             </tr>
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Mes con mayor ganancia</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${month}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeMonth}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${incomeAmount}</td>
             </tr>
 
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Mes con mayor gasto</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${month}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${operation.amount}</td>
-             </tr>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseMonth}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${expenseAmount}}</td>
+            </tr>
 
-              <td class="tablet:w-1/5 text-center px-2 py-1 rounded text-light dark:text-dark font-bold hidden tablet:flex justify-center">${formattedDateStr}</td>
-              <td class="w-1/4 tablet:w-1/5 flex gap-1 justify-end tablet:justify-center">
-                <button class="delete-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light" id="btn-delete-${operation.id}">
-                  <i class="fa-solid fa-trash pointer-events-none"></i>
-                </button>
-                <button class="edit-operation-btn flex items-center rounded py-1 px-2 tablet:px-4 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light" id="btn-edit-${operation.id}">
-                    <i class="fa-solid fa-pen pointer-events-none"></i>
-                </button>
-              </td>
-            </tr>`
+            <th class="justify-left font-bold py-2 flex font-sans">Totales por categoría</th>
+            <tr class="flex justify-between items-center py-1">
+              <th class="p-1 w-1/4 text-left">Categoría</th>
+              <th class="p-1 w-1/4 text-center">Ganancias</th>
+              <th class="p-1 w-1/4 text-center">Gastos</th>
+              <th class="p-1 w-1/4 text-right">Balance</th>
+            </tr>
+
+            <tr class="flex justify-between items-center py-1">
+              <td class="p-1 text-left w-1/4">${category.name}</td>
+              <td class="text-green-600 p-1 w-1/4 text-center">${incomeByCategory}</td>
+              <td class="text-red-600 p-1 w-1/4 text-center">${expenseByCategory}</td>
+              <td class="text-green-600 p-1 w-1/4 text-right">${balanceByCategory}</td>
+            </tr>
+
+            <th class="justify-left font-bold py-2 flex font-sans">Totales por mes</th>
+            <tr class="flex justify-between items-center py-1">
+                <th class="p-1 w-1/4 text-left">Mes</th>
+                <th class="p-1 w-1/4 text-center">Ganancias</th>
+                <th class="p-1 w-1/4 text-center">Gastos</th>
+                <th class="p-1 w-1/4 text-right">Balance</th>
+            </tr>
+            <tr class="flex justify-between items-center py-1">
+              <td class="p-1 w-1/4 text-left">${dateByMonth}</td>
+              <td class="text-green-600 p-1 w-1/4 text-center">${incomeByMonth}</td>
+              <td class="text-red-600 p-1 w-1/4 text-center">${expenseByMonth}</td>
+              <td class="text-red-600 p-1 w-1/4 text-right">${balanceByMonth}7</td>
+            </tr>   
+            `
       };
     } else {
       setStyleFlex('no-reports');

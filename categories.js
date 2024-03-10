@@ -32,7 +32,7 @@ const categories = [
 const createCategoriesTable = (data) => {
   const tableOfCategories = document.getElementById("categories-table-body");
   tableOfCategories.innerHTML = "";
-  validateLocalStorage("categories", data);
+  data = validateLocalStorage("categories", categories);
   if (data && data.length > 0) {
     for (let category of data) {
       tableOfCategories.innerHTML += `

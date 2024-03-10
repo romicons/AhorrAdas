@@ -72,7 +72,7 @@ const error = (field, message) => {
     errorText.classList.add('text-red-600');
     errorText.textContent = message;
     let inputElement = document.getElementById(`${field.id}`);
-    inputElement.classList.add('outline', 'outline-red-600', 'outline-2')
+    inputElement.classList.add('outline', 'outline-red-600', 'outline-2');
     inputElement.parentNode.insertBefore(errorText, inputElement.nextSibling);
 };
 

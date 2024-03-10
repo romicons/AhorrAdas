@@ -203,12 +203,45 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 
 //      SAVE EDIT OPERATION
-/*
-document.getElementById('close-edit-operation').addEventListener('click', () => {
-    setStyleNone('edit-operation');
-    setStyleFlex('balance-section');
+
+document.querySelector('.save-edit-operation').addEventListener('click', () => {
+     let editOperationId = document.querySelector('.save-edit-operation');
+     let newOperationDescription = document.getElementById("edit-description-operation");
+     let newOperationAmount = document.getElementById("edit-operation-amount");
+     let newOperationType = document.getElementById("edit-type-operation");
+     let newOperationCategory= document.getElementById("edit-category-operation");
+     let newOperationDate = document.getElementById("edit-date-operation");
+    if (newOperationDescription === '') {
+      newOperationDescription.classList.add('outline', 'outline-red-600', 'outline-2');
+      error(newOperationDescription, 'Proporciona un nuevo nombre para tu operación por favor.');
+      return; 
+    } else if (isNaN(newOperationAmount) || newOperationAmount === ``) {
+      error( newOperationAmount, `Proporciona un valor númerico por favor.`);
+    }else if (newOperationDate === 'mm/dd/yyyy' || newOperationDate === ``){
+      error(newOperationDate, 'Proporciona la fecha en que realizaste esta operación por favor.' );
+    } else{
+      const operationExists = operations.some((operation) => operation.description === newOperationDescription);
+        if (operationExists) {
+          error(
+          newOperationDescription,
+          "Esta operación ya existe."
+        );
+        } else {
+          const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription.value);
+          newOperationDescription.value = '';
+          newOperationAmount.value = '';
+          newOperationDate.value = '';
+          hideError(newOperationDescription);
+          hideError(newOperationDate);
+          hideError(newOperationAmount);
+          setStyleNone('new-operation');
+          setStyleFlex('balance-section');
+          confirmEditOperation(operations, editOperationId.id.slice(8),newOperationDescriptionCapitalized, newOperationAmount.value, newOperationType.value, newOperationCategory.value, newOperationDate.value.replace(/-/g, '/'));
+        }
+    }
 });
-*/
+
+
 
 //    CANCEL DELETE OPERATION
 
@@ -266,14 +299,12 @@ document.querySelector('.save-edit-category').addEventListener('click', () => {
   let editCategoryId = document.querySelector('.save-edit-category');
   const newCategoryName = document.getElementById("edit-category-name").value.trim();
   if (newCategoryName === '') {
-    console.log('el nombre de tu categoria esta vacio')
       document.getElementById("edit-category-name").classList.add('outline', 'outline-red-600', 'outline-2');
       error(document.getElementById("edit-category-name"), 'Proporciona un nuevo nombre para tu categoría por favor.');
       return; 
   }
   const categoryExists = categories.some(object => object.name === newCategoryName);
   if (categoryExists) {
-    console.log('tu categoria ya existe')
       error(document.getElementById("edit-category-name"), 'Esta categoría ya existe.');
       return;
   } else {

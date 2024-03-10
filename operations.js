@@ -31,11 +31,11 @@ const updateOperations = () => {
 
 //  GENERATE TABLE OF OPERATIONS
 
-const createOperationsTable = () => {
+const createOperationsTable = (data) => {
   const tableOfOperations = document.getElementById("operations-table");
   tableOfOperations.innerHTML = "";
-  const savedOperations = validateLocalStorage("operations", operations);
-  if (savedOperations && savedOperations.length > 0) {
+   data = validateLocalStorage("operations", operations);
+  if (data && data.length > 0) {
     setStyleNone('no-operations');
     tableOfOperations.innerHTML += `
            <thead class="sticky top-0 bg-primary dark:bg-secondary text-light z-50">
@@ -51,7 +51,7 @@ const createOperationsTable = () => {
            </tbody>
            `;
 
-    for (let operation of savedOperations) {
+    for (let operation of data) {
       const formattedDateStr = formatDate(operation.date);
       const amountType =
         operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
@@ -73,19 +73,18 @@ const createOperationsTable = () => {
             </td>
           </tr>`
     };
-    editOperationEvent();
-    deleteOperationEvent();
+    editOperationEvent(document.getElementsByClassName(`edit-operation-btn`));
+    deleteOperationEvent(document.getElementsByClassName(`delete-operation-btn`))
   } else {
     setStyleFlex('no-operations');
   };
 };
   
-//      EDIT OPERATION
+//      EDIT OPERATION  
 
-const editOperationEvent = () => {
-  const editOperationBtns = document.getElementsByClassName("edit-operation-btn");
-  const savedOperations = validateLocalStorage("operations", operations);
-  for (let btn of editOperationBtns) {
+const editOperationEvent = (editOperationButtons) => {
+  const savedOperations = getOperations();
+  for (let btn of editOperationButtons) {
     btn.addEventListener("click", (e) => {
       const operation = seekId(savedOperations, e.target.id, 9);
       if (operation) {
@@ -94,6 +93,7 @@ const editOperationEvent = () => {
         document.getElementById("edit-type-operation").value = operation.type;
         document.getElementById("edit-category-operation").value = operation.category;
         document.getElementById("edit-date-operation").value = operation.date;
+         document.querySelector('.save-edit-operation').setAttribute("id", `confirm-${btn.id.slice(9)}`);
         setStyleFlex("edit-operation");
         setStyleNone("balance-section");
       }
@@ -101,18 +101,37 @@ const editOperationEvent = () => {
   }
 };
 
+
+const confirmEditOperation = (array, operationId, newDescription, newAmount, newType, newCategory, newDate) =>{
+  const savedOperations = getOperations();
+  const editedOperations = savedOperations.map((object) => {
+    if (object.id === operationId) {
+      return {
+        ...object,
+        description: newDescription,
+        amount: newAmount,
+        type: newType,
+        category: newCategory,
+        date: newDate
+      };
+    } else {
+      return object; 
+    }
+  });
+  updateOperations(editedOperations);
+  createOperationsTable(editedOperations);
+}
+
 //      DELETE OPERATION
 
-const deleteOperationEvent = () => {
-  const deleteOperationBtns = document.getElementsByClassName(
-    "delete-operation-btn"
-  );
-  const savedOperations = validateLocalStorage("operations", operations);
-  for (let btn of deleteOperationBtns) {
+const deleteOperationEvent = (deleteOperationButtons) => {
+  const savedOperations = getOperations();
+  for (let btn of deleteOperationButtons) {
     btn.addEventListener("click", (e) => {
       const operation = seekId(savedOperations, e.target.id, 11);
       if (operation) {
         document.getElementById("operation-name").innerHTML = operation.description;
+         document.querySelector('.confirm-delete-operation').setAttribute("id", `confirm-${btn.id.slice(11)}`);
         setStyleFlex("delete-operation");
         setStyleNone("balance-section");
       }

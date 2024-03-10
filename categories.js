@@ -32,7 +32,7 @@ const categories = [
 const createCategoriesTable = (data) => {
   const tableOfCategories = document.getElementById("categories-table-body");
   tableOfCategories.innerHTML = "";
-  validateLocalStorage("categories", data);
+  data = validateLocalStorage("categories", categories);
   if (data && data.length > 0) {
     for (let category of data) {
       tableOfCategories.innerHTML += `
@@ -61,7 +61,7 @@ const createCategoriesTable = (data) => {
     editCategoryEvent(document.getElementsByClassName("edit-category-btn"));
     deleteCategoryEvent(document.getElementsByClassName("delete-category-btn"));
   } else {
-    tableOfCategories.innerHTML = `<p class="text-xl font-bold">No hay categorías disponibles.</p>`;
+    setStyleFlex('no-categories')
   };
 };
 

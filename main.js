@@ -265,22 +265,23 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
   const newCategoryInput = document.getElementById('add-category');
-  const newCategory = newCategoryInput.value;
+  const newCategory = capitalizeFirstLetter(newCategoryInput.value)
   if (newCategory === "") {
       newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
       error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
       document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
       document.getElementById('add-category-btn-col').classList.add('items-center')
   } else {
-      const categoryExists = categories.some(category => category.name === newCategory);
+      let existentCategories = getCategories()
+      const categoryExists = existentCategories.some(category => category.name === newCategory);
       if (categoryExists) {
           newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
           error(newCategoryInput, 'Esta categoría ya existe.');
           document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
           document.getElementById('add-category-btn-col').classList.add('items-center')
       } else {
-        const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
-          createCategory(newCategoryCapitalized);
+        //const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
+          createCategory(newCategory);
           newCategoryInput.value = "";
       }
     }

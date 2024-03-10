@@ -2,11 +2,7 @@
 
 const initializeApp = () => {
     const savedCategories = getCategories(); 
-    if (savedCategories && savedCategories.length > 0) {
-        createCategoriesTable(savedCategories);
-    } else {
-        createCategoriesTable(categories);
-    }
+    createCategoriesTable(savedCategories)
     createOperationsTable();
 };
 

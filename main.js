@@ -203,12 +203,51 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 
 //      SAVE EDIT OPERATION
-/*
-document.getElementById('close-edit-operation').addEventListener('click', () => {
-    setStyleNone('edit-operation');
+document.querySelector('.save-edit-operation').addEventListener('click', () => {
+  let editOperationId = document.querySelector('.save-edit-operation');
+  let newOperationDescriptionInput = document.getElementById("edit-description-operation");
+  let newOperationDescription = newOperationDescriptionInput.value.trim();
+  let newOperationAmount = document.getElementById("edit-operation-amount").value.trim();
+  let newOperationType = document.getElementById("edit-type-operation").value;
+  let newOperationCategory = document.getElementById("edit-category-operation").value;
+  let newOperationDate = document.getElementById("edit-date-operation").value.trim();
+  
+  if (newOperationDescription === '') {
+    newOperationDescriptionInput.classList.add('outline', 'outline-red-600', 'outline-2');
+    error(newOperationDescriptionInput, 'Proporciona un nuevo nombre para tu operación por favor.');
+    return; 
+  } else if (isNaN(newOperationAmount) || newOperationAmount === '') {
+    error(document.getElementById("edit-operation-amount"), 'Proporciona un valor numérico por favor.');
+    return;
+  } else {
+    const operationExists = operations.some((operation) => operation.description === newOperationDescription);
+    if (operationExists) {
+      error(newOperationDescriptionInput, "Esta operación ya existe.");
+      return;
+    } else {
+    const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription);
+    newOperationDescription.value = '';
+    newOperationAmount.value = '';
+    newOperationDate.value = '';
+    hideError(newOperationDescription);
+    hideError(newOperationDate);
+    hideError(newOperationAmount);
+    setStyleNone('new-operation');
+    setStyleFlex('balance-section');
+    setStyleNone('edit-operation');  
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount, newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+  }
+  }
+});
+
+//      CONFIRM DELETE OPERATION
+
+document.querySelector('.confirm-delete-operation').addEventListener('click', () => {
+  let operationId = document.querySelector('.confirm-delete-operation');
+  confirmDeleteOperation(getOperations(), operationId.id.slice(8));
+    setStyleNone('delete-operation');
     setStyleFlex('balance-section');
 });
-*/
 
 //    CANCEL DELETE OPERATION
 
@@ -266,14 +305,12 @@ document.querySelector('.save-edit-category').addEventListener('click', () => {
   let editCategoryId = document.querySelector('.save-edit-category');
   const newCategoryName = document.getElementById("edit-category-name").value.trim();
   if (newCategoryName === '') {
-    console.log('el nombre de tu categoria esta vacio')
       document.getElementById("edit-category-name").classList.add('outline', 'outline-red-600', 'outline-2');
       error(document.getElementById("edit-category-name"), 'Proporciona un nuevo nombre para tu categoría por favor.');
       return; 
   }
   const categoryExists = categories.some(object => object.name === newCategoryName);
   if (categoryExists) {
-    console.log('tu categoria ya existe')
       error(document.getElementById("edit-category-name"), 'Esta categoría ya existe.');
       return;
   } else {
@@ -299,10 +336,11 @@ document.getElementById('cancel-delete-category').addEventListener('click', () =
 
 //      CONFIRM DELETE CATEGORY
 
-document.getElementById('confirm-delete-category').addEventListener('click', () => {
+document.querySelector('.confirm-delete-category').addEventListener('click', () => {
+  let categoryId = document.querySelector('.confirm-delete-category');
+  confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
     setStyleNone('delete-category');
     setStyleFlex('categories');
-    //AÑADIR LA FUNCION DE GUARDAR LOS CAMBIOS
 });
 
 //      CLOSE REPORTS WINDOW

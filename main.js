@@ -208,16 +208,16 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
   let editOperationId = document.querySelector('.save-edit-operation');
   let newOperationDescriptionInput = document.getElementById("edit-description-operation");
   let newOperationDescription = newOperationDescriptionInput.value.trim();
-  let newOperationAmount = document.getElementById("edit-operation-amount").value.trim();
+  let newOperationAmount = document.getElementById("edit-operation-amount");
   let newOperationType = document.getElementById("edit-type-operation").value;
   let newOperationCategory = document.getElementById("edit-category-operation").value;
-  let newOperationDate = document.getElementById("edit-date-operation").value;
+  let newOperationDate = document.getElementById("edit-date-operation");
   
   if (newOperationDescription === '') {
     newOperationDescriptionInput.classList.add('outline', 'outline-red-600', 'outline-2');
     error(newOperationDescriptionInput, 'Proporciona un nuevo nombre para tu operación por favor.');
     return; 
-  } else if (isNaN(newOperationAmount) || newOperationAmount === '') {
+  } else if (isNaN(newOperationAmount.value.trim()) || newOperationAmount.value.trim() === '') {
     error(document.getElementById("edit-operation-amount"), 'Proporciona un valor numérico por favor.');
     return;
   } else if (newOperationDate.value === 'mm/dd/yyyy' || newOperationDate.value === '') {
@@ -227,13 +227,13 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
       );
     } else {
     const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription);
-    hideError(newOperationDescription);
+    hideError(newOperationDescriptionInput);
     hideError(newOperationDate);
     hideError(newOperationAmount);
     setStyleNone('new-operation');
     setStyleFlex('balance-section');
     setStyleNone('edit-operation');  
-    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount, newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
   }
   }
 );

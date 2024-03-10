@@ -147,6 +147,5 @@ const confirmDeleteOperation = (array, operationId) =>{
   const filteredOperations= array.filter(object => object.id !== operationId);
   updateOperations(filteredOperations);
   createOperationsTable(filteredOperations);
-  console.log(filteredOperations);
 }
 

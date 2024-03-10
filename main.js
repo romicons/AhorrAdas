@@ -203,45 +203,51 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 
 //      SAVE EDIT OPERATION
-
 document.querySelector('.save-edit-operation').addEventListener('click', () => {
-     let editOperationId = document.querySelector('.save-edit-operation');
-     let newOperationDescription = document.getElementById("edit-description-operation");
-     let newOperationAmount = document.getElementById("edit-operation-amount");
-     let newOperationType = document.getElementById("edit-type-operation");
-     let newOperationCategory= document.getElementById("edit-category-operation");
-     let newOperationDate = document.getElementById("edit-date-operation");
-    if (newOperationDescription === '') {
-      newOperationDescription.classList.add('outline', 'outline-red-600', 'outline-2');
-      error(newOperationDescription, 'Proporciona un nuevo nombre para tu operación por favor.');
-      return; 
-    } else if (isNaN(newOperationAmount) || newOperationAmount === ``) {
-      error( newOperationAmount, `Proporciona un valor númerico por favor.`);
-    }else if (newOperationDate === 'mm/dd/yyyy' || newOperationDate === ``){
-      error(newOperationDate, 'Proporciona la fecha en que realizaste esta operación por favor.' );
-    } else{
-      const operationExists = operations.some((operation) => operation.description === newOperationDescription);
-        if (operationExists) {
-          error(
-          newOperationDescription,
-          "Esta operación ya existe."
-        );
-        } else {
-          const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription.value);
-          newOperationDescription.value = '';
-          newOperationAmount.value = '';
-          newOperationDate.value = '';
-          hideError(newOperationDescription);
-          hideError(newOperationDate);
-          hideError(newOperationAmount);
-          setStyleNone('new-operation');
-          setStyleFlex('balance-section');
-          confirmEditOperation(operations, editOperationId.id.slice(8),newOperationDescriptionCapitalized, newOperationAmount.value, newOperationType.value, newOperationCategory.value, newOperationDate.value.replace(/-/g, '/'));
-        }
-    }
+  let editOperationId = document.querySelector('.save-edit-operation');
+  let newOperationDescriptionInput = document.getElementById("edit-description-operation");
+  let newOperationDescription = newOperationDescriptionInput.value.trim();
+  let newOperationAmount = document.getElementById("edit-operation-amount").value.trim();
+  let newOperationType = document.getElementById("edit-type-operation").value;
+  let newOperationCategory = document.getElementById("edit-category-operation").value;
+  let newOperationDate = document.getElementById("edit-date-operation").value.trim();
+  
+  if (newOperationDescription === '') {
+    newOperationDescriptionInput.classList.add('outline', 'outline-red-600', 'outline-2');
+    error(newOperationDescriptionInput, 'Proporciona un nuevo nombre para tu operación por favor.');
+    return; 
+  } else if (isNaN(newOperationAmount) || newOperationAmount === '') {
+    error(document.getElementById("edit-operation-amount"), 'Proporciona un valor numérico por favor.');
+    return;
+  } else {
+    const operationExists = operations.some((operation) => operation.description === newOperationDescription);
+    if (operationExists) {
+      error(newOperationDescriptionInput, "Esta operación ya existe.");
+      return;
+    } else {
+    const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription);
+    newOperationDescription.value = '';
+    newOperationAmount.value = '';
+    newOperationDate.value = '';
+    hideError(newOperationDescription);
+    hideError(newOperationDate);
+    hideError(newOperationAmount);
+    setStyleNone('new-operation');
+    setStyleFlex('balance-section');
+    setStyleNone('edit-operation');  
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount, newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+  }
+  }
 });
 
+//      CONFIRM DELETE OPERATION
 
+document.querySelector('.confirm-delete-operation').addEventListener('click', () => {
+  let operationId = document.querySelector('.confirm-delete-operation');
+  confirmDeleteOperation(getOperations(), operationId.id.slice(8));
+    setStyleNone('delete-operation');
+    setStyleFlex('balance-section');
+});
 
 //    CANCEL DELETE OPERATION
 

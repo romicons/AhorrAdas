@@ -10,9 +10,9 @@ const createOperation = (description, amount, type, category, date) => {
     category: category,
     date: date,
   };
-  operations.push(newOperation);
+  savedOperations.push(newOperation);
   updateOperations(savedOperations);
-  createOperationsTable();
+  createOperationsTable(savedOperations);
 };
 
 //      RETURN OPERATIONS FROM LOCAL STORAGE
@@ -25,7 +25,7 @@ const operations = getOperations() || [];
 
 //    UPDATE OPERATIONS
 
-const updateOperations = () => {
+const updateOperations = (operations) => {
   localStorage.setItem(`operations`, JSON.stringify(operations));
 };
 
@@ -74,10 +74,11 @@ const createOperationsTable = (data) => {
           </tr>`
     };
     editOperationEvent(document.getElementsByClassName(`edit-operation-btn`));
-    deleteOperationEvent(document.getElementsByClassName(`delete-operation-btn`))
+    deleteOperationEvent(document.getElementsByClassName(`delete-operation-btn`));
   } else {
     setStyleFlex('no-operations');
   };
+  console.log(data);
 };
   
 //      EDIT OPERATION  
@@ -101,7 +102,7 @@ const editOperationEvent = (editOperationButtons) => {
   }
 };
 
-
+//    CONFIRM EDIT  OPERATION
 const confirmEditOperation = (array, operationId, newDescription, newAmount, newType, newCategory, newDate) =>{
   const savedOperations = getOperations();
   const editedOperations = savedOperations.map((object) => {
@@ -120,7 +121,9 @@ const confirmEditOperation = (array, operationId, newDescription, newAmount, new
   });
   updateOperations(editedOperations);
   createOperationsTable(editedOperations);
+  console.log(editedOperations);
 }
+
 
 //      DELETE OPERATION
 
@@ -138,3 +141,14 @@ const deleteOperationEvent = (deleteOperationButtons) => {
     });
   }
 };
+
+
+//    CONFIRM DELETE OPERATION
+
+const confirmDeleteOperation = (array, operationId) =>{
+  const filteredOperations= array.filter(object => object.id !== operationId);
+  updateOperations(filteredOperations);
+  createOperationsTable(filteredOperations);
+  console.log(filteredOperations);
+}
+

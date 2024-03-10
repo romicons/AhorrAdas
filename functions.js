@@ -2,12 +2,9 @@
 
 const initializeApp = () => {
     const savedCategories = getCategories(); 
-    if (savedCategories && savedCategories.length > 0) {
-        createCategoriesTable(savedCategories);
-    } else {
-        createCategoriesTable(categories);
-    }
-    createOperationsTable();
+    createCategoriesTable(savedCategories);
+    const savedOperations = getOperations();
+    createOperationsTable(savedOperations);
 };
 
 
@@ -78,14 +75,26 @@ const error = (field, message) => {
 
 //      HIDE ERROR
 
-const hideError = (field) => {
+/* const hideError = (field) => {
     let errorText = document.getElementById(`${field.id}`).nextSibling;
     let inputElement = document.getElementById(`${field.id}`);
     inputElement.classList.remove('outline', 'outline-red-600', 'outline-2')
     if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
         errorText.remove();
     }
+}; */
+
+const hideError = (field) => {
+    let inputElement = document.getElementById(`${field.id}`);
+    if (inputElement) {
+        let errorText = inputElement.nextSibling;
+        inputElement.classList.remove('outline', 'outline-red-600', 'outline-2');
+        if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
+            errorText.remove();
+        }
+    }
 };
+
 
 
 

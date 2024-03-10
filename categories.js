@@ -149,6 +149,7 @@ const deleteCategoryEvent = (deleteCategoryButtons) => {
       if (category) {
         document.getElementById("category-name").innerHTML = category.name;
         document.querySelector('.confirm-delete-category').setAttribute("id", `confirm-${btn.id.slice(11)}`);
+        document.querySelector('.confirm-delete-category').setAttribute("name", category.name);
         setStyleFlex("delete-category");
         setStyleNone("categories");
       }
@@ -157,7 +158,7 @@ const deleteCategoryEvent = (deleteCategoryButtons) => {
 };
 
 const confirmDeleteCategory = (array, categoryId) => {
-  const filteredCategories = array.filter(object => object.id !== categoryId);
-  updateCategories(filteredCategories);
-  createCategoriesTable(filteredCategories);
-}
+    const filteredCategories = array.filter(object => object.id !== categoryId);
+    updateCategories(filteredCategories);
+    createCategoriesTable(filteredCategories);
+};

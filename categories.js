@@ -61,7 +61,7 @@ const createCategoriesTable = (data) => {
     editCategoryEvent(document.getElementsByClassName("edit-category-btn"));
     deleteCategoryEvent(document.getElementsByClassName("delete-category-btn"));
   } else {
-    tableOfCategories.innerHTML = `<p class="text-xl font-bold">No hay categorías disponibles.</p>`;
+    setStyleFlex('no-categories')
   };
 };
 

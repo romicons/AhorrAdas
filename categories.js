@@ -57,6 +57,7 @@ const createCategoriesTable = (data) => {
                 </tr>
             `;
     }
+    setStyleNone('no-categories')
     linkCategoriesWithSelect();
     editCategoryEvent(document.getElementsByClassName("edit-category-btn"));
     deleteCategoryEvent(document.getElementsByClassName("delete-category-btn"));
@@ -148,7 +149,6 @@ const deleteCategoryEvent = (deleteCategoryButtons) => {
       if (category) {
         document.getElementById("category-name").innerHTML = category.name;
         document.querySelector('.confirm-delete-category').setAttribute("id", `confirm-${btn.id.slice(11)}`);
-        console.log(document.querySelector('.confirm-delete-category').id)
         setStyleFlex("delete-category");
         setStyleNone("categories");
       }

@@ -78,7 +78,6 @@ const createOperationsTable = (data) => {
   } else {
     setStyleFlex('no-operations');
   };
-  console.log(data);
 };
   
 //      EDIT OPERATION  
@@ -93,7 +92,7 @@ const editOperationEvent = (editOperationButtons) => {
         document.getElementById("edit-operation-amount").value = operation.amount;
         document.getElementById("edit-type-operation").value = operation.type;
         document.getElementById("edit-category-operation").value = operation.category;
-        document.getElementById("edit-date-operation").value = operation.date;
+        document.getElementById("edit-date-operation").value = operation.date.replace(/\//g, '-');
          document.querySelector('.save-edit-operation').setAttribute("id", `confirm-${btn.id.slice(9)}`);
         setStyleFlex("edit-operation");
         setStyleNone("balance-section");
@@ -121,7 +120,6 @@ const confirmEditOperation = (array, operationId, newDescription, newAmount, new
   });
   updateOperations(editedOperations);
   createOperationsTable(editedOperations);
-  console.log(editedOperations);
 }
 
 

@@ -203,42 +203,40 @@ document.getElementById('close-edit-operation').addEventListener('click', () => 
 });
 
 //      SAVE EDIT OPERATION
+
 document.querySelector('.save-edit-operation').addEventListener('click', () => {
   let editOperationId = document.querySelector('.save-edit-operation');
   let newOperationDescriptionInput = document.getElementById("edit-description-operation");
   let newOperationDescription = newOperationDescriptionInput.value.trim();
-  let newOperationAmount = document.getElementById("edit-operation-amount").value.trim();
+  let newOperationAmount = document.getElementById("edit-operation-amount");
   let newOperationType = document.getElementById("edit-type-operation").value;
   let newOperationCategory = document.getElementById("edit-category-operation").value;
-  let newOperationDate = document.getElementById("edit-date-operation").value.trim();
+  let newOperationDate = document.getElementById("edit-date-operation");
   
   if (newOperationDescription === '') {
     newOperationDescriptionInput.classList.add('outline', 'outline-red-600', 'outline-2');
     error(newOperationDescriptionInput, 'Proporciona un nuevo nombre para tu operación por favor.');
     return; 
-  } else if (isNaN(newOperationAmount) || newOperationAmount === '') {
+  } else if (isNaN(newOperationAmount.value.trim()) || newOperationAmount.value.trim() === '') {
     error(document.getElementById("edit-operation-amount"), 'Proporciona un valor numérico por favor.');
     return;
-  } else {
-    const operationExists = operations.some((operation) => operation.description === newOperationDescription);
-    if (operationExists) {
-      error(newOperationDescriptionInput, "Esta operación ya existe.");
-      return;
+  } else if (newOperationDate.value === 'mm/dd/yyyy' || newOperationDate.value === '') {
+      error(
+        newOperationDate,
+        'Proporciona la fecha en que realizaste esta operación por favor.'
+      );
     } else {
     const newOperationDescriptionCapitalized = capitalizeFirstLetter(newOperationDescription);
-    newOperationDescription.value = '';
-    newOperationAmount.value = '';
-    newOperationDate.value = '';
-    hideError(newOperationDescription);
+    hideError(newOperationDescriptionInput);
     hideError(newOperationDate);
     hideError(newOperationAmount);
     setStyleNone('new-operation');
     setStyleFlex('balance-section');
     setStyleNone('edit-operation');  
-    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount, newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
   }
   }
-});
+);
 
 //      CONFIRM DELETE OPERATION
 
@@ -267,22 +265,23 @@ document.getElementById('close-categories-btn').addEventListener('click', () => 
 
 document.getElementById('add-category-btn').addEventListener('click', () => {
   const newCategoryInput = document.getElementById('add-category');
-  const newCategory = newCategoryInput.value;
+  const newCategory = capitalizeFirstLetter(newCategoryInput.value)
   if (newCategory === "") {
       newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
       error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
       document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
       document.getElementById('add-category-btn-col').classList.add('items-center')
   } else {
-      const categoryExists = categories.some(category => category.name === newCategory);
+      let existentCategories = getCategories()
+      const categoryExists = existentCategories.some(category => category.name === newCategory);
       if (categoryExists) {
           newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
           error(newCategoryInput, 'Esta categoría ya existe.');
           document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
           document.getElementById('add-category-btn-col').classList.add('items-center')
       } else {
-        const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
-          createCategory(newCategoryCapitalized);
+        //const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
+          createCategory(newCategory);
           newCategoryInput.value = "";
       }
     }

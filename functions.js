@@ -67,22 +67,11 @@ const seekId = (array, id, cut) => {
 const error = (field, message) => {
     let errorText = document.createElement('p');
     errorText.classList.add('text-red-600');
-    errorText.textContent = message;
+    errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${message}`;
     let inputElement = document.getElementById(`${field.id}`);
     inputElement.classList.add('outline', 'outline-red-600', 'outline-2');
     inputElement.parentNode.insertBefore(errorText, inputElement.nextSibling);
 };
-
-//      HIDE ERROR
-
-/* const hideError = (field) => {
-    let errorText = document.getElementById(`${field.id}`).nextSibling;
-    let inputElement = document.getElementById(`${field.id}`);
-    inputElement.classList.remove('outline', 'outline-red-600', 'outline-2')
-    if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
-        errorText.remove();
-    }
-}; */
 
 const hideError = (field) => {
     let inputElement = document.getElementById(`${field.id}`);

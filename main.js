@@ -329,6 +329,13 @@ document.getElementById('cancel-edit-category').addEventListener('click', () => 
 //      CANCEL DELETE CATEGORY
 
 document.getElementById('cancel-delete-category').addEventListener('click', () => {
+  let warningText = document.getElementById(`warning-message`);
+  if (warningText) {
+      let errorText = warningText.nextSibling;
+      if (errorText && errorText.nodeType === 1 && errorText.classList.contains('text-red-600')) {
+          errorText.remove();
+      }
+    }
     setStyleNone('delete-category');
     setStyleFlex('categories');
 });
@@ -336,11 +343,21 @@ document.getElementById('cancel-delete-category').addEventListener('click', () =
 //      CONFIRM DELETE CATEGORY
 
 document.querySelector('.confirm-delete-category').addEventListener('click', () => {
+  let categoryName = document.querySelector('.confirm-delete-category').name;
   let categoryId = document.querySelector('.confirm-delete-category');
+  const savedOperations = getOperations();
+  const hasRelatedOperations = savedOperations.some(operation => operation.category === categoryName);
+  if (hasRelatedOperations) {
+    let errorText = document.createElement('p');
+    errorText.classList.add('text-red-600');
+    errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Debes eliminar primero las operaciones relacionadas.`;
+    document.getElementById('warning-message').parentNode.insertBefore(errorText, document.getElementById('warning-message').nextSibling);
+  }
+  else { 
   confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
     setStyleNone('delete-category');
     setStyleFlex('categories');
-});
+}});
 
 //      CLOSE REPORTS WINDOW
 

@@ -1,7 +1,5 @@
 //                      FILTERS
 
-const filteredOperations = [];
-
 const filterByType = (type, operations) => {
     return operations.filter((operation) => operation.type === type)
 };
@@ -11,12 +9,19 @@ const filterByCategory = (category, operations) => {
 };
 
 const filterOperationsFromDate = (date, operations) => {
-    return operations.filter((operation) => operation.date >= date);
+    const fromDate = new Date(date); 
+    return operations.filter((operation) => {
+        const operationDate = new Date(operation.date); 
+        return operationDate >= fromDate;
+    });
 };
-
+/*
 const filterOperationsUntilDate = (date, operations) => {
-    return operations.filter((operation) => operation.date <= date);
-};
+  const untilDate = new Date (date); 
+  return operations.filter((operation) => {
+      const operationDate = new Date (operation.date)
+      return operationDate <= untilDate;})
+  };*/
 
 const filterByOrder = (operations, order) => {
     const orderByAmount = (a, b) => {return a.amount - b.amount}
@@ -44,6 +49,7 @@ const filterByOrder = (operations, order) => {
         return operations.sort((a, b) => orderByAmount(b, a));
     }
     else if (order === 'A/Z') {
+      console.log(operations.sort(orderAlphabetycally))
         return operations.sort(orderAlphabetycally);
     }
     else if (order === 'Z/A') {
@@ -52,7 +58,9 @@ const filterByOrder = (operations, order) => {
 };
 
 const filterOperations = () => {
-    let operations = getOperations();
+    let filteredOperations = getOperations();
+    console.log (filteredOperations);
+
     const type = document.getElementById('operation-type-filter').value;
     const category = document.getElementById('operation-category-filter').value;
     const dateFrom = document.getElementById("operation-date-from").value;
@@ -60,17 +68,74 @@ const filterOperations = () => {
     const order = document.getElementById('operation-order').value;
     
     if (type !== 'Todas') {
-      operations = filterByType(type, operations);
+      filteredOperations = filterByType(type, filteredOperations);
     }
   
     if (category !== 'Todas') {
-      operations = filterByCategory(category, operations)
+      filteredOperations = filterByCategory(category, filteredOperations)
     }
-    operations = filterOperationsFromDate(dateFrom, operations);
-    operations = filterOperationsUntilDate(dateUntil, operations);
-    operations = filterByOrder(order, operations);
 
-    createOperationsTable(operations);
+    filteredOperations = filterOperationsFromDate(dateFrom, filteredOperations);
+/*
+    filteredOperations = filterOperationsUntilDate(dateUntil, filteredOperations);
+*/
+    filteredOperations = filterByOrder(filteredOperations, order);
+
+    console.log('Operaciones filtradas:', filteredOperations);
+
+  createOperationsTable(filteredOperations);
+};
+
+const getBalance = () => {
+  income = 0;
+  expense = 0;
+  const operations = getOperations();
+
+  for (let operation of operations) {
+      if (operation.type === 'Ganancia') {
+          income += parseInt(operation.amount);
+      }
+      if (operation.type === 'Gasto') {
+          expense += parseInt(operation.amount);
+      }
+  }
+
+  balance = income - expense;
+
+  const balanceType = income >= expense ? "text-green-600" : "text-red-600";
+  const balanceAmount = income >= expense ? "+$" : "-$";
+
+  document.getElementById('balance-display').innerHTML = `
+      <div class="flex columns-2 justify-between">
+          <div>
+            <h3>Ganancias</h3>
+          </div>
+          <div class="text-green-600">
+            <span>+$</span>
+            <span>${income}</span>
+          </div>
+        </div>
+        <div class="flex columns-2 justify-between">
+          <div>
+            <h3>Gastos</h3>
+          </div>
+          <div class="text-red-600">
+            <span>-$</span>
+            <span>${expense}</span>
+          </div>
+        </div>
+        <div
+          class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark"
+        >
+          <div>
+            <h3>Total</h3>
+          </div>
+          <div class="${balanceType}">
+            <span>${balanceAmount}</span>
+            <span>${balance}</span>
+          </div>
+      </div>
+  `
 };
 
 //  GENERATE TABLE OF REPORTS

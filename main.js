@@ -233,7 +233,7 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleFlex('balance-section');
     setStyleNone('edit-operation');  
-    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.value.replace(/-/g, '/'));
   }
   }
 );

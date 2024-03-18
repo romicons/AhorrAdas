@@ -87,23 +87,23 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
 
 //      FILTER OPERATIONS BY TYPE
 
-document.getElementById('operation-type-filter').addEventListener('change', filterOperations);
+//document.getElementById('operation-type-filter').addEventListener('change', applyFilters);
 
 //      FILTER OPERATIONS BY CATEGORY
 
-document.getElementById('operation-category-filter').addEventListener('change', filterOperations);
+//document.getElementById('operation-category-filter').addEventListener('change', applyFilters);
 
 //      FILTER OPERATIONS FROM X DATE
 
-document.getElementById("operation-date-from").addEventListener('change', filterOperations);
+//document.getElementById("operation-date-from").addEventListener('change', filterOperations);
 
 //      FILTER OPERATIONS UNTIL X DATE
 
-document.getElementById("operation-date-until").addEventListener('change', filterOperations);
+//document.getElementById("operation-date-until").addEventListener('change', filterOperations);
 
 //      FILTER THE ORDER OF THE OPERATIONS
 
-document.getElementById('operation-order').addEventListener('change', filterOperations);
+//document.getElementById('operation-order').addEventListener('change', filterOperations);
 
 //      OPEN NEW OPERATION WINDOW
 

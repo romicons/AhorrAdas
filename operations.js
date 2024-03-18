@@ -34,7 +34,6 @@ const updateOperations = (operations) => {
 const createOperationsTable = (data) => {
   const tableOfOperations = document.getElementById("operations-table");
   tableOfOperations.innerHTML = "";
-   data = validateLocalStorage("operations", operations);
   if (data && data.length > 0) {
     setStyleNone('no-operations');
     tableOfOperations.innerHTML += `

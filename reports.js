@@ -1,29 +1,43 @@
 //                      FILTERS
 
-const filterByType = (type, operations) => {
-    return operations.filter((operation) => operation.type === type)
+const filterByType = (type, array) => {
+    return array.filter((operation) => operation.type === type)
 };
 
-const filterByCategory = (category, operations) => {
-    return operations.filter((operation) => operation.category === category)
+const filterOperationsByType = (filteredOperations) => {
+  const type = document.getElementById('operation-type-filter').value;
+  if (type !== 'Todas') {
+    filteredOperations = filterByType(type, filteredOperations);
+  }
 };
 
-const filterOperationsFromDate = (date, operations) => {
+const filterByCategory = (category, array) => {
+    return array.filter((operation) => operation.category === category)
+};
+
+const filterOperationsByCategory = (filteredOperations) => {
+  const category = document.getElementById('operation-category-filter').value;
+  if (category !== 'Todas') {
+    filteredOperations = filterByCategory(category, filteredOperations);
+  }
+};
+
+const filterOperationsFromDate = (date, array) => {
     const fromDate = new Date(date); 
-    return operations.filter((operation) => {
+    return array.filter((operation) => {
         const operationDate = new Date(operation.date); 
         return operationDate >= fromDate;
     });
 };
-/*
-const filterOperationsUntilDate = (date, operations) => {
-  const untilDate = new Date (date); 
-  return operations.filter((operation) => {
-      const operationDate = new Date (operation.date)
-      return operationDate <= untilDate;})
-  };*/
 
-const filterByOrder = (operations, order) => {
+const filterOperationsUntilDate = (date, array) => {
+  const untilDate = new Date (date); 
+  return array.filter((operation) => {
+      const operationDate = new Date (operation.date)
+      return operationDate < untilDate;})
+  };
+
+const filterByOrder = (array, order) => {
     const orderByAmount = (a, b) => {return a.amount - b.amount}
     const orderAlphabetycally = (a, b) => {
         if (a.description < b.description) {return -1;}
@@ -37,25 +51,36 @@ const filterByOrder = (operations, order) => {
     }
     
     if (order === 'Más reciente') {
-        return operations.sort((a, b) => orderByDate(b, a));
+      console.log(array)
+        return array.sort((a, b) => orderByDate(b, a));
     }
     else if (order === 'Más antiguo') {
-        return operations.sort(orderByDate);
+        return array.sort(orderByDate);
     }
     else if (order === 'Menor monto') {
-        return operations.sort(orderByAmount);
+        return array.sort(orderByAmount);
     }
     else if (order === 'Mayor monto') {
-        return operations.sort((a, b) => orderByAmount(b, a));
+        return array.sort((a, b) => orderByAmount(b, a));
     }
     else if (order === 'A/Z') {
-      console.log(operations.sort(orderAlphabetycally))
-        return operations.sort(orderAlphabetycally);
+      console.log(array.sort(orderAlphabetycally))
+        return array.sort(orderAlphabetycally);
     }
     else if (order === 'Z/A') {
-        return operations.sort((a, b) => orderAlphabetycally(b, a));
+        return array.sort((a, b) => orderAlphabetycally(b, a));
     }
 };
+
+/*
+const applyFilters = () => {
+    let filteredOperations = getOperations();
+    filterOperationsByType(filteredOperations);
+    filterOperationsByCategory(filteredOperations);
+    console.log(filteredOperations);
+    createOperationsTable(filteredOperations);
+};
+
 
 const filterOperations = () => {
     let filteredOperations = getOperations();
@@ -68,23 +93,28 @@ const filterOperations = () => {
     const order = document.getElementById('operation-order').value;
     
     if (type !== 'Todas') {
-      filteredOperations = filterByType(type, filteredOperations);
+      filteredOperations = filterByType(type, getOperations());
+      console.log(filteredOperations)
+      createOperationsTable(filteredOperations);
     }
   
     if (category !== 'Todas') {
-      filteredOperations = filterByCategory(category, filteredOperations)
+      filteredOperations = filterByCategory(category, getOperations())
     }
 
-    filteredOperations = filterOperationsFromDate(dateFrom, filteredOperations);
-/*
+    filteredOperations = filterOperationsFromDate(dateFrom, getOperations());
+    console.log(filteredOperations)
+
     filteredOperations = filterOperationsUntilDate(dateUntil, filteredOperations);
-*/
-    filteredOperations = filterByOrder(filteredOperations, order);
+    console.log(filteredOperations)
+
+    filteredOperations = filterByOrder(order, getOperations());
+    console.log(filteredOperations)
 
     console.log('Operaciones filtradas:', filteredOperations);
 
-  createOperationsTable(filteredOperations);
-};
+  
+};*/
 
 const getBalance = () => {
   income = 0;
@@ -138,13 +168,77 @@ const getBalance = () => {
   `
 };
 
+const searchForHighestIncomeCategory = () => {
+  const operations = getOperations();
+  let categoryIncome = {};
+
+  for (let operation of operations) {
+    if (operation.type === 'Ganancia') {
+      const category = operation.category;
+      const amount = parseInt(operation.amount);
+      if (!categoryIncome[category]) {
+        categoryIncome[category] = 0;
+      }
+      categoryIncome[category] += amount
+    };
+  };
+
+  let highestIncomeCategory = null;
+  let highestIncome = 0;
+
+  for (let category in categoryIncome) {
+    if (categoryIncome[category] > highestIncome) {
+      highestIncome = categoryIncome[category];
+      highestIncomeCategory = category;
+    }
+  }
+
+  if (highestIncomeCategory !== null) {
+    console.log(`La categoría con la mayor ganancia es "${highestIncomeCategory}" con una ganancia de ${highestIncome}`);
+    return { highestIncome, highestIncomeCategory }
+  }
+};
+
+const searchForHighestExpenseCategory = () => {
+  const operations = getOperations();
+  let categoryExpense = {};
+
+  for (let operation of operations) {
+    if (operation.type === 'Gasto') {
+      const category = operation.category;
+      const amount = parseInt(operation.amount);
+      if (!categoryExpense[category]) {
+        categoryExpense[category] = 0;
+      }
+      categoryExpense[category] += amount
+    };
+  };
+
+  let highestExpenseCategory = null;
+  let highestExpense = 0;
+
+  for (let category in categoryExpense) {
+    if (categoryExpense[category] > highestExpense) {
+      highestExpense = categoryExpense[category];
+      highestExpenseCategory = category;
+    }
+  }
+
+  if (highestExpenseCategory !== null) {
+    console.log(`La categoría con la mayor gasto es "${highestExpenseCategory}" con una gasto de ${highestExpense}`);
+    return { highestExpense, highestExpenseCategory }
+  }
+}
+
+const highestIncomeData = searchForHighestIncomeCategory();
+const highestExpenseData = searchForHighestExpenseCategory();
+
 //  GENERATE TABLE OF REPORTS
 
-const createReportsTable = () => {
+const createReportsTable = (operations) => {
     const tableOfReports = document.getElementById("reports-table");
     tableOfReports.innerHTML = "";
-    const savedOperations = validateLocalStorage("operations", operations);
-    if (savedOperations && savedOperations.length > 0) {
+    if (operations && operations.length > 0) {
       setStyleNone('no-reports');
       tableOfReports.innerHTML += `
              <thead class="sticky top-0 bg-primary dark:bg-secondary text-light z-50">
@@ -155,24 +249,19 @@ const createReportsTable = () => {
              <tbody id="reports-table-body" class="flex flex-col tablet:h-[29rem]">
              </tbody>
              `;
-  
-      for (let operation of savedOperations) {
-        const formattedDateStr = formatDate(operation.date);
-        const amountType =
-          operation.type === "Ganancia" ? "text-green-600" : "text-red-600";
-        const amountSign = operation.type === "Ganancia" ? "+$" : "-$";
-        const operationBody = document.getElementById("operations-table-body");
-        operationBody.innerHTML += `
+        const reportsBody = document.getElementById("reports-table-body");
+        reportsBody.innerHTML += `
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor ganancia</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeCategory}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${amountCategory}</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeData.highestIncomeCategory}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base text-green-600">+${highestIncomeData.highestIncome}</td>
             </tr>
+            
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor gasto</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseCategory}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${amountCategory}</td>
-            </tr>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseData.highestExpenseCategory}</td>
+                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base text-red-600">-${highestExpenseData.highestExpense}</td>
+            </tr>`/*
             <tr class="flex justify-between items-center gap-1 pt-3">
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor balance</td>
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestBalanceCategory}</td>
@@ -218,9 +307,8 @@ const createReportsTable = () => {
               <td class="text-red-600 p-1 w-1/4 text-center">${expenseByMonth}</td>
               <td class="text-red-600 p-1 w-1/4 text-right">${balanceByMonth}7</td>
             </tr>   
-            `
-      };
-    } else {
+            `*/
+      } else {
       setStyleFlex('no-reports');
     };
-  };
+  }

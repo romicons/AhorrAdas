@@ -5,7 +5,8 @@ const initializeApp = () => {
     createCategoriesTable(savedCategories);
     const savedOperations = getOperations();
     createOperationsTable(savedOperations);
-    createReportsTable(savedOperations)
+    const savedReports = getReports();
+    createTableForReports(savedReports)
     getBalance();
 };
 

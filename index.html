@@ -119,32 +119,32 @@
       >
         <button
           id="balance-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent dark:tablet:hover:text-light transition-all duration-300"
         >
           <i class="fa-solid fa-scale-balanced"></i>
           <span class="relative z-10"> Balance </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent dark:tablet:bg-light group-hover:w-full transition-width duration-300"
           ></span>
         </button>
         <button
           id="categories-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent dark:tablet:hover:text-light transition-all duration-300"
         >
           <i class="fa-solid fa-tags"></i>
           <span class="relative z-10"> Categorías </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent dark:tablet:bg-light group-hover:w-full transition-width duration-300"
           ></span>
         </button>
         <button
           id="reports-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent dark:tablet:hover:text-light transition-all duration-300"
         >
           <i class="fa-solid fa-chart-pie"></i>
           <span class="relative z-10"> Reporte </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent dark:tablet:bg-light group-hover:w-full transition-width duration-300"
           ></span>
         </button>
       </div>
@@ -742,7 +742,7 @@
           >
             <button
               id="add-category-btn"
-              class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-3/4"
+              class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-full"
             >
               <i class="fa-solid fa-plus"></i>
               Añadir
@@ -880,14 +880,39 @@
           </div>
         </div>
 
-        <!--    TABLA DE REPORTE   -->
+        <!--        CREAR NUEVOS REPORTES       -->
 
-        <div class="flex justify-center py-4">
-          <table class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6" id="reports-table">
-          </table>
+        <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2 py-2">
+          <div class="flex flex-col tablet:w-3/5 gap-2">
+            <label for="add-report">Nuevo reporte</label>
+            <input
+              id="add-report"
+              type="text"
+              class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+              placeholder="Introduce un nombre para tu nuevo reporte aquí."
+            >
+          </div>
+          <div
+            class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end"
+            id="generate-report-btn-col"
+          >
+            <button
+              id="generate-report-btn"
+              class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-full"
+            >
+              <i class="fa-solid fa-plus"></i>
+              Generar reporte
+            </button>
+          </div>
         </div>
 
-        <div class="flex flex-col justify-center items-center" id="no-reports">
+        <!--    TABLA PARA REPORTES     -->
+
+        <div class="flex justify-center py-4">
+          <table class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6" id="table-for-reports">
+          </table>
+        </div>
+        <div class="flex flex-col justify-center items-center" id="no-saved-reports">
           <div class="flex py-4">
             <svg
               viewBox="0 0 400 300"
@@ -1110,6 +1135,14 @@
             </div>
           </div>
         </div>
+
+        <!--    TABLA DE REPORTE   -->
+
+        <div class="flex justify-center py-4">
+          <table class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6" id="reports-table">
+          </table>
+        </div>
+
       </section>
     </main>
 

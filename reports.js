@@ -1,3 +1,19 @@
+//      RETURN REPORTS FROM LOCAL STORAGE
+
+const getReports = () => {
+  return JSON.parse(localStorage.getItem("reports"));
+};
+
+const reports = getReports() || [];
+
+//    UPDATE REPORTS
+
+const updateReports = (reports) => {
+  localStorage.setItem(`reports`, JSON.stringify(reports));
+};
+
+//    CREATE NEW REPORT
+
 const months = [`Enero`, `Febrero`, `Marzo`, `Abril`, `Mayo`, `Junio`, `Julio`, `Agosto`, `Septiembre`, `Octubre`, `Noviembre`, `Diciembre`];
 
 const searchForHighestIncomeCategory = () => {
@@ -201,89 +217,121 @@ const highestExpenseMonthData = searchForHighestExpenseMonth();
 const categoryTotalsData = calculateCategoryTotals();
 const monthTotalsData = calculateMonthTotals();
 
-//  GENERATE TABLE OF REPORTS
+//    GENERATE TABLE REPORT
 
 const createReportsTable = (operations) => {
-    const tableOfReports = document.getElementById("reports-table");
-    tableOfReports.innerHTML = "";
-    if (operations && operations.length > 0) {
-      setStyleNone('no-reports');
-      tableOfReports.innerHTML += `
-             <thead class="bg-primary dark:bg-secondary text-light">
-               <tr class="justify-center">
-                 <th class="text-center py-1 font-bold text-lg">Resumen</th>
-               </tr>
-             </thead>
-             <tbody id="reports-table-body" class="flex flex-col pt-1 tablet:h-[29rem]">
-             </tbody>
-             `;
-        const reportsBody = document.getElementById("reports-table-body");
-        reportsBody.innerHTML += `
-            <tr class="flex justify-around items-center gap-1 pt-3">
-                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold justify-left">Categoría con mayor ganancia</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeData.highestIncomeCategory}</td>
-                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeData.highestIncome}</td>
-            </tr>
-            
-            <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor gasto</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseData.highestExpenseCategory}</td>
-                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseData.highestExpense}</td>
-            </tr>
-            <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor balance</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${bestBalanceData.bestBalanceCategory}</td>
-                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base">$${bestBalanceData.bestBalance}</td>
-            </tr>
-            <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor ganancia</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeMonthData.month}</td>
-                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeMonthData.amount}</td>
-            </tr>
+  const tableOfReports = document.getElementById("reports-table");
+  tableOfReports.innerHTML = "";
+  if (operations && operations.length > 0) {
+    setStyleNone('no-reports');
+    tableOfReports.innerHTML += `
+           <thead class="bg-primary dark:bg-secondary text-light">
+             <tr class="justify-center">
+               <th class="text-center py-1 font-bold text-lg">Resumen</th>
+             </tr>
+           </thead>
+           <tbody id="reports-table-body" class="flex flex-col pt-1 tablet:h-[29rem]">
+           </tbody>
+           `;
+      const reportsBody = document.getElementById("reports-table-body");
+      reportsBody.innerHTML += `
+          <tr class="flex justify-around items-center gap-1 pt-3">
+              <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold justify-left">Categoría con mayor ganancia</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeData.highestIncomeCategory}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeData.highestIncome}</td>
+          </tr>
+          
+          <tr class="flex justify-between items-center gap-1 pt-3">
+              <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor gasto</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseData.highestExpenseCategory}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseData.highestExpense}</td>
+          </tr>
+          <tr class="flex justify-between items-center gap-1 pt-3">
+              <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor balance</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${bestBalanceData.bestBalanceCategory}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base">$${bestBalanceData.bestBalance}</td>
+          </tr>
+          <tr class="flex justify-between items-center gap-1 pt-3">
+              <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor ganancia</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeMonthData.month}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeMonthData.amount}</td>
+          </tr>
 
-            <tr class="flex justify-between items-center gap-1 py-3">
-                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor gasto</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseMonthData.month}</td>
-                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseMonthData.amount}</td>
-            </tr>
-            <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por categoría</th>
-            <tr class="flex justify-between items-center py-1">
-              <th class="p-1 w-1/4 text-left">Categoría</th>              
+          <tr class="flex justify-between items-center gap-1 py-3">
+              <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor gasto</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseMonthData.month}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseMonthData.amount}</td>
+          </tr>
+          <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por categoría</th>
+          <tr class="flex justify-between items-center py-1">
+            <th class="p-1 w-1/4 text-left">Categoría</th>              
+            <th class="p-1 w-1/4 text-center">Ganancias</th>
+            <th class="p-1 w-1/4 text-center">Gastos</th>
+            <th class="p-1 w-1/4 text-right">Balance</th>
+          </tr>`;
+
+          for (let category in categoryTotalsData) {
+            const { expenses, income, balance } = categoryTotalsData[category];
+            reportsBody.innerHTML += `
+              <tr class="flex justify-between items-center py-2">
+                <td class="p-1 text-left w-1/4 font-bold">${category}</td>
+                <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
+                <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
+                <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
+              </tr>`;
+          };
+          reportsBody.innerHTML += `
+          <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por mes</th>
+          <tr class="flex justify-between items-center py-1">
+              <th class="p-1 w-1/4 text-left">Mes</th>
               <th class="p-1 w-1/4 text-center">Ganancias</th>
               <th class="p-1 w-1/4 text-center">Gastos</th>
               <th class="p-1 w-1/4 text-right">Balance</th>
-            </tr>`;
+          </tr>`;
 
-            for (let category in categoryTotalsData) {
-              const { expenses, income, balance } = categoryTotalsData[category];
-              reportsBody.innerHTML += `
-                <tr class="flex justify-between items-center py-2">
-                  <td class="p-1 text-left w-1/4 font-bold">${category}</td>
-                  <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
-                  <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
-                  <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
-                </tr>`;
-            };
+          for (let month in monthTotalsData) {
+            const { expenses, income, balance } = monthTotalsData[month];
             reportsBody.innerHTML += `
-            <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por mes</th>
-            <tr class="flex justify-between items-center py-1">
-                <th class="p-1 w-1/4 text-left">Mes</th>
-                <th class="p-1 w-1/4 text-center">Ganancias</th>
-                <th class="p-1 w-1/4 text-center">Gastos</th>
-                <th class="p-1 w-1/4 text-right">Balance</th>
-            </tr>`;
+          <tr class="flex justify-between items-center py-1">
+            <td class="p-1 w-1/4 text-left font-bold">${month}</td>
+            <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
+            <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
+            <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
+          </tr>`
+          };
+  } else {
+    setStyleFlex('no-reports')
+  };
+};
 
-            for (let month in monthTotalsData) {
-              const { expenses, income, balance } = monthTotalsData[month];
-              reportsBody.innerHTML += `
-            <tr class="flex justify-between items-center py-1">
-              <td class="p-1 w-1/4 text-left font-bold">${month}</td>
-              <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
-              <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
-              <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
-            </tr>`
-            };
+//    CREATE TABLE FOR REPORTS
+
+const createTableForReports = (reports) => {
+    const tableForReports = document.getElementById("table-for-reports");
+    tableForReports.innerHTML = "";
+    if (reports && reports.length > 0) {
+      setStyleNone('no-saved-reports');
+      tableForReports.innerHTML += `
+        <tr class="flex columns-2 justify-between items-center py-1">
+          <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${report.name}</td>
+          <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
+              <button
+                  class="delete-report-btn flex items-center rounded py-1 px-2 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                  id="btn-delete-${report.id}"
+              >
+                  <i class="fa-solid fa-trash pointer-events-none"></i>
+                  Eliminar
+              </button>
+              <button
+                  class="rename-report-btn flex items-center rounded py-1 px-3 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                  id="btn-edit-${report.id}" 
+              >
+                  <i class="fa-solid fa-pen pointer-events-none"></i>
+                  Renombrar
+              </button>
+          </td>
+       </tr>`;
     } else {
-      setStyleFlex('no-reports');
+      setStyleFlex('no-saved-reports');
     };
-  }
+};

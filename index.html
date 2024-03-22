@@ -119,32 +119,32 @@
       >
         <button
           id="balance-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-light transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent transition-all duration-300"
         >
           <i class="fa-solid fa-scale-balanced"></i>
           <span class="relative z-10"> Balance </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent group-hover:w-full transition-width duration-300"
           ></span>
         </button>
         <button
           id="categories-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-light transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent transition-all duration-300"
         >
           <i class="fa-solid fa-tags"></i>
           <span class="relative z-10"> Categorías </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent group-hover:w-full transition-width duration-300"
           ></span>
         </button>
         <button
           id="reports-window-btn"
-          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-light transition-all duration-300"
+          class="w-1/2 mx-auto group relative justify-center flex items-center gap-2 p-2 hover:opacity-100 hover:text-secondary dark:hover:text-accent transition-all duration-300"
         >
           <i class="fa-solid fa-chart-pie"></i>
           <span class="relative z-10"> Reporte </span>
           <span
-            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-light group-hover:w-full transition-width duration-300"
+            class="absolute bottom-1 left-0 w-0 h-0.5 bg-secondary dark:bg-accent group-hover:w-full transition-width duration-300"
           ></span>
         </button>
       </div>
@@ -160,6 +160,7 @@
         class="flex justify-center flex-wrap w-full min-h-full gap-4"
       >
         <div class="flex flex-col w-11/12 tablet:w-1/5 gap-4 tablet:h-full">
+
           <!--        BALANCE         -->
 
           <section
@@ -881,8 +882,8 @@
 
         <!--    TABLA DE REPORTE   -->
 
-        <div class="flex justify-center">
-          <table class="table table-fixed w-full p-2" id="reports-table">
+        <div class="flex justify-center py-4">
+          <table class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6" id="reports-table">
           </table>
         </div>
 
@@ -1171,6 +1172,7 @@
   <script src="functions.js"></script>
   <script src="categories.js"></script>
   <script src="operations.js"></script>
+  <script src="filters.js"></script>
   <script src="reports.js"></script>
   <script src="main.js"></script>
 </html>

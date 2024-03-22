@@ -1,172 +1,4 @@
-//                      FILTERS
-
-const filterByType = (type, array) => {
-    return array.filter((operation) => operation.type === type)
-};
-
-const filterOperationsByType = (filteredOperations) => {
-  const type = document.getElementById('operation-type-filter').value;
-  if (type !== 'Todas') {
-    filteredOperations = filterByType(type, filteredOperations);
-  }
-};
-
-const filterByCategory = (category, array) => {
-    return array.filter((operation) => operation.category === category)
-};
-
-const filterOperationsByCategory = (filteredOperations) => {
-  const category = document.getElementById('operation-category-filter').value;
-  if (category !== 'Todas') {
-    filteredOperations = filterByCategory(category, filteredOperations);
-  }
-};
-
-const filterOperationsFromDate = (date, array) => {
-    const fromDate = new Date(date); 
-    return array.filter((operation) => {
-        const operationDate = new Date(operation.date); 
-        return operationDate >= fromDate;
-    });
-};
-
-const filterOperationsUntilDate = (date, array) => {
-  const untilDate = new Date (date); 
-  return array.filter((operation) => {
-      const operationDate = new Date (operation.date)
-      return operationDate < untilDate;})
-  };
-
-const filterByOrder = (array, order) => {
-    const orderByAmount = (a, b) => {return a.amount - b.amount}
-    const orderAlphabetycally = (a, b) => {
-        if (a.description < b.description) {return -1;}
-        if (a.description > b.description) {return 1;}
-        return 0;
-    };
-    const orderByDate = (a,b) => {
-        const dateA  = new Date(a.date)
-        const dateB = new Date(b.date)
-        return dateA.getTime() - dateB.getTime()
-    }
-    
-    if (order === 'Más reciente') {
-      console.log(array)
-        return array.sort((a, b) => orderByDate(b, a));
-    }
-    else if (order === 'Más antiguo') {
-        return array.sort(orderByDate);
-    }
-    else if (order === 'Menor monto') {
-        return array.sort(orderByAmount);
-    }
-    else if (order === 'Mayor monto') {
-        return array.sort((a, b) => orderByAmount(b, a));
-    }
-    else if (order === 'A/Z') {
-      console.log(array.sort(orderAlphabetycally))
-        return array.sort(orderAlphabetycally);
-    }
-    else if (order === 'Z/A') {
-        return array.sort((a, b) => orderAlphabetycally(b, a));
-    }
-};
-
-/*
-const applyFilters = () => {
-    let filteredOperations = getOperations();
-    filterOperationsByType(filteredOperations);
-    filterOperationsByCategory(filteredOperations);
-    console.log(filteredOperations);
-    createOperationsTable(filteredOperations);
-};
-
-
-const filterOperations = () => {
-    let filteredOperations = getOperations();
-    console.log (filteredOperations);
-
-    const type = document.getElementById('operation-type-filter').value;
-    const category = document.getElementById('operation-category-filter').value;
-    const dateFrom = document.getElementById("operation-date-from").value;
-    const dateUntil = document.getElementById("operation-date-until").value;
-    const order = document.getElementById('operation-order').value;
-    
-    if (type !== 'Todas') {
-      filteredOperations = filterByType(type, getOperations());
-      console.log(filteredOperations)
-      createOperationsTable(filteredOperations);
-    }
-  
-    if (category !== 'Todas') {
-      filteredOperations = filterByCategory(category, getOperations())
-    }
-
-    filteredOperations = filterOperationsFromDate(dateFrom, getOperations());
-    console.log(filteredOperations)
-
-    filteredOperations = filterOperationsUntilDate(dateUntil, filteredOperations);
-    console.log(filteredOperations)
-
-    filteredOperations = filterByOrder(order, getOperations());
-    console.log(filteredOperations)
-
-    console.log('Operaciones filtradas:', filteredOperations);
-
-  
-};*/
-
-const getBalance = () => {
-  income = 0;
-  expense = 0;
-  const operations = getOperations();
-
-  for (let operation of operations) {
-      if (operation.type === 'Ganancia') {
-          income += parseInt(operation.amount);
-      }
-      if (operation.type === 'Gasto') {
-          expense += parseInt(operation.amount);
-      }
-  }
-
-  balance = income - expense;
-
-  const balanceType = income >= expense ? "text-green-600" : "text-red-600";
-  const balanceAmount = income >= expense ? "+$" : "-$";
-
-  document.getElementById('balance-display').innerHTML = `
-      <div class="flex columns-2 justify-between">
-          <div>
-            <h3>Ganancias</h3>
-          </div>
-          <div class="text-green-600">
-            <span>+$</span>
-            <span>${income}</span>
-          </div>
-        </div>
-        <div class="flex columns-2 justify-between">
-          <div>
-            <h3>Gastos</h3>
-          </div>
-          <div class="text-red-600">
-            <span>-$</span>
-            <span>${expense}</span>
-          </div>
-        </div>
-        <div
-          class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark"
-        >
-          <div>
-            <h3>Total</h3>
-          </div>
-          <div class="${balanceType}">
-            <span>${balanceAmount}</span>
-            <span>${balance}</span>
-          </div>
-      </div>
-  `
-};
+const months = [`Enero`, `Febrero`, `Marzo`, `Abril`, `Mayo`, `Junio`, `Julio`, `Agosto`, `Septiembre`, `Octubre`, `Noviembre`, `Diciembre`];
 
 const searchForHighestIncomeCategory = () => {
   const operations = getOperations();
@@ -190,13 +22,12 @@ const searchForHighestIncomeCategory = () => {
     if (categoryIncome[category] > highestIncome) {
       highestIncome = categoryIncome[category];
       highestIncomeCategory = category;
-    }
-  }
+    };
+  };
 
   if (highestIncomeCategory !== null) {
-    console.log(`La categoría con la mayor ganancia es "${highestIncomeCategory}" con una ganancia de ${highestIncome}`);
     return { highestIncome, highestIncomeCategory }
-  }
+  };
 };
 
 const searchForHighestExpenseCategory = () => {
@@ -221,17 +52,154 @@ const searchForHighestExpenseCategory = () => {
     if (categoryExpense[category] > highestExpense) {
       highestExpense = categoryExpense[category];
       highestExpenseCategory = category;
+    };
+  };
+
+  if (highestExpenseCategory !== null) {
+    return { highestExpense, highestExpenseCategory }
+  };
+};
+
+const searchForBestBalanceCategory = () => {
+  const operations = getOperations();
+  let categoryBalance = {};
+
+  for (let operation of operations) {
+    const category = operation.category;
+    const amount = parseInt(operation.amount);
+    if (!categoryBalance[category]) {
+      categoryBalance[category] = 0;
+    };
+    if (operation.type === 'Ganancia') {
+      categoryBalance[category] += amount;
+    } else {
+      categoryBalance[category] -= amount;
+    };
+  };
+
+  let bestBalanceCategory = null;
+  let bestBalance = 0;
+
+  for (let category in categoryBalance) {
+    if (categoryBalance[category] > bestBalance) {
+      bestBalance = categoryBalance[category];
+      bestBalanceCategory = category;
+    };
+  };
+  if (bestBalanceCategory !== null) {
+    return { bestBalance, bestBalanceCategory };
+  };
+};
+
+const searchForHighestIncomeMonth = () => {
+  const operations = getOperations();
+  let monthIncome = {};
+
+  for (let operation of operations) {
+    if (operation.type === 'Ganancia') {
+      const date = new Date(operation.date)
+      const month = date.getMonth();
+      const monthName = months[month];
+      const amount = parseInt(operation.amount);
+      if (!monthIncome[monthName]) {
+        monthIncome[monthName] = 0;
+      }
+      monthIncome[monthName] += amount;
     }
   }
 
-  if (highestExpenseCategory !== null) {
-    console.log(`La categoría con la mayor gasto es "${highestExpenseCategory}" con una gasto de ${highestExpense}`);
-    return { highestExpense, highestExpenseCategory }
+  let highestIncomeMonth = null;
+  let highestIncome = 0;
+
+  for (let month in monthIncome) {
+    if (monthIncome[month] > highestIncome) {
+      highestIncome = monthIncome[month];
+      highestIncomeMonth = month;
+    }
   }
+  return { month: highestIncomeMonth, amount: highestIncome };
+};
+
+const searchForHighestExpenseMonth = () => {
+  const operations = getOperations();
+  let monthExpense = {};
+
+  for (let operation of operations) {
+    if (operation.type === 'Gasto') {
+      const date = new Date(operation.date)
+      const month = date.getMonth();
+      const monthName = months[month];
+      const amount = parseInt(operation.amount);
+      if (!monthExpense[monthName]) {
+        monthExpense[monthName] = 0;
+      }
+      monthExpense[monthName] += amount;
+    }
+  }
+
+  let highestExpenseMonth = null;
+  let highestExpense = 0;
+
+  for (let month in monthExpense) {
+    if (monthExpense[month] > highestExpense) {
+      highestExpense = monthExpense[month];
+      highestExpenseMonth = month;
+    }
+  }
+  return { month: highestExpenseMonth, amount: highestExpense };  
+};
+
+const calculateCategoryTotals = () => {
+  const operations = getOperations();
+  let categoryTotals = {};
+
+  for (let operation of operations) {
+    const category = operation.category;
+    const amount = parseInt(operation.amount);
+    if (!categoryTotals[category]) {
+      categoryTotals[category] = { expenses: 0, income: 0, balance: 0 };
+    };
+    if (operation.type === 'Ganancia') {
+      categoryTotals[category].income += amount;
+    } else {
+      categoryTotals[category].expenses += amount;
+    };
+    categoryTotals[category].balance = categoryTotals[category].income - categoryTotals[category].expenses;
+  };
+
+  return categoryTotals;
+};
+
+const calculateMonthTotals = () => {
+  const operations = getOperations();
+  let monthTotals = {};
+
+  for (let operation of operations) {
+    const date = new Date(operation.date);
+    const month = date.getMonth();
+    const monthName = months[month]
+    const amount = parseInt(operation.amount);
+    if (!monthTotals[monthName]) {
+      monthTotals[monthName] = { expenses: 0, income: 0, balance: 0 };
+    };
+    if (operation.type === 'Ganancia') {
+      monthTotals[monthName].income += amount;
+    } else {
+      monthTotals[monthName].expenses += amount;
+    };
+    monthTotals[monthName].balance = monthTotals[monthName].income - monthTotals[monthName].expenses;
+  };
+
+  return monthTotals;
 }
 
 const highestIncomeData = searchForHighestIncomeCategory();
 const highestExpenseData = searchForHighestExpenseCategory();
+const bestBalanceData = searchForBestBalanceCategory();
+const highestIncomeMonthData = searchForHighestIncomeMonth();
+const highestExpenseMonthData = searchForHighestExpenseMonth();
+const categoryTotalsData = calculateCategoryTotals();
+const monthTotalsData = calculateMonthTotals();
 
 //  GENERATE TABLE OF REPORTS
 
@@ -241,74 +209,81 @@ const createReportsTable = (operations) => {
     if (operations && operations.length > 0) {
       setStyleNone('no-reports');
       tableOfReports.innerHTML += `
-             <thead class="sticky top-0 bg-primary dark:bg-secondary text-light z-50">
+             <thead class="bg-primary dark:bg-secondary text-light">
                <tr class="justify-center">
-                 <th class="text-center py-1 font-bold">Resumen</th>
+                 <th class="text-center py-1 font-bold text-lg">Resumen</th>
                </tr>
              </thead>
-             <tbody id="reports-table-body" class="flex flex-col tablet:h-[29rem]">
+             <tbody id="reports-table-body" class="flex flex-col pt-1 tablet:h-[29rem]">
              </tbody>
              `;
         const reportsBody = document.getElementById("reports-table-body");
         reportsBody.innerHTML += `
-            <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor ganancia</td>
+            <tr class="flex justify-around items-center gap-1 pt-3">
+                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold justify-left">Categoría con mayor ganancia</td>
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeData.highestIncomeCategory}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base text-green-600">+${highestIncomeData.highestIncome}</td>
+                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeData.highestIncome}</td>
             </tr>
             
             <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor gasto</td>
+                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor gasto</td>
                 <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseData.highestExpenseCategory}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base text-red-600">-${highestExpenseData.highestExpense}</td>
-            </tr>`/*
-            <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Categoría con mayor balance</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestBalanceCategory}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${amountCategory}</td>
+                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseData.highestExpense}</td>
             </tr>
             <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Mes con mayor ganancia</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeMonth}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${incomeAmount}</td>
+                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor balance</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${bestBalanceData.bestBalanceCategory}</td>
+                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base">$${bestBalanceData.bestBalance}</td>
             </tr>
-
             <tr class="flex justify-between items-center gap-1 pt-3">
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">Mes con mayor gasto</td>
-                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseMonth}</td>
-                <td class="w-1/3 text-center p-1 rounded font-bold text-lg tablet:text-base ${amountType}">${amountSign}${expenseAmount}}</td>
+                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor ganancia</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeMonthData.month}</td>
+                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeMonthData.amount}</td>
             </tr>
 
-            <th class="justify-left font-bold py-2 flex font-sans">Totales por categoría</th>
+            <tr class="flex justify-between items-center gap-1 py-3">
+                <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor gasto</td>
+                <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseMonthData.month}</td>
+                <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseMonthData.amount}</td>
+            </tr>
+            <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por categoría</th>
             <tr class="flex justify-between items-center py-1">
-              <th class="p-1 w-1/4 text-left">Categoría</th>
+              <th class="p-1 w-1/4 text-left">Categoría</th>              
               <th class="p-1 w-1/4 text-center">Ganancias</th>
               <th class="p-1 w-1/4 text-center">Gastos</th>
               <th class="p-1 w-1/4 text-right">Balance</th>
-            </tr>
+            </tr>`;
 
-            <tr class="flex justify-between items-center py-1">
-              <td class="p-1 text-left w-1/4">${category.name}</td>
-              <td class="text-green-600 p-1 w-1/4 text-center">${incomeByCategory}</td>
-              <td class="text-red-600 p-1 w-1/4 text-center">${expenseByCategory}</td>
-              <td class="text-green-600 p-1 w-1/4 text-right">${balanceByCategory}</td>
-            </tr>
-
-            <th class="justify-left font-bold py-2 flex font-sans">Totales por mes</th>
+            for (let category in categoryTotalsData) {
+              const { expenses, income, balance } = categoryTotalsData[category];
+              reportsBody.innerHTML += `
+                <tr class="flex justify-between items-center py-2">
+                  <td class="p-1 text-left w-1/4 font-bold">${category}</td>
+                  <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
+                  <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
+                  <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
+                </tr>`;
+            };
+            reportsBody.innerHTML += `
+            <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por mes</th>
             <tr class="flex justify-between items-center py-1">
                 <th class="p-1 w-1/4 text-left">Mes</th>
                 <th class="p-1 w-1/4 text-center">Ganancias</th>
                 <th class="p-1 w-1/4 text-center">Gastos</th>
                 <th class="p-1 w-1/4 text-right">Balance</th>
-            </tr>
+            </tr>`;
+
+            for (let month in monthTotalsData) {
+              const { expenses, income, balance } = monthTotalsData[month];
+              reportsBody.innerHTML += `
             <tr class="flex justify-between items-center py-1">
-              <td class="p-1 w-1/4 text-left">${dateByMonth}</td>
-              <td class="text-green-600 p-1 w-1/4 text-center">${incomeByMonth}</td>
-              <td class="text-red-600 p-1 w-1/4 text-center">${expenseByMonth}</td>
-              <td class="text-red-600 p-1 w-1/4 text-right">${balanceByMonth}7</td>
-            </tr>   
-            `*/
-      } else {
+              <td class="p-1 w-1/4 text-left font-bold">${month}</td>
+              <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
+              <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
+              <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
+            </tr>`
+            };
+    } else {
       setStyleFlex('no-reports');
     };
   }

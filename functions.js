@@ -5,14 +5,16 @@ const initializeApp = () => {
     createCategoriesTable(savedCategories);
     const savedOperations = getOperations();
     createOperationsTable(savedOperations);
+    const savedReports = getReports();
+    createTableForReports(savedReports);
+    getBalance();
 };
-
 
 //      RESPONSIVE DESIGN
 
 const setStyleNone = (element) => {
     document.getElementById(element).classList.add('hidden');
-}
+};
 
 const setStyleFlex = (element) => {
     document.getElementById(element).classList.remove('hidden');

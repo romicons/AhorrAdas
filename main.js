@@ -28,6 +28,9 @@ document.getElementById('home-section').addEventListener('click', () => {
   setStyleNone('delete-category');
   setStyleNone('edit-operation');
   setStyleNone('delete-operation');
+  setStyleNone('rename-report');
+  setStyleNone('delete-report');
+  setStyleNone('watch-report');
 })
 
 //      OPEN BALANCE WINDOW
@@ -41,6 +44,9 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
     setStyleNone('delete-operation');
+    setStyleNone('rename-report');
+    setStyleNone('delete-report');
+    setStyleNone('watch-report');
     toggleMobileNav();
 });
 
@@ -56,6 +62,9 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
     setStyleNone('delete-operation');
+    setStyleNone('rename-report');
+    setStyleNone('delete-report');
+    setStyleNone('watch-report');
     toggleMobileNav();
 });
 
@@ -71,6 +80,9 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
     setStyleNone('delete-operation');
+    setStyleNone('rename-report');
+    setStyleNone('delete-report');
+    setStyleNone('watch-report');
     toggleMobileNav();
 });
 
@@ -87,23 +99,23 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
 
 //      FILTER OPERATIONS BY TYPE
 
-document.getElementById('operation-type-filter').addEventListener('change', filterOperations);
+//document.getElementById('operation-type-filter').addEventListener('change', applyFilters);
 
 //      FILTER OPERATIONS BY CATEGORY
 
-document.getElementById('operation-category-filter').addEventListener('change', filterOperations);
+//document.getElementById('operation-category-filter').addEventListener('change', applyFilters);
 
 //      FILTER OPERATIONS FROM X DATE
 
-document.getElementById("operation-date-from").addEventListener('change', filterOperations);
+//document.getElementById("operation-date-from").addEventListener('change', filterOperations);
 
 //      FILTER OPERATIONS UNTIL X DATE
 
-document.getElementById("operation-date-until").addEventListener('change', filterOperations);
+//document.getElementById("operation-date-until").addEventListener('change', filterOperations);
 
 //      FILTER THE ORDER OF THE OPERATIONS
 
-document.getElementById('operation-order').addEventListener('change', filterOperations);
+//document.getElementById('operation-order').addEventListener('change', filterOperations);
 
 //      OPEN NEW OPERATION WINDOW
 
@@ -233,7 +245,7 @@ document.querySelector('.save-edit-operation').addEventListener('click', () => {
     setStyleNone('new-operation');
     setStyleFlex('balance-section');
     setStyleNone('edit-operation');  
-    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.replace(/-/g, '/'));
+    confirmEditOperation(operations, editOperationId.id.slice(8), newOperationDescriptionCapitalized, newOperationAmount.value.trim(), newOperationType, newOperationCategory, newOperationDate.value.replace(/-/g, '/'));
   }
   }
 );
@@ -280,7 +292,6 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
           document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
           document.getElementById('add-category-btn-col').classList.add('items-center')
       } else {
-        //const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
           createCategory(newCategory);
           newCategoryInput.value = "";
       }
@@ -359,6 +370,78 @@ document.querySelector('.confirm-delete-category').addEventListener('click', () 
     setStyleFlex('categories');
 }});
 
+//     CREATE NEW REPORT
+
+document.getElementById('generate-report-btn').addEventListener('click', () => {
+  const newReportInput = document.getElementById('add-report');
+  const newReport = capitalizeFirstLetter(newReportInput.value)
+  if (newReport === "") {
+      newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
+      error(newReportInput, 'Proporciona un nombre para tu reporte por favor.');
+      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+      document.getElementById('add-category-btn-col').classList.add('items-center')
+  } else {
+      let existentReports = getReports()
+      if (!existentReports) {
+        existentReports = [];
+      }
+      const reportExists = existentReports.some(report => report.name === newReport);
+      if (reportExists) {
+          newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
+          error(newReportInput, 'Ya existe un reporte con este nombre.');
+          document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+          document.getElementById('add-category-btn-col').classList.add('items-center')
+      } else {
+          createReport(newReport);
+          newReportInput.value = "";
+      }
+    }
+});
+
+//      RENAME REPORT
+
+document.querySelector('.save-rename-report').addEventListener('click', () => {
+  let editReportId = document.querySelector('.save-rename-report');
+  const newReportName = document.getElementById("input-rename-report").value.trim();
+  if (newReportName === '') {
+      document.getElementById("input-rename-report").classList.add('outline', 'outline-red-600', 'outline-2');
+      error(document.getElementById("input-rename-report"), 'Proporciona un nuevo nombre para tu reporte por favor.');
+      return; 
+  }
+  const reportExists = savedReports.some(object => object.name === newReportName);
+  if (reportExists) {
+      error(document.getElementById("input-rename-report"), 'Ya existe un reporte con este nombre.');
+      return;
+  } else {
+    renameReport(savedReports, editReportId.id.slice(8), newReportName);
+    setStyleFlex('reports');
+    setStyleNone('rename-report');
+  }
+});
+
+//      CANCEL RENAME REPORT
+
+document.getElementById('cancel-rename-report').addEventListener('click', () => {
+    setStyleNone('rename-report');
+    setStyleFlex('reports');
+});
+
+//      CONFIRM DELETE REPORT
+
+document.querySelector('.confirm-delete-report').addEventListener('click', () => {
+  let reportId = document.querySelector('.confirm-delete-report');
+  confirmDeleteReport(getReports(), reportId.id.slice(8));
+    setStyleNone('delete-report');
+    setStyleFlex('reports');
+});
+
+//      CANCEL DELETE REPORT
+
+document.getElementById('cancel-delete-report').addEventListener('click', () => {
+  setStyleNone('delete-report');
+  setStyleFlex('reports');
+});
+
 //      CLOSE REPORTS WINDOW
 
 document.getElementById('close-reports-btn').addEventListener('click', () => {
@@ -366,11 +449,11 @@ document.getElementById('close-reports-btn').addEventListener('click', () => {
     setStyleFlex('balance-section');
 });
 
-//      GO TO NEW OPERATION FROM REPORTS
+//    CLOSE REPORT WINDOW SELECTED
 
-document.getElementById('to-new-operation-btn').addEventListener('click', () => {
-    setStyleNone('reports');
-    setStyleFlex('new-operation');
+document.getElementById('close-watch-report-btn').addEventListener('click', () => {
+  setStyleNone('watch-report');
+  setStyleFlex('reports')
 });
 
 //      OPEN NAV MENU IN MOBILE

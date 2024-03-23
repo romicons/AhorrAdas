@@ -28,6 +28,8 @@ document.getElementById('home-section').addEventListener('click', () => {
   setStyleNone('delete-category');
   setStyleNone('edit-operation');
   setStyleNone('delete-operation');
+  setStyleNone('rename-report');
+  setStyleNone('delete-report');
 })
 
 //      OPEN BALANCE WINDOW
@@ -41,6 +43,8 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
     setStyleNone('delete-operation');
+    setStyleNone('rename-report');
+    setStyleNone('delete-report');
     toggleMobileNav();
 });
 
@@ -56,6 +60,8 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
     setStyleNone('delete-operation');
+    setStyleNone('rename-report');
+    setStyleNone('delete-report');
     toggleMobileNav();
 });
 
@@ -280,7 +286,6 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
           document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
           document.getElementById('add-category-btn-col').classList.add('items-center')
       } else {
-        //const newCategoryCapitalized = capitalizeFirstLetter(newCategory);
           createCategory(newCategory);
           newCategoryInput.value = "";
       }
@@ -359,18 +364,83 @@ document.querySelector('.confirm-delete-category').addEventListener('click', () 
     setStyleFlex('categories');
 }});
 
+//     CREATE NEW REPORT
+
+document.getElementById('generate-report-btn').addEventListener('click', () => {
+  const newReportInput = document.getElementById('add-report');
+  const newReport = capitalizeFirstLetter(newReportInput.value)
+  if (newReport === "") {
+      newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
+      error(newReportInput, 'Proporciona un nombre para tu reporte por favor.');
+      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+      document.getElementById('add-category-btn-col').classList.add('items-center')
+  } else {
+      let existentReports = getReports()
+      if (!existentReports) {
+        existentReports = [];
+      }
+      const reportExists = existentReports.some(report => report.name === newReport);
+      if (reportExists) {
+          newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
+          error(newReportInput, 'Ya existe un reporte con este nombre.');
+          document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+          document.getElementById('add-category-btn-col').classList.add('items-center')
+      } else {
+          createReport(newReport);
+          newReportInput.value = "";
+      }
+    }
+});
+
+//      RENAME REPORT
+
+document.querySelector('.save-rename-report').addEventListener('click', () => {
+  let editReportId = document.querySelector('.save-rename-report');
+  const newReportName = document.getElementById("input-rename-report").value.trim();
+  if (newReportName === '') {
+      document.getElementById("input-rename-report").classList.add('outline', 'outline-red-600', 'outline-2');
+      error(document.getElementById("input-rename-report"), 'Proporciona un nuevo nombre para tu reporte por favor.');
+      return; 
+  }
+  const reportExists = savedReports.some(object => object.name === newReportName);
+  if (reportExists) {
+      error(document.getElementById("input-rename-report"), 'Ya existe un reporte con este nombre.');
+      return;
+  } else {
+    renameReport(savedReports, editReportId.id.slice(8), newReportName);
+    setStyleFlex('reports');
+    setStyleNone('rename-report');
+  }
+});
+
+//      CANCEL RENAME REPORT
+
+document.getElementById('cancel-rename-report').addEventListener('click', () => {
+    setStyleNone('rename-report');
+    setStyleFlex('reports');
+});
+
+//      CONFIRM DELETE REPORT
+
+document.querySelector('.confirm-delete-report').addEventListener('click', () => {
+  let reportId = document.querySelector('.confirm-delete-report');
+  confirmDeleteReport(getReports(), reportId.id.slice(8));
+    setStyleNone('delete-report');
+    setStyleFlex('reports');
+});
+
+//      CANCEL DELETE REPORT
+
+document.getElementById('cancel-delete-report').addEventListener('click', () => {
+  setStyleNone('delete-report');
+  setStyleFlex('reports');
+});
+
 //      CLOSE REPORTS WINDOW
 
 document.getElementById('close-reports-btn').addEventListener('click', () => {
     setStyleNone('reports');
     setStyleFlex('balance-section');
-});
-
-//      GO TO NEW OPERATION FROM REPORTS
-
-document.getElementById('to-new-operation-btn').addEventListener('click', () => {
-    setStyleNone('reports');
-    setStyleFlex('new-operation');
 });
 
 //      OPEN NAV MENU IN MOBILE

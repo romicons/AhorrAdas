@@ -1,18 +1,22 @@
-//      RETURN REPORTS FROM LOCAL STORAGE
-
-const getReports = () => {
-  return JSON.parse(localStorage.getItem("reports"));
-};
-
-const reports = getReports() || [];
-
-//    UPDATE REPORTS
-
-const updateReports = (reports) => {
-  localStorage.setItem(`reports`, JSON.stringify(reports));
-};
-
 //    CREATE NEW REPORT
+
+const createReport = (name) => {
+  let savedReports = getReports();
+  let newReport = {
+    id: uuidv4(),
+    name: name,
+    highestIncomeData: searchForHighestIncomeCategory(),
+    highestExpenseData: searchForHighestExpenseCategory(),
+    bestBalanceData: searchForBestBalanceCategory(),
+    highestIncomeMonthData: searchForHighestIncomeMonth(),
+    highestExpenseMonthData: searchForHighestExpenseMonth(),
+    categoryTotalsData: calculateCategoryTotals(),
+    monthTotalsData: calculateMonthTotals()
+  };
+  savedReports.push(newReport);
+  updateReports(savedReports);
+  createTableForReports(savedReports);
+};
 
 const months = [`Enero`, `Febrero`, `Marzo`, `Abril`, `Mayo`, `Junio`, `Julio`, `Agosto`, `Septiembre`, `Octubre`, `Noviembre`, `Diciembre`];
 
@@ -209,13 +213,117 @@ const calculateMonthTotals = () => {
   return monthTotals;
 }
 
-const highestIncomeData = searchForHighestIncomeCategory();
-const highestExpenseData = searchForHighestExpenseCategory();
-const bestBalanceData = searchForBestBalanceCategory();
-const highestIncomeMonthData = searchForHighestIncomeMonth();
-const highestExpenseMonthData = searchForHighestExpenseMonth();
-const categoryTotalsData = calculateCategoryTotals();
-const monthTotalsData = calculateMonthTotals();
+//      RETURN REPORTS FROM LOCAL STORAGE
+
+const getReports = () => {
+  return JSON.parse(localStorage.getItem("reports"));
+};
+
+const savedReports = getReports() || [];
+
+//    UPDATE REPORTS
+
+const updateReports = (reports) => {
+  localStorage.setItem(`reports`, JSON.stringify(reports));
+};
+
+//    CREATE TABLE FOR REPORTS
+
+const createTableForReports = (reports) => {
+  const tableForReports = document.getElementById("table-for-reports");
+  tableForReports.innerHTML = "";
+  if (reports && reports.length > 0) {
+    setStyleNone('no-saved-reports');
+    reports.forEach(report => {
+      tableForReports.innerHTML += `
+        <tr class="flex columns-2 justify-between items-center py-1">
+          <td class="flex columns-2 gap-2 items-center justify-left w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold hover:bg-secondary dark:hover:bg-primary cursor-pointer">
+            <button class="watch-report-btn flex gap-3 items-center">
+                <i class="fa-solid fa-eye pointer-events-none"></i>
+                    ${report.name}
+            </button>
+          </td>
+          <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
+              <button
+                  class="delete-report-btn flex items-center rounded py-1 px-2 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                  id="btn-delete-${report.id}"
+              >
+                  <i class="fa-solid fa-trash pointer-events-none"></i>
+                  Eliminar
+              </button>
+              <button
+                  class="rename-report-btn flex items-center rounded py-1 px-3 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
+                  id="btn-rename-${report.id}" 
+              >
+                  <i class="fa-solid fa-pen pointer-events-none"></i>
+                  Renombrar
+              </button>
+          </td>
+       </tr>`;
+    });
+    editReportEvent(document.getElementsByClassName("rename-report-btn"));
+    deleteReportEvent(document.getElementsByClassName("delete-report-btn"));
+  } else {
+    setStyleFlex('no-saved-reports');
+  };
+};
+
+//              RENAME REPORT
+
+const editReportEvent = (renameReportButtons) => {
+  const savedReports = getReports();
+  for (let btn of renameReportButtons) {
+    btn.addEventListener("click", (e) => {
+      const report = seekId(savedReports, e.target.id, 11);
+      if (report) {
+        document.getElementById("input-rename-report").value = report.name;
+        document.querySelector('.save-rename-report').setAttribute("id", `confirm-${btn.id.slice(11)}`);
+        setStyleFlex("rename-report");
+        setStyleNone("reports");
+      }
+    });
+  }
+};
+
+const renameReport = (array, reportId, newName) => {
+  const savedReports = getReports();
+  const editedReports = savedReports.map((object) => {
+    if (object.id === reportId) {
+      return {
+        ...object,
+        name: newName
+      };
+    } else {
+      return object; 
+    }
+  });
+  updateReports(editedReports);
+  createTableForReports(editedReports);
+};
+
+//              DELETE REPORT
+
+const deleteReportEvent = (deleteReportButtons) => {
+  const savedReports = getReports();
+  for (let btn of deleteReportButtons) {
+    btn.addEventListener("click", (e) => {
+      const report = seekId(savedReports, e.target.id, 11);
+      if (report) {
+        document.getElementById("report-name").innerHTML = report.name;
+        document.querySelector('.confirm-delete-report').setAttribute("id", `confirm-${btn.id.slice(11)}`);
+        document.querySelector('.confirm-delete-report').setAttribute("name", report.name);
+        setStyleFlex("delete-report");
+        setStyleNone("reports");
+      }
+    });
+  }
+};
+
+const confirmDeleteReport = (array, reportId) => {
+    const filteredReports = array.filter(object => object.id !== reportId);
+    updateReports(filteredReports);
+    createTableForReports(filteredReports);
+};
 
 //    GENERATE TABLE REPORT
 
@@ -304,34 +412,3 @@ const createReportsTable = (operations) => {
   };
 };
 
-//    CREATE TABLE FOR REPORTS
-
-const createTableForReports = (reports) => {
-    const tableForReports = document.getElementById("table-for-reports");
-    tableForReports.innerHTML = "";
-    if (reports && reports.length > 0) {
-      setStyleNone('no-saved-reports');
-      tableForReports.innerHTML += `
-        <tr class="flex columns-2 justify-between items-center py-1">
-          <td class="text-center w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold">${report.name}</td>
-          <td class="flex gap-2 tablet:gap-5 w-2/5 justify-end">
-              <button
-                  class="delete-report-btn flex items-center rounded py-1 px-2 h-8 justify-center bg-dark hover:bg-primary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                  id="btn-delete-${report.id}"
-              >
-                  <i class="fa-solid fa-trash pointer-events-none"></i>
-                  Eliminar
-              </button>
-              <button
-                  class="rename-report-btn flex items-center rounded py-1 px-3 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light gap-2"
-                  id="btn-edit-${report.id}" 
-              >
-                  <i class="fa-solid fa-pen pointer-events-none"></i>
-                  Renombrar
-              </button>
-          </td>
-       </tr>`;
-    } else {
-      setStyleFlex('no-saved-reports');
-    };
-};

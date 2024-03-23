@@ -116,10 +116,10 @@ const filterOperations = () => {
   
 };*/
 
-const getBalance = () => {
+const getBalance = (data) => {
   income = 0;
   expense = 0;
-  const operations = getOperations();
+  data = getOperations();
 
   for (let operation of operations) {
       if (operation.type === 'Ganancia') {
@@ -135,6 +135,7 @@ const getBalance = () => {
   const balanceType = income >= expense ? "text-green-600" : "text-red-600";
   const balanceAmount = income >= expense ? "+$" : "-$";
 
+  if (data && data.length > 0) {
   document.getElementById('balance-display').innerHTML = `
       <div class="flex columns-2 justify-between">
           <div>
@@ -164,6 +165,37 @@ const getBalance = () => {
             <span>${balanceAmount}</span>
             <span>${balance}</span>
           </div>
-      </div>
-  `
-};
+      </div>`
+      } else {
+        document.getElementById('balance-display').innerHTML = `
+        <div class="flex columns-2 justify-between">
+            <div>
+              <h3>Ganancias</h3>
+            </div>
+            <div class="text-green-600">
+              <span>+$</span>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="flex columns-2 justify-between">
+            <div>
+              <h3>Gastos</h3>
+            </div>
+            <div class="text-red-600">
+              <span>-$</span>
+              <span>0</span>
+            </div>
+          </div>
+          <div
+            class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark"
+          >
+            <div>
+              <h3>Total</h3>
+            </div>
+            <div>
+              <span>$0</span>
+              <span></span>
+            </div>
+        </div>`
+      }
+    };

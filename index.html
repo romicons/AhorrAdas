@@ -1213,11 +1213,28 @@
 
         <!--    TABLA DE REPORTE   -->
 
-      <section>
-                <div class="flex justify-center py-4">
-                  <table class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6" id="reports-table">
-                  </table>
-                </div>
+      <section id="watch-report"
+      class="hidden flex-col h-full shadow-md w-11/12 tablet:w-2/3 rounded-lg p-5 bg-primary bg-opacity-5 backdrop-filter backdrop-blur-lg dark:shadow-[#c8d6bf] tablet:max-h-full tablet:overflow-y-auto">
+          <div class="flex columns-2 justify-between gap-2 items-center">
+            <div>
+              <h2 class="font-sans text-xl">Reporte:
+                <span id="report-selected-name"></span>
+              </h2>
+            </div>
+            <div>
+              <button
+                id="close-watch-report-btn"
+                class="px-3 rounded hover:text-dark bg-primary dark:text-light hover:bg-secondary shadow-inner font-bold dark:bg-secondary dark:hover:bg-dark dark:hover:text-secondary"
+                aria-label="Close window button."
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="flex justify-center py-4">
+            <table class="table table-fixed w-full py-2 px-1 max-h-full tablet:h-5/6" id="reports-table">
+            </table>
+          </div>
       </section>
 
     </main>

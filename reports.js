@@ -237,8 +237,9 @@ const createTableForReports = (reports) => {
     reports.forEach(report => {
       tableForReports.innerHTML += `
         <tr class="flex columns-2 justify-between items-center py-1">
-          <td class="flex columns-2 gap-2 items-center justify-left w-2/5 bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold hover:bg-secondary dark:hover:bg-primary cursor-pointer">
-            <button class="watch-report-btn flex gap-3 items-center">
+          <td class="flex columns-2 w-2/5">
+            <button class="watch-report-btn w-full bg-primary dark:bg-secondary px-2 py-1 rounded text-light font-bold hover:bg-secondary dark:hover:bg-primary cursor-pointer justify-left flex gap-2 items-center"
+            id="btn-watch-${report.id}">
                 <i class="fa-solid fa-eye pointer-events-none"></i>
                     ${report.name}
             </button>
@@ -263,6 +264,7 @@ const createTableForReports = (reports) => {
     });
     editReportEvent(document.getElementsByClassName("rename-report-btn"));
     deleteReportEvent(document.getElementsByClassName("delete-report-btn"));
+    watchReportEvent(document.getElementsByClassName("watch-report-btn"));
   } else {
     setStyleFlex('no-saved-reports');
   };
@@ -325,13 +327,26 @@ const confirmDeleteReport = (array, reportId) => {
     createTableForReports(filteredReports);
 };
 
+const watchReportEvent = (watchReportButtons) => {
+  const savedReports = getReports();
+  for (let btn of watchReportButtons) {
+    btn.addEventListener("click", (e) => {
+      const report = seekId(savedReports, e.target.id, 10);
+      if (report) {
+        createReportsTable(report)
+        document.getElementById('report-selected-name').innerHTML= `${report.name}`;
+        setStyleFlex("watch-report");
+        setStyleNone("reports");
+      }
+    });
+  };
+};
+
 //    GENERATE TABLE REPORT
 
-const createReportsTable = (operations) => {
+const createReportsTable = (report) => {
   const tableOfReports = document.getElementById("reports-table");
   tableOfReports.innerHTML = "";
-  if (operations && operations.length > 0) {
-    setStyleNone('no-reports');
     tableOfReports.innerHTML += `
            <thead class="bg-primary dark:bg-secondary text-light">
              <tr class="justify-center">
@@ -345,30 +360,30 @@ const createReportsTable = (operations) => {
       reportsBody.innerHTML += `
           <tr class="flex justify-around items-center gap-1 pt-3">
               <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold justify-left">Categoría con mayor ganancia</td>
-              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeData.highestIncomeCategory}</td>
-              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeData.highestIncome}</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${report.highestIncomeData.highestIncomeCategory}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${report.highestIncomeData.highestIncome}</td>
           </tr>
           
           <tr class="flex justify-between items-center gap-1 pt-3">
               <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor gasto</td>
-              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseData.highestExpenseCategory}</td>
-              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseData.highestExpense}</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${report.highestExpenseData.highestExpenseCategory}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${report.highestExpenseData.highestExpense}</td>
           </tr>
           <tr class="flex justify-between items-center gap-1 pt-3">
               <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Categoría con mayor balance</td>
-              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${bestBalanceData.bestBalanceCategory}</td>
-              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base">$${bestBalanceData.bestBalance}</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${report.bestBalanceData.bestBalanceCategory}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base">$${report.bestBalanceData.bestBalance}</td>
           </tr>
           <tr class="flex justify-between items-center gap-1 pt-3">
               <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor ganancia</td>
-              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestIncomeMonthData.month}</td>
-              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${highestIncomeMonthData.amount}</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${report.highestIncomeMonthData.month}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-green-600">+$${report.highestIncomeMonthData.amount}</td>
           </tr>
 
           <tr class="flex justify-between items-center gap-1 py-3">
               <td class="w-1/3 text-left p-1 rounded text-light dark:text-dark font-bold">Mes con mayor gasto</td>
-              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${highestExpenseMonthData.month}</td>
-              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${highestExpenseMonthData.amount}</td>
+              <td class="w-1/3 text-center bg-primary dark:bg-secondary p-1 rounded text-light font-bold">${report.highestExpenseMonthData.month}</td>
+              <td class="w-1/3 text-right p-1 rounded font-bold text-lg tablet:text-base text-red-600">-$${report.highestExpenseMonthData.amount}</td>
           </tr>
           <th class="font-bold flex font-sans text-left text-lg dark:text-light bg-primary dark:bg-secondary justify-center">Totales por categoría</th>
           <tr class="flex justify-between items-center py-1">
@@ -378,8 +393,8 @@ const createReportsTable = (operations) => {
             <th class="p-1 w-1/4 text-right">Balance</th>
           </tr>`;
 
-          for (let category in categoryTotalsData) {
-            const { expenses, income, balance } = categoryTotalsData[category];
+          for (let category in report.categoryTotalsData) {
+            const { expenses, income, balance } = report.categoryTotalsData[category];
             reportsBody.innerHTML += `
               <tr class="flex justify-between items-center py-2">
                 <td class="p-1 text-left w-1/4 font-bold">${category}</td>
@@ -397,8 +412,8 @@ const createReportsTable = (operations) => {
               <th class="p-1 w-1/4 text-right">Balance</th>
           </tr>`;
 
-          for (let month in monthTotalsData) {
-            const { expenses, income, balance } = monthTotalsData[month];
+          for (let month in report.monthTotalsData) {
+            const { expenses, income, balance } = report.monthTotalsData[month];
             reportsBody.innerHTML += `
           <tr class="flex justify-between items-center py-1">
             <td class="p-1 w-1/4 text-left font-bold">${month}</td>
@@ -407,8 +422,5 @@ const createReportsTable = (operations) => {
             <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
           </tr>`
           };
-  } else {
-    setStyleFlex('no-reports')
-  };
 };
 

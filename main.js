@@ -30,6 +30,7 @@ document.getElementById('home-section').addEventListener('click', () => {
   setStyleNone('delete-operation');
   setStyleNone('rename-report');
   setStyleNone('delete-report');
+  setStyleNone('watch-report');
 })
 
 //      OPEN BALANCE WINDOW
@@ -45,6 +46,7 @@ document.getElementById('balance-window-btn').addEventListener('click', () => {
     setStyleNone('delete-operation');
     setStyleNone('rename-report');
     setStyleNone('delete-report');
+    setStyleNone('watch-report');
     toggleMobileNav();
 });
 
@@ -62,6 +64,7 @@ document.getElementById('categories-window-btn').addEventListener('click', () =>
     setStyleNone('delete-operation');
     setStyleNone('rename-report');
     setStyleNone('delete-report');
+    setStyleNone('watch-report');
     toggleMobileNav();
 });
 
@@ -77,6 +80,9 @@ document.getElementById('reports-window-btn').addEventListener('click', () => {
     setStyleNone('delete-category');
     setStyleNone('edit-operation');
     setStyleNone('delete-operation');
+    setStyleNone('rename-report');
+    setStyleNone('delete-report');
+    setStyleNone('watch-report');
     toggleMobileNav();
 });
 
@@ -441,6 +447,13 @@ document.getElementById('cancel-delete-report').addEventListener('click', () => 
 document.getElementById('close-reports-btn').addEventListener('click', () => {
     setStyleNone('reports');
     setStyleFlex('balance-section');
+});
+
+//    CLOSE REPORT WINDOW SELECTED
+
+document.getElementById('close-watch-report-btn').addEventListener('click', () => {
+  setStyleNone('watch-report');
+  setStyleFlex('reports')
 });
 
 //      OPEN NAV MENU IN MOBILE

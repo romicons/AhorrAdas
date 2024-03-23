@@ -1,7 +1,6 @@
 //    CREATE NEW OPERATION
 
 const createOperation = (description, amount, type, category, date) => {
-  let savedOperations = getOperations();
   let newOperation = {
     id: uuidv4(),
     description: description,
@@ -10,9 +9,9 @@ const createOperation = (description, amount, type, category, date) => {
     category: category,
     date: date,
   };
-  savedOperations.push(newOperation);
-  updateOperations(savedOperations);
-  createOperationsTable(savedOperations);
+  operations.push(newOperation);
+  updateOperations(operations);
+  createOperationsTable(operations);
 };
 
 //      RETURN OPERATIONS FROM LOCAL STORAGE
@@ -34,7 +33,6 @@ const updateOperations = (operations) => {
 const createOperationsTable = (data) => {
   const tableOfOperations = document.getElementById("operations-table");
   tableOfOperations.innerHTML = "";
-   data = validateLocalStorage("operations", operations);
   if (data && data.length > 0) {
     setStyleNone('no-operations');
     tableOfOperations.innerHTML += `
@@ -102,6 +100,7 @@ const editOperationEvent = (editOperationButtons) => {
 };
 
 //    CONFIRM EDIT  OPERATION
+
 const confirmEditOperation = (array, operationId, newDescription, newAmount, newType, newCategory, newDate) =>{
   const savedOperations = getOperations();
   const editedOperations = savedOperations.map((object) => {
@@ -122,7 +121,6 @@ const confirmEditOperation = (array, operationId, newDescription, newAmount, new
   createOperationsTable(editedOperations);
 }
 
-
 //      DELETE OPERATION
 
 const deleteOperationEvent = (deleteOperationButtons) => {
@@ -139,7 +137,6 @@ const deleteOperationEvent = (deleteOperationButtons) => {
     });
   }
 };
-
 
 //    CONFIRM DELETE OPERATION
 

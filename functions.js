@@ -7,7 +7,7 @@ const initializeApp = () => {
     createOperationsTable(savedOperations);
     const savedReports = getReports();
     createTableForReports(savedReports);
-    getBalance();
+    getBalance(savedOperations);
 };
 
 //      RESPONSIVE DESIGN

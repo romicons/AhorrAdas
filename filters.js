@@ -1,7 +1,7 @@
 //                      FILTERS
 
 const filterByType = (type, array) => {
-    return array.filter((operation) => operation.type === type)
+    return array.filter((operation) => operation[type] === type)
 };
 
 const filterOperationsByType = (filteredOperations) => {
@@ -117,85 +117,82 @@ const filterOperations = () => {
 };*/
 
 const getBalance = (data) => {
-  income = 0;
-  expense = 0;
-  data = getOperations();
+  let income = 0;
+  let expense = 0;
 
-  for (let operation of operations) {
-      if (operation.type === 'Ganancia') {
-          income += parseInt(operation.amount);
-      }
-      if (operation.type === 'Gasto') {
-          expense += parseInt(operation.amount);
-      }
+  for (let operation of data) {
+    if (operation.type === 'Ganancia') {
+      income += parseInt(operation.amount);
+    }
+    if (operation.type === 'Gasto') {
+      expense += parseInt(operation.amount);
+    }
   }
 
-  balance = income - expense;
+  let balance = income - expense;
 
   const balanceType = income >= expense ? "text-green-600" : "text-red-600";
   const balanceAmount = income >= expense ? "+$" : "-$";
 
+  const formattedBalance = balance < 0 ? balance.toString().replace('-', '') : balance;
+
   if (data && data.length > 0) {
-  document.getElementById('balance-display').innerHTML = `
+    document.getElementById('balance-display').innerHTML = `
       <div class="flex columns-2 justify-between">
-          <div>
-            <h3>Ganancias</h3>
-          </div>
-          <div class="text-green-600">
-            <span>+$</span>
-            <span>${income}</span>
-          </div>
+        <div>
+          <h3>Ganancias</h3>
         </div>
-        <div class="flex columns-2 justify-between">
-          <div>
-            <h3>Gastos</h3>
-          </div>
-          <div class="text-red-600">
-            <span>-$</span>
-            <span>${expense}</span>
-          </div>
+        <div class="text-green-600">
+          <span>+$</span>
+          <span>${income}</span>
         </div>
-        <div
-          class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark"
-        >
-          <div>
-            <h3>Total</h3>
-          </div>
-          <div class="${balanceType}">
-            <span>${balanceAmount}</span>
-            <span>${balance}</span>
-          </div>
-      </div>`
-      } else {
-        document.getElementById('balance-display').innerHTML = `
-        <div class="flex columns-2 justify-between">
-            <div>
-              <h3>Ganancias</h3>
-            </div>
-            <div class="text-green-600">
-              <span>+$</span>
-              <span>0</span>
-            </div>
-          </div>
-          <div class="flex columns-2 justify-between">
-            <div>
-              <h3>Gastos</h3>
-            </div>
-            <div class="text-red-600">
-              <span>-$</span>
-              <span>0</span>
-            </div>
-          </div>
-          <div
-            class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark"
-          >
-            <div>
-              <h3>Total</h3>
-            </div>
-            <div>
-              <span>$0</span>
-              <span></span>
-            </div>
-        </div>`
-      }
-    };
+      </div>
+      <div class="flex columns-2 justify-between">
+        <div>
+          <h3>Gastos</h3>
+        </div>
+        <div class="text-red-600">
+          <span>-$</span>
+          <span>${expense}</span>
+        </div>
+      </div>
+      <div class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark">
+        <div>
+          <h3>Total</h3>
+        </div>
+        <div class="${balanceType}">
+          <span>${balanceAmount}</span>
+          <span>${formattedBalance}</span>
+        </div>
+      </div>`;
+  } else {
+    document.getElementById('balance-display').innerHTML = `
+      <div class="flex columns-2 justify-between">
+        <div>
+          <h3>Ganancias</h3>
+        </div>
+        <div class="text-green-600">
+          <span>+$</span>
+          <span>0</span>
+        </div>
+      </div>
+      <div class="flex columns-2 justify-between">
+        <div>
+          <h3>Gastos</h3>
+        </div>
+        <div class="text-red-600">
+          <span>-$</span>
+          <span>0</span>
+        </div>
+      </div>
+      <div class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark">
+        <div>
+          <h3>Total</h3>
+        </div>
+        <div>
+          <span>$0</span>
+          <span></span>
+        </div>
+      </div>`;
+  }
+};

@@ -1,7 +1,6 @@
 //    CREATE NEW REPORT
 
 const createReport = (name) => {
-  let savedReports = getReports();
   let newReport = {
     id: uuidv4(),
     name: name,
@@ -395,12 +394,14 @@ const createReportsTable = (report) => {
 
           for (let category in report.categoryTotalsData) {
             const { expenses, income, balance } = report.categoryTotalsData[category];
+            const balanceColorClass = balance >= 0 ? "text-green-600" : "text-red-600";
+            const formattedBalance = balance >= 0 ? `+$${balance}` : `-$${-balance}`;
             reportsBody.innerHTML += `
               <tr class="flex justify-between items-center py-2">
                 <td class="p-1 text-left w-1/4 font-bold">${category}</td>
                 <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
                 <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
-                <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
+                <td class="p-1 w-1/4 text-right font-bold ${balanceColorClass}">${formattedBalance}</td>
               </tr>`;
           };
           reportsBody.innerHTML += `
@@ -414,12 +415,14 @@ const createReportsTable = (report) => {
 
           for (let month in report.monthTotalsData) {
             const { expenses, income, balance } = report.monthTotalsData[month];
+            const balanceColorClass = balance >= 0 ? "text-green-600" : "text-red-600";
+            const formattedBalance = balance >= 0 ? `+$${balance}` : `-$${-balance}`;
             reportsBody.innerHTML += `
           <tr class="flex justify-between items-center py-1">
             <td class="p-1 w-1/4 text-left font-bold">${month}</td>
             <td class="text-green-600 p-1 w-1/4 text-center font-bold">+$${income}</td>
             <td class="text-red-600 p-1 w-1/4 text-center font-bold">-$${expenses}</td>
-            <td class="p-1 w-1/4 text-right font-bold">$${balance}</td>
+            <td class="p-1 w-1/4 text-right font-bold ${balanceColorClass}">${formattedBalance}</td>
           </tr>`
           };
 };

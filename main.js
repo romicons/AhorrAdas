@@ -357,46 +357,55 @@ document.querySelector('.confirm-delete-category').addEventListener('click', () 
   let categoryName = document.querySelector('.confirm-delete-category').name;
   let categoryId = document.querySelector('.confirm-delete-category');
   const savedOperations = getOperations();
-  const hasRelatedOperations = savedOperations.some(operation => operation.category === categoryName);
-  if (hasRelatedOperations) {
-    let errorText = document.createElement('p');
-    errorText.classList.add('text-red-600');
-    errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Debes eliminar primero las operaciones relacionadas.`;
-    document.getElementById('warning-message').parentNode.insertBefore(errorText, document.getElementById('warning-message').nextSibling);
-  }
-  else { 
-  confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
-    setStyleNone('delete-category');
-    setStyleFlex('categories');
-}});
+    const hasRelatedOperations = savedOperations.some(operation => operation.category === categoryName);
+    if (hasRelatedOperations) {
+      let errorText = document.createElement('p');
+      errorText.classList.add('text-red-600');
+      errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Debes eliminar primero las operaciones relacionadas.`;
+      document.getElementById('warning-message').parentNode.insertBefore(errorText, document.getElementById('warning-message').nextSibling);
+    }
+    else { 
+    confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
+      setStyleNone('delete-category');
+      setStyleFlex('categories');
+    }}
+);
 
 //     CREATE NEW REPORT
 
 document.getElementById('generate-report-btn').addEventListener('click', () => {
   const newReportInput = document.getElementById('add-report');
   const newReport = capitalizeFirstLetter(newReportInput.value)
+
   if (newReport === "") {
       newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
       error(newReportInput, 'Proporciona un nombre para tu reporte por favor.');
       document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
       document.getElementById('add-category-btn-col').classList.add('items-center')
   } else {
-      let existentReports = getReports()
-      if (!existentReports) {
-        existentReports = [];
-      }
-      const reportExists = existentReports.some(report => report.name === newReport);
-      if (reportExists) {
-          newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
-          error(newReportInput, 'Ya existe un reporte con este nombre.');
-          document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-          document.getElementById('add-category-btn-col').classList.add('items-center')
+      const savedOperations = getOperations();
+      if (!savedOperations || savedOperations.length === 0) {
+        error(newReportInput, 'No hay operaciones guardadas para generar un reporte.')
       } else {
-          createReport(newReport);
-          newReportInput.value = "";
+        let existentReports = getReports()
+        if (!existentReports) {
+          existentReports = [];
+        }
+        const reportExists = existentReports.some(report => report.name === newReport);
+        if (reportExists) {
+            newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
+            error(newReportInput, 'Ya existe un reporte con este nombre.');
+            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
+            document.getElementById('add-category-btn-col').classList.add('items-center')
+        } else {
+            createReport(newReport);
+            newReportInput.value = "";
+            hideError(newReportInput);
+        }
       }
-    }
+  }
 });
+
 
 //      RENAME REPORT
 

@@ -12,6 +12,7 @@ const createOperation = (description, amount, type, category, date) => {
   operations.push(newOperation);
   updateOperations(operations);
   createOperationsTable(operations);
+  getBalance(operations);
 };
 
 //      RETURN OPERATIONS FROM LOCAL STORAGE

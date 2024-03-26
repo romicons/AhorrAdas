@@ -357,18 +357,20 @@ document.querySelector('.confirm-delete-category').addEventListener('click', () 
   let categoryName = document.querySelector('.confirm-delete-category').name;
   let categoryId = document.querySelector('.confirm-delete-category');
   const savedOperations = getOperations();
+  if (savedOperations && savedOperations > 0) {
     const hasRelatedOperations = savedOperations.some(operation => operation.category === categoryName);
     if (hasRelatedOperations) {
       let errorText = document.createElement('p');
       errorText.classList.add('text-red-600');
       errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Debes eliminar primero las operaciones relacionadas.`;
       document.getElementById('warning-message').parentNode.insertBefore(errorText, document.getElementById('warning-message').nextSibling);
-    }
+    }}
     else { 
     confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
       setStyleNone('delete-category');
       setStyleFlex('categories');
-    }}
+    }
+  }
 );
 
 //     CREATE NEW REPORT

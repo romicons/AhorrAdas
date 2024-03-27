@@ -1,6 +1,21 @@
 //    CREATE NEW REPORT
 
 const createReport = (name) => {
+  const operations = getOperations();
+  const inputReport = document.getElementById('add-report');
+  
+  const hasExpense = operations.some(operation => operation.type === "Gasto");
+  const hasIncome = operations.some(operation => operation.type === "Ganancia");
+
+  if (!hasExpense || !hasIncome) {
+      inputReport.classList.add('outline', 'outline-red-600', 'outline-2');
+      let errorText = document.createElement('p');
+      errorText.classList.add('text-red-600');
+      errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> No se puede generar el reporte porque no existen operaciones de tipo Gasto o Ganancia.`;
+      document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
+    return;
+  }
+
   let newReport = {
     id: uuidv4(),
     name: name,

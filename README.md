@@ -26,23 +26,23 @@
 
 <h2 align="center">Balance</h2>
 
-<p>Tal como su nombre lo indica, esta sección tiene como objetivo ofrecerte un breve <img alt="Static Badge" src="https://img.shields.io/badge/resumen-f6f7f6"> de tu estado financiero, comparando el valor de tus ingresos y egresos.</p>
+<p>Esta sección tiene como objetivo ofrecerte un breve <img alt="Static Badge" src="https://img.shields.io/badge/resumen-f6f7f6"> de tu estado financiero, comparando el valor de tus ingresos y egresos.</p>
 <p>Asimismo, contiene también la ventana de <img alt="Static Badge" src="https://img.shields.io/badge/operaciones-e3dfba">, en la cual podrás añadir todas las transacciones que consideres necesarias para mantener un registro de tus finanzas. Dichas operaciones contendrán la siguiente información:</p>
 <ul>
   
-✏️ Descripción: Necesaria para que seas capaz de discriminar fácilmente a hace referencia tu operación.
+✏️ Descripción: Para que seas capaz de discriminar fácilmente a hace referencia tu operación.
   
 💲 Monto: Para saber rápidamente de cuánto dinero se trata.
 
-💼 Tipo: Para que puedas ver discriminar fácilmente tus operaciones entre gasto o ganancia.
+💼 Tipo: Para que puedas ver discriminar fácilmente entre los gastos y las ganancias.
 
-🏷️ Categoría: Clasifica tus operaciones según el ámbito de tu vida al que pertenezcan, proporcionando una organización útil y sencilla.
+🏷️ Categoría: Para que puedas clasificar y organizar tus operaciones de acuerdo al ámbito de tu vida al que pertenezcan.
 
-📅 Fecha: Registra la fecha en que se realizó la operación, ofreciendo un historial cronológico de tus transacciones.
+📅 Fecha: Para que puedas mantener un historial cronológico de todas tus transacciones.
 
 </ul>
 
-<p>Una vez registradas tus operaciones, podrás visualizarlas en una tabla, teniendo siempre la opción de editarlas o eliminarlas de acuerdo a tus necesidades.</p>
+<p>Una vez registradas tus operaciones, podrás visualizarlas en una tabla, teniendo siempre la opción de 📝 editarlas o 🗑️ eliminarlas de acuerdo a tus necesidades.</p>
 
 <p>Por último, para ofrecerte una visualización aún más personalizada y eficiente de tus operaciones, esta sección también incluye un apartado de <img alt="Static Badge" src="https://img.shields.io/badge/filtros-f6f7f6">. Éstos limitaran las operaciones visualizadas de acuerdo a:</p>
 

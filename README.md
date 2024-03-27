@@ -4,7 +4,7 @@
   
 </div>
 
-<h1 align="center"><b>La solución que estabas esperando</h1>
+<h1 align="center"><b>La solución financiera que estabas esperando</h1>
 
 <div align="center">
   
@@ -19,10 +19,17 @@
 
 </div>
 
-<p align="center">¿Cansade de llevar un registro de tus gastos e ingresos? ¡No sufras más! Llegó tu aliada financiera personal.</p>
-<p> Diseñada pensando en vos, <img alt="Static Badge" src="https://img.shields.io/badge/FinAlly-%2393ccc6"> simplifica tu vida financiera, ofreciendote una experiencia agradable e intuitiva a la hora de gestionar tu dinero. Su interfaz moderna te invita a registrar cada cambio en el flujo de tu dinero con tan solo unos pocos clics.</p>
+<p align="center">¿Cansadx de llevar un registro de tus gastos e ingresos? ¡No sufras más! Llegó tu aliada financiera personal.</p>
+<p> Diseñada pensando en vos, <img alt="Static Badge" src="https://img.shields.io/badge/FinAlly-%2393ccc6"> simplifica tu vida financiera, ofreciéndote una experiencia agradable e intuitiva a la hora de gestionar tus fondos. Su interfaz moderna te invita a registrar cada cambio en el flujo de tu dinero con tan solo unos pocos clics.</p>
 
 <p>Esta web app se compone de tres secciones principales: Balance, Categorías y Reportes.</p>
+
+<div align="center">
+
+![navbar](https://i.imgur.com/7UDX96r.gif)
+<p align="center"><i>Navbar</i></p>
+  
+</div>
 
 <h2 align="center">Balance</h2>
 
@@ -44,27 +51,38 @@
 
 <p>Una vez registradas tus operaciones, podrás visualizarlas en una tabla, teniendo siempre la opción de 📝 editarlas o 🗑️ eliminarlas de acuerdo a tus necesidades.</p>
 
-
-
-<p>Por último, para ofrecerte una visualización aún más personalizada y eficiente de tus operaciones, esta sección también incluye un apartado de <img alt="Static Badge" src="https://img.shields.io/badge/filtros-f6f7f6">. Éstos limitaran las operaciones visualizadas de acuerdo a:</p>
+<div align="center">
+  
+![operations-functions](https://i.imgur.com/7rR7PdY.gif)
+<p align="center"><i>Funcionalidades de las operaciones</i></p>
+  
+</div>
+<p>Además, para ofrecerte una visualización aún más personalizada y eficiente de tus operaciones, esta sección también incluye un apartado de <img alt="Static Badge" src="https://img.shields.io/badge/filtros-f6f7f6">. Éstos limitaran las operaciones visualizadas de acuerdo a:</p>
 
 <ul>
 
-💼 Tipo: Puedes seleccionar entre Ganancia, Gasto o Todas para filtrar las operaciones según su naturaleza financiera.
+💼 Tipo: Podes seleccionar entre Ganancia, Gasto o Todas para filtrar las operaciones según su naturaleza financiera.
 
-🏷️ Categoría: Tienes la opción de filtrar las operaciones por categoría, lo que te permite organizarlas según su tipo.
+🏷️ Categoría: Tenes la opción de filtrar las operaciones por categoría, lo que te permite organizarlas según su tipo.
 
-📆 Desde: Puedes especificar una fecha inicial para filtrar las operaciones a partir de esa fecha en adelante.
+📆 Desde: Podes especificar una fecha inicial para filtrar las operaciones a partir de esa fecha en adelante.
 
-🗓️ Hasta: Puedes especificar una fecha final para filtrar las operaciones hasta esa fecha hacia atrás.
+🗓️ Hasta: Podes especificar una fecha final para filtrar las operaciones hasta esa fecha hacia atrás.
 
-🔍 Orden: Tienes la flexibilidad de ordenar las operaciones de diferentes maneras, ya sea por 📅 fecha (más antiguo o más reciente), 🔠 alfabéticamente (de la A a la Z o viceversa) o por 💵 monto (mayor o menor). 
+🔍 Orden: Tenes la flexibilidad de ordenar las operaciones de diferentes maneras, ya sea por 📅 fecha (más antiguo o más reciente), 🔠 alfabéticamente (de la A a la Z o viceversa) o por 💵 monto (mayor o menor). 
 
 </ul>
 
 <h2 align="center">Categorías</h2>
 
 <p>Con el objetivo de ofrecerte una mayor personalización, esta sección te permite ➕ crear, 📝 editar o 🗑️ eliminar tus propias categorías, lo que te permite clasificar tus operaciones de manera más eficiente y organizada.</p>
+
+<div align="center">
+
+![categories-functions](https://i.imgur.com/prJRJe1.gif)
+  <p align="center"><i>Funcionalidades de las categorías</i></p>
+</div>
+
 
 <h2 align="center">Reportes</h2>
 
@@ -91,6 +109,13 @@
 </ul>
 
 <p>Al igual que con tus operaciones y categorías, podrás 🗑️ eliminarlos o 📝 cambiarles el nombre según lo necesites.</p>
+
+<div align="center">
+
+![reports-functions](https://i.imgur.com/r38xY4D.gif)
+<p align="center"><i>Funcionalidades de los reportes</i></p>
+  
+</div>
 
 <h2 align=center>Aclaraciones finales</h2>
 

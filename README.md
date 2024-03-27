@@ -59,3 +59,33 @@
 🔍 Orden: Tienes la flexibilidad de ordenar las operaciones de diferentes maneras, ya sea por 📅 fecha (más antiguo o más reciente), 🔠 alfabéticamente (de la A a la Z o viceversa) o por 💵 monto (mayor o menor). 
 
 </ul>
+
+<h2 align="center">Categorías</h2>
+
+<p>Con el objetivo de ofrecerte una mayor personalización, esta sección te permite ➕ crear, 📝 editar o 🗑️ eliminar tus propias categorías, lo que te permite clasificar tus operaciones de manera más eficiente y organizada.</p>
+
+<h2 align="center">Reportes</h2>
+
+<p>Finalmente, esta sección tiene como objetivo generar <img alt="Static Badge" src="https://img.shields.io/badge/reportes-f6f7f6"> cuando lo desees. Simplemente deberás proporcionarles un nombre y tus datos analizados quedarán registrados para que puedas visualizarlos individualmente después. Dichos reportes contendrán información valiosa, incluyendo:</p>
+
+<ul>
+
+💰 📈 🔺 Categoría con mayor ganancia.
+
+💸 📉 🔻 Categoría con mayor gasto.
+
+🏷️ ⚖️ 📊 Categoría con mejor balance.
+
+📅 💰 📈 Mes con mayor ganancia.
+
+📅 💸 📉 Mes con mayor gasto.
+
+📅 ⚖️ 📊 Mes con mejor balance.
+
+🏷️ 🧮 Totales por categoria.
+
+📅 🧮 Totales por mes.
+  
+</ul>
+
+<p>Al igual que con tus operaciones y categorías, podrás 🗑️ eliminarlos o 📝 cambiarles el nombre según lo necesites.</p>

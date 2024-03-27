@@ -44,6 +44,8 @@
 
 <p>Una vez registradas tus operaciones, podrás visualizarlas en una tabla, teniendo siempre la opción de 📝 editarlas o 🗑️ eliminarlas de acuerdo a tus necesidades.</p>
 
+
+
 <p>Por último, para ofrecerte una visualización aún más personalizada y eficiente de tus operaciones, esta sección también incluye un apartado de <img alt="Static Badge" src="https://img.shields.io/badge/filtros-f6f7f6">. Éstos limitaran las operaciones visualizadas de acuerdo a:</p>
 
 <ul>

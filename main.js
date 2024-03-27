@@ -280,17 +280,19 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
   const newCategory = capitalizeFirstLetter(newCategoryInput.value)
   if (newCategory === "") {
       newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
-      error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
-      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-      document.getElementById('add-category-btn-col').classList.add('items-center')
+      let errorText = document.createElement('p');
+      errorText.classList.add('text-red-600');
+      errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Proporciona un nombre para tu nueva categoría por favor.`;
+      document.getElementById('add-category-div').parentNode.insertBefore(errorText, document.getElementById('add-category-div').nextSibling);
   } else {
       let existentCategories = getCategories()
       const categoryExists = existentCategories.some(category => category.name === newCategory);
       if (categoryExists) {
           newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
-          error(newCategoryInput, 'Esta categoría ya existe.');
-          document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-          document.getElementById('add-category-btn-col').classList.add('items-center')
+          let errorText = document.createElement('p');
+          errorText.classList.add('text-red-600');
+          errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Esta categoría ya existe.`;
+          document.getElementById('add-category-div').parentNode.insertBefore(errorText, document.getElementById('add-category-div').nextSibling);
       } else {
           createCategory(newCategory);
           newCategoryInput.value = "";
@@ -304,8 +306,6 @@ document.getElementById('add-category').addEventListener('input', () => {
   if (newCategory !== "") {
       newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
       hideError(newCategoryInput);
-      document.getElementById('add-category-btn-col').classList.remove('items-center')
-      document.getElementById('add-category-btn-col').classList.add('tablet:items-end')
   }
 });
 
@@ -381,13 +381,18 @@ document.getElementById('generate-report-btn').addEventListener('click', () => {
 
   if (newReport === "") {
       newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
-      error(newReportInput, 'Proporciona un nombre para tu reporte por favor.');
-      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-      document.getElementById('add-category-btn-col').classList.add('items-center')
+      let errorText = document.createElement('p');
+      errorText.classList.add('text-red-600');
+      errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Proporciona un nombre para tu reporte por favor.`;
+      document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
   } else {
       const savedOperations = getOperations();
       if (!savedOperations || savedOperations.length === 0) {
-        error(newReportInput, 'No hay operaciones guardadas para generar un reporte.')
+        let errorText = document.createElement('p');
+        errorText.classList.add('text-red-600');
+        errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> No hay operaciones guardadas para generar un reporte.`;
+        document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
+        newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
       } else {
         let existentReports = getReports()
         if (!existentReports) {
@@ -395,10 +400,11 @@ document.getElementById('generate-report-btn').addEventListener('click', () => {
         }
         const reportExists = existentReports.some(report => report.name === newReport);
         if (reportExists) {
-            newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
-            error(newReportInput, 'Ya existe un reporte con este nombre.');
-            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-            document.getElementById('add-category-btn-col').classList.add('items-center')
+          let errorText = document.createElement('p');
+          errorText.classList.add('text-red-600');
+          errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Ya existe un reporte con este nombre.`;
+          document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
+          newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
         } else {
             createReport(newReport);
             newReportInput.value = "";
@@ -408,6 +414,15 @@ document.getElementById('generate-report-btn').addEventListener('click', () => {
   }
 });
 
+document.getElementById('add-report').addEventListener('input', () => {
+  const newReportInput = document.getElementById('add-report');
+  const newReport = newReportInput.value;
+  if (newReport !== "") {
+    let inputDiv = document.getElementById('add-reports-div')
+      newReportInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+      hideError(inputDiv);
+  }
+});
 
 //      RENAME REPORT
 

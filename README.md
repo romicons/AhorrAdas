@@ -89,3 +89,21 @@
 </ul>
 
 <p>Al igual que con tus operaciones y categorías, podrás 🗑️ eliminarlos o 📝 cambiarles el nombre según lo necesites.</p>
+
+<h2 align=center>Aclaraciones finales</h2>
+
+<p>FinAlly simula la interacción con una base de datos utilizando el <img alt="Static Badge" src="https://img.shields.io/badge/Local%20Storage-%236cbdb5">. Por lo tanto, es importante tener cuidado al 🗑️ eliminar los datos de tu navegador, ya que podrías ⚠️ <img alt="Static Badge" src="https://img.shields.io/badge/perder-%23DC2626"> toda la información guardada.
+</p>
+
+<p align="center"> ¡Gracias por tu visita! </p>
+
+<div align="center">
+
+<img src="https://i.imgur.com/9kfXeAJ.png" width=120px alt="romicons profile picture">
+<img src="https://avatars.githubusercontent.com/u/141881584?v=4" width=120px alt="kndezapata profile picture">
+
+</div>
+
+<h3 align="center">romicons</h3>
+<h3 align="center">kndezapata</h3>
+

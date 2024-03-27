@@ -23,17 +23,13 @@ const filterOperationsByCategory = (filteredOperations) => {
 //         FUNCTION FILTER DATE
 
 const filterOperationsFromDate = (date, array) => {
-  console.log("me estoy ejecutando", array);
   if (array && array.length > 0){
-    console.log("estoy entrando en el if", array)
     const fromDate = new Date(date); 
     const result= array.filter((operation) => {
         const operationDate = new Date(operation.date); 
-        console.log(operationDate)
-        console.log(fromDate)
         return operationDate >= fromDate;
     });
-    console.log(result)
+  
     return result;
   }
 };
@@ -59,7 +55,6 @@ const filterByOrder = (array, order) => {
     }
     
     if (order === 'Más reciente') {
-      console.log(array)
         return array.sort((a, b) => orderByDate(b, a));
     }
     else if (order === 'Más antiguo') {
@@ -72,7 +67,6 @@ const filterByOrder = (array, order) => {
         return array.sort((a, b) => orderByAmount(b, a));
     }
     else if (order === 'A/Z') {
-      console.log(array.sort(orderAlphabetycally))
         return array.sort(orderAlphabetycally);
     }
     else if (order === 'Z/A') {
@@ -80,46 +74,3 @@ const filterByOrder = (array, order) => {
     }
 };
 
-/*
-const applyFilters = () => {
-    let filteredOperations = getOperations();
-    filterOperationsByType(filteredOperations);
-    filterOperationsByCategory(filteredOperations);
-    console.log(filteredOperations);
-    createOperationsTable(filteredOperations);
-};
-
-
-const filterOperations = () => {
-    let filteredOperations = getOperations();
-    console.log (filteredOperations);
-
-    const type = document.getElementById('operation-type-filter').value;
-    const category = document.getElementById('operation-category-filter').value;
-    const dateFrom = document.getElementById("operation-date-from").value;
-    const dateUntil = document.getElementById("operation-date-until").value;
-    const order = document.getElementById('operation-order').value;
-    
-    if (type !== 'Todas') {
-      filteredOperations = filterByType(type, getOperations());
-      console.log(filteredOperations)
-      createOperationsTable(filteredOperations);
-    }
-  
-    if (category !== 'Todas') {
-      filteredOperations = filterByCategory(category, getOperations())
-    }
-
-    filteredOperations = filterOperationsFromDate(dateFrom, getOperations());
-    console.log(filteredOperations)
-
-    filteredOperations = filterOperationsUntilDate(dateUntil, filteredOperations);
-    console.log(filteredOperations)
-
-    filteredOperations = filterByOrder(order, getOperations());
-    console.log(filteredOperations)
-
-    console.log('Operaciones filtradas:', filteredOperations);
-
-  
-};*/

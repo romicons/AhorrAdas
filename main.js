@@ -106,7 +106,6 @@ let operationTypeFilter = document.getElementById('operation-type-filter');
 operationTypeFilter.addEventListener('change', function() {
     const type = this.value;
     const filteredOperations = createOperationsTable(filterByType(type, filters));
-    console.log(filteredOperations);
 });
 
 
@@ -114,7 +113,6 @@ const handleCategoryFilterChange = () => {
     let operationCategoryFilter = document.getElementById('operation-category-filter');
     const category = operationCategoryFilter.value; 
     const filteredOperations = createOperationsTable(filterByCategory(category, filters)); 
-    console.log(filteredOperations);
 };
 document.getElementById('operation-category-filter').addEventListener('change', handleCategoryFilterChange);
 
@@ -124,12 +122,6 @@ operationDateFrom.addEventListener('change', () => {
     const filteredOperations = filterOperationsFromDate(operationDateFrom.value, filters);
     createOperationsTable(filteredOperations); 
 });
-
-
-console.log(operationDateFrom.value);
-
-
-
 
 //      FILTER OPERATIONS UNTIL X DATE
 

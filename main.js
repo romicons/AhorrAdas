@@ -97,17 +97,39 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
     }
 })
 
-//      FILTER OPERATIONS BY TYPE
+//      FILTERS  TABLE 
 
-//document.getElementById('operation-type-filter').addEventListener('change', applyFilters);
+// Variable global
+let filters = getOperations();
 
-//      FILTER OPERATIONS BY CATEGORY
+let operationTypeFilter = document.getElementById('operation-type-filter');
+operationTypeFilter.addEventListener('change', function() {
+    const type = this.value;
+    const filteredOperations = createOperationsTable(filterByType(type, filters));
+    console.log(filteredOperations);
+});
 
-//document.getElementById('operation-category-filter').addEventListener('change', applyFilters);
 
-//      FILTER OPERATIONS FROM X DATE
+const handleCategoryFilterChange = () => {
+    let operationCategoryFilter = document.getElementById('operation-category-filter');
+    const category = operationCategoryFilter.value; 
+    const filteredOperations = createOperationsTable(filterByCategory(category, filters)); 
+    console.log(filteredOperations);
+};
+document.getElementById('operation-category-filter').addEventListener('change', handleCategoryFilterChange);
 
-//document.getElementById("operation-date-from").addEventListener('change', filterOperations);
+
+let operationDateFrom = document.getElementById("operation-date-from");
+operationDateFrom.addEventListener('change', () => {
+    const filteredOperations = filterOperationsFromDate(operationDateFrom.value, filters);
+    createOperationsTable(filteredOperations); 
+});
+
+
+console.log(operationDateFrom.value);
+
+
+
 
 //      FILTER OPERATIONS UNTIL X DATE
 

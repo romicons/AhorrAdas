@@ -29,6 +29,8 @@ const updateOperations = (operations) => {
   localStorage.setItem(`operations`, JSON.stringify(operations));
 };
 
+
+
 //  GENERATE TABLE OF OPERATIONS
 
 const createOperationsTable = (data) => {
@@ -146,4 +148,3 @@ const confirmDeleteOperation = (array, operationId) =>{
   updateOperations(filteredOperations);
   createOperationsTable(filteredOperations);
 }
-

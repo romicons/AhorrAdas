@@ -1,10 +1,8 @@
 //      INITIALIZE APP
 
 const initializeApp = () => {
-    const savedCategories = getCategories(); 
-    createCategoriesTable(savedCategories);
-    const savedOperations = getOperations();
-    createOperationsTable(savedOperations);
+    createCategoriesTable(getCategories());
+    createOperationsTable(getOperations());
     createTableForReports(getReports());
     getBalance(getOperations());
 };
@@ -51,11 +49,13 @@ const getBalance = (data) => {
     const balanceAmount = income >= expense ? "+$" : "-$";
     const formattedBalance = balance < 0 ? balance.toString().replace('-', '') : balance;
 
+    const balanceContainer = document.getElementById('balance-display')
+    balanceContainer.innerHTML = '';
     const piggyBankDiv = document.createElement('div');
 
     if (data && data.length > 0) {
         setStyleNone('no-balance');
-        document.getElementById('balance-display').innerHTML = `
+        balanceContainer.innerHTML = `
         <div class="flex columns-2 justify-between">
           <div>
             <h3>Ganancias</h3>

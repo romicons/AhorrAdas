@@ -41,3 +41,21 @@
 📅 Fecha: Registra la fecha en que se realizó la operación, ofreciendo un historial cronológico de tus transacciones.
 
 </ul>
+
+<p>Una vez registradas tus operaciones, podrás visualizarlas en una tabla, teniendo siempre la opción de editarlas o eliminarlas de acuerdo a tus necesidades.</p>
+
+<p>Por último, para ofrecerte una visualización aún más personalizada y eficiente de tus operaciones, esta sección también incluye un apartado de <img alt="Static Badge" src="https://img.shields.io/badge/filtros-f6f7f6">. Éstos limitaran las operaciones visualizadas de acuerdo a:</p>
+
+<ul>
+
+💼 Tipo: Puedes seleccionar entre Ganancia, Gasto o Todas para filtrar las operaciones según su naturaleza financiera.
+
+🏷️ Categoría: Tienes la opción de filtrar las operaciones por categoría, lo que te permite organizarlas según su tipo.
+
+📆 Desde: Puedes especificar una fecha inicial para filtrar las operaciones a partir de esa fecha en adelante.
+
+🗓️ Hasta: Puedes especificar una fecha final para filtrar las operaciones hasta esa fecha hacia atrás.
+
+🔍 Orden: Tienes la flexibilidad de ordenar las operaciones de diferentes maneras, ya sea por 📅 fecha (más antiguo o más reciente), 🔠 alfabéticamente (de la A a la Z o viceversa) o por 💵 monto (mayor o menor). 
+
+</ul>

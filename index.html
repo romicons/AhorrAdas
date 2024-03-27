@@ -171,6 +171,35 @@
             <div class="text-lg flex flex-col gap-2" id="balance-display">
               
             </div>
+            <div class="hidden text-lg flex-col gap-2" id="no-balance">
+              <div class="flex columns-2 justify-between">
+                <div>
+                  <h3>Ganancias</h3>
+                </div>
+                <div class="text-green-600">
+                  <span>+$</span>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="flex columns-2 justify-between">
+                <div>
+                  <h3>Gastos</h3>
+                </div>
+                <div class="text-red-600">
+                  <span>-$</span>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="flex columns-2 justify-between text-2xl border-solid border-t border-light pt-2 dark:border-dark">
+                <div>
+                  <h3>Total</h3>
+                </div>
+                <div>
+                  <span>$0</span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
           </section>
 
           <!--        FILTROS         -->
@@ -703,7 +732,7 @@
         </div>
       </section>
 
-      <!--        FORMULARIO DE CATEGORÍAS       -->
+      <!--        SECCIÓN DE CATEGORÍAS       -->
 
       <section
         id="categories"
@@ -726,27 +755,31 @@
 
         <!--        AÑADIR NUEVAS CATEGORÍAS       -->
 
-        <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2">
-          <div class="flex flex-col tablet:w-3/5 gap-2">
+        <div class="flex flex-col tablet:justify-between gap-2">
+          <div class="flex flex-col gap-2">
             <label for="add-category">Nueva categoría</label>
-            <input
-              id="add-category"
-              type="text"
-              class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
-              placeholder="Introduce el nombre de tu nueva categoría aquí."
-            >
           </div>
-          <div
-            class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end"
-            id="add-category-btn-col"
-          >
-            <button
-              id="add-category-btn"
-              class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-full"
+          <div class="flex flex-col tablet:flex-row gap-2" id="add-category-div">
+            <div class="flex flex-col tablet:w-3/5 gap-2">
+                <input
+                  id="add-category"
+                  type="text"
+                  class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+                  placeholder="Introduce el nombre de tu nueva categoría aquí."
+                >
+            </div>
+            <div
+              class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end"
+              id="add-category-btn-col"
             >
-              <i class="fa-solid fa-plus"></i>
-              Añadir
-            </button>
+              <button
+                id="add-category-btn"
+                class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-full"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Añadir
+              </button>
+            </div>
           </div>
         </div>
 
@@ -882,28 +915,31 @@
 
         <!--        CREAR NUEVOS REPORTES       -->
 
-        <div class="flex flex-col tablet:flex-row tablet:justify-between gap-2 py-2">
-          <div class="flex flex-col tablet:w-3/5 gap-2">
+        <div class="flex flex-col tablet:justify-between gap-2 py-2">
+          <div class="flex flex-col">
             <label for="add-report">Nuevo reporte</label>
-            <input
-              id="add-report"
-              type="text"
-              class="bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
-              placeholder="Introduce un nombre para tu nuevo reporte aquí."
-            >
           </div>
-          <div
-            class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end"
-            id="generate-report-btn-col"
-          >
-            <button
-              id="generate-report-btn"
-              class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-full"
+          <div class="flex flex-col gap-2 tablet:flex-row" id="add-reports-div">
+            <div class="flex gap-5 tablet:w-3/5">
+              <input
+                id="add-report"
+                type="text"
+                class="w-full bg-primary rounded p-1 hover:bg-accent dark:bg-secondary dark:text-light dark:hover:bg-dark placeholder:text-slate-500"
+                placeholder="Introduce un nombre para tu nuevo reporte aquí."
+              >
+            </div>
+            <div
+              class="flex gap-5 tablet:w-2/5 justify-center tablet:justify-end tablet:items-end"
+              id="generate-report-btn-col"
             >
-              <i class="fa-solid fa-plus"></i>
-              Generar reporte
-            </button>
-          </div>
+              <button
+                id="generate-report-btn"
+                class="flex items-center rounded px-10 py-1 h-8 justify-center hover:bg-accent bg-secondary shadow-inner font-bold dark:text-light dark:hover:text-light dark:hover:bg-primary gap-2 w-full"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Generar reporte
+              </button>
+            </div>
         </div>
 
         <!--    TABLA PARA REPORTES     -->
@@ -923,10 +959,11 @@
                 class="text-lg flex-col justify-center items-center gap-2 flex py-2"
               >
                 <p>Intenta generando uno nuevo.</p>
-                <p>Recuerda que para ello es necesario tener operaciones guardadas.</p>
+                <p>Recuerda que para ello es necesario tener al menos una operación de tipo <span class="font-bold underline underline-offset-2">gasto</span> y una de tipo <span class="font-bold underline underline-offset-2">ganancia</span> guardadas.</p>
               </div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 

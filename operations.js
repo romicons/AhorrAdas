@@ -29,6 +29,8 @@ const updateOperations = (operations) => {
   localStorage.setItem(`operations`, JSON.stringify(operations));
 };
 
+
+
 //  GENERATE TABLE OF OPERATIONS
 
 const createOperationsTable = (data) => {
@@ -120,6 +122,7 @@ const confirmEditOperation = (array, operationId, newDescription, newAmount, new
   });
   updateOperations(editedOperations);
   createOperationsTable(editedOperations);
+  getBalance(getOperations());
 }
 
 //      DELETE OPERATION
@@ -145,5 +148,5 @@ const confirmDeleteOperation = (array, operationId) =>{
   const filteredOperations= array.filter(object => object.id !== operationId);
   updateOperations(filteredOperations);
   createOperationsTable(filteredOperations);
+  getBalance(getOperations());
 }
-

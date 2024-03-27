@@ -1,18 +1,16 @@
 //                      FILTERS
 
 const filterByType = (type, array) => {
-    return array.filter((operation) => operation[type] === type)
+    if (type === 'Todas') {
+        return array; 
+    } else {
+        return array.filter((operation) => operation.type === type);
+    }
 };
 
-const filterOperationsByType = (filteredOperations) => {
-  const type = document.getElementById('operation-type-filter').value;
-  if (type !== 'Todas') {
-    filteredOperations = filterByType(type, filteredOperations);
-  }
-};
 
 const filterByCategory = (category, array) => {
-    return array.filter((operation) => operation.category === category)
+    return array.filter((operation) => operation.category === category);
 };
 
 const filterOperationsByCategory = (filteredOperations) => {
@@ -22,12 +20,22 @@ const filterOperationsByCategory = (filteredOperations) => {
   }
 };
 
+//         FUNCTION FILTER DATE
+
 const filterOperationsFromDate = (date, array) => {
+  console.log("me estoy ejecutando", array);
+  if (array && array.length > 0){
+    console.log("estoy entrando en el if", array)
     const fromDate = new Date(date); 
-    return array.filter((operation) => {
+    const result= array.filter((operation) => {
         const operationDate = new Date(operation.date); 
+        console.log(operationDate)
+        console.log(fromDate)
         return operationDate >= fromDate;
     });
+    console.log(result)
+    return result;
+  }
 };
 
 const filterOperationsUntilDate = (date, array) => {

@@ -97,17 +97,39 @@ document.getElementById('hide-filters-btn').addEventListener('click', () => {
     }
 })
 
-//      FILTER OPERATIONS BY TYPE
+//      FILTERS  TABLE 
 
-//document.getElementById('operation-type-filter').addEventListener('change', applyFilters);
+// Variable global
+let filters = getOperations();
 
-//      FILTER OPERATIONS BY CATEGORY
+let operationTypeFilter = document.getElementById('operation-type-filter');
+operationTypeFilter.addEventListener('change', function() {
+    const type = this.value;
+    const filteredOperations = createOperationsTable(filterByType(type, filters));
+    console.log(filteredOperations);
+});
 
-//document.getElementById('operation-category-filter').addEventListener('change', applyFilters);
 
-//      FILTER OPERATIONS FROM X DATE
+const handleCategoryFilterChange = () => {
+    let operationCategoryFilter = document.getElementById('operation-category-filter');
+    const category = operationCategoryFilter.value; 
+    const filteredOperations = createOperationsTable(filterByCategory(category, filters)); 
+    console.log(filteredOperations);
+};
+document.getElementById('operation-category-filter').addEventListener('change', handleCategoryFilterChange);
 
-//document.getElementById("operation-date-from").addEventListener('change', filterOperations);
+
+let operationDateFrom = document.getElementById("operation-date-from");
+operationDateFrom.addEventListener('change', () => {
+    const filteredOperations = filterOperationsFromDate(operationDateFrom.value, filters);
+    createOperationsTable(filteredOperations); 
+});
+
+
+console.log(operationDateFrom.value);
+
+
+
 
 //      FILTER OPERATIONS UNTIL X DATE
 
@@ -280,17 +302,19 @@ document.getElementById('add-category-btn').addEventListener('click', () => {
   const newCategory = capitalizeFirstLetter(newCategoryInput.value)
   if (newCategory === "") {
       newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
-      error(newCategoryInput, 'Proporciona un nombre para tu nueva categoría por favor.');
-      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-      document.getElementById('add-category-btn-col').classList.add('items-center')
+      let errorText = document.createElement('p');
+      errorText.classList.add('text-red-600');
+      errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Proporciona un nombre para tu nueva categoría por favor.`;
+      document.getElementById('add-category-div').parentNode.insertBefore(errorText, document.getElementById('add-category-div').nextSibling);
   } else {
       let existentCategories = getCategories()
       const categoryExists = existentCategories.some(category => category.name === newCategory);
       if (categoryExists) {
           newCategoryInput.classList.add('outline', 'outline-red-600', 'outline-2');
-          error(newCategoryInput, 'Esta categoría ya existe.');
-          document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-          document.getElementById('add-category-btn-col').classList.add('items-center')
+          let errorText = document.createElement('p');
+          errorText.classList.add('text-red-600');
+          errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Esta categoría ya existe.`;
+          document.getElementById('add-category-div').parentNode.insertBefore(errorText, document.getElementById('add-category-div').nextSibling);
       } else {
           createCategory(newCategory);
           newCategoryInput.value = "";
@@ -304,8 +328,6 @@ document.getElementById('add-category').addEventListener('input', () => {
   if (newCategory !== "") {
       newCategoryInput.classList.remove('outline', 'outline-red-600', 'outline-2');
       hideError(newCategoryInput);
-      document.getElementById('add-category-btn-col').classList.remove('items-center')
-      document.getElementById('add-category-btn-col').classList.add('tablet:items-end')
   }
 });
 
@@ -357,18 +379,20 @@ document.querySelector('.confirm-delete-category').addEventListener('click', () 
   let categoryName = document.querySelector('.confirm-delete-category').name;
   let categoryId = document.querySelector('.confirm-delete-category');
   const savedOperations = getOperations();
+  if (savedOperations && savedOperations > 0) {
     const hasRelatedOperations = savedOperations.some(operation => operation.category === categoryName);
     if (hasRelatedOperations) {
       let errorText = document.createElement('p');
       errorText.classList.add('text-red-600');
       errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Debes eliminar primero las operaciones relacionadas.`;
       document.getElementById('warning-message').parentNode.insertBefore(errorText, document.getElementById('warning-message').nextSibling);
-    }
+    }}
     else { 
     confirmDeleteCategory(getCategories(), categoryId.id.slice(8));
       setStyleNone('delete-category');
       setStyleFlex('categories');
-    }}
+    }
+  }
 );
 
 //     CREATE NEW REPORT
@@ -379,13 +403,18 @@ document.getElementById('generate-report-btn').addEventListener('click', () => {
 
   if (newReport === "") {
       newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
-      error(newReportInput, 'Proporciona un nombre para tu reporte por favor.');
-      document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-      document.getElementById('add-category-btn-col').classList.add('items-center')
+      let errorText = document.createElement('p');
+      errorText.classList.add('text-red-600');
+      errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Proporciona un nombre para tu reporte por favor.`;
+      document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
   } else {
       const savedOperations = getOperations();
       if (!savedOperations || savedOperations.length === 0) {
-        error(newReportInput, 'No hay operaciones guardadas para generar un reporte.')
+        let errorText = document.createElement('p');
+        errorText.classList.add('text-red-600');
+        errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> No hay operaciones guardadas para generar un reporte.`;
+        document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
+        newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
       } else {
         let existentReports = getReports()
         if (!existentReports) {
@@ -393,10 +422,11 @@ document.getElementById('generate-report-btn').addEventListener('click', () => {
         }
         const reportExists = existentReports.some(report => report.name === newReport);
         if (reportExists) {
-            newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
-            error(newReportInput, 'Ya existe un reporte con este nombre.');
-            document.getElementById('add-category-btn-col').classList.remove('tablet:items-end')
-            document.getElementById('add-category-btn-col').classList.add('items-center')
+          let errorText = document.createElement('p');
+          errorText.classList.add('text-red-600');
+          errorText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Ya existe un reporte con este nombre.`;
+          document.getElementById('add-reports-div').parentNode.insertBefore(errorText, document.getElementById('add-reports-div').nextSibling);
+          newReportInput.classList.add('outline', 'outline-red-600', 'outline-2');
         } else {
             createReport(newReport);
             newReportInput.value = "";
@@ -406,6 +436,15 @@ document.getElementById('generate-report-btn').addEventListener('click', () => {
   }
 });
 
+document.getElementById('add-report').addEventListener('input', () => {
+  const newReportInput = document.getElementById('add-report');
+  const newReport = newReportInput.value;
+  if (newReport !== "") {
+    let inputDiv = document.getElementById('add-reports-div')
+      newReportInput.classList.remove('outline', 'outline-red-600', 'outline-2');
+      hideError(inputDiv);
+  }
+});
 
 //      RENAME REPORT
 

@@ -121,6 +121,11 @@
 
 <p>FinAlly simula la interacción con una base de datos utilizando el <img alt="Static Badge" src="https://img.shields.io/badge/Local%20Storage-%236cbdb5">. Por lo tanto, es importante tener cuidado al 🗑️ eliminar los datos de tu navegador, ya que podrías ⚠️ <img alt="Static Badge" src="https://img.shields.io/badge/perder-%23DC2626"> toda la información guardada.
 </p>
+<p>Esto significa, además, que <img alt="Static Badge" src="https://img.shields.io/badge/FinAlly-%2393ccc6"> garantiza por completo tu <img alt="Static Badge" src="https://img.shields.io/badge/privacidad-f6f7f6">, ya que tus datos se almacenan únicamente en tu navegador.
+</p>
+<p>
+Entonces... ¡No pierdas más el tiempo! Experimentá la comodidad y la eficiencia de nuestra webapp y comenzá a gestionar tus fondos de manera inteligente y sin complicaciones. ¡Tomá el control de tus finanzas con <a href="https://romicons.github.io/AhorrAdas/">FinAlly</a>!
+</p>
 
 <p align="center"> ¡Gracias por tu visita! </p>
 

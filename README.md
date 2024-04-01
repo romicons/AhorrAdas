@@ -124,8 +124,11 @@
 <p>Esto significa, además, que <img alt="Static Badge" src="https://img.shields.io/badge/FinAlly-%2393ccc6"> garantiza por completo tu <img alt="Static Badge" src="https://img.shields.io/badge/privacidad-f6f7f6">, ya que tus datos se almacenan únicamente en tu navegador.
 </p>
 <p>
-Entonces... ¡No pierdas más el tiempo! Experimentá la comodidad y la eficiencia de nuestra webapp y comenzá a gestionar tus fondos de manera inteligente y sin complicaciones. ¡Tomá el control de tus finanzas con <a href="https://romicons.github.io/AhorrAdas/">FinAlly</a>!
+Entonces... ¡No pierdas más el tiempo! Experimentá la comodidad y la eficiencia de nuestra webapp y comenzá a gestionar tus fondos de manera inteligente y sin complicaciones. 
 </p>
+
+<h2 align="center">¡Tomá el control de tus finanzas con <a href="https://romicons.github.io/AhorrAdas/">FinAlly</a>!
+</h2>
 
 <p align="center"> ¡Gracias por tu visita! </p>
 
